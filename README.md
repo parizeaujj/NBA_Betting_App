@@ -26,7 +26,7 @@ The product will display live scores of games and let a user bet points in real 
 ## The product ... (product name, or product category)
 	
 ## That leads to ... (main advantage, appealing reason for purchase)
-	The main advantage is for entertainment. People will be able to bet without losing or gaining money, but they will get bragging rights after winning bets against their friends.
+	The main advantage is entertainment. People will be able to bet without losing or gaining money, but they will get bragging rights after winning bets against their friends.
 ## Unlike the ... (principal competing alternatives)
 	Unlike other betting sites, this one allows users to add friends and compete against each other. Moreover, a leaderboard will display rankings according to how many bets you got right.
 ## Our product offers ... (describe main differentiation)
