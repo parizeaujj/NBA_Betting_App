@@ -5,17 +5,24 @@
 Your vision statement should contain the following information and be formatted as one or more paragraphs. This statement must be included in your main README file and not linked externally. 
 
 1. For ... (the product’s target market)
+	People who enjoy head-to-head sports betting
 2. Who/That ... (describe what need your product solves)
+	Many people enjoy sports betting and competing against their friends at it, but do not want to put actual money on the games.
+	Our product provides a platform to do just that. To our knowledge, no other platform currently provides this functionality. 
+
 3. The product ... (product name,or product category)
+	Head-to-head sports betting game
 4. That leads to ... (main advantage, appealing reason for purchase)
 5. Unlike the ... (principal competing alternatives)
+	Unlike FanDuel, which also offers head-to-head betting, ...
 6. Our product offers ... (describe main differentiation)
-
-As a general note, it is much easier (and less risky) to use inline markdown text for any text documents you create. If you choose to use Google Docs or Google Sheets, you run the risk of providing an invalid link or linking to a file that is not properly shared. If myself or the grader cannot access your artifact, you will not receive credit for it - even if you fix the problem after it has been graded.
+	our product incoorporates a "Bet Draft" which adds another element of strategy to the game. The "bet draft" is a system that allows each player to take turns selecting a paticular bet for a particular game. When one player selects a certain bet for a certain game, that bet is added to the player's betslip and the inverse/opposite of that bet is added to their opponent's bet slip. This adds another level of complexity to deciding which bets you should take because now you arent guarenteed to take the side of a bet that you want and must strategize accordingly. 
 
 ## Team Members
 
 - Jacques Parizeau
+- Todd Weidler
+
 
 # Vision Statement
 The product will display live scores of games and let a user bet points in real time. The users can add friends and compete against each other.
