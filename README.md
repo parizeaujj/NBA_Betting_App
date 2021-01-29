@@ -19,7 +19,7 @@ Your vision statement should contain the following information and be formatted 
 	Unlike FanDuel, which also offers head-to-head betting, ...
 	
 6. Our product offers ... (describe main differentiation)
-	our product incoorporates a "Bet Draft" which adds another element of strategy to the game. The "bet draft" is a system that allows each player to take turns selecting a paticular bet for a particular game. When one player selects a certain bet for a certain game, that bet is added to the player's betslip and the inverse/opposite of that bet is added to their opponent's bet slip. This adds another level of complexity to deciding which bets you should take because now you arent guarenteed to take the side of a bet that you want and must strategize accordingly. 
+	our product incoorporates a "Bet Draft" which adds another element of strategy to the game. The "bet draft" is a system that allows each player to take turns selecting a particular bet for a particular game. When one player selects a certain bet for a certain game, that bet is added to the player's betslip and the inverse/opposite of that bet is added to their opponent's bet slip. This adds another level of complexity to deciding which bets you should take because now you arent guarenteed to take the side of a bet that you want and must strategize accordingly. 
 
 ## Team Members
 
