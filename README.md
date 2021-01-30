@@ -25,7 +25,7 @@ Your vision statement should contain the following information and be formatted 
 
 - Jacques Parizeau
 - Todd Weidler
-
+- Aland Nguyen
 
 # Vision Statement
 The product will display live scores of games and let a user bet points in real time. The users can add friends and compete against each other.
