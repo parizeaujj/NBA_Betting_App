@@ -23,7 +23,7 @@ Each item should link to the actual product, be it a google spreadsheet, google 
 - [Sprint Backlog](https://trello.com/b/5Ppmtzr9/nbaproject)
 - [Requirements](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/requirements.md)
 - [Burndown Chart](https://www.google.com/search?tbm=isch&q=sprint+burndown+chart)
-- [Velocity Chart](https://www.google.com/search?tbm=isch&q=agile+velocity+chart)
+- [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
 - System Architecture
 - Source Code
 - Automated Tests
