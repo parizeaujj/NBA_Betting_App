@@ -21,13 +21,14 @@ Each item should link to the actual product, be it a google spreadsheet, google 
 
 - [Product Backlog](https://trello.com/b/5Ppmtzr9/nbaproject)
 - [Sprint Backlog](https://trello.com/b/5Ppmtzr9/nbaproject)
-- [Requirements](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/requirements.md)
+- [Requirements](https://trello.com/b/5Ppmtzr9/nbaproject)
 - [Burndown Chart](https://docs.google.com/spreadsheets/d/1pVsd3aALm122RHDQUNY6Yl-JIwwv7_jYz-tVhUx3qMM/edit?usp=sharing)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
 - System Architecture
 - Source Code
 - Automated Tests
 - Product Demonstration
+- [Meeting Notes](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 
 ## Task Allocation
 
