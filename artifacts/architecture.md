@@ -36,8 +36,27 @@ See Code Complete, Chapter 3
 
 # Security
 
-See Code Complete, Chapter 3
+BrokeBets
+---
+Users will not have explicit access to other user’s data. All data requests will be made stricly through the app only with a valid FireBase account tied to the user. The data will be displayed, but rewrites of data will only happen within the app for each personal user.
 
+Apple
+---
+Apple includes security on all of its levels including hardware, system and data protection and the app level. Specifically, Apple’s App security promises security for each of its apps against attacks and checks them fro viruses/malware before approval. It also covers other areas natively such as Application firewall, app notarization, and system integrity protection.
+
+  More details can be found in the following links:
+  - https://www.apple.com/legal/privacy/en-ww/
+  - https://support.apple.com/guide/security/app-security-overview-sec35dd877d0/web
+
+Firebase
+---
+Firebase is certified under major privacy and security standards and follows ISO and SOC compliance. Firebase encrypts all their data and restricts access and monitors access to all data.
+  
+  More information can be found below:
+  - https://firebase.google.com/support/privacy
+  
+  
+  
 # Performance
 
 See Code Complete, Chapter 3
