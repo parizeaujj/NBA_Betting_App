@@ -36,6 +36,8 @@ See Code Complete, Chapter 3
 
 # Security
 
+See Code Complete, Chapter 3
+
 BrokeBets
 ---
 Users will not have explicit access to other user’s data. All data requests will be made stricly through the app only with a valid FireBase account tied to the user. The data will be displayed, but rewrites of data will only happen within the app for each personal user.
@@ -51,19 +53,19 @@ Apple includes security on all of its levels including hardware, system and data
 Firebase
 ---
 Firebase is certified under major privacy and security standards and follows ISO and SOC compliance. Firebase encrypts all their data and restricts access and monitors access to all data.
-  
+
   More information can be found below:
   - https://firebase.google.com/support/privacy
-  
-  
-  
+
 # Performance
 
-See Code Complete, Chapter 3
+The latency between a new score in a game and an update on the app is the sum of the time of two events: an update on ESPN to the Firebase web scraping server, and from the scraper to the database to the user. The app's total latency goal is 5 seconds.
 
 # Scalability
 
-See Code Complete, Chapter 3
+There is a one-to-many relationship between the live scores of NBA games and the app users who have contests with bets associated with those games. Thus, no matter how many users are using the app the web scraper server component/container will only have to write live score data to a constant number of locations.
+
+For updating the scores of the head-to-head contest, it is not as scalable because the number of updates that our cloud function will have to do whenever a game ends is proportional to the number of contests associated with each game. So, as the number of users increases, the constests increases, and the workload of the cloud function that updates the state of the contest will also increase.
 
 # Interoperability
 
@@ -71,11 +73,11 @@ See Code Complete, Chapter 3
 
 # Internationalization/Localization
 
-See Code Complete, Chapter 3
+The app is based on an American sports league (NBA) and it is only meant for use in the United States. No translations from English are needed.
 
 # Input/Output
 
-See Code Complete, Chapter 3
+The only inputs required from the user are their personal account information. In case of incorrect inputs, errors are detected at the input field.
 
 # Error Processing
 
