@@ -6,6 +6,18 @@ You should have your context, container, and component (c4model.com) diagrams in
 
 See Code Complete, Chapter 3 and https://c4model.com/
 
+System Context
+
+![](/c4Model-System%20Context.jpg)
+
+Containers
+
+![](/c4Model-Containers.jpg)
+
+Components
+
+![](/c4Model-Components-2.jpg)
+
 # Code Design
 
 You should have your UML Class diagram and any other useful UML diagrams in this section. Each diagram should be accompanied by a brief description explaining what the elements are and why they are in the diagram. For your class diagram, you must also include a table that relates each class to one or more user stories. 
