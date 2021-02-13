@@ -14,6 +14,8 @@ Containers
 
 ![](/artifacts/c4Model-Containers.jpg)
 
+When a user wishes to interact with the information regarding their account or contests, they communicate with the Firebase database to change or view the information. The game information is stored in the database with the ESPN web scraper each time a score changes and when the game finishes.
+
 Components
 
 ![](/artifacts/c4Model-Components-2.jpg)
@@ -40,7 +42,7 @@ You should have one or more user interface screens in this section. Each screen 
 
 # Resource Management
 
-The application is not memory-constrained, so the Firebase database can handle all the accounts, bets, and the rest of the app information. The CronJob component from the webscraper is prevented from overloading the server by killing the child process in case a CronJob process is still active when trying to run again.
+The application is not memory-constrained, so the Firebase database can handle all the accounts, bets, and the rest of the app information. The CronJob component from the web scraper is prevented from overloading the server by killing the child process in case a CronJob process is still active when trying to run again.
 
 # Security
 
@@ -96,7 +98,7 @@ If the program detects an error, the fault thrown would be more of a resetting t
 
 # Architectural Feasibility
 
-The architecture is feasible because because the resources are good enough for the amount of users which is 5, and firebase along with webscraper will not be impacted negatively due to that.
+The architecture is feasible because because the resources are good enough for the amount of users which is 5, and firebase along with web scraper will not be impacted negatively due to that.
 
 # Overengineering
 
