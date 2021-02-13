@@ -97,15 +97,15 @@ Our program will take a detective error approach and will notify the user if and
 
 # Fault Tolerance
 
-See Code Complete, Chapter 3
+If the program detects an error, the fault thrown would be more of a resetting the data to a default state such as name would be defaulted to "John Doe" and the score's value can be set to 0. If the program doesn't detect the error and the value is nil, then by xcode conventions, the program will crash automatically.
 
 # Architectural Feasibility
 
-See Code Complete, Chapter 3
+The architecture is feasible because because the resources are good enough for the amount of users which is 5, and firebase along with webscraper will not be impacted negatively due to that.
 
 # Overengineering
 
-
+The architecture will match the requirements the simplest and most efficient way possible so that programmers will not be overengineering their classes.
 
 # Build-vs-Buy Decisions
 
