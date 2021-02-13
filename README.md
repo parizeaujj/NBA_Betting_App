@@ -1,4 +1,4 @@
-ddddddddddddddddddd# NBA_Betting_App
+# NBA_Betting_App
 
 # Product Vision
 
