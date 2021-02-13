@@ -2,8 +2,11 @@
 
 # Product Vision
 
-BrokeBets is an iOS entertainment app that provides a platform for people who enjoy competing against their friends at head-to-head sports betting (without money). Unlike FanDuel, which also offers head-to-head betting, our product is unique in its approach in that it incorporates something that we call the “bet draft.” The “bet draft” is a system that allows each player to take turns selecting a particular bet for a particular game. When one player selects a certain bet for a certain game, that bet is added to the player's betslip and the inverse/opposite of that bet is added to their opponent's bet slip. This adds another level of complexity to deciding which bets you should take because now you aren't guaranteed the ability to take the side of a bet that you want and must strategize accordingly. Our app offers a new and challenging betting experience for those who want to compete head to head with friends.
+BrokeBets is an IOS sports entertainment app that seeks to give its users an engaging, head-to-head, competitive experirence. The app provides a platform for sports ethusisats with a desire to enter into thrilling sports predition contests without the added worry of losing money (a worry that could be found in some other betting apps and formats). Our app is not only for hardcore sports enthusiasts. BrokeBet's user friendly platform makes it easy for even those new to sports prediction contests to jump in and start with little guidance. 
 
+Although there are other sports betting applications such as FanDuel and PointsBet, BrokeBet's approach to sports betting sets it apart from it's competitors. The principle component of BrokeBet's unique betting system is something that we call the "bet draft." The "bet draft" is a unique system that allows each player partcipating in a particular contest to take turns selecting a particular bet for a particular game. After one player selects a certain bet for a certain game, the bet that they took is added to their betslip and the opposite/inverse of that bet is added to the betslip of their opponent. This oppositional sports betting format adds a unique layer of complexity to sports betting. Not only do you have to decide which position to take, you have to consider the fact that not every position is guarentted to be avaiable to you, and you must strategize accordingly.
+
+Our app offfers a new and challenging betting experience for those looking to compete in thrilling, head-to-head, and engaging compentitions with friends.
 
 ## Team Members
 
