@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */; };
+		E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FCD25D82AA8008D8399 /* TopTabs.swift */; };
+		E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FD225D82AF1008D8399 /* MainAppView.swift */; };
+		E38B7FD825D82B6A008D8399 /* ContestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FD725D82B6A008D8399 /* ContestsView.swift */; };
+		E38B7FDE25D82BE5008D8399 /* UpcomingContestsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FDD25D82BE5008D8399 /* UpcomingContestsListView.swift */; };
+		E38B7FE725D82E27008D8399 /* UITabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FE625D82E27008D8399 /* UITabBarController+Extensions.swift */; };
+		E38B7FEF25D82E67008D8399 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FEE25D82E67008D8399 /* UINavigationController+Extensions.swift */; };
 		E394BDF925CDD434002C89B9 /* BrokeBetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BDF825CDD434002C89B9 /* BrokeBetsApp.swift */; };
 		E394BDFB25CDD434002C89B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BDFA25CDD434002C89B9 /* ContentView.swift */; };
 		E394BDFD25CDD435002C89B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E394BDFC25CDD435002C89B9 /* Assets.xcassets */; };
@@ -33,6 +40,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
+		E38B7FCD25D82AA8008D8399 /* TopTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabs.swift; sourceTree = "<group>"; };
+		E38B7FD225D82AF1008D8399 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		E38B7FD725D82B6A008D8399 /* ContestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestsView.swift; sourceTree = "<group>"; };
+		E38B7FDD25D82BE5008D8399 /* UpcomingContestsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestsListView.swift; sourceTree = "<group>"; };
+		E38B7FE625D82E27008D8399 /* UITabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extensions.swift"; sourceTree = "<group>"; };
+		E38B7FEE25D82E67008D8399 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		E394BDF525CDD434002C89B9 /* BrokeBets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrokeBets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E394BDF825CDD434002C89B9 /* BrokeBetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokeBetsApp.swift; sourceTree = "<group>"; };
 		E394BDFA25CDD434002C89B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +86,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E38B7FDC25D82B72008D8399 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */,
+				E38B7FCD25D82AA8008D8399 /* TopTabs.swift */,
+				E38B7FD725D82B6A008D8399 /* ContestsView.swift */,
+				E38B7FDD25D82BE5008D8399 /* UpcomingContestsListView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		E38B7FE525D82DBE008D8399 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E38B7FE625D82E27008D8399 /* UITabBarController+Extensions.swift */,
+				E38B7FEE25D82E67008D8399 /* UINavigationController+Extensions.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		E394BDEC25CDD434002C89B9 = {
 			isa = PBXGroup;
 			children = (
@@ -95,7 +129,10 @@
 		E394BDF725CDD434002C89B9 /* BrokeBets */ = {
 			isa = PBXGroup;
 			children = (
+				E38B7FE525D82DBE008D8399 /* extensions */,
+				E38B7FDC25D82B72008D8399 /* views */,
 				E394BDF825CDD434002C89B9 /* BrokeBetsApp.swift */,
+				E38B7FD225D82AF1008D8399 /* MainAppView.swift */,
 				E394BDFA25CDD434002C89B9 /* ContentView.swift */,
 				E394BDFC25CDD435002C89B9 /* Assets.xcassets */,
 				E394BE0125CDD435002C89B9 /* Info.plist */,
@@ -260,7 +297,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BDFB25CDD434002C89B9 /* ContentView.swift in Sources */,
+				E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */,
+				E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */,
+				E38B7FDE25D82BE5008D8399 /* UpcomingContestsListView.swift in Sources */,
+				E38B7FD825D82B6A008D8399 /* ContestsView.swift in Sources */,
+				E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */,
 				E394BDF925CDD434002C89B9 /* BrokeBetsApp.swift in Sources */,
+				E38B7FEF25D82E67008D8399 /* UINavigationController+Extensions.swift in Sources */,
+				E38B7FE725D82E27008D8399 /* UITabBarController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
