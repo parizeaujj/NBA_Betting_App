@@ -20,6 +20,8 @@ Components
 
 ![](/artifacts/c4Model-Components-2.jpg)
 
+The components consists of 3 containers: the mobile application, firebase, and the web scraper. The mobile application is responsible for displaying all relevant data to the user and allows the user to interact with the appropriate data. Firebase controlls all permanent save data and will send out data to the listeners in the mobile application. The webscraper contains the Headless Browser component, the Diff/Caching component and the CronJob component. The CronJob component triggers events to find the next schedule for the NBA and then starts the Headless Browser component before the first game.The Headless Browser component then scrapes data from ESPN when the data changes to eventually be stored in Firebase. The Diff/Caching component compares the data to previously captured data (if any) and then stores the appropriate data in Firebase.
+
 # Code Design
 
 You should have your UML Class diagram and any other useful UML diagrams in this section. Each diagram should be accompanied by a brief description explaining what the elements are and why they are in the diagram. For your class diagram, you must also include a table that relates each class to one or more user stories. 
