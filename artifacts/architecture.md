@@ -10,6 +10,8 @@ System Context
 
 ![](/artifacts/c4Model-System%20Context.jpg)
 
+The user using Broke Bets App has opportunity to create betting contests among friends and while doing so the Broke Bets App which acts as the primary element in the scope of this context diagram and it is interacting directly with firebase which acts as a service to store information about data, matches, etc. and handles them via cloud function. The firebase is acting as the supporting element that connected with Broke Bets App that will read and write data.
+
 Containers
 
 ![](/artifacts/c4Model-Containers.jpg)
@@ -41,34 +43,6 @@ We also need to make sure the NBA scores are updated frequently (every minute) t
 # User Interface Design
 
 You should have one or more user interface screens in this section. Each screen should be accompanied by an explaination of the screens purpose and how the user will interact with it. You should relate each screen to one another as the user transitions through the states of your application. You should also have a table that relates each window or component to the support using stories. 
-
-- Main Screen
-  - This screen allows the user to sign in if they have an existing account. If they don’t, they can click “Don’t have an account?” to transition them to the account creation page.
-  - This screen allows signing in with Apple or email and password
-
-- The Create Account screen is used to create a new account
-  - The user will fill out each field and select “Sign up”.
-  - If the passwords don’t match, an error will be issued
-  - If the email is invalid, an error will be issued
-  - If the username is taken, an error will be issued
-
-- Upon successfully logging in, the user will be brought to the “Contests” tab
-- In the “Contests”, “Bet Slip”, “Invitations”, “Drafts” and “Statistics” pages, the user will be able to navigate to any of those 5 pages by selecting the appropriate icon on the bottom tab bar.
-- The contest tab will display all the current contests the user is involved in
-  - The top right button will allow the user to start a new contest
-  - The top section allows the user to switch views between “In progress”, “upcoming”, and “complete” contests
-  - Each contest will display the player’s score compared to the user in the categories of “drafted wins”, “forced wins” and “total wins” and display the amount of bets remaining
-  - Upon selecting the contest view, the user will be able to see the selected contest’s details
-
-- In the new contest screen, The user can select a player to compete with
-  - To navigate back to the contest screen, the user can click the icon in the top left corner
-  - If the search bar is blank, the table view will be populated with recent players
-  - Upon entering text into the search bar, the table view will populate with user’s display names
-  - If the user clicks a player, the are selecting them to compete in a contest with and the user will be transitioned the contest confirmation screen
-
-- The contest confirmation screen will allow the user to confirm that they’ve selected the correct player
-  - The user can change the number of rounds by clicking the stepping
-  - Once the information is finalized/reviewed, the player can click the send invite button to send the invite to the player.
 
 # Resource Management
 
