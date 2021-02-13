@@ -34,7 +34,8 @@ See Code Complete, Chapter 3
 
 You should list the assumptions, rules, and guidelines from external sources that are impacting your program design. 
 
-See Code Complete, Chapter 3
+Since this is a competitive betting app, data needs to be accurate and completely synced up. For this reason, we are using Firebase's Realtime Database service. Each player's current contest information will always be up to date.
+We also need to make sure the NBA scores are updated frequently (every minute) to maintain relevant data for the user.
 
 # User Interface Design
 
@@ -47,8 +48,6 @@ See Code Complete, Chapter 3
 See Code Complete, Chapter 3
 
 # Security
-
-See Code Complete, Chapter 3
 
 BrokeBets
 ---
@@ -81,7 +80,8 @@ For updating the scores of the head-to-head contest, it is not as scalable becau
 
 # Interoperability
 
-See Code Complete, Chapter 3
+This field does not apply.
+All data is transfered through firebase, so no direct communication occurs. And since all data is formatted in Entities and Relationships, no data sent is ambiguous.
 
 # Internationalization/Localization
 
@@ -105,17 +105,21 @@ See Code Complete, Chapter 3
 
 # Overengineering
 
-See Code Complete, Chapter 3
+All functions/methods will error check optional type variables (denotated with '?') and in the case of any nil values, default empty values will be used.
+This will result in no crashes, and if any variables are nil, the users will see blank output fields.
 
 # Build-vs-Buy Decisions
 
-This section should list the third party libraries your system is using and describe what those libraries are being used for.
-
-See Code Complete, Chapter 3
+We are deciding to build all of our components except firebase. We plan to use firebase with its free plan.
+Our decision is twofold:
+- This is a school project, so we want it to be free to develop
+- Since our project is a custom app, most of our features and designs will be uniquely implemented
+Part of our project will be to build the UI and coordinating functions, so we have decided not to purchase any outside UI resources.
 
 # Reuse
 
-See Code Complete, Chapter 3
+This section does not apply.
+We will not be resusing any old software or hardware.
 
 # Change Strategy
 
