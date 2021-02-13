@@ -8,15 +8,15 @@ See Code Complete, Chapter 3 and https://c4model.com/
 
 System Context
 
-![](/c4Model-System%20Context.jpg)
+![](/artifacts/c4Model-System%20Context.jpg)
 
 Containers
 
-![](/c4Model-Containers.jpg)
+![](/artifacts/c4Model-Containers.jpg)
 
 Components
 
-![](/c4Model-Components-2.jpg)
+![](/artifacts/c4Model-Components-2.jpg)
 
 # Code Design
 
