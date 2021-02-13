@@ -93,7 +93,7 @@ The only inputs required from the user are their personal account information. I
 
 # Error Processing
 
-See Code Complete, Chapter 3
+Our program will take a detective error approach and will notify the user if and when the data is not found. We'll incorporate active error detection whenever possible and use UI dialogues when incorrect data is entered. The program will not continue unless the user entered field is entered correctly. For data retrival, users will be notified when a value is nil by a simple dialogue box. For instance, if the user's contest data could not be retrieved, a dialogue box would describe the error and they can select the one option that says "okay". All error messages will follow the same format with the description outlining the error. Classes should always check optional variables and follow the outlined error process if nil.
 
 # Fault Tolerance
 
@@ -105,8 +105,7 @@ See Code Complete, Chapter 3
 
 # Overengineering
 
-All functions/methods will error check optional type variables (denotated with '?') and in the case of any nil values, default empty values will be used.
-This will result in no crashes, and if any variables are nil, the users will see blank output fields.
+
 
 # Build-vs-Buy Decisions
 
@@ -123,4 +122,5 @@ We will not be resusing any old software or hardware.
 
 # Change Strategy
 
-See Code Complete, Chapter 3
+Version number will be incremented per week and correlated to the project's Sprint number. New features will be incorporated as additional Views (or screens). Each new change will correlate to a new View Model. 
+Updates to the codebase will be tracked and kept current through GitHub. Only working software will be pushed.
