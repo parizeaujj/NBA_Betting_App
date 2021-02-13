@@ -22,13 +22,10 @@ Components
 
 You should have your UML Class diagram and any other useful UML diagrams in this section. Each diagram should be accompanied by a brief description explaining what the elements are and why they are in the diagram. For your class diagram, you must also include a table that relates each class to one or more user stories. 
 
-See Code Complete, Chapter 3 and https://c4model.com/
 
 # Data Design
 
 If you are using a database, you should have a basic Entity Relationship Diagram (ERD) in this section. This diagram should describe the tables in your database and their relationship to one another (especially primary/foreign keys), including the columns within each table. 
-
-See Code Complete, Chapter 3
 
 # Business Rules
 
@@ -40,8 +37,6 @@ We also need to make sure the NBA scores are updated frequently (every minute) t
 # User Interface Design
 
 You should have one or more user interface screens in this section. Each screen should be accompanied by an explaination of the screens purpose and how the user will interact with it. You should relate each screen to one another as the user transitions through the states of your application. You should also have a table that relates each window or component to the support using stories. 
-
-See Code Complete, Chapter 3
 
 # Resource Management
 
