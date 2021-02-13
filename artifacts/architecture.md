@@ -45,7 +45,7 @@ See Code Complete, Chapter 3
 
 # Resource Management
 
-See Code Complete, Chapter 3
+The application is not memory-constrained, so the Firebase database can handle all the accounts, bets, and the rest of the app information. The CronJob component from the webscraper is prevented from overloading the server by killing the child process in case a CronJob process is still active when trying to run again.
 
 # Security
 
