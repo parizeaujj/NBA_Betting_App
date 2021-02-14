@@ -40,7 +40,7 @@ Description of class diagram here.
 
 | Class Name        | User Stories this class relates to  | Description       |
 | ---               | ---                                 | ---               |
-| CreateNewContestVM | U004, U019, U022 | Write description here |
+| CreateNewContestVM | U004, U019, U022 | View model for  |
 | ContestsVM | U020, U021, U025 | Write description here |
 | ContestsBetslipVM | U010, U016, U024 | Write description here |
 | DraftsVM | U008, U023, U029 | Write description here |
@@ -60,7 +60,7 @@ Description of class diagram here.
 ![](/artifacts/ERD.jpg)
 ERD Description
 ---
-//insert description here
+All of our data will be stored in Cloud Firestore, except for some cached data that will be stored on the user's phone. Any cached data will be handling completely by Firebase. 
 
 # Business Rules
 
