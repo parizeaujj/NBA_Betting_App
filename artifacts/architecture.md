@@ -44,6 +44,50 @@ We also need to make sure the NBA scores are updated frequently (every minute) t
 
 You should have one or more user interface screens in this section. Each screen should be accompanied by an explaination of the screens purpose and how the user will interact with it. You should relate each screen to one another as the user transitions through the states of your application. You should also have a table that relates each window or component to the support using stories. 
 
+UI Description
+---
+- Main Screen
+  - This screen allows the user to sign in if they have an existing account. If they don’t, they can click “Don’t have an account?” to transition them to the account creation page.
+  - This screen allows signing in with Apple or email and password
+
+- The Create Account screen is used to create a new account
+  - The user will fill out each field and select “Sign up”.
+  - If the passwords don’t match, an error will be issued
+  - If the email is invalid, an error will be issued
+  - If the username is taken, an error will be issued
+
+- Upon successfully logging in, the user will be brought to the “Contests” tab
+- In the “Contests”, “Bet Slip”, “Invitations”, “Drafts” and “Statistics” pages, the user will be able to navigate to any of those 5 pages by selecting the appropriate icon on the bottom tab bar.
+- The contest tab will display all the current contests the user is involved in
+  - The top right button will allow the user to start a new contest
+  - The top section allows the user to switch views between “In progress”, “upcoming”, and “complete” contests
+  - Each contest will display the player’s score compared to the user in the categories of “drafted wins”, “forced wins” and “total wins” and display the amount of bets remaining
+
+- In the new contest screen, The user can select a player to compete with
+  - To navigate back to the contest screen, the user can click the icon in the top left corner
+  - If the search bar is blank, the table view will be populated with recent players
+  - Upon entering text into the search bar, the table view will populate with user’s display names
+  - If the user clicks a player, the are selecting them to compete in a contest with and the user will be transitioned the contest confirmation screen
+
+- The contest confirmation screen will allow the user to confirm that they’ve selected the correct player
+  - The user can change the number of rounds by clicking the stepping
+  - Once the information is finalized/reviewed, the player can click the send invite button to send the invite to the player.
+
+- The Bet Slip screen shows all of the bets under a certain category
+  - The top section allows the user to switch views between “In progress”, “upcoming”, and “complete” 
+  - Each bet slip will display the type of bet, the side of the bet (indicated by ‘+’ or ‘-‘) and the number of contests correlated with that particular bet
+
+- The Invitations screen will allow the user to view contest requests and see the status of contests requests they have sent out
+  - The user will be able to switch between “Recieved” and “Sent” to view send or recieved invitations
+  - Each invitation will display the person who sent it, the person who it’s sent to, the status of the invitation (awaiting response, accepted), and the number of rounds
+
+- The Drafts screen will show all the drafts of contests that aren’t complete
+  - The top section allows the user to view all drafts they it’s their turn to complete or to view all drafts that they are waiting on other people to complete
+  - Each Draft View will contain the opposing player who is involved, the draft round number, and a text that says either “Your turn” or “Their Turn”
+
+- The Statistics page will include statistics about the user regarding their wins and losses in previous contests
+  - Each row will contain the statistic on the right correlating to the descrption on the left
+
 # Resource Management
 
 The application is not memory-constrained, so the Firebase database can handle all the accounts, bets, and the rest of the app information. The CronJob component from the web scraper is prevented from overloading the server by killing the child process in case a CronJob process is still active when trying to run again.
