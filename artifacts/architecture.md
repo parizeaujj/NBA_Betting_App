@@ -103,6 +103,7 @@ UI Description
 
 - The contest confirmation screen will allow the user to confirm that they’ve selected the correct player
   - The user can change the number of rounds by clicking the stepping
+  - The user can select when the contest invitation expires by selecting the DatePicker on the right
   - Once the information is finalized/reviewed, the player can click the send invite button to send the invite to the player.
 
 - The Bet Slip screen shows all of the bets under a certain category
@@ -121,8 +122,15 @@ UI Description
 
 | UI Component      | User Stories this UI relates to     | Description       |
 | ---               | ---                                 | ---               |
-| firstUIName       | U001, U002, U00X | Write description here |
-| firstUIName       | U001, U002, U00X | Write description here |
+| Sign in | U001, U006, U015 | The user views a loading screen upon opening the app and can login on multiple devices using either email and password or an Apple account |
+| Create Account | U007 | If the user does not have an account they can make one here |
+| Contest | U003, U020, U025 | A user can view upcoming, current and previous contests that they are involved in |
+| Bet Slip | U010, U021, U024 | Users can view the scores of games they are watching and how they impact their contests |
+| Invitations | U005, U011, U012, U022 | The user can see, send and accept invitations. Invitations do expire. |
+| Drafts | U008, U014, U023 | Drafts are placed against opponents when it's their turn. Drafts do expire. |
+| Statistics | U013, U018 | The app stores statistics and displays them to the user |
+| New contest | U004, U016 | The user can search and/or select a player to start a contest with |
+| New contest 2 | U019 | The user can edit details before creating a contest |
 
 # Resource Management
 
