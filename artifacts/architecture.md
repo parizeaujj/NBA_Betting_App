@@ -44,8 +44,8 @@ Description of class diagram here.
 | CreateNewContestVM | U004, U019, U022 | Write description here |
 | ContestsVM | U020, U021, U025 | Write description here |
 | ContestsBetslipVM | U010, U016, U024 | Write description here |
-| DraftsVM | U008, U023 | Write description here |
-| DraftPickSelectionVM | | Write description here |
+| DraftsVM | U008, U023, U029 | Write description here |
+| DraftPickSelectionVM | U029, U030 | Write description here |
 | EntireBetslipVM | U010 | Write description here |
 | RecievedInvitationsVM | U005, U011, U026 | Write description here |
 | SentInvitationsVM | U012 | Write description here |
