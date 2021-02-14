@@ -65,7 +65,7 @@ UI Description
 - Main Screen
   - This screen allows the user to sign in if they have an existing account. If they don’t, they can click “Don’t have an account?” to transition them to the account creation page.
   - This screen allows signing in with Apple or email and password
-  - If when signing in, the user's name is not found, they will be navigated to the "Create a Username" screen to create a new username
+  - If when signing in with Apple, the user's username is not found, they will be navigated to the "Create a Username" screen to create a new username
 
 - The Create Account screen is used to create a new account
   - The user will fill out each field and select “Sign up”.
