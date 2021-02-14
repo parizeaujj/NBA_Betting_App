@@ -41,17 +41,17 @@ Description of class diagram here.
 
 | Class Name        | User Stories this class relates to  | Description       |
 | ---               | ---                                 | ---               |
-| CreateNewContestVM | U004, | Write description here |
-| ContestsVM | | Write description here |
-| ContestsBetslipVM | U010 | Write description here |
-| DraftsVM | U008 | Write description here |
+| CreateNewContestVM | U004, U019, U022 | Write description here |
+| ContestsVM | U020, U021, | Write description here |
+| ContestsBetslipVM | U010, U016 | Write description here |
+| DraftsVM | U008, U023 | Write description here |
 | DraftPickSelectionVM | | Write description here |
 | EntireBetslipVM | U010 | Write description here |
 | RecievedInvitationsVM | U005, U011 | Write description here |
 | SentInvitationsVM | U012 | Write description here |
-| StatisticsVM | U013 | Write description here |
+| StatisticsVM | U013, U018 | Write description here |
 | AccountVM | U001, U002, U00X | Write description here |
-| LoginVM | U001, U002, U00X | Write description here |
+| LoginVM | U015| Write description here |
 | CreateAccountVm | U001, U002, U00X | Write description here |
 | CreateUsernameVm | U001, U002, U00X | Write description here |
 
