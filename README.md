@@ -52,12 +52,12 @@ In this section, each group member needs to provide a brief description of what 
 - [System Architecture](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/architecture.md)
 - Source Code
 - Automated Tests
-- Product Demonstration
+- [Product Demonstration](https://vimeo.com/512306023)
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 
 ## Task Allocation
 
-JJ Parizeau - Setup meeting and organize files
+JJ Parizeau - Setup meetings, organize files and contribute to Trello Board
 
 Member 2 - main tasking
 
