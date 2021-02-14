@@ -58,9 +58,17 @@ Description of class diagram here.
 # Data Design
 
 ![](/artifacts/ERD.jpg)
-ERD Description
+
+Data Design Description
+
+We will be storing all of our data in Cloud Firestore which is a NoSQL database. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data. 
+
+
+
+Data handling info: All of our data will be stored in Cloud Firestore, except for some cached data that will be stored on the user's phone. Any cached data will be handling completely by Firebase. 
+
 ---
-All of our data will be stored in Cloud Firestore, except for some cached data that will be stored on the user's phone. Any cached data will be handling completely by Firebase. 
+
 
 # Business Rules
 
