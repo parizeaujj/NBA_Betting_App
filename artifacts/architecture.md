@@ -59,7 +59,7 @@ Description of class diagram here.
 
 Data Design Description
 
-We will be storing all of our data in Cloud Firestore which is a NoSQL database. All of the borderd boxes in our data model diagram represent Firestore Collections. Each Collection shows the data fields that will be associated with each Document in a Collection. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data. Every collection will be able to be read and written to by a user except for the Associated_Games_For_Users collection and the Unfinished_Games collection. Those collections will be written to by our Web scraping server and be read by Cloud Functions that have triggers in place for when a game has ended so that we can clean up certain data automatically. 
+We will be storing all of our data in Cloud Firestore which is a NoSQL database. All of the borderd boxes in our data model diagram represent Firestore Collections. Each Collection shows the data fields that will be associated with each Document in a Collection. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data. Every collection will be able to be read and written to by a user except for the Associated_Contests_For_Games collection and the Unfinished_Games collection. Those collections will be written to by our Web scraping server and be read by Cloud Functions that have triggers in place for when a game has ended so that we can clean up certain data automatically. 
 
 
 
