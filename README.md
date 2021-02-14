@@ -20,18 +20,16 @@ Our app offers a new and challenging betting experience for those looking to com
 
 # Sprint 1
 
-Each item should link to the actual product, be it a google spreadsheet, google doc, github markdown file, etc. Do not link to a markdown file that contains only a link to another location - link directly from the appropriate item below. Failure to adhere to this criteria wil result in the associated artifact not being graded. Add any additional items required for the specific sprint submission.
+Each item is linked to the actual product, be it a google spreadsheet, google doc, github markdown file, etc.
 
-- [Product Backlog](https://trello.com/b/5Ppmtzr9/nbaproject)
-- [Sprint Backlog](https://trello.com/b/5Ppmtzr9/nbaproject)
-- [Requirements](https://trello.com/b/5Ppmtzr9/nbaproject)
+- [Trello Board](https://trello.com/b/5Ppmtzr9/nbaproject) (Backlogs and Requirements)
 - [Burndown Chart](https://docs.google.com/spreadsheets/d/1pVsd3aALm122RHDQUNY6Yl-JIwwv7_jYz-tVhUx3qMM/edit?usp=sharing)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
 - System Architecture
 - Source Code
 - Automated Tests
 - Product Demonstration
-- [Meeting Notes](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
+- [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 
 ## Task Allocation
 
@@ -48,20 +46,18 @@ In this section, each group member needs to provide a brief description of what 
 
 # Sprint 2
 
-- [Product Backlog](https://trello.com/b/5Ppmtzr9/nbaproject)
-- [Sprint Backlog](https://trello.com/b/5Ppmtzr9/nbaproject)
-- [Requirements](https://trello.com/b/5Ppmtzr9/nbaproject)
+- [Trello Board](https://trello.com/b/5Ppmtzr9/nbaproject) (Backlogs and Requirements)
 - [Burndown Chart](https://docs.google.com/spreadsheets/d/1s1D2vrRGITV7GGckj0rnuorjEeW9sBmOe8DlT2A0XmY/edit?usp=sharing)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
 - [System Architecture](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/architecture.md)
 - Source Code
 - Automated Tests
 - Product Demonstration
-- [Meeting Notes](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
+- [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 
 ## Task Allocation
 
-Member 1 - main tasking
+JJ Parizeau - Setup meeting and organize files
 
 Member 2 - main tasking
 
