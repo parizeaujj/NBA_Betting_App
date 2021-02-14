@@ -204,11 +204,12 @@ The architecture will match the requirements the simplest and most efficient way
 
 # Build-vs-Buy Decisions
 
-We are deciding to build all of our components except firebase. We plan to use firebase with its free plan.
+
+We are deciding to build most of our components except for certain Backend components. The third party components we plan to use are Firebase Auth for user authentication, Cloud Firestore for storing our app's data and real-time data, and Cloud Functions for executing small pieces of code that will clean up the database and update certain documents when a game has finished. All of these services are apart of Firebase platform which will not cost us anything because we will be using their free tier. 
+
 Our decision is twofold:
-- This is a school project, so we want it to be free to develop
-- Since our project is a custom app, most of our features and designs will be uniquely implemented
-Part of our project will be to build the UI and coordinating functions, so we have decided not to purchase any outside UI resources.
+- Using Firebase allows us to focus most of our attention on the front end and the web scraping service instead of worrying about maintaining and scaling an app server, database server
+- Using Firebase Auth makes it so we don't have to store a user's passwords or validate JSON Web Tokens which should make our app more secure since Google is more  capable of implementing authentication services than we are. 
 
 # Reuse
 
