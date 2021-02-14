@@ -41,16 +41,20 @@ Description of class diagram here.
 
 | Class Name        | User Stories this class relates to  | Description       |
 | ---               | ---                                 | ---               |
-| CreateNewContestVM | U004, U002, U00X | Write description here |
-| ContestsVM | U001, U002, U00X | Write description here |
-| ContestsBetslipVM | U001, U002, U00X | Write description here |
-| DraftsVM | U001, U002, U00X | Write description here |
-| DraftPickSelectionVM | U001, U002, U00X | Write description here |
-| EntireBetslipVM | U001, U002, U00X | Write description here |
-| RecievedInvitationsVM | U001, U002, U00X | Write description here |
-| SentInvitationsVM | U001, U002, U00X | Write description here |
-| StatisticsVM | U001, U002, U00X | Write description here |
+| CreateNewContestVM | U004, | Write description here |
+| ContestsVM | | Write description here |
+| ContestsBetslipVM | U010 | Write description here |
+| DraftsVM | U008 | Write description here |
+| DraftPickSelectionVM | | Write description here |
+| EntireBetslipVM | U010 | Write description here |
+| RecievedInvitationsVM | U005, U011 | Write description here |
+| SentInvitationsVM | U012 | Write description here |
+| StatisticsVM | U013 | Write description here |
 | AccountVM | U001, U002, U00X | Write description here |
+| LoginVM | U001, U002, U00X | Write description here |
+| CreateAccountVm | U001, U002, U00X | Write description here |
+| CreateUsernameVm | U001, U002, U00X | Write description here |
+
 
 # Data Design
 
