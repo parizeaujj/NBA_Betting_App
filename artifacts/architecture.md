@@ -103,7 +103,6 @@ UI Description
   - Each invitation will display the person who sent it, the person who it’s sent to, the status of the invitation (awaiting response, accepted), and the number of rounds
 
 - The Drafts screen will show all the drafts of contests that aren’t complete
-  - The top section allows the user to view all drafts they it’s their turn to complete or to view all drafts that they are waiting on other people to complete
   - Each Draft View will contain the opposing player who is involved, the draft round number, and a text that says either “Your turn” or “Their Turn”
 
 - The Statistics page will include statistics about the user regarding their wins and losses in previous contests
