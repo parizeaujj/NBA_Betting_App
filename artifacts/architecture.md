@@ -33,7 +33,7 @@ The components consists of 3 containers: the mobile application, firebase, and t
 
 You should have your UML Class diagram and any other useful UML diagrams in this section. Each diagram should be accompanied by a brief description explaining what the elements are and why they are in the diagram. For your class diagram, you must also include a table that relates each class to one or more user stories. 
 
-![](/artifacts/imageName.jpg) //change this to be the image's name
+![](/artifacts/classDiagram_BrokeBets.jpg) //change this to be the image's name
 Class Diagram Description
 ---
 Description of class diagram here.
