@@ -31,8 +31,6 @@ The components consists of 3 containers: the mobile application, firebase, and t
 
 # Code Design
 
-You should have your UML Class diagram and any other useful UML diagrams in this section. Each diagram should be accompanied by a brief description explaining what the elements are and why they are in the diagram. For your class diagram, you must also include a table that relates each class to one or more user stories. 
-
 ![](/artifacts/classDiagram_BrokeBets.jpg) //change this to be the image's name
 Class Diagram Description
 ---
@@ -61,7 +59,7 @@ Description of class diagram here.
 
 Data Design Description
 
-We will be storing all of our data in Cloud Firestore which is a NoSQL database. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data. 
+We will be storing all of our data in Cloud Firestore which is a NoSQL database. All of the borderd boxes in our data model diagram represent Firestore Collections. Each Collection shows the data fields that will be associated with each Document in a Collection. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data. Every collection will be able to be read and written to by a user except for the Associated_Games_For_Users collection and the Unfinished_Games collection. Those collections will be written to by our Web scraping server and be read by Cloud Functions that have triggers in place for when a game has ended so that we can clean up certain data automatically. 
 
 
 
