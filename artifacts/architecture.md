@@ -31,10 +31,10 @@ The components consists of 3 containers: the mobile application, firebase, and t
 
 # Code Design
 
-![](/artifacts/classDiagram_BrokeBets.jpg) //change this to be the image's name
+![](/artifacts/classDiagram_BrokeBets.jpg)
+
 Class Diagram Description
 ---
-Description of class diagram here.
 
 | Class Name        | User Stories this class relates to  | Description       |
 | ---               | ---                                 | ---               |
