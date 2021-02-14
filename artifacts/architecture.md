@@ -41,6 +41,10 @@ Description of class diagram here.
 
 | Class Name        | User Stories this class relates to  | Description       |
 | ---               | ---                                 | ---               |
+| CreateNewContestVM | U001, U002, U00X | Write description here |
+| ContestsVM | U001, U002, U00X | Write description here |
+| ContestsBetslipVM | U001, U002, U00X | Write description here |
+| firstClassName | U001, U002, U00X | Write description here |
 | firstClassName | U001, U002, U00X | Write description here |
 | firstClassName | U001, U002, U00X | Write description here |
 
