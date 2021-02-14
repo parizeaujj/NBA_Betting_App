@@ -24,10 +24,24 @@ Components
 
 The components consists of 3 containers: the mobile application, firebase, and the web scraper. The mobile application is responsible for displaying all relevant data to the user and allows the user to interact with the appropriate data. Firebase controlls all permanent save data and will send out data to the listeners in the mobile application. The webscraper contains the Headless Browser component, the Diff/Caching component and the CronJob component. The CronJob component triggers events to find the next schedule for the NBA and then starts the Headless Browser component before the first game.The Headless Browser component then scrapes data from ESPN when the data changes to eventually be stored in Firebase. The Diff/Caching component compares the data to previously captured data (if any) and then stores the appropriate data in Firebase.
 
+| Block             | User Stories this block relates to  | Description       |
+| ---               | ---                                 | ---               |
+| firstBlockName | U001, U002, U00X | Write description here |
+| firstBlockName | U001, U002, U00X | Write description here |
+
 # Code Design
 
 You should have your UML Class diagram and any other useful UML diagrams in this section. Each diagram should be accompanied by a brief description explaining what the elements are and why they are in the diagram. For your class diagram, you must also include a table that relates each class to one or more user stories. 
 
+![](/artifacts/imageName.jpg) //change this to be the image's name
+Class Diagram Description
+---
+Description of class diagram here.
+
+| Class Name        | User Stories this class relates to  | Description       |
+| ---               | ---                                 | ---               |
+| firstClassName | U001, U002, U00X | Write description here |
+| firstClassName | U001, U002, U00X | Write description here |
 
 # Data Design
 
@@ -44,17 +58,24 @@ We also need to make sure the NBA scores are updated frequently (every minute) t
 
 You should have one or more user interface screens in this section. Each screen should be accompanied by an explaination of the screens purpose and how the user will interact with it. You should relate each screen to one another as the user transitions through the states of your application. You should also have a table that relates each window or component to the support using stories. 
 
+![](/artifacts/imageName.jpg) //change this to be the image's name
+
 UI Description
 ---
 - Main Screen
   - This screen allows the user to sign in if they have an existing account. If they don’t, they can click “Don’t have an account?” to transition them to the account creation page.
   - This screen allows signing in with Apple or email and password
+  - If when signing in, the user's name is not found, they will be navigated to the "Create a Username" screen to create a new username
 
 - The Create Account screen is used to create a new account
   - The user will fill out each field and select “Sign up”.
   - If the passwords don’t match, an error will be issued
   - If the email is invalid, an error will be issued
   - If the username is taken, an error will be issued
+  
+- The "Create a Username" screen will be used to create a new username for the user if necessary
+  - When the user clicks the "Continue" button, the name they have (or haven't) entered will be validated. If the user name is not taken, this will transition them to the Contest screen
+  - If the user clicks the "Continue" button and the name is taken, a dialogue box will appear and they will be instructed to try a different/unique user name.
 
 - Upon successfully logging in, the user will be brought to the “Contests” tab
 - In the “Contests”, “Bet Slip”, “Invitations”, “Drafts” and “Statistics” pages, the user will be able to navigate to any of those 5 pages by selecting the appropriate icon on the bottom tab bar.
@@ -87,6 +108,11 @@ UI Description
 
 - The Statistics page will include statistics about the user regarding their wins and losses in previous contests
   - Each row will contain the statistic on the right correlating to the descrption on the left
+
+| UI Component      | User Stories this UI relates to     | Description       |
+| ---               | ---                                 | ---               |
+| firstUIName       | U001, U002, U00X | Write description here |
+| firstUIName       | U001, U002, U00X | Write description here |
 
 # Resource Management
 
