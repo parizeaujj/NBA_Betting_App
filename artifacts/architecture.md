@@ -3,18 +3,21 @@
 # Program Organization
 
 System Context
+---
 
 ![](/artifacts/c4Model-System%20Context.jpg)
 
 The user using Broke Bets App has opportunity to create betting contests among friends and while doing so the Broke Bets App which acts as the primary element in the scope of this context diagram and it is interacting directly with firebase which acts as a service to store information about data, matches, etc. and handles them via cloud function. The firebase is acting as the supporting element that connected with Broke Bets App that will read and write data.
 
 Containers
+---
 
 ![](/artifacts/c4Model-Containers.jpg)
 
 When a user wishes to interact with the information regarding their account or contests, they communicate with the Firebase database to change or view the information. The game information is stored in the database with the ESPN web scraper each time a score changes and when the game finishes.
 
 Components
+---
 
 ![](/artifacts/c4Model-Components-2.jpg)
 
@@ -66,7 +69,7 @@ We also need to make sure the NBA scores are updated frequently (every minute) t
 
 # User Interface Design
 
-![](/artifacts/UI.jpg) //change this to be the image's name
+![](/artifacts/UI.jpg)
 
 UI Description
 ---
