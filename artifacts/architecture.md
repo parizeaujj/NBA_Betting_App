@@ -26,8 +26,9 @@ The components consists of 3 containers: the mobile application, firebase, and t
 
 | Block             | User Stories this block relates to  | Description       |
 | ---               | ---                                 | ---               |
-| firstBlockName | U001, U002, U00X | Write description here |
-| firstBlockName | U001, U002, U00X | Write description here |
+| Mobile Application | U001 - U024 | The mobile application component traces back to all the user stories, the app is what makes possible all the requirements a user would want |
+| Web Scraper Server | U010, U014 | The web scraper server is traceable to the user stories that have to do with getting the game information such as teams, scores, time left, etc.  |
+| Firebase | U003, U004, U006, U007, U010, U011, U012, U013, U014 | The Firebase component is related to every aspect in which information is stored. It shares traceability with the web scraper's user stories, since all the game information is written on the database. It also traces back to the stories regarding login information, contest attributes, invitations, and statistics. |
 
 # Code Design
 
