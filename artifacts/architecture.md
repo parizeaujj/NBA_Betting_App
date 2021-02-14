@@ -36,6 +36,8 @@ The components consists of 3 containers: the mobile application, firebase, and t
 Class Diagram Description
 ---
 
+We will be using the MVVM pattern for our frontend and so almost all of our classes will be View Models. Our Views and Models will all be Structs. 
+
 | Class Name        | User Stories this class relates to  | Description       |
 | ---               | ---                                 | ---               |
 | CreateNewContestVM | U004, U019, U022 | View model for the full screen modal that allows a user to create a new contest with another user. |
