@@ -23,7 +23,7 @@ Components
 
 The components consists of 3 containers: the mobile application, firebase, and the web scraper. The mobile application is responsible for displaying all relevant data to the user and allows the user to interact with the appropriate data. Firebase controlls all permanent save data and will send out data to the listeners in the mobile application. The webscraper contains the Headless Browser component, the Diff/Caching component and the CronJob component. The CronJob component triggers events to find the next schedule for the NBA and then starts the Headless Browser component before the first game.The Headless Browser component then scrapes data from ESPN when the data changes to eventually be stored in Firebase. The Diff/Caching component compares the data to previously captured data (if any) and then stores the appropriate data in Firebase.
 
-| Block             | User Stories this block relates to  | Description       |
+| Component | User Stories this block relates to  | Description       |
 | ---               | ---                                 | ---               |
 | Mobile Application | U001 - U024 | The mobile application component traces back to all the user stories, the app is what makes possible all the requirements a user would want |
 | Web Scraper Server | U010, U014 | The web scraper server is traceable to the user stories that have to do with getting the game information such as teams, scores, time left, etc.  |
