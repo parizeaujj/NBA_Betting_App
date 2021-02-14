@@ -40,11 +40,11 @@ Description of class diagram here.
 
 | Class Name        | User Stories this class relates to  | Description       |
 | ---               | ---                                 | ---               |
-| CreateNewContestVM | U004, U019, U022 | View model for  |
-| ContestsVM | U020, U021, U025 | Write description here |
-| ContestsBetslipVM | U010, U016, U024 | Write description here |
-| DraftsVM | U008, U023, U029 | Write description here |
-| DraftPickSelectionVM | U029, U030 | Write description here |
+| CreateNewContestVM | U004, U019, U022 | View model for the full screen modal that allows a user to create a new contest with another user. |
+| ContestsVM | U020, U021, U025 | View model that for the contests view which retreives all of the user's upcoming, in-progress, and completed contests. |
+| ContestsBetslipVM | U010, U016, U024 | View model for the contest betslip screen which merges the current scores of the associated games for the bets in the contest with the actual bet information so that the view can show a list of games with the user's corresponding bets.  |
+| DraftsVM | U008, U023, U029 | View model for the drafts view which fetches all of the draft that a user is currently participating in. |
+| DraftPickSelectionVM | U029, U030 | View model for the draft pick selection view that fetches all of the previous picks that have been made in that draft (if applicable) and updates the data model when the user selects a draft pick if it is their turn. |
 | EntireBetslipVM | U010 | Write description here |
 | RecievedInvitationsVM | U005, U011, U026 | Write description here |
 | SentInvitationsVM | U012 | Write description here |
