@@ -105,6 +105,7 @@ UI Description
 
 - The contest confirmation screen will allow the user to confirm that they’ve selected the correct player
   - The user can change the number of rounds by clicking the stepping
+  - The user can select when the contest invitation expires by selecting the DatePicker on the right
   - Once the information is finalized/reviewed, the player can click the send invite button to send the invite to the player.
 
 - The Bet Slip screen shows all of the bets under a certain category
