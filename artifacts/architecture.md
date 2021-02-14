@@ -80,14 +80,14 @@ UI Description
 - Upon successfully logging in, the user will be brought to the “Contests” tab
 - In the “Contests”, “Bet Slip”, “Invitations”, “Drafts” and “Statistics” pages, the user will be able to navigate to any of those 5 pages by selecting the appropriate icon on the bottom tab bar.
 - The contest tab will display all the current contests the user is involved in
-  - The top right button will allow the user to start a new contest
-  - The top section allows the user to switch views between “In progress”, “upcoming”, and “complete” contests
+  - The top right plus button will allow the user to start a new contest
+  - The top tab bar allows the user to switch views between “In progress”, “upcoming”, and “complete” contests
   - Each contest will display the player’s score compared to the user in the categories of “drafted wins”, “forced wins” and “total wins” and display the amount of bets remaining
 
 - In the new contest screen, The user can select a player to compete with
   - To navigate back to the contest screen, the user can click the icon in the top left corner
   - If the search bar is blank, the table view will be populated with recent players
-  - Upon entering text into the search bar, the table view will populate with user’s display names
+  - Upon entering text into the search bar, the list view will populate with user’s display names
   - If the user clicks a player, the are selecting them to compete in a contest with and the user will be transitioned the contest confirmation screen
 
 - The contest confirmation screen will allow the user to confirm that they’ve selected the correct player
@@ -103,9 +103,9 @@ UI Description
   - Each invitation will display the person who sent it, the person who it’s sent to, the status of the invitation (awaiting response, accepted), and the number of rounds
 
 - The Drafts screen will show all the drafts of contests that aren’t complete
-  - Each Draft View will contain the opposing player who is involved, the draft round number, and a text that says either “Your turn” or “Their Turn”
+  - Each Draft View will contain the opposing player who is involved, the draft round number, and a text that says either “Your turn” or “Their Turn” as well as t    text that displays the last pick that was drafted (if applicable)
 
-- The Statistics page will include statistics about the user regarding their wins and losses in previous contests
+- The Statistics page will include statistics about the user regarding their wins and losses in previous contests, as well as other minor stats
   - Each row will contain the statistic on the right correlating to the descrption on the left
 
 | UI Component      | User Stories this UI relates to     | Description       |
