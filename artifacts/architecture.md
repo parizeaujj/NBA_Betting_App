@@ -45,14 +45,14 @@ Description of class diagram here.
 | ContestsBetslipVM | U010, U016, U024 | View model for the contest betslip screen which merges the current scores of the associated games for the bets in the contest with the actual bet information so that the view can show a list of games with the user's corresponding bets.  |
 | DraftsVM | U008, U023, U029 | View model for the drafts view which fetches all of the draft that a user is currently participating in. |
 | DraftPickSelectionVM | U029, U030 | View model for the draft pick selection view that fetches all of the previous picks that have been made in that draft (if applicable) and updates the data model when the user selects a draft pick if it is their turn. |
-| EntireBetslipVM | U010 | Write description here |
-| RecievedInvitationsVM | U005, U011, U026 | Write description here |
-| SentInvitationsVM | U012 | Write description here |
-| StatisticsVM | U013, U018 | Write description here |
-| AccountVM | U028 | Write description here |
-| LoginVM | U015, U006| Write description here |
-| CreateAccountVm | U007 | Write description here |
-| CreateUsernameVm | U027 | Write description here |
+| EntireBetslipVM | U010 | View model for the betslip view that merges the current scores of the associated games for all the bets a user has in any of their contests with the actual bet information so that the view can show a list of games with the user's corresponding bets. |
+| RecievedInvitationsVM | U005, U011, U026 | View model for the recieved tab of the invitation screen which fetches all the contest invitations that a user has received that have not been accepted or rejected yet. |
+| SentInvitationsVM | U012 | View model for the recieved tab of the invitation screen which fetches all the contest invitations that a user has sent that have not been accepted or rejected yet by the other user. |
+| StatisticsVM | U013, U018 | View model for the statistics screen which fetches all the statistics that detail the user's performance on the app. |
+| AccountVM | U028 | View model for the account view that fetches the user's profile information and allows for the user to logout |
+| LoginVM | U015, U006| View model for the login view that signs in the user using an email/password or their Apple account |
+| CreateAccountVm | U007 | View model for the create account view that allows a user to create a new account |
+| CreateUsernameVm | U027 | View model for the create username view that allows for a user who signed in with Apple for the first time to select a username that their account should be associated with. |
 
 
 # Data Design
