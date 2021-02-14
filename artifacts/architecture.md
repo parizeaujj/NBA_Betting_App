@@ -42,15 +42,15 @@ Description of class diagram here.
 | Class Name        | User Stories this class relates to  | Description       |
 | ---               | ---                                 | ---               |
 | CreateNewContestVM | U004, U019, U022 | Write description here |
-| ContestsVM | U020, U021, | Write description here |
-| ContestsBetslipVM | U010, U016 | Write description here |
+| ContestsVM | U020, U021, U025 | Write description here |
+| ContestsBetslipVM | U010, U016, U024 | Write description here |
 | DraftsVM | U008, U023 | Write description here |
 | DraftPickSelectionVM | | Write description here |
 | EntireBetslipVM | U010 | Write description here |
-| RecievedInvitationsVM | U005, U011 | Write description here |
+| RecievedInvitationsVM | U005, U011, U026 | Write description here |
 | SentInvitationsVM | U012 | Write description here |
 | StatisticsVM | U013, U018 | Write description here |
-| AccountVM | U001, U002, U00X | Write description here |
+| AccountVM | U00X | Write description here |
 | LoginVM | U015| Write description here |
 | CreateAccountVm | U001, U002, U00X | Write description here |
 | CreateUsernameVm | U001, U002, U00X | Write description here |
@@ -105,7 +105,6 @@ UI Description
 
 - The contest confirmation screen will allow the user to confirm that they’ve selected the correct player
   - The user can change the number of rounds by clicking the stepping
-  - The user can select when the contest invitation expires by selecting the DatePicker on the right
   - Once the information is finalized/reviewed, the player can click the send invite button to send the invite to the player.
 
 - The Bet Slip screen shows all of the bets under a certain category
@@ -124,15 +123,8 @@ UI Description
 
 | UI Component      | User Stories this UI relates to     | Description       |
 | ---               | ---                                 | ---               |
-| Sign in | U001, U006, U015 | The user views a loading screen upon opening the app and can login on multiple devices using either email and password or an Apple account |
-| Create Account | U007 | If the user does not have an account they can make one here |
-| Contest | U003, U020, U025 | A user can view upcoming, current and previous contests that they are involved in |
-| Bet Slip | U010, U021, U024 | Users can view the scores of games they are watching and how they impact their contests |
-| Invitations | U005, U011, U012, U022 | The user can see, send and accept invitations. Invitations do expire. |
-| Drafts | U008, U014, U023 | Drafts are placed against opponents when it's their turn. Drafts do expire. |
-| Statistics | U013, U018 | The app stores statistics and displays them to the user |
-| New contest | U004, U016 | The user can search and/or select a player to start a contest with |
-| New contest 2 | U019 | The user can edit details before creating a contest |
+| firstUIName       | U001, U002, U00X | Write description here |
+| firstUIName       | U001, U002, U00X | Write description here |
 
 # Resource Management
 
