@@ -44,9 +44,9 @@ Description of class diagram here.
 | CreateNewContestVM | U001, U002, U00X | Write description here |
 | ContestsVM | U001, U002, U00X | Write description here |
 | ContestsBetslipVM | U001, U002, U00X | Write description here |
-| firstClassName | U001, U002, U00X | Write description here |
-| firstClassName | U001, U002, U00X | Write description here |
-| firstClassName | U001, U002, U00X | Write description here |
+| DraftsVM | U001, U002, U00X | Write description here |
+| DraftPickSelectionVM | U001, U002, U00X | Write description here |
+| EntireBetslipVM | U001, U002, U00X | Write description here |
 
 # Data Design
 
