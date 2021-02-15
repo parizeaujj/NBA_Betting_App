@@ -63,4 +63,6 @@ Todd Weidler - Created tab bars, and basic shell of what the "contests" tab will
 
 Fabrizio Herrera - Added user stories and requirements, contributed to the design documents and diagrams. 
 
+Aland Nguyen - Contributed to design documents
+
 **note**: For this sprint, I am anticipating that you will continue to work on the stories carried over from Sprint 1, with a focus on the design aspect of your system. I am expecting your architecture document and diagrams to reflect the system only in the context of these user stories, with some generalization to help plan for the other items currently in the backlog. I am not expecting a significant amount of implementation at this point, if any at all.
