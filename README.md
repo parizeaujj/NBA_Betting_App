@@ -2,9 +2,9 @@
 
 # Product Vision
 
-BrokeBets is an IOS sports entertainment app that seeks to give its users an engaging, head-to-head, competitive experience. The app provides a platform for sports enthusiasts who have a desire to enter into thrilling sports prediction contests without the added worry of losing money (a worry that could be found in some other betting apps and formats). Our app is not only for hardcore sports enthusiasts. BrokeBet's user-friendly platform makes it easy for even those new to sports prediction contests to jump in and start with little guidance. 
+BrokeBets is a sports entertainment app for iOS that seeks to give its users an engaging, head-to-head, competitive experience. The app provides a platform for sports enthusiasts who have a desire to enter into thrilling sports prediction contests without the added worry of losing money (a worry that could be found in some other betting apps and formats). Our app is not only for hardcore sports enthusiasts. BrokeBet's user-friendly platform makes it easy for even those new to sports prediction contests to jump in and start with little guidance. 
 
-Although there are other sports betting applications such as FanDuel and PointsBet, BrokeBet's approach to sports betting sets it apart from its competitors. The principal component of BrokeBet's unique betting system is something that we call the "bet draft." The "bet draft" is a unique system that allows each player participating in a particular contest to take turns selecting a particular bet for a particular game. After one player selects a certain bet for a certain game, the bet that they took is added to their bet slip and the opposite/inverse of that bet is added to the bet slip of their opponent. This oppositional sports betting format adds a unique layer of complexity to sports betting. Not only do you have to decide which position to take, but you also have to consider the fact that not every position is guaranteed to be available to you, and you must strategize accordingly.
+Although there are other sports betting applications such as FanDuel and PointsBet, BrokeBet's approach to sports betting sets it apart from its competitors. The principal component of BrokeBet's unique betting system is something that we call the "bet draft." The "bet draft" is a unique system that allows each player participating in a particular contest to take turns selecting a particular bet for a particular game. After one player selects a certain bet for a certain game, the bet that they took is added to their betslip and the opposite/inverse of that bet is added to the betslip of their opponent. This oppositional sports betting format adds a unique layer of complexity to sports betting. Not only do you have to decide which position to take, but you also have to consider the fact that not every position is guaranteed to be available to you, and you must strategize accordingly.
 
 Our app offers a new and challenging betting experience for those looking to compete in thrilling, head-to-head, and engaging competitions with friends.
 
@@ -59,6 +59,6 @@ In this section, each group member needs to provide a brief description of what 
 
 JJ Parizeau - Setup meetings, organize files and contribute to Trello Board
 
-Member 2 - main tasking
+Todd Weidler - Created tab bars, and basic shell of what the "contests" tab will look like, and contributed to design docs
 
 **note**: For this sprint, I am anticipating that you will continue to work on the stories carried over from Sprint 1, with a focus on the design aspect of your system. I am expecting your architecture document and diagrams to reflect the system only in the context of these user stories, with some generalization to help plan for the other items currently in the backlog. I am not expecting a significant amount of implementation at this point, if any at all.
