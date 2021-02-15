@@ -77,7 +77,7 @@ We also need to make sure the NBA scores are updated frequently (every minute) t
 
 # User Interface Design
 
-![](/artifacts/UI.jpg)
+![](/artifacts/ui_diagram.jpg)
 
 UI Description
 ---
