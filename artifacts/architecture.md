@@ -148,7 +148,7 @@ The application is not memory-constrained, so the Firebase database can handle a
 
 BrokeBets
 ---
-Users will not have explicit access to other user’s data. All data requests will be made stricly through the app only with a valid FireBase account tied to the user. The data will be displayed, but rewrites of data will only happen within the app for each personal user.
+Users will not have explicit access to other user’s data. All data requests will be made stricly through the app only with a valid FireBase account tied to the user. The data will be displayed, but rewrites of data will only happen within the app for each personal user. We will not manually encrypt usernames or passwords, and will only save them through Firebase.
 
 Apple
 ---
@@ -183,6 +183,7 @@ All data is transfered through firebase, so no direct communication occurs. And 
 # Internationalization/Localization
 
 The app is based on an American sports league (NBA) and it is only meant for use in the United States. No translations from English are needed.
+Swift strickly uses Unicode and all strings in Swift are encoded in Unicode, so all of our code and strings will be in Unicode.
 
 # Input/Output
 
