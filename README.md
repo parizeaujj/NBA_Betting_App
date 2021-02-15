@@ -76,7 +76,7 @@ Aland Nguyen - Contributed to design documents
 - [Automated Tests]()
 - [Product Demonstration]()
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
-- [Second repo- score scraping server] https://github.com/todd-weidler/score_scraper
+- [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
 
 ## Task Allocation
 
