@@ -16,8 +16,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface GULAppEnvironmentUtil : NSObject
 
 /// Indicates whether the app is from Apple Store or not. Returns NO if the app is on simulator,
@@ -33,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isSimulator;
 
 /// The current device model. Returns an empty string if device model cannot be retrieved.
-+ (nullable NSString *)deviceModel;
++ (NSString *)deviceModel;
 
 /// The current operating system version. Returns an empty string if the system version cannot be
 /// retrieved.
@@ -46,15 +44,4 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isIOS7OrHigher DEPRECATED_MSG_ATTRIBUTE(
     "Always `YES` because only iOS 8 and higher supported. The method will be removed.");
 
-/// @return YES if Swift runtime detected in the app.
-+ (BOOL)hasSwiftRuntime;
-
-/// @return An Apple platform. Possible values "ios", "tvos", "macos", "watchos", "maccatalyst".
-+ (NSString *)applePlatform;
-
-/// @return The way the library was added to the app, e.g. "swiftpm", "cocoapods", etc.
-+ (NSString *)deploymentType;
-
 @end
-
-NS_ASSUME_NONNULL_END
