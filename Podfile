@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '14.4'
 
 target 'BrokeBets' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -9,6 +9,7 @@ target 'BrokeBets' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
   target 'BrokeBetsTests' do
     inherit! :search_paths
