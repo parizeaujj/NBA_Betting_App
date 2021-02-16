@@ -11,6 +11,8 @@ struct ContentView: View {
     
     var body: some View {
         
+        
+        
         ZStack {
             
             Color(red: 240/255, green: 243/255, blue: 248/255, opacity: 1)
@@ -32,9 +34,7 @@ struct ContentView: View {
                 )
                 
             }
-            
-            
-            
+     
         }.edgesIgnoringSafeArea(.all)
     }
 }

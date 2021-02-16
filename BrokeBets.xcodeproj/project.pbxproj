@@ -13,6 +13,7 @@
 		E30B1EF825DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
 		E30B1EF925DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
 		E30B1EFA25DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
+		E342063225DC6194000CCE7A /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342063125DC6194000CCE7A /* SignInWithAppleButton.swift */; };
 		E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */; };
 		E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FCD25D82AA8008D8399 /* TopTabs.swift */; };
 		E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FD225D82AF1008D8399 /* MainAppView.swift */; };
@@ -55,6 +56,7 @@
 		D8597B5732F19E9C927F860A /* Pods-BrokeBetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA770B23555B11C24054428D /* Pods_BrokeBets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E342063125DC6194000CCE7A /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		E38B7FCD25D82AA8008D8399 /* TopTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabs.swift; sourceTree = "<group>"; };
 		E38B7FD225D82AF1008D8399 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				E394BDF825CDD434002C89B9 /* BrokeBetsApp.swift */,
 				E38B7FD225D82AF1008D8399 /* MainAppView.swift */,
 				E394BDFA25CDD434002C89B9 /* ContentView.swift */,
+				E342063125DC6194000CCE7A /* SignInWithAppleButton.swift */,
 				E394BDFC25CDD435002C89B9 /* Assets.xcassets */,
 				E394BE0125CDD435002C89B9 /* Info.plist */,
 				E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */,
@@ -452,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E342063225DC6194000CCE7A /* SignInWithAppleButton.swift in Sources */,
 				E394BDFB25CDD434002C89B9 /* ContentView.swift in Sources */,
 				E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */,
 				E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */,
