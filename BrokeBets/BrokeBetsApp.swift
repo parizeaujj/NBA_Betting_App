@@ -16,6 +16,7 @@ struct BrokeBetsApp: App {
     var body: some Scene {
         WindowGroup {
           MainAppView()
+//            LoginView()
         }
     }
 }
