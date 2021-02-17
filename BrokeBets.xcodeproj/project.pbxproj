@@ -13,8 +13,7 @@
 		E30B1EF825DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
 		E30B1EF925DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
 		E30B1EFA25DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
-		E342063225DC6194000CCE7A /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342063125DC6194000CCE7A /* SignInWithAppleButton.swift */; };
-		E342063725DC6202000CCE7A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342063625DC6202000CCE7A /* LoginView.swift */; };
+		E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342063625DC6202000CCE7A /* LoginViewV2.swift */; };
 		E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */; };
 		E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FCD25D82AA8008D8399 /* TopTabs.swift */; };
 		E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FD225D82AF1008D8399 /* MainAppView.swift */; };
@@ -28,6 +27,9 @@
 		E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E394BDFF25CDD435002C89B9 /* Preview Assets.xcassets */; };
 		E394BE0B25CDD435002C89B9 /* BrokeBetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BE0A25CDD435002C89B9 /* BrokeBetsTests.swift */; };
 		E394BE1625CDD435002C89B9 /* BrokeBetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BE1525CDD435002C89B9 /* BrokeBetsUITests.swift */; };
+		E3C9685E25DD7D100097963E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9685D25DD7D100097963E /* LoginView.swift */; };
+		E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */; };
+		E3C9688525DD90680097963E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688425DD90680097963E /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +59,7 @@
 		D8597B5732F19E9C927F860A /* Pods-BrokeBetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA770B23555B11C24054428D /* Pods_BrokeBets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E342063125DC6194000CCE7A /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
-		E342063625DC6202000CCE7A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E342063625DC6202000CCE7A /* LoginViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewV2.swift; sourceTree = "<group>"; };
 		E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		E38B7FCD25D82AA8008D8399 /* TopTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabs.swift; sourceTree = "<group>"; };
 		E38B7FD225D82AF1008D8399 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
@@ -78,6 +79,9 @@
 		E394BE1125CDD435002C89B9 /* BrokeBetsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrokeBetsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E394BE1525CDD435002C89B9 /* BrokeBetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokeBetsUITests.swift; sourceTree = "<group>"; };
 		E394BE1725CDD435002C89B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3C9685D25DD7D100097963E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleButton.swift; sourceTree = "<group>"; };
+		E3C9688425DD90680097963E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E57D43A721104E5D54A2B9C1 /* Pods-BrokeBets-BrokeBetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,12 +139,13 @@
 		E38B7FDC25D82B72008D8399 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				E342063125DC6194000CCE7A /* SignInWithAppleButton.swift */,
-				E342063625DC6202000CCE7A /* LoginView.swift */,
+				E342063625DC6202000CCE7A /* LoginViewV2.swift */,
 				E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */,
 				E38B7FCD25D82AA8008D8399 /* TopTabs.swift */,
 				E38B7FD725D82B6A008D8399 /* ContestsView.swift */,
 				E38B7FDD25D82BE5008D8399 /* UpcomingContestsListView.swift */,
+				E3C9685D25DD7D100097963E /* LoginView.swift */,
+				E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			children = (
 				E38B7FE625D82E27008D8399 /* UITabBarController+Extensions.swift */,
 				E38B7FEE25D82E67008D8399 /* UINavigationController+Extensions.swift */,
+				E3C9688425DD90680097963E /* String+Extensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -230,6 +236,7 @@
 				E394BDF225CDD434002C89B9 /* Frameworks */,
 				E394BDF325CDD434002C89B9 /* Resources */,
 				F7074C608E30F4134CB61AF1 /* [CP] Embed Pods Frameworks */,
+				6F472714786234B58E8E1042 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,6 +275,7 @@
 				E394BE0E25CDD435002C89B9 /* Frameworks */,
 				E394BE0F25CDD435002C89B9 /* Resources */,
 				E54BBE220734DB5043F758FE /* [CP] Embed Pods Frameworks */,
+				0CD284861CFCC8AB3F8D4487 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -395,6 +403,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0CD284861CFCC8AB3F8D4487 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		19B18F5073217A8BD2CA7A8F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,6 +440,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F472714786234B58E8E1042 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BrokeBets/Pods-BrokeBets-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BrokeBets/Pods-BrokeBets-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrokeBets/Pods-BrokeBets-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E54BBE220734DB5043F758FE /* [CP] Embed Pods Frameworks */ = {
@@ -458,15 +500,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E342063225DC6194000CCE7A /* SignInWithAppleButton.swift in Sources */,
 				E394BDFB25CDD434002C89B9 /* ContentView.swift in Sources */,
 				E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */,
 				E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */,
+				E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */,
 				E38B7FDE25D82BE5008D8399 /* UpcomingContestsListView.swift in Sources */,
 				E38B7FD825D82B6A008D8399 /* ContestsView.swift in Sources */,
 				E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */,
 				E394BDF925CDD434002C89B9 /* BrokeBetsApp.swift in Sources */,
-				E342063725DC6202000CCE7A /* LoginView.swift in Sources */,
+				E3C9688525DD90680097963E /* String+Extensions.swift in Sources */,
+				E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */,
+				E3C9685E25DD7D100097963E /* LoginView.swift in Sources */,
 				E38B7FEF25D82E67008D8399 /* UINavigationController+Extensions.swift in Sources */,
 				E38B7FE725D82E27008D8399 /* UITabBarController+Extensions.swift in Sources */,
 			);
@@ -631,6 +675,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BrokeBets/Preview Content\"";
+				DEVELOPMENT_TEAM = 634WNQRUXY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BrokeBets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -654,6 +699,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BrokeBets/Preview Content\"";
+				DEVELOPMENT_TEAM = 634WNQRUXY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BrokeBets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

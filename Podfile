@@ -10,6 +10,7 @@ target 'BrokeBets' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'GoogleSignIn'
 
   target 'BrokeBetsTests' do
     inherit! :search_paths
