@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ContestsView: View {
     
+    
+    @EnvironmentObject var userService: UserService
+    
     @State private var selectedTab = 0
     
     var body: some View {
@@ -44,8 +47,10 @@ struct ContestsView: View {
                 
                 Spacer()
                 
-            }.background(Color(red: 240/255, green: 243/255, blue: 248/255, opacity: 1)).edgesIgnoringSafeArea(.bottom)
-                
+            }
+            .background(Color(red: 240/255, green: 243/255, blue: 248/255, opacity: 1))
+            
+           
             .navigationBarTitle("Contests", displayMode: .inline)
             .navigationBarItems(trailing:
                                     
@@ -59,7 +64,9 @@ struct ContestsView: View {
                                         .padding(.trailing, 10)
                                         
                                         Button(action: {
-                                            print("pressed")
+                                           
+                                            userService.logout()
+                                            
                                         }, label: {
                                             Image(systemName: "person.circle")
                                                 .font(Font.system(.title).bold())

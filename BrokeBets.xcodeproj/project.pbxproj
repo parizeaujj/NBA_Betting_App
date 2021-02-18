@@ -14,6 +14,7 @@
 		E30B1EF925DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
 		E30B1EFA25DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
 		E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342063625DC6202000CCE7A /* LoginViewV2.swift */; };
+		E343348925DDC578004027C3 /* UpcomingContestBetslipGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E343348825DDC578004027C3 /* UpcomingContestBetslipGameView.swift */; };
 		E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */; };
 		E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FCD25D82AA8008D8399 /* TopTabs.swift */; };
 		E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FD225D82AF1008D8399 /* MainAppView.swift */; };
@@ -27,9 +28,13 @@
 		E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E394BDFF25CDD435002C89B9 /* Preview Assets.xcassets */; };
 		E394BE0B25CDD435002C89B9 /* BrokeBetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BE0A25CDD435002C89B9 /* BrokeBetsTests.swift */; };
 		E394BE1625CDD435002C89B9 /* BrokeBetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BE1525CDD435002C89B9 /* BrokeBetsUITests.swift */; };
+		E3B621E125DEEBBD00B3ACE3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B621E025DEEBBD00B3ACE3 /* UserService.swift */; };
+		E3B621E925DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B621E825DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift */; };
+		E3B621F125DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B621F025DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift */; };
 		E3C9685E25DD7D100097963E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9685D25DD7D100097963E /* LoginView.swift */; };
 		E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */; };
 		E3C9688525DD90680097963E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688425DD90680097963E /* String+Extensions.swift */; };
+		E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,7 @@
 		DA770B23555B11C24054428D /* Pods_BrokeBets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E342063625DC6202000CCE7A /* LoginViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewV2.swift; sourceTree = "<group>"; };
+		E343348825DDC578004027C3 /* UpcomingContestBetslipGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestBetslipGameView.swift; sourceTree = "<group>"; };
 		E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		E38B7FCD25D82AA8008D8399 /* TopTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabs.swift; sourceTree = "<group>"; };
 		E38B7FD225D82AF1008D8399 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
@@ -79,9 +85,14 @@
 		E394BE1125CDD435002C89B9 /* BrokeBetsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrokeBetsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E394BE1525CDD435002C89B9 /* BrokeBetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokeBetsUITests.swift; sourceTree = "<group>"; };
 		E394BE1725CDD435002C89B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3B621DB25DEC19B00B3ACE3 /* BrokeBets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrokeBets.entitlements; sourceTree = "<group>"; };
+		E3B621E025DEEBBD00B3ACE3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		E3B621E825DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntireBetslipCompletedGameView.swift; sourceTree = "<group>"; };
+		E3B621F025DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestBetslipGameView.swift; sourceTree = "<group>"; };
 		E3C9685D25DD7D100097963E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleButton.swift; sourceTree = "<group>"; };
 		E3C9688425DD90680097963E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestView.swift; sourceTree = "<group>"; };
 		E57D43A721104E5D54A2B9C1 /* Pods-BrokeBets-BrokeBetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,11 +150,10 @@
 		E38B7FDC25D82B72008D8399 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				E3B6221C25DF273A00B3ACE3 /* tabs */,
 				E342063625DC6202000CCE7A /* LoginViewV2.swift */,
 				E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */,
 				E38B7FCD25D82AA8008D8399 /* TopTabs.swift */,
-				E38B7FD725D82B6A008D8399 /* ContestsView.swift */,
-				E38B7FDD25D82BE5008D8399 /* UpcomingContestsListView.swift */,
 				E3C9685D25DD7D100097963E /* LoginView.swift */,
 				E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */,
 			);
@@ -185,6 +195,8 @@
 		E394BDF725CDD434002C89B9 /* BrokeBets */ = {
 			isa = PBXGroup;
 			children = (
+				E3B621DF25DEEBA400B3ACE3 /* services */,
+				E3B621DB25DEC19B00B3ACE3 /* BrokeBets.entitlements */,
 				E38B7FE525D82DBE008D8399 /* extensions */,
 				E38B7FDC25D82B72008D8399 /* views */,
 				E394BDF825CDD434002C89B9 /* BrokeBetsApp.swift */,
@@ -222,6 +234,67 @@
 				E394BE1725CDD435002C89B9 /* Info.plist */,
 			);
 			path = BrokeBetsUITests;
+			sourceTree = "<group>";
+		};
+		E3B621DF25DEEBA400B3ACE3 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				E3B621E025DEEBBD00B3ACE3 /* UserService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		E3B6221B25DF271C00B3ACE3 /* contests */ = {
+			isa = PBXGroup;
+			children = (
+				E38B7FD725D82B6A008D8399 /* ContestsView.swift */,
+				E38B7FDD25D82BE5008D8399 /* UpcomingContestsListView.swift */,
+				E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */,
+				E343348825DDC578004027C3 /* UpcomingContestBetslipGameView.swift */,
+				E3B621F025DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift */,
+			);
+			path = contests;
+			sourceTree = "<group>";
+		};
+		E3B6221C25DF273A00B3ACE3 /* tabs */ = {
+			isa = PBXGroup;
+			children = (
+				E3B6222025DF27D000B3ACE3 /* statistics */,
+				E3B6221F25DF27C700B3ACE3 /* invitations */,
+				E3B6221E25DF27BA00B3ACE3 /* drafts */,
+				E3B6221D25DF27B100B3ACE3 /* betslip */,
+				E3B6221B25DF271C00B3ACE3 /* contests */,
+			);
+			path = tabs;
+			sourceTree = "<group>";
+		};
+		E3B6221D25DF27B100B3ACE3 /* betslip */ = {
+			isa = PBXGroup;
+			children = (
+				E3B621E825DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift */,
+			);
+			path = betslip;
+			sourceTree = "<group>";
+		};
+		E3B6221E25DF27BA00B3ACE3 /* drafts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = drafts;
+			sourceTree = "<group>";
+		};
+		E3B6221F25DF27C700B3ACE3 /* invitations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = invitations;
+			sourceTree = "<group>";
+		};
+		E3B6222025DF27D000B3ACE3 /* statistics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = statistics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BDFB25CDD434002C89B9 /* ContentView.swift in Sources */,
+				E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */,
 				E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */,
 				E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */,
 				E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */,
@@ -509,7 +583,11 @@
 				E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */,
 				E394BDF925CDD434002C89B9 /* BrokeBetsApp.swift in Sources */,
 				E3C9688525DD90680097963E /* String+Extensions.swift in Sources */,
+				E343348925DDC578004027C3 /* UpcomingContestBetslipGameView.swift in Sources */,
+				E3B621F125DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift in Sources */,
 				E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */,
+				E3B621E125DEEBBD00B3ACE3 /* UserService.swift in Sources */,
+				E3B621E925DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift in Sources */,
 				E3C9685E25DD7D100097963E /* LoginView.swift in Sources */,
 				E38B7FEF25D82E67008D8399 /* UINavigationController+Extensions.swift in Sources */,
 				E38B7FE725D82E27008D8399 /* UITabBarController+Extensions.swift in Sources */,
@@ -673,12 +751,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BrokeBets/BrokeBets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BrokeBets/Preview Content\"";
 				DEVELOPMENT_TEAM = 634WNQRUXY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BrokeBets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -686,7 +765,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokebets.BrokeBets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -697,12 +776,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BrokeBets/BrokeBets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BrokeBets/Preview Content\"";
 				DEVELOPMENT_TEAM = 634WNQRUXY;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BrokeBets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -710,7 +790,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokebets.BrokeBets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -722,7 +802,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BrokeBetsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -744,7 +824,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BrokeBetsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

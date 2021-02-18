@@ -13,13 +13,33 @@ struct BrokeBetsApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelagate
     
+
+    
     var body: some Scene {
         WindowGroup {
-          MainAppView()
-//            LoginView()
+            
+             
+                ContentView()
+                    .environmentObject(UserService())
+                
+            
+//            if userService.isLoggedIn {
+//                MainAppView()
+//                    .environment(\.colorScheme, .light)
+//                    .environmentObject(userService)
+//            }
+//            else {
+//                LoginView()
+//                    .environmentObject(userService)
+//            }
         }
     }
 }
+
+
+
+
+
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     

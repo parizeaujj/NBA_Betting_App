@@ -14,6 +14,10 @@ extension UITabBarController {
         
         let standardAppearance = UITabBarAppearance()
         
+        standardAppearance.backgroundColor = .white
+    
+        standardAppearance.backgroundEffect = .none
+        
         standardAppearance.stackedLayoutAppearance.normal.iconColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         standardAppearance.stackedLayoutAppearance.selected.iconColor = .black
         standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [ .foregroundColor : UIColor(red: 0, green: 0, blue: 0, alpha: 0.7) ]
