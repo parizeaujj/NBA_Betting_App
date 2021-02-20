@@ -69,10 +69,11 @@ Aland Nguyen - Contributed to design documents
 # Sprint 3
 
 - [Trello Board](https://trello.com/b/5Ppmtzr9/nbaproject) (Backlogs and Requirements)
-- [Burndown Chart]()
+- [Burndown Chart](https://docs.google.com/spreadsheets/d/1AfKZeGf15-xYTdFp1XixSyvSSHrVBA90A5rfTiQD5gw/edit#gid=0)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
 - [System Architecture](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/architecture.md)
 - [Source Code](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBets)
+- [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
 - [Automated Tests]()
 - [Product Demonstration]()
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
