@@ -9,16 +9,25 @@ import SwiftUI
 
 struct UpcomingContestView: View {
     
-    private var opponent: String = "Cody1234"
+    var opponent: String = "Cody1234"
+    var upcomingContest: UpcomingContest
+    
+    init(upcomingContest: UpcomingContest){
+        self.upcomingContest = upcomingContest
+    }
     
     var body: some View {
         
+        
+        NavigationLink(destination: UpcomingContestGamesListView(games: upcomingContest.games)
+                        .navigationBarTitle("Contest Betslip", displayMode: .inline))
+        {
             HStack {
                 VStack {
                     HStack {
                         Text("Opponent:")
-                   
-                        Text("\(self.opponent)")
+                        
+                        Text("\(upcomingContest.opponent)")
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                         
@@ -27,7 +36,7 @@ struct UpcomingContestView: View {
                         Text("Number of bets:")
                             .font(.subheadline)
                         
-                        Text("10")
+                        Text("\(upcomingContest.numBets)")
                             .font(.subheadline)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .padding(.trailing, 15)
@@ -39,7 +48,7 @@ struct UpcomingContestView: View {
                     HStack {
                         Text("First game start: ")
                             .font(.subheadline)
-                        Text("Today at 4pm EST")
+                        Text("\(upcomingContest.firstGameStartDateTime)")
                             .fontWeight(.bold)
                             .font(.subheadline)
                         Spacer()
@@ -49,7 +58,7 @@ struct UpcomingContestView: View {
                 
                 Image(systemName: "chevron.right")
                     .font(.system(.footnote))
-                    
+                
             }
             .padding(8)
             .background(Color.white)
@@ -60,12 +69,23 @@ struct UpcomingContestView: View {
             )
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
+            
+        }
     }
 }
 
 
+
 struct UpcomingContestView_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
-        UpcomingContestView()
+        UpcomingContestView(upcomingContest: UpcomingContest(id: "dodkokok", opponent: "MattSmith2", firstGameStartDateTime: "Today at 8:45pm EST", numBets: 10, games: [
+            
+                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7")
+        ]
+        
+        )
+        )
     }
 }

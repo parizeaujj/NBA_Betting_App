@@ -9,20 +9,22 @@ import SwiftUI
 
 struct UpcomingContestsListView : View {
     
+    
+    @ObservedObject var viewModel: UpcomingContestsListVM
+    
+    init(viewModel: UpcomingContestsListVM = UpcomingContestsListVM()){
+        self.viewModel = viewModel
+    }
+    
+    
     var body: some View {
         
         ScrollView {
             LazyVStack {
                 
-
-                    ForEach(1...30, id: \.self) { value in
+                ForEach(viewModel.upcomingContests) { contest in
                         
-                        NavigationLink(destination: Text("Detail view")
-                                        .navigationBarTitle("Second View", displayMode: .inline))
-                        {
-                            UpcomingContestView()
-                            
-                        }
+                    UpcomingContestView(upcomingContest: contest)
                         
                     }
                     .buttonStyle(PlainButtonStyle())

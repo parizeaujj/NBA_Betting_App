@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct UpcomingContestBetslipGameView: View {
+struct UpcomingContestGameView: View {
     
-    private var opponent: String = "Cody1234"
+    var game: UpcomingContestGame
     
     var body: some View {
         
@@ -20,7 +20,7 @@ struct UpcomingContestBetslipGameView: View {
             VStack(spacing: 0) {
             
                         HStack{
-                            Text("Today at 4pm EST")
+                            Text(game.gameStartDateTimeStr)
                                 .font(.subheadline)
                                 .foregroundColor(Color(red: 0, green: 38/255, blue: 77/255))
                                 .fontWeight(.semibold)
@@ -30,23 +30,19 @@ struct UpcomingContestBetslipGameView: View {
                             
                         }.padding(.top, 5)
                         
-                            
                 Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
 
                 HStack(spacing: 0){
-                    HStack{
-                        VStack {
-                            Text("HOU Rockets")
+                    HStack(){
+                        VStack(alignment: .leading) {
+                            Text(game.homeTeam)
                                 .padding(.vertical, 5)
-                            Text("CLE Cavaliers")
+                            Text(game.awayTeam)
                                 .padding(.vertical, 5)
                         }
                         .padding(.leading, 15)
                         
                         Spacer()
-                        
-                   
-                
                     }
                     .padding(.leading, 5)
                     .padding(.top, 5)
@@ -69,49 +65,38 @@ struct UpcomingContestBetslipGameView: View {
                                     
                             Spacer()
                             VStack(spacing: 8){
-                                Text("HOU -7")
-                                    .font(.subheadline)
                                 
-                                Text("O 45.5")
-                                    .font(.subheadline)
-                                
-
-                                
+                                if let spreadBet = game.spreadBet {
+                                    Text(spreadBet)
+                                        .font(.subheadline)
+                                }
+        
+                                if let overUnderBet = game.overUnderBet {
+                                    Text(overUnderBet)
+                                        .font(.subheadline)
+                                }
+        
                             }.padding(.vertical, 5)
                             
                             Spacer()
 
                         }
                         .fixedSize(horizontal: true, vertical: false)
-                        
-                        
-                       
-                        
-                        
-                        
-                        
                     }
                     .padding(1)
                     
-                }.background(Color.gray.opacity(0.08))
-               
-                
-
-               
-                
+                }
+                .background(Color.gray.opacity(0.08))
             }
-            
-        }.frame(width: UIScreen.main.bounds.width - 50, height: 120)
-        
-        
-
+        }
+        .frame(height: 120)
     }
 }
 
 
-struct UpcomingContestBetslipGameView_Previews: PreviewProvider {
+struct UpcomingContestGameView_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingContestBetslipGameView()
+        UpcomingContestGameView(game: UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"))
     }
 }
 

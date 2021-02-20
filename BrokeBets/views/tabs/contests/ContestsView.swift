@@ -48,7 +48,8 @@ struct ContestsView: View {
                 Spacer()
                 
             }
-            .background(Color(red: 240/255, green: 243/255, blue: 248/255, opacity: 1))
+            .background(Color.gray.opacity(0.05))
+//            .background(Color(red: 240/255, green: 243/255, blue: 248/255, opacity: 1))
             
            
             .navigationBarTitle("Contests", displayMode: .inline)

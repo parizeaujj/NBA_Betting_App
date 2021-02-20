@@ -17,21 +17,8 @@ struct BrokeBetsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            
-             
                 ContentView()
                     .environmentObject(UserService())
-                
-            
-//            if userService.isLoggedIn {
-//                MainAppView()
-//                    .environment(\.colorScheme, .light)
-//                    .environmentObject(userService)
-//            }
-//            else {
-//                LoginView()
-//                    .environmentObject(userService)
-//            }
         }
     }
 }
