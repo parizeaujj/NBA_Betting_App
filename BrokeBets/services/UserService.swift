@@ -91,8 +91,4 @@ class UserService: ObservableObject {
              print(Auth.auth().currentUser?.uid ?? "none")
         }
     }
-    
-
-    
-    
 }
