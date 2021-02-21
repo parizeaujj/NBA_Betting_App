@@ -160,7 +160,7 @@
 		E38B7FDC25D82B72008D8399 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				E3B6221C25DF273A00B3ACE3 /* tabs */,
+				E3B6221C25DF273A00B3ACE3 /* bottom tabs */,
 				E342063625DC6202000CCE7A /* LoginViewV2.swift */,
 				E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */,
 				E38B7FCD25D82AA8008D8399 /* TopTabs.swift */,
@@ -267,7 +267,7 @@
 			path = contests;
 			sourceTree = "<group>";
 		};
-		E3B6221C25DF273A00B3ACE3 /* tabs */ = {
+		E3B6221C25DF273A00B3ACE3 /* bottom tabs */ = {
 			isa = PBXGroup;
 			children = (
 				E3B6222025DF27D000B3ACE3 /* statistics */,
@@ -276,7 +276,7 @@
 				E3B6221D25DF27B100B3ACE3 /* betslip */,
 				E3B6221B25DF271C00B3ACE3 /* contests */,
 			);
-			path = tabs;
+			path = "bottom tabs";
 			sourceTree = "<group>";
 		};
 		E3B6221D25DF27B100B3ACE3 /* betslip */ = {

@@ -11,9 +11,9 @@ class UpcomingContestsListVM: ObservableObject {
     
     @Published var upcomingContests: [UpcomingContest] = []
     
+
     private var upcomingContestsRepo: UpcomingContestsRepositoryProtocol = MockUpcomingContestsRepository()
     
-
     private var cancellables: [AnyCancellable] = []
     
     init(){

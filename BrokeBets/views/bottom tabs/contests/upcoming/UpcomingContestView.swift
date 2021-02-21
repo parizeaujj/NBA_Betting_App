@@ -19,7 +19,7 @@ struct UpcomingContestView: View {
     var body: some View {
         
         
-        NavigationLink(destination: UpcomingContestGamesListView(games: upcomingContest.games)
+        NavigationLink(destination: UpcomingContestGamesListView(contest: upcomingContest)
                         .navigationBarTitle("Contest Betslip", displayMode: .inline))
         {
             HStack {
@@ -33,7 +33,7 @@ struct UpcomingContestView: View {
                         
                         Spacer()
                         
-                        Text("Number of bets:")
+                        Text("Total bets:")
                             .font(.subheadline)
                         
                         Text("\(upcomingContest.numBets)")
@@ -80,7 +80,7 @@ struct UpcomingContestView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        UpcomingContestView(upcomingContest: UpcomingContest(id: "dodkokok", opponent: "MattSmith2", firstGameStartDateTime: "Today at 8:45pm EST", numBets: 10, games: [
+        UpcomingContestView(upcomingContest: UpcomingContest(id: "dodkokok", opponent: "MattSmith22", firstGameStartDateTime: "Today at 8:45pm EST", numBets: 10, games: [
             
                 UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7")
         ]

@@ -27,6 +27,7 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
     var upcomingContestsPublished: Published<[UpcomingContest]> { _upcomingContests }
     var upcomingContestsPublisher: Published<[UpcomingContest]>.Publisher { $upcomingContests }
     
+    
     var dateFormatter: DateFormatter
     
     init() {
@@ -41,7 +42,7 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
         
         self.upcomingContests = [
             
-            UpcomingContest(id: "fake123", opponent: "Cody123", firstGameStartDateTime: "Today at 4pm EST", numBets: 10,
+            UpcomingContest(id: "fake123", opponent: "CodyShowstoppa", firstGameStartDateTime: "Today at 4pm EST", numBets: 10,
                             
                             games: [
                                 UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
@@ -53,7 +54,7 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
                             ]
                             
                             ),
-            UpcomingContest(id: "test123", opponent: "Justin456", firstGameStartDateTime: "Today at 4pm EST", numBets: 10,
+            UpcomingContest(id: "test123", opponent: "Gerald456", firstGameStartDateTime: "Today at 4pm EST", numBets: 10,
                             games: [
                                 UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
                                 UpcomingContestGame(homeTeam: "MIA Heat", awayTeam: "GS Warriors", gameStartDateTime: dateFormatter.date(from: "2/20/2021 7:30 PM")!, specialDayType: .Today, overUnderBet: "OVER 205.5"),

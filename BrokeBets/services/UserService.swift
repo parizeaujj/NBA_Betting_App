@@ -11,6 +11,7 @@ import AuthenticationServices
 class UserService: ObservableObject {
     
     @Published var isLoggedIn: Bool = false
+    @Published var doesHaveUsername: Bool = false
     
     private var currentNonce : String?
     
@@ -37,6 +38,8 @@ class UserService: ObservableObject {
         self.currentNonce = nonce
         request.requestedScopes = [.fullName, .email]
         request.nonce = nonce.sha256
+        
+        print("\"start sign in with apple flow\" finished")
     }
     
     
@@ -70,6 +73,8 @@ class UserService: ObservableObject {
         default:
             break
         }
+        
+        print("\"finish sign in with apple flow\" finished")
     }
 
     func authenticateWithFirebase(with credential: AuthCredential){
@@ -81,8 +86,13 @@ class UserService: ObservableObject {
                 return
             }
            
+            
              print("sign in successful")
              print(Auth.auth().currentUser?.uid ?? "none")
         }
     }
+    
+
+    
+    
 }

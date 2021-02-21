@@ -19,6 +19,7 @@ struct BrokeBetsApp: App {
         WindowGroup {
                 ContentView()
                     .environmentObject(UserService())
+                    .environment(\.colorScheme, .light)
         }
     }
 }

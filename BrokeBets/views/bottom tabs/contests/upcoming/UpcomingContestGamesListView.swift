@@ -11,7 +11,7 @@ import SwiftUI
 struct UpcomingContestGamesListView : View {
     
 
-    var games: [UpcomingContestGame]
+    var contest: UpcomingContest
     
     var body: some View {
         
@@ -22,16 +22,16 @@ struct UpcomingContestGamesListView : View {
                 HStack{
                     Text("Opponent:")
                         .font(.title3)
-                    Text("Cody123")
+                    Text(contest.opponent)
                         .font(.title3)
                         .foregroundColor(.blue)
                         .fontWeight(.bold)
                 }
                 
                 HStack{
-                    Text("Number of bets:")
+                    Text("Total bets:")
                         .font(.title3)
-                    Text("10")
+                    Text("\(contest.numBets)")
                         .font(.title3)
                         .fontWeight(.bold)
                 }.padding(.top, 4)
@@ -51,7 +51,7 @@ struct UpcomingContestGamesListView : View {
             ScrollView {
                 LazyVStack {
 
-                    ForEach(games) { game in
+                    ForEach(contest.games) { game in
 
                         UpcomingContestGameView(game: game)
                         
@@ -70,8 +70,13 @@ struct UpcomingContestGamesListView : View {
 
 struct UpcomingContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingContestGamesListView(games: [UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7")
-        ]
+        UpcomingContestGamesListView(
+            contest: UpcomingContest(id: "dodkokok", opponent: "MattSmith22", firstGameStartDateTime: "Today at 8:45pm EST", numBets: 10, games: [
+                
+                    UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7")
+            ]
+            
+            )
         )
     }
 }
