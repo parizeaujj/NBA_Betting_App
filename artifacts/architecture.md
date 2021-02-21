@@ -7,21 +7,21 @@ System Context
 
 ![](/artifacts/c4Model-System%20Context.jpg)
 
-The user using Broke Bets App has opportunity to create betting contests among friends and while doing so the Broke Bets App which acts as the primary element in the scope of this context diagram and it is interacting directly with firebase which acts as a service to store information about data, matches, etc. and handles them via cloud function. The firebase is acting as the supporting element that connected with Broke Bets App that will read and write data.
+Each Broke Bets App user has opportunity to create betting contests among friends and, while doing, so the Broke Bets App acts as the primary element in the scope of this context diagram. It is interacting directly with firebase, which acts as a service to store information about data, matches, etc. and handles them via cloud functions (R020, R021, R022, R024). The firebase is acting as the supporting element that connected with Broke Bets App that will read and write data.
 
 Containers
 ---
 
 ![](/artifacts/c4Model-Containers.jpg)
 
-When a user wishes to interact with the information regarding their account or contests, they communicate with the Firebase database to change or view the information. The game information is stored in the database with the ESPN web scraper each time a score changes and when the game finishes.
+When a user wishes to interact with the information regarding their account or contests, they communicate with the Firebase database to change or view the information. The game information is stored in the database with the ESPN web scraper each time a score changes and when the game finishes (R020, R022, R024).
 
 Components
 ---
 
 ![](/artifacts/c4Model-Components-2.jpg)
 
-The components consists of 3 containers: the mobile application, firebase, and the web scraper. The mobile application is responsible for displaying all relevant data to the user and allows the user to interact with the appropriate data. Firebase controlls all permanent save data and will send out data to the listeners in the mobile application. The webscraper contains the Headless Browser component, the Diff/Caching component and the CronJob component. The CronJob component triggers events to find the next schedule for the NBA and then starts the Headless Browser component before the first game.The Headless Browser component then scrapes data from ESPN when the data changes to eventually be stored in Firebase. The Diff/Caching component compares the data to previously captured data (if any) and then stores the appropriate data in Firebase.
+The components consists of 3 containers: the mobile application, firebase, and the web scraper. The mobile application is responsible for displaying all relevant data to the user and allows the user to interact with the appropriate data. Firebase controlls all permanent save data and will send out data to the listeners in the mobile application (R020). The webscraper contains the Headless Browser component, the Diff/Caching component and the CronJob component (R022, R024). The CronJob component triggers events to find the next schedule for the NBA and then starts the Headless Browser component before the first game. The Headless Browser component then scrapes data from ESPN when the data changes to eventually be stored in Firebase (R022). The Diff/Caching component compares the data to previously captured data (if any) and then stores the appropriate data in Firebase (R024).
 
 | Component | User Stories this block relates to  | Description       |
 | ---               | ---                                 | ---               |
@@ -61,18 +61,18 @@ We will be using the MVVM pattern for our frontend and so almost all of our clas
 
 Data Design Description
 
-We will be storing all of our data in Cloud Firestore which is a NoSQL database. All of the borderd boxes in our data model diagram represent Firestore Collections. Each Collection shows the data fields that will be associated with each Document in a Collection. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data. Every collection will be able to be read and written to by a user except for the Associated_Contests_For_Games collection and the Unfinished_Games collection. Those collections will be written to by our Web scraping server and be read by Cloud Functions that have triggers in place for when a game has ended so that we can clean up certain data automatically. 
+We will be storing all of our data in Cloud Firestore which is a NoSQL database (R020). All of the bordered boxes in our data model diagram represent Firestore Collections. Each Collection shows the data fields that will be associated with each Document in a Collection. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data (R024). Every collection will be able to be read and written to by a user except for the Associated_Contests_For_Games collection and the Unfinished_Games collection. Those collections will be written to by our Web scraping server and be read by Cloud Functions that have triggers in place for when a game has ended so that we can clean up certain data automatically (R022). 
 
 
 
-Data handling info: All of our data will be stored in Cloud Firestore, except for some cached data that will be stored on the user's phone. Any cached data will be handling completely by Firebase. 
+Data handling info: All of our data will be stored in Cloud Firestore (R022), except for some cached data that will be stored on the user's phone. Any cached data will be handling completely by Firebase. 
 
 ---
 
 
 # Business Rules
 
-Since this is a competitive betting app, data needs to be accurate and completely synced up. For this reason, we are using Firebase's Realtime Database service. Each player's current contest information will always be up to date.
+Since this is a competitive betting app, data needs to be accurate and completely synced up. For this reason, we are using Firebase's Realtime Database service. Each player's current contest information will always be up to date (R022, R024).
 We also need to make sure the NBA scores are updated frequently (every minute) to maintain relevant data for the user.
 
 # User Interface Design
@@ -148,7 +148,7 @@ The application is not memory-constrained, so the Firebase database can handle a
 
 BrokeBets
 ---
-Users will not have explicit access to other user’s data. All data requests will be made stricly through the app only with a valid FireBase account tied to the user. The data will be displayed, but rewrites of data will only happen within the app for each personal user. We will not manually encrypt usernames or passwords, and will only save them through Firebase (U020).
+Users will not have explicit access to other user’s data. All data requests will be made stricly through the app only with a valid FireBase account tied to the user. The data will be displayed, but rewrites of data will only happen within the app for each personal user. We will not manually encrypt usernames or passwords, and will only save them through Firebase (R020).
 
 Apple
 ---
@@ -173,7 +173,7 @@ The latency between a new score in a game and an update on the app is the sum of
 
 There is a one-to-many relationship between the live scores of NBA games and the app users who have contests with bets associated with those games. Thus, no matter how many users are using the app the web scraper server component/container will only have to write live score data to a constant number of locations (R022).
 
-For updating the scores of the head-to-head contest, it is not as scalable because the number of updates that our cloud function will have to do whenever a game ends is proportional to the number of contests associated with each game. So, as the number of users increases, the constests increases, and the workload of the cloud function that updates the state of the contest will also increase (U024).
+For updating the scores of the head-to-head contest, it is not as scalable because the number of updates that our cloud function will have to do whenever a game ends is proportional to the number of contests associated with each game. So, as the number of users increases, the constests increases, and the workload of the cloud function that updates the state of the contest will also increase (R024).
 
 # Interoperability
 
