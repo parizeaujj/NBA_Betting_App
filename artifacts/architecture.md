@@ -7,21 +7,21 @@ System Context
 
 ![](/artifacts/c4Model-System%20Context.jpg)
 
-The user using Broke Bets App has opportunity to create betting contests among friends and while doing so the Broke Bets App which acts as the primary element in the scope of this context diagram and it is interacting directly with firebase which acts as a service to store information about data, matches, etc. and handles them via cloud function. The firebase is acting as the supporting element that connected with Broke Bets App that will read and write data.
+Each Broke Bets App user has opportunity to create betting contests among friends and, while doing, so the Broke Bets App acts as the primary element in the scope of this context diagram. It is interacting directly with firebase, which acts as a service to store information about data, matches, etc. and handles them via cloud functions (R020, R021, R022, R024). The firebase is acting as the supporting element that connected with Broke Bets App that will read and write data.
 
 Containers
 ---
 
 ![](/artifacts/c4Model-Containers.jpg)
 
-When a user wishes to interact with the information regarding their account or contests, they communicate with the Firebase database to change or view the information. The game information is stored in the database with the ESPN web scraper each time a score changes and when the game finishes.
+When a user wishes to interact with the information regarding their account or contests, they communicate with the Firebase database to change or view the information. The game information is stored in the database with the ESPN web scraper each time a score changes and when the game finishes (R020, R022, R024).
 
 Components
 ---
 
 ![](/artifacts/c4Model-Components-2.jpg)
 
-The components consists of 3 containers: the mobile application, firebase, and the web scraper. The mobile application is responsible for displaying all relevant data to the user and allows the user to interact with the appropriate data. Firebase controlls all permanent save data and will send out data to the listeners in the mobile application. The webscraper contains the Headless Browser component, the Diff/Caching component and the CronJob component. The CronJob component triggers events to find the next schedule for the NBA and then starts the Headless Browser component before the first game.The Headless Browser component then scrapes data from ESPN when the data changes to eventually be stored in Firebase. The Diff/Caching component compares the data to previously captured data (if any) and then stores the appropriate data in Firebase.
+The components consists of 3 containers: the mobile application, firebase, and the web scraper. The mobile application is responsible for displaying all relevant data to the user and allows the user to interact with the appropriate data. Firebase controlls all permanent save data and will send out data to the listeners in the mobile application (R020). The webscraper contains the Headless Browser component, the Diff/Caching component and the CronJob component (R022, R024). The CronJob component triggers events to find the next schedule for the NBA and then starts the Headless Browser component before the first game. The Headless Browser component then scrapes data from ESPN when the data changes to eventually be stored in Firebase (R022). The Diff/Caching component compares the data to previously captured data (if any) and then stores the appropriate data in Firebase (R024).
 
 | Component | User Stories this block relates to  | Description       |
 | ---               | ---                                 | ---               |
@@ -61,18 +61,18 @@ We will be using the MVVM pattern for our frontend and so almost all of our clas
 
 Data Design Description
 
-We will be storing all of our data in Cloud Firestore which is a NoSQL database. All of the borderd boxes in our data model diagram represent Firestore Collections. Each Collection shows the data fields that will be associated with each Document in a Collection. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data. Every collection will be able to be read and written to by a user except for the Associated_Contests_For_Games collection and the Unfinished_Games collection. Those collections will be written to by our Web scraping server and be read by Cloud Functions that have triggers in place for when a game has ended so that we can clean up certain data automatically. 
+We will be storing all of our data in Cloud Firestore which is a NoSQL database (R020). All of the bordered boxes in our data model diagram represent Firestore Collections. Each Collection shows the data fields that will be associated with each Document in a Collection. We will attach real-time listeners to queries for many of those collections so that the data being displayed on a user's app will be properly synced with the most up-to-date data (R024). Every collection will be able to be read and written to by a user except for the Associated_Contests_For_Games collection and the Unfinished_Games collection. Those collections will be written to by our Web scraping server and be read by Cloud Functions that have triggers in place for when a game has ended so that we can clean up certain data automatically (R022). 
 
 
 
-Data handling info: All of our data will be stored in Cloud Firestore, except for some cached data that will be stored on the user's phone. Any cached data will be handling completely by Firebase. 
+Data handling info: All of our data will be stored in Cloud Firestore (R022), except for some cached data that will be stored on the user's phone. Any cached data will be handling completely by Firebase. 
 
 ---
 
 
 # Business Rules
 
-Since this is a competitive betting app, data needs to be accurate and completely synced up. For this reason, we are using Firebase's Realtime Database service. Each player's current contest information will always be up to date.
+Since this is a competitive betting app, data needs to be accurate and completely synced up. For this reason, we are using Firebase's Realtime Database service. Each player's current contest information will always be up to date (R022, R024).
 We also need to make sure the NBA scores are updated frequently (every minute) to maintain relevant data for the user.
 
 # User Interface Design
@@ -142,13 +142,13 @@ UI Description
 
 # Resource Management
 
-The application is not memory-constrained, so the Firebase database can handle all the accounts, bets, and the rest of the app information. The CronJob component from the web scraper is prevented from overloading the server by killing the child process in case a CronJob process is still active when trying to run again.
+The application is not memory-constrained, so the Firebase database can handle all the accounts, bets, and the rest of the app information. The CronJob component from the web scraper (R022) is prevented from overloading the server by killing the child process in case a CronJob process is still active when trying to run again.
 
 # Security
 
 BrokeBets
 ---
-Users will not have explicit access to other user’s data. All data requests will be made stricly through the app only with a valid FireBase account tied to the user. The data will be displayed, but rewrites of data will only happen within the app for each personal user. We will not manually encrypt usernames or passwords, and will only save them through Firebase.
+Users will not have explicit access to other user’s data. All data requests will be made stricly through the app only with a valid FireBase account tied to the user. The data will be displayed, but rewrites of data will only happen within the app for each personal user. We will not manually encrypt usernames or passwords, and will only save them through Firebase (R020).
 
 Apple
 ---
@@ -160,25 +160,25 @@ Apple includes security on all of its levels including hardware, system and data
 
 Firebase
 ---
-Firebase is certified under major privacy and security standards and follows ISO and SOC compliance. Firebase encrypts all their data and restricts access and monitors access to all data.
+Firebase is certified under major privacy and security standards and follows ISO and SOC compliance. Firebase encrypts all their data and restricts access and monitors access to all data (R020, R022).
 
   More information can be found below:
   - https://firebase.google.com/support/privacy
 
 # Performance
 
-The latency between a new score in a game and an update on the app is the sum of the time of two events: an update on ESPN to the Firebase web scraping server, and from the scraper to the database to the user. The app's total latency goal is 5 seconds.
+The latency between a new score in a game and an update on the app is the sum of the time of two events: an update on ESPN to the Firebase web scraping server, and from the scraper to the database to the user (R022). The app's total latency goal is 5 seconds.
 
 # Scalability
 
-There is a one-to-many relationship between the live scores of NBA games and the app users who have contests with bets associated with those games. Thus, no matter how many users are using the app the web scraper server component/container will only have to write live score data to a constant number of locations.
+There is a one-to-many relationship between the live scores of NBA games and the app users who have contests with bets associated with those games. Thus, no matter how many users are using the app the web scraper server component/container will only have to write live score data to a constant number of locations (R022).
 
-For updating the scores of the head-to-head contest, it is not as scalable because the number of updates that our cloud function will have to do whenever a game ends is proportional to the number of contests associated with each game. So, as the number of users increases, the constests increases, and the workload of the cloud function that updates the state of the contest will also increase.
+For updating the scores of the head-to-head contest, it is not as scalable because the number of updates that our cloud function will have to do whenever a game ends is proportional to the number of contests associated with each game. So, as the number of users increases, the constests increases, and the workload of the cloud function that updates the state of the contest will also increase (R024).
 
 # Interoperability
 
 This field does not apply.
-All data is transfered through firebase, so no direct communication occurs. And since all data is formatted in Entities and Relationships, no data sent is ambiguous.
+All data is transfered through firebase, so no direct communication occurs (R020, R022). And since all data is formatted in Entities and Relationships, no data sent is ambiguous.
 
 # Internationalization/Localization
 
@@ -187,11 +187,11 @@ Swift strickly uses Unicode and all strings in Swift are encoded in Unicode, so 
 
 # Input/Output
 
-The only inputs required from the user are their personal account information. In case of incorrect inputs, errors are detected at the input field.
+The only inputs required from the user are their personal account information. In case of incorrect inputs, errors are detected at the input field (R023).
 
 # Error Processing
 
-Our program will take a detective error approach and will notify the user if and when the data is not found. We'll incorporate active error detection whenever possible and use UI dialogues when incorrect data is entered. The program will not continue unless the user entered field is entered correctly. For data retrival, users will be notified when a value is nil by a simple dialogue box. For instance, if the user's contest data could not be retrieved, a dialogue box would describe the error and they can select the one option that says "okay". All error messages will follow the same format with the description outlining the error. Classes should always check optional variables and follow the outlined error process if nil.
+Our program will take a detective error approach and will notify the user if and when the data is not found. We'll incorporate active error detection whenever possible and use UI dialogues when incorrect data is entered. The program will not continue unless the user entered field is entered correctly. For data retrival, users will be notified when a value is nil by a simple dialogue box. For instance, if the user's contest data could not be retrieved, a dialogue box would describe the error and they can select the one option that says "okay". All error messages will follow the same format with the description outlining the error. Classes should always check optional variables and follow the outlined error process if nil (R023).
 
 # Fault Tolerance
 
@@ -199,7 +199,7 @@ If the program detects an error, the fault thrown would be more of a resetting t
 
 # Architectural Feasibility
 
-The architecture is feasible because because the resources are good enough for the amount of users which is 5, and firebase along with web scraper will not be impacted negatively due to that.
+The architecture is feasible because because the resources are good enough for the amount of users which is 5, and firebase along with web scraper will not be impacted negatively due to that (R020, R021, R022).
 
 # Overengineering
 
@@ -208,11 +208,11 @@ The architecture will match the requirements the simplest and most efficient way
 # Build-vs-Buy Decisions
 
 
-We are deciding to build most of our components except for certain Backend components. The third party components we plan to use are Firebase Auth for user authentication, Cloud Firestore for storing our app's data and real-time data, and Cloud Functions for executing small pieces of code that will clean up the database and update certain documents when a game has finished. All of these services are apart of Firebase platform which will not cost us anything because we will be using their free tier. 
+We are deciding to build most of our components except for certain Backend components. The third party components we plan to use are Firebase Auth for user authentication (R021), Cloud Firestore for storing our app's data and real-time data (R020), and Cloud Functions for executing small pieces of code that will clean up the database and update certain documents when a game has finished. All of these services are a part of the Firebase platform which will not cost us anything because we will be using their free tier. 
 
 Our decision is twofold:
-- Using Firebase allows us to focus most of our attention on the front end and the web scraping service instead of worrying about maintaining and scaling an app server, database server
-- Using Firebase Auth makes it so we don't have to store a user's passwords or validate JSON Web Tokens which should make our app more secure since Google is more  capable of implementing authentication services than we are. 
+- Using Firebase allows us to focus most of our attention on the front end and the web scraping service instead of worrying about maintaining and scaling an app server, database server (R022).
+- Using Firebase Auth makes it so we don't have to store a user's passwords or validate JSON Web Tokens which will make our app more secure since Google is more capable of implementing authentication services than we are (R021). 
 
 # Reuse
 
