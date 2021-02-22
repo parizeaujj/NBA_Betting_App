@@ -18,8 +18,8 @@
 | 12 | Tap on the "< Back" button. | The button should take you back to the Apple pop-up screen titled "Sign In". |
 | 13 | Back in the screen where the user enters their password, tap on the "Forgot Password?" button. | This should open an external screen also made by Apple where the user is shown steps to recuperate their account. |
 | 12 | Back in the screen where the user enters their password, enter an incorrect password in the input text field for the password and press the "Continue" button. | The password field should bounce from side to side for less than a second when the user enters an incorrect password |
-| 13 | Enter the correct password in the input text field for the password and press the "Continue" button. | You should be prompted to enter your username since you are logging in for the first time. |
-| 14 | With the Apple ID settings turned to face recognition when signing in from your iPhone, press on the "Continue" button from the "Sign In" screen. | This should automatically make you sign in when the phone recognizes your face. |
+| 13 | Enter the correct password in the input text field for the password and press the "Continue" button. | This should direct you to the "Create a Username" page since you are logging in for the first time. |
+| 14 | With the Apple ID settings turned to face recognition when signing in from your iPhone, press on the "Continue" button from the "Sign In" screen. | This should automatically make you sign in and direct you to the "Create a Username" page once the phone recognizes your face. |
 
 **2. Creating your BrokeBets app username (U007)**
 ---
