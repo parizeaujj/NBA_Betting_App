@@ -74,15 +74,13 @@ Aland Nguyen - Contributed to design documents
 - [System Architecture](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/architecture.md)
 - [Source Code](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBets)
 - [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
-- [Automated Tests]()
-- [Product Demonstration]()
+- Automated Tests
+- [Product Demonstration](https://vimeo.com/515095186)
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 - [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
 
 ## Task Allocation
 
-Member 1 - main tasking
+JJ Parizeau - File updating, coordinating and updating requirements
 
 Member 2 - main tasking
-
-**note**: At this point I am expecting that you have designed out a few of the initial user stories and started to implement this. From this point forward there should be continuous integration and deployment, producing working software that is demoed at the end of each sprint.
