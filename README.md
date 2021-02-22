@@ -83,4 +83,6 @@ Aland Nguyen - Contributed to design documents
 
 JJ Parizeau - File updating, coordinating and updating requirements
 
+Fabrizio Herrera - Mapping requirements to the architecture document, creating manual test cases
+
 Member 2 - main tasking
