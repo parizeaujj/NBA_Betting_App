@@ -21,7 +21,7 @@
 | 13 | Enter the correct password in the input text field for the password and press the "Continue" button. | You should be prompted to enter your username since you are logging in for the first time. |
 | 14 | With the Apple ID settings turned to face recognition when signing in from your iPhone, press on the "Continue" button from the "Sign In" screen. | This should automatically make you sign in when the phone recognizes your face. |
 
-**2. Creating your BrokeBets app username (U007) **
+2. Creating your BrokeBets app username (U007)
 ---
 | No.| Steps to Reproduce | Expected Behaviour |
 |--- |---                 |---                 |
