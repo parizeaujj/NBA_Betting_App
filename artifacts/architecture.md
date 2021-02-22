@@ -82,26 +82,20 @@ We also need to make sure the NBA scores are updated frequently (every minute) t
 UI Description
 ---
 - Main Screen
-  - This screen allows the user to sign in if they have an existing account. If they don’t, they can click “Don’t have an account?” to transition them to the account creation page.
-  - This screen allows signing in with Apple or email and password
+  - This screen allows the user to sign in with their Apple ID
   - If when signing in with Apple, the user's username is not found, they will be navigated to the "Create a Username" screen to create a new username
 
-- The Create Account screen is used to create a new account
-  - The user will fill out each field and select “Sign up”.
-  - If the passwords don’t match, an error will be issued
-  - If the email is invalid, an error will be issued
-  - If the username is taken, an error will be issued
-  
 - The "Create a Username" screen will be used to create a new username for the user if necessary
-  - When the user clicks the "Continue" button, the name they have (or haven't) entered will be validated. If the user name is not taken, this will transition them to the Contest screen
-  - If the user clicks the "Continue" button and the name is taken, a dialogue box will appear and they will be instructed to try a different/unique user name.
+  - When the user clicks the "Continue" button, the name they have (or haven't) entered will be validated. If the username is not already taken, and the username is between 6 and 16 characters long, then this will transition them to the Contests screen
+  - If the user clicks the "Continue" button and the name is taken, red text should appear underneath the username textfield that says "Username already taken" and they should then be able to try a different/unique username.
 
 - Upon successfully logging in, the user will be brought to the “Contests” tab
 - In the “Contests”, “Bet Slip”, “Invitations”, “Drafts” and “Statistics” pages, the user will be able to navigate to any of those 5 pages by selecting the appropriate icon on the bottom tab bar.
-- The contest tab will display all the current contests the user is involved in
+- The contest tab will display all the contests the user is or has been involved in
   - The top right plus button will allow the user to start a new contest
-  - The top tab bar allows the user to switch views between “In progress”, “upcoming”, and “complete” contests
-  - Each contest will display the player’s score compared to the user in the categories of “drafted wins”, “forced wins” and “total wins” and display the amount of bets remaining
+  - The top tab bar allows the user to switch views between “Upcoming”, “In progress”, and "Completed” contests
+  - Each completed or in progress contest will display the player’s score compared to the user in the categories of “drafted wins”, “forced wins” and “total wins” and display the amount of bets remaining
+  - Each upcoming contest will display the username for the user's opponent, the total number of bets associated with the contest, as well as the start time for the earliest game that is associated with that contest
 
 - In the new contest screen, The user can select a player to compete with
   - To navigate back to the contest screen, the user can click the icon in the top left corner
@@ -115,7 +109,7 @@ UI Description
   - Once the information is finalized/reviewed, the player can click the send invite button to send the invite to the player.
 
 - The Bet Slip screen shows all of the bets under a certain category
-  - The top section allows the user to switch views between “In progress”, “upcoming”, and “complete” 
+  - The top section allows the user to switch views between “Upcoming”, “In progress”, and "Completed”
   - Each bet slip will display the type of bet, the side of the bet (indicated by ‘+’ or ‘-‘) and the number of contests correlated with that particular bet
 
 - The Invitations screen will allow the user to view contest requests and see the status of contests requests they have sent out
