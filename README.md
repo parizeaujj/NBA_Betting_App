@@ -87,4 +87,4 @@ Fabrizio Herrera - Mapping requirements to the architecture document, creating m
 
 Aland Nguyen - Creating a username selection screen interface to be implemented
 
-Member 3 - main tasking
+Todd Weidler - Created the sign in with apple login page, app icon, upcoming contests page
