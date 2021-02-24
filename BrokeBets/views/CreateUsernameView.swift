@@ -23,6 +23,8 @@ struct CreateUsernameView: View {
                     //                .padding(.leading, 35)
                     .padding(.top, 45)
                 
+           
+                
                 TextField("Enter a username", text: $viewModel.username)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding([.trailing, .leading], 20)
@@ -37,13 +39,20 @@ struct CreateUsernameView: View {
                     .padding(.horizontal, 35)
                     .padding(.top, 30)
                 
-               
-                Text("Username must be at least 6 characters long")
-                    .font(.subheadline)
-                    .foregroundColor(.red)
-                    .opacity(viewModel.usernameError == .InvalidLength ? 1 : 0)
                 
+                HStack{
+                    
+                    Text(viewModel.usernameError.rawValue)
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                        .opacity(viewModel.usernameError == .None ? 0 : 1)
+                        
+                        .padding(.leading, 45)
+                    
+                    Spacer()
+                }
                 
+    
                 Button(action: {
                     viewModel.submitButtonWasPressed()
                 }, label: {
@@ -53,10 +62,10 @@ struct CreateUsernameView: View {
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding([.vertical], 15)
-                        .background(Color(UIColor.systemBlue).opacity(viewModel.username.isEmpty ? 0.4 : 1.0))
+                        .background(Color(UIColor.systemBlue).opacity(viewModel.shouldBeDisabled ? 0.4 : 1.0))
                         .cornerRadius(25)
                 })
-                .disabled(viewModel.username.isEmpty)
+                .disabled(viewModel.shouldBeDisabled)
                 .padding(.horizontal, 35)
                 .padding(.top, 40)
                 

@@ -6,17 +6,18 @@
 //
 import Foundation
 
-enum UsernameError {
+enum UsernameError: String {
     
-    case InvalidLength
-    case AlreadyTaken
-    case None
+    case InvalidLength = "Username must be at least 6 characters"
+    case AlreadyTaken = "Username already taken"
+    case None = ""
 }
 
 class CreateUsernameVM: ObservableObject {
     
     private let userService: UserService
    
+    @Published var shouldBeDisabled = true
     @Published var usernameError: UsernameError = .None
     @Published var username: String = "" {
         
@@ -35,6 +36,19 @@ class CreateUsernameVM: ObservableObject {
                 usernameError = .None
             }
             
+            // enables the button if no network call is happening, the input is not nil, and the button is currently disabled
+            if(!isSubmitting && username != "" && shouldBeDisabled){
+                shouldBeDisabled = false
+            }
+        }
+    }
+    @Published var isSubmitting = false {
+        didSet {
+            
+            // if isSubmitting was changed to true then disable the button
+            if isSubmitting {
+                shouldBeDisabled = true
+            }
         }
     }
     
@@ -50,6 +64,8 @@ class CreateUsernameVM: ObservableObject {
             return
         }
         
+        // disable button until database call is complete
+        isSubmitting = true
         
         userService.setUsernameIfNotTaken(username: self.username){ resultType in
             switch(resultType){
@@ -61,6 +77,7 @@ class CreateUsernameVM: ObservableObject {
                     
                 case .UsernameTaken:
                     self.usernameError = .AlreadyTaken
+                    self.isSubmitting = false
                     print("username already taken")
                     return
                     
