@@ -1,18 +1,18 @@
 //
-//  File.swift
+//  CompletedContestsRepository.swift
 //  BrokeBets
 //
-//  Created by Todd Weidler on 2/20/21.
+//  Created by Todd Weidler on 2/23/21.
 //
 
 import Foundation
 
+/*
+protocol CompletedContestsRepositoryProtocol {
 
-protocol UpcomingContestsRepositoryProtocol {
-
-    var upcomingContests: [UpcomingContest] { get }
-    var upcomingContestsPublisher: Published<[UpcomingContest]>.Publisher { get }
-    var upcomingContestsPublished: Published<[UpcomingContest]> { get }
+    var completedContests: [UpcomingContest] { get }
+    var completedContestsPublisher: Published<[UpcomingContest]>.Publisher { get }
+    var completedContestsPublished: Published<[UpcomingContest]> { get }
     
     
     func getUpcomingContests() -> Void
@@ -21,11 +21,11 @@ protocol UpcomingContestsRepositoryProtocol {
 
 
 // MOCK
-class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, ObservableObject {
+class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, ObservableObject {
     
-    @Published var upcomingContests: [UpcomingContest] = []
-    var upcomingContestsPublished: Published<[UpcomingContest]> { _upcomingContests }
-    var upcomingContestsPublisher: Published<[UpcomingContest]>.Publisher { $upcomingContests }
+    @Published var completedContests: [CompletedContest] = []
+    var completedContestsPublished: Published<[CompletedContest]> { _cpcomingContests }
+    var completedContestsPublisher: Published<[CompletedContest]>.Publisher { $cpcomingContests }
     
     
     var dateFormatter: DateFormatter
@@ -112,3 +112,4 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
         ]
     }
 }
+*/

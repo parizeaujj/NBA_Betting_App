@@ -9,6 +9,10 @@ import SwiftUI
 
 struct UpcomingContestView: View {
     
+    @Environment(\.horizontalSizeClass) var screenWidth: UserInterfaceSizeClass?
+    @EnvironmentObject var userScreenInfo : UserScreenInfo
+    
+    
     var opponent: String = "Cody1234"
     var upcomingContest: UpcomingContest
     
@@ -25,11 +29,29 @@ struct UpcomingContestView: View {
             HStack {
                 VStack {
                     HStack {
-                        Text("Opponent:")
                         
-                        Text("\(upcomingContest.opponent)")
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        
+                        // if the screen size is small, then make text smaller so that it does not need to wrap to new line
+                        if userScreenInfo.screenSizeType == .small {
+                            
+                            Text("Opponent:")
+                                .font(.subheadline)
+
+                            Text("\(upcomingContest.opponent)")
+                                .font(.subheadline)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                .lineLimit(1)
+                        }
+                        else{
+                            
+                            Text("Opponent:")
+                               
+                            Text("\(upcomingContest.opponent)")
+                               
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        }
                         
                         Spacer()
                         
@@ -38,8 +60,9 @@ struct UpcomingContestView: View {
                         
                         Text("\(upcomingContest.numBets)")
                             .font(.subheadline)
+                            
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .padding(.trailing, 15)
+                            .padding(.trailing, 8)
                         
                     }
                     .padding(.bottom, 15)
@@ -48,6 +71,7 @@ struct UpcomingContestView: View {
                     HStack {
                         Text("First game start: ")
                             .font(.subheadline)
+                      
                         Text("\(upcomingContest.firstGameStartDateTime)")
                             .fontWeight(.bold)
                             .font(.subheadline)
@@ -80,12 +104,14 @@ struct UpcomingContestView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        UpcomingContestView(upcomingContest: UpcomingContest(id: "dodkokok", opponent: "MattSmith22", firstGameStartDateTime: "Today at 8:45pm EST", numBets: 10, games: [
+        UpcomingContestView(upcomingContest: UpcomingContest(id: "dodkokok", opponent: "CodyShowstoppa", firstGameStartDateTime: "Today at 8:45pm", numBets: 10, games: [
             
                 UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7")
         ]
         
         )
         )
+        
+        Text("\(UIDevice.current.name)")
     }
 }

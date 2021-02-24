@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContestsView: View {
     
-    
     @EnvironmentObject var userService: UserService
     
     @State private var selectedTab = 0
@@ -32,6 +31,7 @@ struct ContestsView: View {
                 }.frame(maxWidth: .infinity).padding(.top, 15).background(Color(UIColor.systemBlue))
                 
                 
+                // controls which tab is shown for the contests screen
                 if(selectedTab == 0){
                     UpcomingContestsListView()
                 }
@@ -49,9 +49,6 @@ struct ContestsView: View {
                 
             }
             .background(Color.gray.opacity(0.05))
-//            .background(Color(red: 240/255, green: 243/255, blue: 248/255, opacity: 1))
-            
-           
             .navigationBarTitle("Contests", displayMode: .inline)
             .navigationBarItems(trailing:
                                     

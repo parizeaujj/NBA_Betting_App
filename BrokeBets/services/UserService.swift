@@ -6,12 +6,26 @@
 //
 
 import FirebaseAuth
+import FirebaseFirestore
 import AuthenticationServices
+
+
+enum UsernameCreationResult: Any {
+    case UsernameTaken
+    case UserHasUsernameAlready
+    case Success
+    case Failure
+}
+
 
 class UserService: ObservableObject {
     
     @Published var isLoggedIn: Bool = false
     @Published var doesHaveUsername: Bool = false
+    private var username: String?
+    
+    // database connection
+    private let db = Firestore.firestore()
     
     private var currentNonce : String?
     
@@ -20,10 +34,22 @@ class UserService: ObservableObject {
         Auth.auth().addStateDidChangeListener { auth, user in
             
             if user != nil {
-                self.isLoggedIn = true
+                
+                print("user is logged in")
+                                
+                self.getUsername(){ username in
+                    
+                    if username != nil {
+                        self.username = username
+                        self.doesHaveUsername = true
+                    }
+                    self.isLoggedIn = true
+                }
             }
             else {
                 self.isLoggedIn = false
+                self.username = nil
+                self.doesHaveUsername = false
             }
         }
     }
@@ -89,6 +115,112 @@ class UserService: ObservableObject {
             
              print("sign in successful")
              print(Auth.auth().currentUser?.uid ?? "none")
+        }
+    }
+    
+    
+    
+    func getUsername( completion: @escaping (String?) -> Void) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
+        let usernameQuery = db.collection("users").document(uid)
+        
+        usernameQuery.getDocument(){ (document, error) in
+            
+            if let error = error {
+                fatalError("Error getting username " + error.localizedDescription)
+            }
+            else {
+                
+                // if the document is nil then that means the user hasnt created a username yet
+                guard let doc = document else {
+                    print("user does not have a username yet")
+                    completion(nil)
+                    return
+                }
+                
+                
+                // if the username is not nil then that means the user already has a  username
+                if let username = doc.get("username") as? String {
+                    print("username found")
+                    completion(username)
+                }
+                else{
+                    print("The user does not have a username yet")
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
+    
+    func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void) -> Void {
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            fatalError("user has access to 'create username' screen but is not logged in yet")
+        }
+        
+        let uidDocRef = db.collection("users").document(uid)
+        let unameDocRef = db.collection("usernames").document(username)
+        
+        db.runTransaction { (transaction, errorPointer) -> Any? in
+            
+            let uidDocument: DocumentSnapshot
+                do {
+                    try uidDocument = transaction.getDocument(uidDocRef)
+                } catch let fetchError as NSError {
+                    errorPointer?.pointee = fetchError
+                    return nil
+                }
+            
+            // if the user already has a username for their account, then we need to not allow them to create a new one, and instead notify them that they
+            // already have a username and then take them to the contests screen
+            if uidDocument.exists && uidDocument.get("username") != nil {
+                return UsernameCreationResult.UserHasUsernameAlready
+            }
+
+            let unameDocument: DocumentSnapshot
+                do {
+                    try unameDocument = transaction.getDocument(unameDocRef)
+                } catch let fetchError as NSError {
+                    errorPointer?.pointee = fetchError
+                    return nil
+                }
+   
+            
+            // if the username already has a document in the database and the uid for that document is not nil, then the username is already taken and
+            // we should display that error to the user so they can try again with a different username
+            if unameDocument.exists && unameDocument.get("uid") != nil {
+                return UsernameCreationResult.UsernameTaken
+            }
+            
+            
+            // if at this point in the transaction, then that means the username has not been taken and the user does not already have a username
+            transaction.setData(["username": username], forDocument: uidDocRef)
+            transaction.setData(["uid": uid], forDocument: unameDocRef)
+            
+            return UsernameCreationResult.Success
+            
+        } completion: { (res, error) in
+            
+            var resultType: UsernameCreationResult = .Failure
+            
+            if error != nil {
+                resultType = .Failure
+            }
+            else if res is UsernameCreationResult {
+                resultType = res as! UsernameCreationResult
+                
+            }
+            else{
+                resultType = .Failure
+            }
+            
+            completion(resultType)
         }
     }
 }

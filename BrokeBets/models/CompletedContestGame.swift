@@ -1,29 +1,14 @@
 //
-//  UpcomingContestGame.swift
+//  CompletedContestGame.swift
 //  BrokeBets
 //
-//  Created by Todd Weidler on 2/20/21.
+//  Created by Todd Weidler on 2/23/21.
 //
 
 import Foundation
 
 
-struct SimpleDate: Codable {
-    var day: Int
-    var month: Int
-    var year: Int
-}
-
-enum SpecialDayType: String {
-    case Today
-    case Tomorrow
-    case Yesterday
-    case None
-}
-
-
-
-struct UpcomingContestGame: Codable, Identifiable {
+struct CompletedContestGame: Codable, Identifiable {
     
     var id = UUID()
     var homeTeam: String
@@ -54,4 +39,3 @@ struct UpcomingContestGame: Codable, Identifiable {
         }
     }
 }
-

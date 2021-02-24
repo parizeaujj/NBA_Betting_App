@@ -36,11 +36,6 @@ struct LoginViewV2: View {
                     .foregroundColor(Color.black)
                 
                 
-                
-                
-              
-              
-                
                 TextField("Email", text: $email)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 10).stroke(self.email != "" ? Color(UIColor.systemBlue) : Color.black.opacity(0.7), lineWidth: 2))

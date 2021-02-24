@@ -191,7 +191,7 @@ struct EntireBetslipCompletedGameView: View {
                 
             }
             
-        }.frame(width: UIScreen.main.bounds.width - 50, height: 120)
+        }.frame(width: .infinity, height: 120)
         
         
 //            HStack{
