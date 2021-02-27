@@ -88,3 +88,27 @@ Fabrizio Herrera - Mapping requirements to the architecture document, creating m
 Aland Nguyen - Creating a username selection screen interface to be implemented
 
 Todd Weidler - Created the sign in with apple login page, app icon, upcoming contests page
+
+
+
+
+# Sprint 4
+
+- [Trello Board](https://trello.com/b/5Ppmtzr9/nbaproject) (Backlogs and Requirements)
+- [Burndown Chart](https://docs.google.com/spreadsheets/d/1qTNv1RxZbqy0zse2pQRKRqvor_021Bmvm95DxrQVGNc/edit?usp=sharing)
+- [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
+- [System Architecture](https://github.com/drhollander/COP4331_Sample/blob/master/artifacts/architecture.md)
+- [Source Code](https://github.com/drhollander/COP4331_Sample/blob/master/project/readme.md)
+- Automated Tests
+- Product Demonstration
+- [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
+- [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
+
+## Task Allocation
+
+JJ Parizeau - file management, firebase for completed contests user story [U033]
+
+Member 2 - main tasking
+
+**note**: Sprint 4 and onward will contain updates to your artifacts as appropriate for the current sprint, as well as continuous improvements to your software and updated product demos.
+
