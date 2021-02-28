@@ -12,7 +12,8 @@ struct CompletedContestView: View {
     
     private var completedContest: CompletedContest
     private var accentColor: Color
-    private var boldStyle: Font.Weight
+    private var userTotalBoldStyle: Font.Weight
+    private var oppTotalBoldStyle: Font.Weight
     
     init(completedContest: CompletedContest){
         self.completedContest = completedContest
@@ -20,13 +21,18 @@ struct CompletedContestView: View {
         switch(completedContest.result){
             case .Won:
                 self.accentColor = .green
+                self.userTotalBoldStyle = .black
+                self.oppTotalBoldStyle = .regular
                 break
             case .Lost:
                 self.accentColor = .red
+                self.userTotalBoldStyle = .regular
+                self.oppTotalBoldStyle = .black
                 break
         default:
                 self.accentColor = Color.black.opacity(0.65)
-                break
+                self.userTotalBoldStyle = .regular
+                self.oppTotalBoldStyle = .regular
         }
     }
     
