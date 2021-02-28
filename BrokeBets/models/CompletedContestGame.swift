@@ -6,6 +6,20 @@
 //
 
 import Foundation
+import FirebaseFirestore
+
+enum GameWinner: String, Codable{
+    case HOME = "HOME"
+    case AWAY = "AWAY"
+    case TIE = "TIE"
+}
+
+
+enum BetResult: String, Codable {
+    case Won = "WON"
+    case Lost = "LOST"
+    case Push = "PUSH"
+}
 
 
 struct CompletedContestGame: Codable, Identifiable {
@@ -13,29 +27,108 @@ struct CompletedContestGame: Codable, Identifiable {
     var id = UUID()
     var homeTeam: String
     var awayTeam: String
-    var gameStartDateTimeStr: String
-    var gameStartDateTime: Date        // used for sorting
+    var homeTeamScore: Int
+    var awayTeamScore: Int
+    var gameWinner: GameWinner
+    var gameCompletionDateTimeStr: String
+    var gameCompletionDateTime: Date        // used for sorting
     var overUnderBet: String?
+    var overUnderBetResult: BetResult?
     var spreadBet: String?
+    var spreadBetResult: BetResult?
     
-    init(homeTeam: String, awayTeam:String, gameStartDateTime: Date, specialDayType: SpecialDayType = .None, overUnderBet: String? = nil, spreadBet: String? = nil){
-                
-        let df = DateFormatter()
+    
+    init(homeTeam: String, awayTeam:String, htScore: Int, atScore:Int, completedDT: Date, specialDayType: SpecialDayType = .None, ouBet: String? = nil, ouBetRes: BetResult? = nil, spreadBet: String? = nil, spreadBetRes: BetResult? = nil, gameWinner: GameWinner){
+
+        
+
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        self.homeTeamScore = htScore
+        self.awayTeamScore = atScore
+        self.gameWinner = gameWinner
+        
+        
+        if spreadBet != nil && spreadBetRes != nil {
+            self.spreadBet = spreadBet
+            self.spreadBetResult = spreadBetRes
+        }
+        
+        
+        if ouBet != nil && ouBetRes != nil {
+            self.overUnderBet = ouBet
+            self.overUnderBetResult = ouBetRes
+        }
+
+        self.gameCompletionDateTime = completedDT
+        self.gameCompletionDateTimeStr = completedDT.createDateTimeString(with: specialDayType, completionStatus: .Completed)
+    }
+    
+    init?(game: [String: Any], playerLookupPrefix: String, todaysSimpleDate: SimpleDate){
+        
+        guard let homeTeam = game["homeTeam"] as? String,
+              let awayTeam = game["awayTeam"] as? String,
+              let homeTeamScore = game["homeTeamScore"] as? Int,
+              let awayTeamScore = game["awayTeamScore"] as? Int,
+              let gameWinner = game["gameWinner"] as? String,
+              let ts = game["gameCompletionDateTime"] as? Timestamp
+        else {
+            return nil
+        }
+        
         
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
-        self.gameStartDateTime = gameStartDateTime
-        self.overUnderBet = overUnderBet
-        self.spreadBet = spreadBet
+        self.homeTeamScore = homeTeamScore
+        self.awayTeamScore = awayTeamScore
+        self.gameWinner = GameWinner(rawValue: gameWinner.uppercased())!
+        
+        let gameCompletionDt = ts.dateValue()
+        self.gameCompletionDateTime = gameCompletionDt
+       
+        self.gameCompletionDateTimeStr = ""
+                
+        let specialDayType = gameCompletionDt.getSpecialDayType(todaysSimpleDate: todaysSimpleDate)
+        self.gameCompletionDateTimeStr = gameCompletionDt.createDateTimeString(with: specialDayType, completionStatus: .Completed)
         
         
-        if(specialDayType != .None){
-            df.dateFormat = "h:mm a"
-            self.gameStartDateTimeStr = specialDayType.rawValue + ", " + df.string(from: gameStartDateTime)
+        // process the results of the over under bet for the game, if that bet exists
+        if let overUnderBetResults = game["overUnderBetResults"] as? [String: [String: String]]{
+           
+            guard let userResults = overUnderBetResults[playerLookupPrefix] else {
+                return nil
+            }
+            
+            guard let bet = userResults["bet"] else{
+                return nil
+            }
+            
+            guard let betResult = userResults["result"] else{
+                return nil
+            }
+            
+            self.overUnderBet = bet
+            self.overUnderBetResult = BetResult(rawValue: betResult.uppercased())!
         }
-        else{
-            df.dateFormat = "E, MMM d, h:mm a"
-            self.gameStartDateTimeStr = df.string(from: gameStartDateTime)
+        
+        
+        // process the results of the spread bet for the game, if that bet exists
+        if let spreadBetResults = game["overUnderBetResults"] as? [String: [String: String]]{
+           
+            guard let userResults = spreadBetResults[playerLookupPrefix] else {
+                return nil
+            }
+            
+            guard let bet = userResults["bet"] else{
+                return nil
+            }
+            
+            guard let betResult = userResults["result"] else{
+                return nil
+            }
+            
+            self.spreadBet = bet
+            self.spreadBetResult = BetResult(rawValue: betResult.uppercased())!
         }
     }
 }

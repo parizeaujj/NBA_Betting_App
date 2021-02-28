@@ -6,14 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct UpcomingContestView: View {
     
-    @Environment(\.horizontalSizeClass) var screenWidth: UserInterfaceSizeClass?
     @EnvironmentObject var userScreenInfo : UserScreenInfo
     
-    
-    var opponent: String = "Cody1234"
     var upcomingContest: UpcomingContest
     
     init(upcomingContest: UpcomingContest){
@@ -72,7 +70,7 @@ struct UpcomingContestView: View {
                         Text("First game start: ")
                             .font(.subheadline)
                       
-                        Text("\(upcomingContest.firstGameStartDateTime)")
+                        Text("\(upcomingContest.firstGameStartDateTimeStr)")
                             .fontWeight(.bold)
                             .font(.subheadline)
                         Spacer()
@@ -101,17 +99,18 @@ struct UpcomingContestView: View {
 
 
 struct UpcomingContestView_Previews: PreviewProvider {
-    
-    
+
+
     static var previews: some View {
-        UpcomingContestView(upcomingContest: UpcomingContest(id: "dodkokok", opponent: "CodyShowstoppa", firstGameStartDateTime: "Today at 8:45pm", numBets: 10, games: [
-            
-                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7")
+        UpcomingContestView(upcomingContest: UpcomingContest(opponent: "Cody_ShowStoppa", firstGameStartDateTime: Date(), numBets: 3, games: [
+
+            UpcomingContestGame(homeTeam: "IND Pacers", awayTeam: "ORL Magic", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "UNDER 225", spreadBet: "IND +2.5"),
+            UpcomingContestGame(homeTeam: "NO Pelicans", awayTeam: "LA Lakers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "UNDER 215.5", spreadBet: "LA -3")
+
         ]
-        
         )
         )
-        
-        Text("\(UIDevice.current.name)")
+        .environmentObject(UserScreenInfo(.regular))
+
     }
 }

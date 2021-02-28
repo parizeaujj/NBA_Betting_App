@@ -34,10 +34,11 @@ struct CreateUsernameView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.black, lineWidth: 2)
                     )
-                    
                     .keyboardType(.asciiCapable)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
                     .padding(.horizontal, 35)
-                    .padding(.top, 30)
+                    .padding(.top, 25) // was 30
                 
                 
                 HStack{

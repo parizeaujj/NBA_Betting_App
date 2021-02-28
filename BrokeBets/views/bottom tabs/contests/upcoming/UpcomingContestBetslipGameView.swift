@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct UpcomingContestGameView: View {
     
@@ -94,9 +95,20 @@ struct UpcomingContestGameView: View {
 }
 
 
+
+
+
 struct UpcomingContestGameView_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingContestGameView(game: UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"))
+        UpcomingContestGameView(game:
+                                    UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "MIA Heat", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225.5", spreadBet: "MIA -7"))
     }
 }
+
+
+
+
+
+
+
 

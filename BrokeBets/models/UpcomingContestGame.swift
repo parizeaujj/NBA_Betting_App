@@ -6,12 +6,22 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 
 struct SimpleDate: Codable {
     var day: Int
     var month: Int
     var year: Int
+    
+    init(date: Date){
+        let dateComponents = Calendar.current.dateComponents([.month, .day, .year], from: date)
+        
+        self.day = dateComponents.day!
+        self.month = dateComponents.month!
+        self.year = dateComponents.year!
+        
+    }
 }
 
 enum SpecialDayType: String {
@@ -20,7 +30,6 @@ enum SpecialDayType: String {
     case Yesterday
     case None
 }
-
 
 
 struct UpcomingContestGame: Codable, Identifiable {
@@ -33,25 +42,54 @@ struct UpcomingContestGame: Codable, Identifiable {
     var overUnderBet: String?
     var spreadBet: String?
     
-    init(homeTeam: String, awayTeam:String, gameStartDateTime: Date, specialDayType: SpecialDayType = .None, overUnderBet: String? = nil, spreadBet: String? = nil){
-                
-        let df = DateFormatter()
+    
+    init(homeTeam: String, awayTeam: String, gameStartDateTime: Date, specialDayType: SpecialDayType, overUnderBet: String, spreadBet: String){
         
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
         self.gameStartDateTime = gameStartDateTime
         self.overUnderBet = overUnderBet
         self.spreadBet = spreadBet
+        self.gameStartDateTimeStr = ""
+        self.gameStartDateTimeStr = gameStartDateTime.createDateTimeString(with: specialDayType, completionStatus: .Upcoming)
+        
+    }
+    
+    
+    init?(game: [String: Any], playerLookupPrefix: String, todaysSimpleDate: SimpleDate){
+        
+        guard let homeTeam = game["homeTeam"] as? String,
+              let awayTeam = game["awayTeam"] as? String,
+              let ts = game["gameStartDateTime"] as? Timestamp
+        else {
+            return nil
+        }
         
         
-        if(specialDayType != .None){
-            df.dateFormat = "h:mm a"
-            self.gameStartDateTimeStr = specialDayType.rawValue + ", " + df.string(from: gameStartDateTime)
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        
+        let gameStartDt = ts.dateValue()
+        self.gameStartDateTime = gameStartDt
+       
+        self.gameStartDateTimeStr = ""
+                
+        let specialDayType = gameStartDt.getSpecialDayType(todaysSimpleDate: todaysSimpleDate)
+        self.gameStartDateTimeStr = gameStartDt.createDateTimeString(with: specialDayType, completionStatus: .Upcoming)
+        
+        
+        if let overUnderBet = game["overUnderBet"] as? [String: String] {
+            self.overUnderBet = overUnderBet[playerLookupPrefix]
         }
         else{
-            df.dateFormat = "E, MMM d, h:mm a"
-            self.gameStartDateTimeStr = df.string(from: gameStartDateTime)
+            self.overUnderBet = nil
+        }
+        
+        if let spreadBet = game["spreadBet"] as? [String: String] {
+            self.spreadBet = spreadBet[playerLookupPrefix]
+        }
+        else{
+            self.spreadBet = nil
         }
     }
 }
-

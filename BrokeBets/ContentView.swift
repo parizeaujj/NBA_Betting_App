@@ -14,21 +14,31 @@ struct ContentView: View {
     
     var body: some View {
         
-        if userService.isLoggedIn {
-
-            if(userService.doesHaveUsername){
+//        if userService.isLoggedIn {
+//
+//            if(userService.doesHaveUsername){
+//                MainAppView()
+//                    .environmentObject(userService)
+//            }
+//            else{
+//                CreateUsernameView(viewModel: CreateUsernameVM(userService: userService))
+//            }
+//        }
+//        else {
+//            LoginView()
+//                .environmentObject(userService)
+//        }
+//
+        if true {
+            
+            if(true){
                 MainAppView()
                     .environmentObject(userService)
             }
-            else{
-                CreateUsernameView(viewModel: CreateUsernameVM(userService: userService))
-            }
         }
+       
         
-        else {
-            LoginView()
-                .environmentObject(userService)
-        }
+        
     }
 }
 

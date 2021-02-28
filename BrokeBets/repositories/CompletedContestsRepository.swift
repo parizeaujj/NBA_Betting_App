@@ -6,16 +6,16 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
-/*
+
 protocol CompletedContestsRepositoryProtocol {
 
-    var completedContests: [UpcomingContest] { get }
-    var completedContestsPublisher: Published<[UpcomingContest]>.Publisher { get }
-    var completedContestsPublished: Published<[UpcomingContest]> { get }
+    var completedContests: [CompletedContest] { get }
+    var completedContestsPublisher: Published<[CompletedContest]>.Publisher { get }
+    var completedContestsPublished: Published<[CompletedContest]> { get }
     
-    
-    func getUpcomingContests() -> Void
+    func getCompletedContests() -> Void
     
 }
 
@@ -24,92 +24,119 @@ protocol CompletedContestsRepositoryProtocol {
 class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, ObservableObject {
     
     @Published var completedContests: [CompletedContest] = []
-    var completedContestsPublished: Published<[CompletedContest]> { _cpcomingContests }
-    var completedContestsPublisher: Published<[CompletedContest]>.Publisher { $cpcomingContests }
+    var completedContestsPublished: Published<[CompletedContest]> { _completedContests }
+    var completedContestsPublisher: Published<[CompletedContest]>.Publisher { $completedContests }
     
+    let mockData: [[String: Any]] = [
+        ["completionDateTime": Timestamp(date: Date()),
+         "player1_uid": "testToddUid",
+         "player1_uname": "todd123",
+         "player2_uid": "testOppUid",
+         "player2_uname": "testOpp",
+         "player1_total": 3,
+         "player2_total": 1,
+         "player1_forced": 1,
+         "player2_forced": 0,
+         "player1_drafted": 2,
+         "player2_drafted": 1,
+         "contestResults": [
+            "player1": "WON",
+            "player2": "LOST"
+         ],
+         "numBets": 3,
+         "games": [
+            
+            // game 1
+            ["awayTeam": "HOU Rockets",
+             "homeTeam": "MIA Heat",
+             "awayTeamScore": 97,
+             "homeTeamScore": 110,
+             "gameWinner" : "HOME", // can be 'HOME', 'AWAY', or 'TIE'
+             "gameCompletionDateTime": Timestamp(date: Date()),
+             "overUnderBetResults": [
+                "player1": [
+                    "bet": "OVER 225.5",
+                    "result": "LOST"
+                ],
+                "player2": [
+                    "bet": "UNDER 225.5",
+                    "result": "WON"
+                ]
+             ],
+             "spreadBetResults": [
+                "player1": [
+                    "bet": "MIA -7",
+                    "result": "WON"
+                ],
+                "player2": [
+                    "bet": "HOU +7",
+                    "result": "LOST"
+                ]
+             ]
+            ],
+            
+            // game 2
+            
+            ["awayTeam": "GS Warriors",
+             "homeTeam": "NY Knicks",
+             "awayTeamScore": 115,
+             "homeTeamScore": 108,
+             "gameWinner" : "HOME", // can be 'HOME', 'AWAY', or 'TIE'
+             "gameCompletionDateTime": Timestamp(date: Date()),
+             "spreadBetResults": [
+                "player1": [
+                    "bet": "GS -3.5",
+                    "result": "WON"
+                ],
+                "player2": [
+                    "bet": "NY +3.5",
+                    "result": "LOST"
+                ]
+             ]
+            ],
+            
+            // game 3
+            
+            ["awayTeam": "LA Clippers",
+             "homeTeam": "UT Jazz",
+             "awayTeamScore": 110,
+             "homeTeamScore": 116,
+             "gameWinner" : "HOME", // can be 'HOME', 'AWAY', or 'TIE'
+             "gameCompletionDateTime": Timestamp(date: Date()),
+             "overUnderBetResults": [
+                "player1": [
+                    "bet": "OVER 220",
+                    "result": "WON"
+                ],
+                "player2": [
+                    "bet": "UNDER 220",
+                    "result": "LOST"
+                ]
+             ]
+            ],
+            
+            
+         ]
+        ]
+    ]
     
-    var dateFormatter: DateFormatter
     
     init() {
-        
-        dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d/yyyy h:mm a"
-        
-        getUpcomingContests()
+        getCompletedContests()
     }
     
-    func getUpcomingContests(){
+    func getCompletedContests(){
         
-        self.upcomingContests = [
+        self.completedContests = self.mockData.map { contest -> CompletedContest in
             
-            UpcomingContest(id: "fake123", opponent: "CodyShowstoppa", firstGameStartDateTime: "Today at 4pm", numBets: 10,
-                            
-                            games: [
-                                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
-                                UpcomingContestGame(homeTeam: "MIA Heat", awayTeam: "GS Warriors", gameStartDateTime: dateFormatter.date(from: "2/20/2021 7:30 PM")!, specialDayType: .Today, overUnderBet: "OVER 205.5"),
-                                UpcomingContestGame(homeTeam: "LA Lakers", awayTeam: "CHI Bulls", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, spreadBet: "CHI +7"),
-                                UpcomingContestGame(homeTeam: "POR Trail Blazers", awayTeam: "PHX Suns", gameStartDateTime: dateFormatter.date(from: "2/21/2021 11:30 AM")!, specialDayType: .Tomorrow, overUnderBet: "OVER 215.5", spreadBet: "POR -3.5"),
-                                UpcomingContestGame(homeTeam: "MEM Grizzlies", awayTeam: "LA Clippers", gameStartDateTime: dateFormatter.date(from: "2/22/2021 2:15 PM")!, specialDayType: .None, spreadBet: "LA +2.5")
-                            
-                            ]
-                            
-                            ),
-            UpcomingContest(id: "test123", opponent: "Gerald456", firstGameStartDateTime: "Today at 4pm", numBets: 10,
-                            games: [
-                                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
-                                UpcomingContestGame(homeTeam: "MIA Heat", awayTeam: "GS Warriors", gameStartDateTime: dateFormatter.date(from: "2/20/2021 7:30 PM")!, specialDayType: .Today, overUnderBet: "OVER 205.5"),
-                                UpcomingContestGame(homeTeam: "LA Lakers", awayTeam: "CHI Bulls", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, spreadBet: "CHI +7"),
-                                UpcomingContestGame(homeTeam: "POR Trail Blazers", awayTeam: "PHX Suns", gameStartDateTime: dateFormatter.date(from: "2/21/2021 11:30 AM")!, specialDayType: .Tomorrow, overUnderBet: "OVER 215.5", spreadBet: "POR -3.5"),
-                                UpcomingContestGame(homeTeam: "MEM Grizzlies", awayTeam: "LA Clippers", gameStartDateTime: dateFormatter.date(from: "2/22/2021 2:15 PM")!, specialDayType: .None, spreadBet: "LA +2.5")
-                            
-                            ]),
+            CompletedContest(data: contest, playerUid: "testToddUid")!
             
-            UpcomingContest(id: "dkfkdjkj", opponent: "Sam7890", firstGameStartDateTime: "Today at 5pm", numBets: 10,
-                            games: [
-                                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
-                                UpcomingContestGame(homeTeam: "MIA Heat", awayTeam: "GS Warriors", gameStartDateTime: dateFormatter.date(from: "2/20/2021 7:30 PM")!, specialDayType: .Today, overUnderBet: "OVER 205.5"),
-                                UpcomingContestGame(homeTeam: "LA Lakers", awayTeam: "CHI Bulls", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, spreadBet: "CHI +7"),
-                                UpcomingContestGame(homeTeam: "POR Trail Blazers", awayTeam: "PHX Suns", gameStartDateTime: dateFormatter.date(from: "2/21/2021 11:30 AM")!, specialDayType: .Tomorrow, overUnderBet: "OVER 215.5", spreadBet: "POR -3.5"),
-                                UpcomingContestGame(homeTeam: "MEM Grizzlies", awayTeam: "LA Clippers", gameStartDateTime: dateFormatter.date(from: "2/22/2021 2:15 PM")!, specialDayType: .None, spreadBet: "LA +2.5")
-                            
-                            ]),
-            UpcomingContest(id: "fsodkodko3", opponent: "Toddd4445", firstGameStartDateTime: "Today at 5:15pm", numBets: 10,
-                            games: [
-                                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
-                                UpcomingContestGame(homeTeam: "MIA Heat", awayTeam: "GS Warriors", gameStartDateTime: dateFormatter.date(from: "2/20/2021 7:30 PM")!, specialDayType: .Today, overUnderBet: "OVER 205.5"),
-                                UpcomingContestGame(homeTeam: "LA Lakers", awayTeam: "CHI Bulls", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, spreadBet: "CHI +7"),
-                                UpcomingContestGame(homeTeam: "POR Trail Blazers", awayTeam: "PHX Suns", gameStartDateTime: dateFormatter.date(from: "2/21/2021 11:30 AM")!, specialDayType: .Tomorrow, overUnderBet: "OVER 215.5", spreadBet: "POR -3.5"),
-                                UpcomingContestGame(homeTeam: "MEM Grizzlies", awayTeam: "LA Clippers", gameStartDateTime: dateFormatter.date(from: "2/22/2021 2:15 PM")!, specialDayType: .None, spreadBet: "LA +2.5")
-                            
-                            ]),
-            UpcomingContest(id: "fa0130kfko", opponent: "Frank677", firstGameStartDateTime: "Today at 5:30pm", numBets: 10,
-                            games: [
-                                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
-                                UpcomingContestGame(homeTeam: "MIA Heat", awayTeam: "GS Warriors", gameStartDateTime: dateFormatter.date(from: "2/20/2021 7:30 PM")!, specialDayType: .Today, overUnderBet: "OVER 205.5"),
-                                UpcomingContestGame(homeTeam: "LA Lakers", awayTeam: "CHI Bulls", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, spreadBet: "CHI +7"),
-                                UpcomingContestGame(homeTeam: "POR Trail Blazers", awayTeam: "PHX Suns", gameStartDateTime: dateFormatter.date(from: "2/21/2021 11:30 AM")!, specialDayType: .Tomorrow, overUnderBet: "OVER 215.5", spreadBet: "POR -3.5"),
-                                UpcomingContestGame(homeTeam: "MEM Grizzlies", awayTeam: "LA Clippers", gameStartDateTime: dateFormatter.date(from: "2/22/2021 2:15 PM")!, specialDayType: .None, spreadBet: "LA +2.5")
-                            
-                            ]),
-            UpcomingContest(id: "fofodkok", opponent: "Peter_78", firstGameStartDateTime: "Today at 8pm", numBets: 10,
-                            games: [
-                                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
-                                UpcomingContestGame(homeTeam: "MIA Heat", awayTeam: "GS Warriors", gameStartDateTime: dateFormatter.date(from: "2/20/2021 7:30 PM")!, specialDayType: .Today, overUnderBet: "OVER 205.5"),
-                                UpcomingContestGame(homeTeam: "LA Lakers", awayTeam: "CHI Bulls", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, spreadBet: "CHI +7"),
-                                UpcomingContestGame(homeTeam: "POR Trail Blazers", awayTeam: "PHX Suns", gameStartDateTime: dateFormatter.date(from: "2/21/2021 11:30 AM")!, specialDayType: .Tomorrow, overUnderBet: "OVER 215.5", spreadBet: "POR -3.5"),
-                                UpcomingContestGame(homeTeam: "MEM Grizzlies", awayTeam: "LA Clippers", gameStartDateTime: dateFormatter.date(from: "2/22/2021 2:15 PM")!, specialDayType: .None, spreadBet: "LA +2.5")
-                            
-                            ]),
-            UpcomingContest(id: "dodkokok", opponent: "MattSmith2", firstGameStartDateTime: "Today at 8:45pm", numBets: 10,
-                            games: [
-                                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "CLE Cavaliers", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, overUnderBet: "OVER 225", spreadBet: "HOU -7"),
-                                UpcomingContestGame(homeTeam: "MIA Heat", awayTeam: "GS Warriors", gameStartDateTime: dateFormatter.date(from: "2/20/2021 7:30 PM")!, specialDayType: .Today, overUnderBet: "OVER 205.5"),
-                                UpcomingContestGame(homeTeam: "LA Lakers", awayTeam: "CHI Bulls", gameStartDateTime: dateFormatter.date(from: "2/20/2021 4:00 PM")!, specialDayType: .Today, spreadBet: "CHI +7"),
-                                UpcomingContestGame(homeTeam: "POR Trail Blazers", awayTeam: "PHX Suns", gameStartDateTime: dateFormatter.date(from: "2/21/2021 11:30 AM")!, specialDayType: .Tomorrow, overUnderBet: "OVER 215.5", spreadBet: "POR -3.5"),
-                                UpcomingContestGame(homeTeam: "MEM Grizzlies", awayTeam: "LA Clippers", gameStartDateTime: dateFormatter.date(from: "2/22/2021 2:15 PM")!, specialDayType: .None, spreadBet: "LA +2.5")
-                            
-                            ])
-        ]
+        }
     }
 }
-*/
+
+
+
+
+
+

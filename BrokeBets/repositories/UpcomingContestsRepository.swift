@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 
 protocol UpcomingContestsRepositoryProtocol {
@@ -27,19 +28,60 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
     var upcomingContestsPublished: Published<[UpcomingContest]> { _upcomingContests }
     var upcomingContestsPublisher: Published<[UpcomingContest]>.Publisher { $upcomingContests }
     
+    let mockData: [[String: Any]] = [
+        ["firstGameStartDateTime": Timestamp(date: Date()),
+         "player1_uid": "testToddUid",
+         "player1_uname": "todd123",
+         "player2_uid": "testOppUid",
+         "player2_uname": "testOpp",
+         "numBets": 3,
+         "games": [
+            
+                    // game 1
+                    ["awayTeam": "HOU Rockets",
+                     "homeTeam": "MIA Heat",
+                     "gameStartDateTime": Timestamp(date: Date()),
+                     "overUnderBet": [
+                            "player1": "OVER 225.5",
+                            "player2": "UNDER 225.5"
+                     ],
+                     "spreadBet": [
+                            "player1": "MIA -7",
+                            "player2": "HOU +7"
+                    ]
+                   ],
+                    
+                    // game 2
+                    ["awayTeam": "GS Warriors",
+                     "homeTeam": "NY Knicks",
+                     "gameStartDateTime": Timestamp(date: Date()),
+                     "spreadBet": [
+                            "player1": "GS -3.5",
+                            "player2": "NY +3.5"
+                     ]
+                    ]
+            
+                ]
+        ]
+    ]
+
     
-    var dateFormatter: DateFormatter
     
     init() {
-        
-        dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d/yyyy h:mm a"
-        
         getUpcomingContests()
     }
+   
     
     func getUpcomingContests(){
         
+        
+        self.upcomingContests = self.mockData.map { contest -> UpcomingContest in
+            
+            UpcomingContest(data: contest, playerUid: "testToddUid")!
+            
+        }
+        
+        /*
         self.upcomingContests = [
             
             UpcomingContest(id: "fake123", opponent: "CodyShowstoppa", firstGameStartDateTime: "Today at 4pm", numBets: 10,
@@ -110,5 +152,7 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
                             
                             ])
         ]
+ 
+    */
     }
 }

@@ -8,6 +8,28 @@
 import SwiftUI
 
 struct CompletedContestView: View {
+    
+    
+    private var completedContest: CompletedContest
+    private var accentColor: Color
+    private var boldStyle: Font.Weight
+    
+    init(completedContest: CompletedContest){
+        self.completedContest = completedContest
+        
+        switch(completedContest.result){
+            case .Won:
+                self.accentColor = .green
+                break
+            case .Lost:
+                self.accentColor = .red
+                break
+        default:
+                self.accentColor = Color.black.opacity(0.65)
+                break
+        }
+    }
+    
     var body: some View {
         
         NavigationLink(destination: Text("hello")
@@ -28,9 +50,9 @@ struct CompletedContestView: View {
                                 .padding(.bottom, 2)
                                 .padding(.leading, 5)
                             
-                            Text("Lost")
+                            Text(completedContest.result.rawValue)
                                 .font(.caption)
-                                .foregroundColor(Color.red)
+                                .foregroundColor(accentColor)
                                 .fontWeight(.bold)
                                 .padding(.bottom, 2)
                         }
@@ -61,11 +83,11 @@ struct CompletedContestView: View {
                         
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
-                        Text("1")
+                        Text("\(completedContest.userDraftedWins)")
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
-                        Text("2")
+                        Text("\(completedContest.opponentDraftedWins)")
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -78,11 +100,11 @@ struct CompletedContestView: View {
                         
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
-                        Text("0")
+                        Text("\(completedContest.userForcedWins)")
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
-                        Text("1")
+                        Text("\(completedContest.opponentForcedWins)")
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -95,14 +117,14 @@ struct CompletedContestView: View {
 
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
-                        Text("1")
+                        Text("\(completedContest.userTotalWins)")
                             .foregroundColor(.black)
-                            .fontWeight(.black)
+                            .fontWeight(completedContest.result == .Won ? .black : .regular)
                             .padding(.vertical, 6)
 
-                        Text("3")
+                        Text("\(completedContest.opponentTotalWins)")
                             .foregroundColor(.black)
-//                            .fontWeight(.black)
+                            .fontWeight(completedContest.result == .Won ? .regular: .black)
                             .padding(.vertical, 6)
 
                     }
@@ -153,7 +175,7 @@ struct CompletedContestView: View {
         .padding(.vertical, 8)
         .padding(.leading, 10)
         .frame(width: .infinity)
-        .overlay(CustomRoundedRect(tabColor: .red))
+        .overlay(CustomRoundedRect(tabColor: accentColor))
         .padding(.horizontal, 10)
     }
     
@@ -162,6 +184,12 @@ struct CompletedContestView: View {
 
 struct CompletedContestView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedContestView()
+        CompletedContestView(completedContest: CompletedContest(opponent: "CodyShowstoppa", numBets: 4, result: .Won, userScores: (total: 3, drafted: 2, forced: 1), oppScores: (total: 1, drafted: 1, forced: 0), completionDT: Date(), games: [
+        
+            CompletedContestGame(homeTeam: "HOU Rockets", awayTeam: "ORL Magic", htScore: 107, atScore: 117, completedDT: Date(), specialDayType: .Today, ouBet: "OVER 215.5", ouBetRes: .Won, spreadBet: "ORL -7", spreadBetRes: .Won, gameWinner: .AWAY)
+        ]
+        
+        
+        ))
     }
 }
