@@ -98,8 +98,8 @@ Todd Weidler - Created the sign in with apple login page, app icon, upcoming con
 - [Burndown Chart](https://docs.google.com/spreadsheets/d/1qTNv1RxZbqy0zse2pQRKRqvor_021Bmvm95DxrQVGNc/edit?usp=sharing)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
 - [System Architecture](https://github.com/drhollander/COP4331_Sample/blob/master/artifacts/architecture.md)
-- [Source Code](https://github.com/drhollander/COP4331_Sample/blob/master/project/readme.md)
-- Automated Tests
+- [Source Code](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBets)
+- [Automated Tests](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBetsTests/ModelTests)
 - [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
 - [Product Demonstration](https://vimeo.com/517961407)
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
@@ -112,6 +112,4 @@ JJ Parizeau - file management, firebase for completed contests user story [U033]
 Fabrizio Herrera - linked firebase to the upcoming contests tab [U034], contributed to manual tests
 
 Member 3 - main tasking
-
-**note**: Sprint 4 and onward will contain updates to your artifacts as appropriate for the current sprint, as well as continuous improvements to your software and updated product demos.
 
