@@ -2,7 +2,7 @@
 
 **1. Logging in to the BrokeBets app for the first time (U006, U009, U015)**
 ---
-| No.| Steps to Reproduce | Expected Behaviour |
+| No.| Steps to Reproduce | Expected Behavior |
 |--- |---                 |---                 |
 | 1 | Tap on the app icon and open the app to sign in for the first time | The login screen should be displayed. |
 | 2 | Check the colors design of the login screen. | The background should be sky blue, the BrokeBets logo should be displayed on the top 3/5ths of the screen, the "Sign in with Apple" button should be displayed on the bottom 2/5ths of the screen".
@@ -23,10 +23,31 @@
 
 **2. Creating your BrokeBets app username (U007)**
 ---
-| No.| Steps to Reproduce | Expected Behaviour |
-|--- |---                 |---                 |
+| No.| Steps to Reproduce | Expected Behavior |
+|--- |---                 |---                |
 | 1 | Sign in with Apple for the first time (steps explained in manual test case #1) | The "Create a Username" screen should appear. |
 | 2 | Check the design of the "Create a Username" screen. | <ul><li>At the top, there should be a rectangular, sky blue header with the app logo in the middle.</li><li>The rest of the background color should be off-white.</li><li>In the middle, there should be three things: the "Create a Username" title in black, bold letters; a rectangular input text field with circular corners and a black edge with the text "Enter a username" inside it; and bellow, a blue "Continue" button with white letters.</li></ul> |
 | 3 | Tap on the input text field, enter the username "john", and tap on "Continue". | A red text should appear right under the text field and it should read "Username must be at least 6 characters long". |
 | 4 | Tap on the input text field and attempt to enter "johndoe0123456789". | You should not be able to enter more than sixteen characters. You should only be allowed to enter up to "johndoe012345678". |
-| 5 | Tap on the input text field, enter the username "NBAhotshot2017", and tap on "Continue". | The username should be accepted and you should be directed to the contests page. |
+| 5 | Tap on the input text field and enter "toddw123". | You should see an error message in red under the input field that says "Username already taken". |
+| 6 | Tap on the input text field, enter the username "NBAhotshot2017", and tap on "Continue". | The username should be accepted and you should be directed to the contests page. |
+
+**3. Upcoming Contests tab retrieving the information stored in the database (U**
+---
+| No.| Steps to Reproduce | Expected Behavior |
+|--- |---                 |---                |
+| 1 | Log in to the app (details outlined in manual test #2) and tap on the leftmost tab at the bottom. | <ul><li>The tab selected should have a the outline of a trophy that is filled with the color black when selected.</li><li>You should be directed to the contests tab, evident by the title at the top in white letters with a sky blue background that says "Contests".</li></li>The leftmost button right under the title should say "Upcoming".</li></ul> |
+| 2 | Tap on the "Upcoming" tab. | <ul><li>This should direct you to the upcoming contests tab, which should have an off-white color and should display a rectangular entity. This entity should have a thin black border.</li><li>At the top left, inside the border, it should say "Opponent: testOpp".</li><li>At the right side, there should be the number of total bets as "Total bets: 3".</li><li>At the bottom, it should say "First game start: Today, 8:50 PM"</li></ul>|
+| 3 | Tap on the rectangle that contains the upcoming contest. | <ul><li>There should be a new title at the top called "Contest Betslip".</li><li>There should be a back button labeled "< Contests".</li><li>Bellow the header with the title and back button, there should be the opponent's and the number of bets, and both fields should have the same values as in the rectangular preview from step #2.</li><li>There should be two rectangles:<ul><li>Both should have the date at the top in bold blue letters that say "Today, 8:55 PM".</li><li>One should have the teams MIA Heat and HOU Rockets on the left, and "MIA -7" and "OVER 255.5" under bets on the right</li><li>The other should have the teams NY Knicks and GS Warriors on the left, and "GS -3.5" under bets on the right.</li></ul></li></ul>|
+| 4 | Go to the project database on Firebase. Tap on the "contests" collection, and then on the document called "document". Look for the "numBets: 3" field. Click on it and change the "3" to "9". Go back to the app. | This change should be reflected under "Total bets: ", which should now have a value of 9. Check that this happened. |
+| 5 | Tap on the "< Contests" button. | This should direct you to the upcoming contests tab from step #2 |
+  
+**4. Completed Contests tab retrieving the information stored in the database (U**
+---
+| No.| Steps to Reproduce | Expected Behavior |
+|--- |---                 |---                |
+| 1 | Log in to the app (details outlined in manual test #2) and tap on the leftmost tab at the bottom. | <ul><li>The tab selected should have a the outline of a trophy that is filled with the color black when selected.</li><li>You should be directed to the contests tab, evident by the title at the top in white letters with a sky blue background that says "Contests".</li></li>The rightmost button right under the title should say "Completed".</li></ul> |
+| 2 | Tap on the "Completed" tab. | <ul><li>This should direct you to the completed contests tab, which should have an off-white color and should display a rectangular entity. This entity should have a thin black border and a green line on the left.</li><li>At the top left, inside the border, it should say "Result: WON", with "WON" in green.</li><li>At the right side, there should be three fields called "Drafted, "Forced", and "Total".</li><li>On the left it should say "You" to represent you, and "user 2" to represent your opponent. There should be numerical values under each field for both you and your opponent (what numbers these are is not important, since they are hard-coded and aren't retrieved from any existing bet".</li><li>At the bottom, it should say "Total Bets: 8" on the left in black, and "Completed: Mar 20, 2021" on the right in blue.</li></ul>|
+| 3 | Tap on the rectangle that contains the completed contest. | <ul><li>There should be a new title at the top called "Contest Betslip".</li><li>There should be a back button labeled "< Contests".</li><li>Bellow the header with the title and back button, there should be the opponent's and the number of bets, and both fields should have the same values as in the rectangular preview from step #2.</li><li>There should be one rectangle:<ul><li>It should have the same date as the completed date from step #2.</li><li>It should show the teams "MIN Timberwolves" and "LA Lakers", with 10 and 11 as their values, respectively.</li></ul></li></ul>|
+| 4 | Go to the project database on Firebase. Tap on the "contests" collection, and then on the document called "ErT2UF8hhIX3DQbqMMUX". Look for the "numBets: 8" field. Click on it and change the "8" to "9". Go back to the app. | This change should give "Total bets: " a value of 9. Check that this happened. |
+| 5 | Tap on the "< Contests" button. | This should direct you to the completed contests tab from step #2 |
