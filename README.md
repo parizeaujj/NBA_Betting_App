@@ -100,6 +100,7 @@ Todd Weidler - Created the sign in with apple login page, app icon, upcoming con
 - [System Architecture](https://github.com/drhollander/COP4331_Sample/blob/master/artifacts/architecture.md)
 - [Source Code](https://github.com/drhollander/COP4331_Sample/blob/master/project/readme.md)
 - Automated Tests
+- [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
 - Product Demonstration
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 - [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
@@ -108,7 +109,9 @@ Todd Weidler - Created the sign in with apple login page, app icon, upcoming con
 
 JJ Parizeau - file management, firebase for completed contests user story [U033]
 
-Member 2 - main tasking
+Fabrizio Herrera - linked firebase to the upcoming contests tab [U034], contributed to manual tests
+
+Member 3 - main tasking
 
 **note**: Sprint 4 and onward will contain updates to your artifacts as appropriate for the current sprint, as well as continuous improvements to your software and updated product demos.
 
