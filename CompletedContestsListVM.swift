@@ -16,7 +16,7 @@ class CompletedContestsListVM: ObservableObject {
     private var cancellables: [AnyCancellable] = []
     
     
-    init(completedContestsRepo: CompletedContestsRepositoryProtocol = MockCompletedContestsRepository()){
+    init(completedContestsRepo: CompletedContestsRepositoryProtocol = CompletedContestsRepository()){
         
         self.completedContestsRepo = completedContestsRepo
         

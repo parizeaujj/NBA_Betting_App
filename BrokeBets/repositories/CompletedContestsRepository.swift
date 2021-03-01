@@ -19,6 +19,49 @@ protocol CompletedContestsRepositoryProtocol {
     
 }
 
+class CompletedContestsRepository: CompletedContestsRepositoryProtocol, ObservableObject {
+    
+    @Published var completedContests: [CompletedContest] = []
+    var completedContestsPublisher: Published<[CompletedContest]>.Publisher { $completedContests }
+    var completedContestsPublished: Published<[CompletedContest]> { _completedContests }
+        
+    private var db = Firestore.firestore()
+    
+    init() {
+        getCompletedContests()
+    }
+    
+    func getCompletedContests() {
+        
+        //TODO: Replace "testUID" with variable for user's UID
+        db.collection("contests")
+            .whereField("contestStatus", isEqualTo: "completed")
+            .whereField("players", arrayContains: "testUID")
+            .addSnapshotListener { (querySnapshot, error) in
+                
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            var contests: [CompletedContest] = []
+            
+            // Loops through each upcoming contest from firebase
+            //TODO: Replace "testUID" with variable for user's UID
+            for document in documents{
+                guard let contest = CompletedContest(data: document.data(), playerUid: "testUID") else {
+                    print("Issue getting contest")
+                    return
+                }
+                
+                contests.append(contest)
+            }
+            
+            // Updates the publisher to the new values
+            self.completedContests = contests
+        }
+    }
+}
 
 // MOCK
 class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, ObservableObject {
