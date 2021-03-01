@@ -31,7 +31,7 @@ The components consists of 3 containers: the mobile application, firebase, and t
 
 # Code Design
 
-![](/artifacts/classDiagram_BrokeBets.jpg)
+![](/artifacts/Class_Diagram.jpg)
 
 Class Diagram Description
 ---

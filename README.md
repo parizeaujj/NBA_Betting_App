@@ -101,7 +101,7 @@ Todd Weidler - Created the sign in with apple login page, app icon, upcoming con
 - [Source Code](https://github.com/drhollander/COP4331_Sample/blob/master/project/readme.md)
 - Automated Tests
 - [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
-- Product Demonstration
+- [Product Demonstration](https://vimeo.com/517961407)
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 - [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
 
