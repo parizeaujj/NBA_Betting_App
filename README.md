@@ -97,7 +97,7 @@ Todd Weidler - Created the sign in with apple login page, app icon, upcoming con
 - [Trello Board](https://trello.com/b/5Ppmtzr9/nbaproject) (Backlogs and Requirements)
 - [Burndown Chart](https://docs.google.com/spreadsheets/d/1qTNv1RxZbqy0zse2pQRKRqvor_021Bmvm95DxrQVGNc/edit?usp=sharing)
 - [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
-- [System Architecture](https://github.com/drhollander/COP4331_Sample/blob/master/artifacts/architecture.md)
+- [System Architecture](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/architecture.md)
 - [Source Code](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBets)
 - [Automated Tests](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBetsTests/ModelTests)
 - [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
