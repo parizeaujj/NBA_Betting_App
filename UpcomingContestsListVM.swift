@@ -15,7 +15,7 @@ class UpcomingContestsListVM: ObservableObject {
     
     private var cancellables: [AnyCancellable] = []
     
-    init(upcomingContestsRepo: UpcomingContestsRepositoryProtocol = MockUpcomingContestsRepository()){
+    init(upcomingContestsRepo: UpcomingContestsRepositoryProtocol = UpcomingContestsRepository()){
         
         self.upcomingContestsRepo = upcomingContestsRepo
         
