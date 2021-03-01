@@ -111,5 +111,6 @@ JJ Parizeau - file management, firebase for completed contests user story [U033]
 
 Fabrizio Herrera - linked firebase to the upcoming contests tab [U034], contributed to manual tests
 
-Member 3 - main tasking
+Todd Weidler - username screen to ensure unique usernames [U006], completed contests screen [U032]
+
 
