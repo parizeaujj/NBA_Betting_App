@@ -21,11 +21,11 @@ struct CustomRoundedRect: View {
             
             Rectangle()
                 .fill(tabColor)
-                .frame(width: 10, height: .infinity, alignment: .leading)
+                .frame(width: 10, alignment: .leading)
                
             RoundedRectangle(cornerRadius: 5)
                 .stroke(Color.black.opacity(0.65), lineWidth: 1.2)
-                .frame(width: .infinity, height: .infinity, alignment: .center)
+                .frame(alignment: .center)
         }
         .clipShape(
             RoundedRectangle(cornerRadius: 5)

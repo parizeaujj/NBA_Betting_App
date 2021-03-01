@@ -36,6 +36,8 @@ struct UpcomingContestsListView : View {
 
 struct UpcomingContestsListView_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingContestsListView()
+        UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: MockUpcomingContestsRepository()
+        )
+        ).environmentObject(UserScreenInfo(.regular))
     }
 }

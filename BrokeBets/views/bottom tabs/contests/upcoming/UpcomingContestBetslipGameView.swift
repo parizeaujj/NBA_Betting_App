@@ -92,22 +92,33 @@ struct UpcomingContestGameView: View {
         }
         .frame(height: 120)
     }
+    
 }
 
+
+
+
+
+//struct UpcomingContestGameView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UpcomingContestGameView(game:
+//                                    UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "MIA Heat", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225.5", spreadBet: "MIA -7"))
+//    }
+//}
 
 
 
 
 struct UpcomingContestGameView_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingContestGameView(game:
-                                    UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "MIA Heat", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225.5", spreadBet: "MIA -7"))
+        
+        if let games = MockUpcomingContestsRepository().mockData[0]["games"] as? [[String: Any]]{
+            UpcomingContestGameView(game:
+                                        UpcomingContestGame(game: games[0], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
+            )
+        }
     }
 }
-
-
-
-
 
 
 

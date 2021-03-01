@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct CompletedContestsListView: View {
     
     @ObservedObject var viewModel: CompletedContestsListVM
@@ -14,7 +16,6 @@ struct CompletedContestsListView: View {
     init(viewModel: CompletedContestsListVM = CompletedContestsListVM()){
         self.viewModel = viewModel
     }
-    
     
     var body: some View {
         
@@ -26,7 +27,7 @@ struct CompletedContestsListView: View {
                     CompletedContestView(completedContest: contest)
                         
                     }
-                    .buttonStyle(PlainButtonStyle())
+//                    .buttonStyle(PlainButtonStyle())
             }
         }
     }
@@ -34,6 +35,7 @@ struct CompletedContestsListView: View {
 
 struct CompletedContestsListView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedContestsListView()
+        CompletedContestsListView(viewModel: CompletedContestsListVM(completedContestsRepo: MockCompletedContestsRepository())
+        ).environmentObject(UserScreenInfo(.regular))
     }
 }

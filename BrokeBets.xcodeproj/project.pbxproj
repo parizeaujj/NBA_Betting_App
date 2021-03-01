@@ -49,6 +49,8 @@
 		E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */; };
 		E3C9688525DD90680097963E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688425DD90680097963E /* String+Extensions.swift */; };
 		E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */; };
+		E3D8E3E225EC069000A3A88E /* CompletedContestGamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */; };
+		E3D8E3E725EC070700A3A88E /* CompletedContestGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleButton.swift; sourceTree = "<group>"; };
 		E3C9688425DD90680097963E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestView.swift; sourceTree = "<group>"; };
+		E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGamesListView.swift; sourceTree = "<group>"; };
+		E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGameView.swift; sourceTree = "<group>"; };
 		E57D43A721104E5D54A2B9C1 /* Pods-BrokeBets-BrokeBetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,8 +182,10 @@
 		E3292EB525E5731E007189EC /* completed */ = {
 			isa = PBXGroup;
 			children = (
-				E3292EBB25E57E27007189EC /* CompletedContestView.swift */,
 				E3997E2D25EACCFD00530C26 /* CompletedContestsListView.swift */,
+				E3292EBB25E57E27007189EC /* CompletedContestView.swift */,
+				E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */,
+				E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */,
 			);
 			path = completed;
 			sourceTree = "<group>";
@@ -343,8 +349,8 @@
 			children = (
 				E38B7FDD25D82BE5008D8399 /* UpcomingContestsListView.swift */,
 				E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */,
-				E343348825DDC578004027C3 /* UpcomingContestBetslipGameView.swift */,
 				E3BA0EF425E048A900D9C041 /* UpcomingContestGamesListView.swift */,
+				E343348825DDC578004027C3 /* UpcomingContestBetslipGameView.swift */,
 			);
 			path = upcoming;
 			sourceTree = "<group>";
@@ -658,6 +664,7 @@
 			files = (
 				E3292ED825E6E129007189EC /* CreateUsernameVM.swift in Sources */,
 				E394BDFB25CDD434002C89B9 /* ContentView.swift in Sources */,
+				E3D8E3E225EC069000A3A88E /* CompletedContestGamesListView.swift in Sources */,
 				E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */,
 				E3BA0F1C25E154C100D9C041 /* UpcomingContestGame.swift in Sources */,
 				E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */,
@@ -682,6 +689,7 @@
 				E3B621F125DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift in Sources */,
 				E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */,
 				E3B621E125DEEBBD00B3ACE3 /* UserService.swift in Sources */,
+				E3D8E3E725EC070700A3A88E /* CompletedContestGameView.swift in Sources */,
 				E3BA0F0C25E153C400D9C041 /* UpcomingContestsRepository.swift in Sources */,
 				E3B621E925DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift in Sources */,
 				E3292EB725E57707007189EC /* CustomRoundedRect.swift in Sources */,

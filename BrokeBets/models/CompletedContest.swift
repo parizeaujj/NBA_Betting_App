@@ -64,7 +64,7 @@ struct CompletedContest : Codable, Identifiable {
               let player2_forced = data["player2_forced"] as? Int,
               let player1_drafted = data["player1_drafted"] as? Int,
               let player2_drafted = data["player2_drafted"] as? Int,
-              let playerResults = data["player_results"] as? [String: String],
+              let playerResults = data["contestResults"] as? [String: String],
               let contestCompletionDateTime = data["completionDateTime"] as? Timestamp,
               let numBets = data["numBets"] as? Int,
               let games = data["games"] as? [[String: Any]]

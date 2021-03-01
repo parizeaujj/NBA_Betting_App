@@ -113,7 +113,7 @@ struct CompletedContestGame: Codable, Identifiable {
         
         
         // process the results of the spread bet for the game, if that bet exists
-        if let spreadBetResults = game["overUnderBetResults"] as? [String: [String: String]]{
+        if let spreadBetResults = game["spreadBetResults"] as? [String: [String: String]]{
            
             guard let userResults = spreadBetResults[playerLookupPrefix] else {
                 return nil

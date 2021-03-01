@@ -33,9 +33,10 @@ struct Tabs<Label: View>: View {
         let isSelected = index == selection
         
         return Button(action: {
-            withAnimation {
-                self.selection = index
-            }
+//            withAnimation {
+//                self.selection = index
+//            }
+            self.selection = index
         }) {
             label(title, isSelected)
                 .overlay(Rectangle()

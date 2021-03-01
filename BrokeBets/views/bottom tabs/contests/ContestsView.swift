@@ -39,7 +39,7 @@ struct ContestsView: View {
                     Text("In Progress")
                 }
                 else if(selectedTab == 2){
-                    Text("Completed")
+                    CompletedContestsListView()
                 }
                 else{
                     UpcomingContestsListView()
@@ -80,5 +80,6 @@ struct ContestsView: View {
 struct ContestsView_Previews: PreviewProvider {
     static var previews: some View {
         ContestsView()
+            .environmentObject(UserScreenInfo(.regular))
     }
 }

@@ -28,5 +28,6 @@ struct MainAppView: View {
 struct MainAppView_Previews: PreviewProvider {
     static var previews: some View {
         MainAppView()
+            .environmentObject(UserScreenInfo(.regular))
     }
 }

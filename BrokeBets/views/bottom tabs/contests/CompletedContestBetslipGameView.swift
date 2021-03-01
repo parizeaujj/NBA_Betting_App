@@ -23,7 +23,8 @@ struct CompletedContestBetslipGameView: View {
             
                         HStack{
                             Text("Completed: Jan 13th, 2021")
-                                .font(.subheadline)
+//                                .font(.subheadline)
+                                .font(.caption)
                                 .foregroundColor(Color(red: 0, green: 38/255, blue: 77/255))
                                 .fontWeight(.semibold)
                                 .padding(.leading)
@@ -36,34 +37,41 @@ struct CompletedContestBetslipGameView: View {
 
                 HStack(spacing: 0){
                     HStack{
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text("HOU Rockets")
+//                                .font(.caption)
                                 .padding(.vertical, 5)
                             Text("CLE Cavaliers")
+//                                .font(.caption)
                                 .padding(.vertical, 5)
+//                            Text("MIN Timberwolves")
+//                                .padding(.vertical, 5)
                         }
-                        .padding(.leading, 15)
+                        .padding(.leading, 15) // 15, 10
                         
                         Spacer()
                         
                         VStack(alignment: HorizontalAlignment.trailing) {
                             Text("101")
-                                .fontWeight(.bold)
+//                                .font(.caption)
+                                
+                                .fontWeight(.black)
                                 .padding(.vertical, 5)
                                 
                             
                             Text("83")
+//                                .font(.caption)
                                 .padding(.vertical, 5)
-                        }
+                        }.padding(.trailing, 20) // 20, 10
 
-                        Spacer()
+//                        Spacer()
                 
                     }
                     .padding(.leading, 5)
                     .padding(.top, 5)
                     
                 
-                    Spacer()
+//                    Spacer()
                                         
                     Rectangle().frame(width: 1.5, height: nil, alignment: .leading).foregroundColor(Color.gray)
                     
@@ -73,7 +81,7 @@ struct CompletedContestBetslipGameView: View {
                          
                             Text("Bets")
                                 .font(.caption)
-                                .padding(.horizontal, 20)
+                                .padding(.horizontal, 20) // 20 , 30
                                 .padding(.vertical, 4)
                                 .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color.gray), alignment: .bottom)
                                     
@@ -104,7 +112,7 @@ struct CompletedContestBetslipGameView: View {
                          
                             Text("Results")
                                 .font(.caption)
-                                .padding(.horizontal, 10)
+                                .padding(.horizontal, 10) // 10, 20
                                 .padding(.vertical, 4)
                                 .overlay(Rectangle().frame(width: nil, height: 1, alignment: .bottom).foregroundColor(Color.gray), alignment: .bottom)
                                     
@@ -126,7 +134,7 @@ struct CompletedContestBetslipGameView: View {
                             
                         }.padding(.bottom, 2)
                         
-                        
+                
                         
                     }
                     .padding(1)
@@ -139,7 +147,7 @@ struct CompletedContestBetslipGameView: View {
                 
             }
             
-        }.frame(width: UIScreen.main.bounds.width - 50, height: 120)
+        }.frame(width: UIScreen.main.bounds.width - 20, height: 120)
         
         
 

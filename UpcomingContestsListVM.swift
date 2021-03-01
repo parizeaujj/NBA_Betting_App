@@ -11,11 +11,14 @@ class UpcomingContestsListVM: ObservableObject {
     
     @Published var upcomingContests: [UpcomingContest] = []
     
-    private var upcomingContestsRepo: UpcomingContestsRepositoryProtocol = MockUpcomingContestsRepository()
+    private var upcomingContestsRepo: UpcomingContestsRepositoryProtocol
     
     private var cancellables: [AnyCancellable] = []
     
-    init(){
+    init(upcomingContestsRepo: UpcomingContestsRepositoryProtocol = MockUpcomingContestsRepository()){
+        
+        self.upcomingContestsRepo = upcomingContestsRepo
+        
         // setups up subscriber that listens for changes to the upcoming contests that are stored in 'upcomingContestsRepo'
         upcomingContestsRepo.upcomingContestsPublisher
             .assign(to: \.upcomingContests, on: self)

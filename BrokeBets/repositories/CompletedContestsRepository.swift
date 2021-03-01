@@ -55,11 +55,11 @@ class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, Obse
              "gameCompletionDateTime": Timestamp(date: Date()),
              "overUnderBetResults": [
                 "player1": [
-                    "bet": "OVER 225.5",
+                    "bet": "UNDER 225.5",
                     "result": "LOST"
                 ],
                 "player2": [
-                    "bet": "UNDER 225.5",
+                    "bet": "OVER 225.5",
                     "result": "WON"
                 ]
              ],

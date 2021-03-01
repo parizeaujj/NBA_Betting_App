@@ -1,17 +1,16 @@
 //
-//  UpcomingContestBetslip.swift
+//  CompletedContestGamesListView.swift
 //  BrokeBets
 //
-//  Created by Todd Weidler on 2/19/21.
+//  Created by Todd Weidler on 2/28/21.
 //
 
 import SwiftUI
 
 
-struct UpcomingContestGamesListView : View {
+struct CompletedContestGamesListView: View {
     
-
-    var contest: UpcomingContest
+    var contest: CompletedContest
     
     var body: some View {
         
@@ -50,7 +49,8 @@ struct UpcomingContestGamesListView : View {
 
                     ForEach(contest.games) { game in
 
-                        UpcomingContestGameView(game: game)
+                        
+                       CompletedContestGameView(game: game)
                         
                     }.padding(.vertical, 4)
                     .padding(.horizontal, 10)
@@ -63,32 +63,11 @@ struct UpcomingContestGamesListView : View {
     }
 }
 
-//struct UpcomingContestGamesListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UpcomingContestGamesListView(
-//            contest: UpcomingContest(opponent: "CodyShowstoppa", firstGameStartDateTime: Date(), numBets: 3, games: [
-//
-//                UpcomingContestGame(homeTeam: "HOU Rockets", awayTeam: "MIA Heat", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "OVER 225.5", spreadBet: "MIA -7"),
-//                UpcomingContestGame(homeTeam: "NY Knicks", awayTeam: "GS Warriors", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "UNDER 215.5", spreadBet: "GS +3.5")
-//
-//            ])
-//        )
-//
-//
-//
-//
-//
-//    }
-//}
-
-
-
-struct UpcomingContestGamesListView_Previews: PreviewProvider {
+struct CompletedContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingContestGamesListView(
-            contest: UpcomingContest(data: MockUpcomingContestsRepository().mockData[0], playerUid: "testToddUid")!
-        )
+        CompletedContestGamesListView(contest: CompletedContest(data: MockCompletedContestsRepository().mockData[0], playerUid: "testToddUid")!
+        ).environmentObject(UserScreenInfo(.regular))
     }
 }
-
-
+ 
+ 
