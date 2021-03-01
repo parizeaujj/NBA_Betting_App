@@ -51,6 +51,7 @@
 		E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */; };
 		E3D8E3E225EC069000A3A88E /* CompletedContestGamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */; };
 		E3D8E3E725EC070700A3A88E /* CompletedContestGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */; };
+		E3E43CAD25EC6A0C00226BBE /* DateFormatStringUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestView.swift; sourceTree = "<group>"; };
 		E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGamesListView.swift; sourceTree = "<group>"; };
 		E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGameView.swift; sourceTree = "<group>"; };
+		E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatStringUnitTests.swift; sourceTree = "<group>"; };
 		E57D43A721104E5D54A2B9C1 /* Pods-BrokeBets-BrokeBetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 		E394BE0925CDD435002C89B9 /* BrokeBetsTests */ = {
 			isa = PBXGroup;
 			children = (
+				E3E43CAB25EC69CA00226BBE /* ModelTests */,
 				E394BE0A25CDD435002C89B9 /* BrokeBetsTests.swift */,
 				E394BE0C25CDD435002C89B9 /* Info.plist */,
 			);
@@ -384,6 +387,14 @@
 				E3292ECD25E5BC88007189EC /* CompletedContestGame.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		E3E43CAB25EC69CA00226BBE /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */,
+			);
+			path = ModelTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -704,6 +715,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BE0B25CDD435002C89B9 /* BrokeBetsTests.swift in Sources */,
+				E3E43CAD25EC6A0C00226BBE /* DateFormatStringUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

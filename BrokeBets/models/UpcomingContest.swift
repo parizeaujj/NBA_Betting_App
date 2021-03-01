@@ -157,18 +157,6 @@ extension Date {
             df.dateFormat = "MMM d, yyyy"
             return  df.string(from: self)
         }
-        
-        
-        
-//        if(specialDayType != .None){
-//            df.dateFormat = "h:mm a"
-//           return specialDayType.rawValue + ", " + df.string(from: self)
-//        }
-//        else{
-//            df.dateFormat = "E, MMM d, h:mm a"
-//            return  df.string(from: self)
-//        }
-        
     }
 }
 
