@@ -7,41 +7,104 @@
 
 import SwiftUI
 
-
-class CreateContestViewModel: ObservableObject {
+class OpponentSearchVM: ObservableObject {
     
+    var currentSelectedUsername: String? = nil
+    var setOpponentSelection: (String?) -> Void
     
-    
-    
+    init(currentSelectedUsername: String?, setOpponentSelection: @escaping (String?) -> Void){
+        self.currentSelectedUsername = currentSelectedUsername
+        self.setOpponentSelection = setOpponentSelection
+    }
 }
-// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+class CreateContestVM: ObservableObject {
+    
+    @Published var selectedOpponentUsername: String? = nil
+    @Published var isSearchScreenActive = false
+        
+    
+    init(){
+        
+        
+    }
+    
+    func setSelectedUsername(username: String?){
+        self.selectedOpponentUsername = username
+        
+        // if they simply deselected a username they previously selected then dont automatically pop them to root view
+        if username != nil {
+            // pops to root
+            self.isSearchScreenActive = false
+        }
+    }
+    
+    
+    func sendContestInvitation(){
+        
+        
+        
+        
+    }
+}
+
 
 struct CreateContestView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    
+    @StateObject var createContestVM = CreateContestVM()
+    
     @State private var selectedNumRounds = 5
-    @State private var selectedHours = 12
+    //    @State private var selectedHours = 12
     
     let numRoundsOptions = [Int](1...10)
-//    let options = ["1 hour", "4 hours", "8 hours", "12 hours", "1 day", "2 days", "3 days", "1 week", "Never"]
+    //    let options = ["1 hour", "4 hours", "8 hours", "12 hours", "1 day", "2 days", "3 days", "1 week", "Never"]
     
     @State var isDraftRoundsOpen = false
-    @State var isExpirationOpen = false
+    //    @State var isExpirationOpen = false
     
     var body: some View {
-    
+        
         NavigationView{
-            VStack{
-                Form {
-                    Section {
+            
+            ZStack{
+                
+                Color.gray.opacity(0.2)
+                    .edgesIgnoringSafeArea(.bottom)
+                VStack{
+                    
+                    VStack{
                         HStack{
                             Text("Opponent:")
+                            
                             Spacer()
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                Text("Choose Opponent")
-                            })
+                            
+                            NavigationLink(
+                                destination: DetailTestView(opponentSearchVM: OpponentSearchVM(currentSelectedUsername: createContestVM.selectedOpponentUsername, setOpponentSelection: { username in
+                                        createContestVM.setSelectedUsername(username: username)
+                                    }
+                                )
+                                ),
+                                isActive: $createContestVM.isSearchScreenActive,
+                                label: {
+                                    
+                                    if let username = createContestVM.selectedOpponentUsername {
+                                        
+                                        ChosenOpponentChip(username: username)
+                                    }
+                                    else{
+                                        Text("Choose Opponent")
+                                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                    }
+                                
+                                    
+                                })
                         }
+                        .padding(.vertical, 5)
+                        
+                        Divider()
                         
                         HStack{
                             Button(action: {
@@ -60,6 +123,7 @@ struct CreateContestView: View {
                                 }
                             })
                         }
+                        .padding(.vertical, 5)
                         
                         if(isDraftRoundsOpen){
                             Picker("", selection: $selectedNumRounds) {
@@ -69,49 +133,35 @@ struct CreateContestView: View {
                             }
                             .pickerStyle(WheelPickerStyle())
                         }
-//
-//                        HStack{
-//                            Button(action: {
-//                                withAnimation{
-//                                    isExpirationOpen.toggle()
-//                                }
-//                            }, label: {
-//                                HStack{
-//                                    Text("Invitation Experation:")
-//                                        .foregroundColor(.black)
-//                                    Spacer()
-//                                    Text("\(selectedHours) hours")
-//                                        .foregroundColor(isExpirationOpen ? .blue : .black)
-//                                }
-//                            })
-//                        }
-//
-//                        if(isExpirationOpen){
-//                            Picker("", selection: $selectedHours) {
-//                                ForEach(options, id: \.self) {
-//                                    Text(String($0))
-//                                }
-//                            }
-//                            .pickerStyle(WheelPickerStyle())
-//                        }
-                        
                     }
+                    .padding()
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding()
+                    .padding(.top, 25)
+                    
+                    
+                    
+                    Spacer()
+                    
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        Text("Send Contest Invitation")
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding([.vertical], 15)
+                            .background(Color(UIColor.systemBlue).opacity(false ? 0.4 : 1.0))
+                            .cornerRadius(25)
+                    })
+                    .padding(.bottom, 50)
+                    .padding(.horizontal, 45)
+                    
+                   
                 }
+            
+    
                 
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Text("Send Contest Invitation")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding([.vertical], 15)
-                        .background(Color(UIColor.systemBlue).opacity(false ? 0.4 : 1.0))
-                        .cornerRadius(25)
-                })
-                .padding(.bottom, 50)
-                .padding(.horizontal, 45)
-                
-                Spacer()
             }
             .navigationBarTitle("New Contest", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
@@ -120,165 +170,54 @@ struct CreateContestView: View {
                 Text("Cancel")
                     .foregroundColor(.white)
             }))
-        }
+           
+        }.accentColor(.white)
     }
 }
 
 
 
-struct CreateContestView2: View {
+struct DetailTestView: View {
     
-
-    @State var shouldDisableCancel = false
-
-    @State private var selectedNumRounds = 5
-    @State private var selectedHours = 12
-    
-    let strengths = [Int](1...10)
-    let hours = [Int](1...24)
-
-    @State var isDraftRoundsOpen = false
-    @State var isExpirationOpen = false
+    @ObservedObject var opponentSearchVM: OpponentSearchVM
     
     
     var body: some View {
         
-        VStack(alignment: .leading){
-
-            Text("Create New Contest")
-                .font(.largeTitle)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-            
-//            HStack(){
-//                Text("Draft Rounds:")
-//                    .font(.title2)
-//                Text("\(selectedNumRounds)")
-//                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-//                    .font(.title2)
-//                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-//                Spacer()
-//                Stepper("", value: $selectedNumRounds, in: 1...10)
-//                    .fixedSize()
-//
-//            }
-//            .padding(.top, 50)
-//
-//
-            
-            
-            HStack{
-                Text("Opponent:")
-//                            .font(.title2)
-                Spacer()
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Text("Choose Opponent")
-//                                .font(.title3)
-                })
-            }
-            
-            
-            VStack{
-            HStack{
-                Button(action: {
-                     
-                    withAnimation{
-                        isDraftRoundsOpen.toggle()
-//                                isExpirationOpen = false
-                    }
-                    
-                }, label: {
-                    HStack{
-                        Text("Draft Rounds:")
-                        Spacer()
-                        Text("\(selectedNumRounds)")
-                            .foregroundColor(isDraftRoundsOpen ? .blue : .black)
-                    }
-                }).buttonStyle(PlainButtonStyle())
-                
-            }
-            
-            if(isDraftRoundsOpen){
-                Picker("", selection: $selectedNumRounds) {
-                    ForEach(strengths, id: \.self) {
-                        Text(String($0))
-                    }
-                }
-                .pickerStyle(WheelPickerStyle())
-            }
-        }
-            .padding(.top, 25)
-               
-            VStack{
-                HStack{
-                    Button(action: {
+        VStack(spacing: 10){
+            Text("\(opponentSearchVM.currentSelectedUsername ?? "No username selected")")
                         
-                        
-                        withAnimation{
-                            
-//                                    isDraftRoundsOpen = false
-                            isExpirationOpen.toggle()
-                            
+            Button(action: {
                 
-                        }
-                    }, label: {
-                        HStack{
-                            Text("Invitation Experation:")
-                            Spacer()
-                            Text("\(selectedNumRounds) hours")
-                                .foregroundColor(isExpirationOpen ? .blue : .black)
-                        }
-                    }).buttonStyle(PlainButtonStyle())
-                    
-                }
+                opponentSearchVM.setOpponentSelection("Toddw123")
                 
-                if(isExpirationOpen){
-                    Picker("", selection: $selectedHours) {
-                        ForEach(hours, id: \.self) {
-                            Text(String($0))
-                        }
-                    }
-                    .pickerStyle(WheelPickerStyle())
-                }
-            }.padding(.top, 25)
-                
-            
-            
-            
-            
-            
-            HStack{
-                Text("Opponent:")
-                    .font(.title2)
-                Spacer()
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Text("Choose Opponent")
-                        .font(.title3)
-                })
-            }
-            .padding(.top, 25)
-            
-            Spacer()
-            
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                Text("Send Contest Invitation")
-                .foregroundColor(Color.white)
-                .font(.system(size: 20))
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding([.vertical], 15)
-                .background(Color(UIColor.systemBlue).opacity(true ? 0.4 : 1.0))
-                .cornerRadius(25)
+            }, label: {
+                Text("choose a username test")
+//                    .foregroundColor(.black)
             })
-            .padding(.bottom, 30)
-        }
-        .padding(.top, 50)
-        .padding(.horizontal)
+            
+            Button(action: {
+                
+                opponentSearchVM.setOpponentSelection("Cody123")
+                
+            }, label: {
+                Text("choose a different username test")
+//                    .foregroundColor(.black)
+            })
+            
+            Button(action: {
+                
+                opponentSearchVM.setOpponentSelection(nil)
+                
+            }, label: {
+                Text("deselect a username test")
+            })
+        }.accentColor(.blue)
     }
 }
 
 struct CreateContestView_Previews: PreviewProvider {
     static var previews: some View {
         CreateContestView()
-//        ContentView2()
     }
 }
