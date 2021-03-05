@@ -13,6 +13,7 @@
 		E30B1EF825DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
 		E30B1EF925DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
 		E30B1EFA25DB4243002297F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */; };
+		E30C2A7325ED99A0000A04CA /* TestBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C2A7225ED99A0000A04CA /* TestBottomSheet.swift */; };
 		E3292EB725E57707007189EC /* CustomRoundedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3292EB625E57707007189EC /* CustomRoundedRect.swift */; };
 		E3292EBC25E57E27007189EC /* CompletedContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3292EBB25E57E27007189EC /* CompletedContestView.swift */; };
 		E3292EC425E5BBDF007189EC /* CompletedContestsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3292EC325E5BBDF007189EC /* CompletedContestsRepository.swift */; };
@@ -52,6 +53,13 @@
 		E3D8E3E225EC069000A3A88E /* CompletedContestGamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */; };
 		E3D8E3E725EC070700A3A88E /* CompletedContestGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */; };
 		E3E43CAD25EC6A0C00226BBE /* DateFormatStringUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */; };
+		E3E5C71825F19F0800AAB992 /* InProgressGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E5C71725F19F0800AAB992 /* InProgressGameView.swift */; };
+		E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */; };
+		E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */; };
+		E3F52D6925F0352B009B10CE /* InProgressContestGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */; };
+		E3F52D6E25F057A2009B10CE /* LiveGameScoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6D25F057A2009B10CE /* LiveGameScoreboard.swift */; };
+		E3F52D7425F1329A009B10CE /* CreateContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D7325F1329A009B10CE /* CreateContestView.swift */; };
+		E3F52D7A25F18177009B10CE /* InProgressContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D7925F18177009B10CE /* InProgressContestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +89,7 @@
 		D8597B5732F19E9C927F860A /* Pods-BrokeBetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA770B23555B11C24054428D /* Pods_BrokeBets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30B1EF725DB4243002297F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E30C2A7225ED99A0000A04CA /* TestBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBottomSheet.swift; sourceTree = "<group>"; };
 		E3292EB625E57707007189EC /* CustomRoundedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedRect.swift; sourceTree = "<group>"; };
 		E3292EBB25E57E27007189EC /* CompletedContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestView.swift; sourceTree = "<group>"; };
 		E3292EC325E5BBDF007189EC /* CompletedContestsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestsRepository.swift; sourceTree = "<group>"; };
@@ -127,6 +136,13 @@
 		E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGamesListView.swift; sourceTree = "<group>"; };
 		E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGameView.swift; sourceTree = "<group>"; };
 		E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatStringUnitTests.swift; sourceTree = "<group>"; };
+		E3E5C71725F19F0800AAB992 /* InProgressGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressGameView.swift; sourceTree = "<group>"; };
+		E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContest.swift; sourceTree = "<group>"; };
+		E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestsRepository.swift; sourceTree = "<group>"; };
+		E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGame.swift; sourceTree = "<group>"; };
+		E3F52D6D25F057A2009B10CE /* LiveGameScoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveGameScoreboard.swift; sourceTree = "<group>"; };
+		E3F52D7325F1329A009B10CE /* CreateContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContestView.swift; sourceTree = "<group>"; };
+		E3F52D7925F18177009B10CE /* InProgressContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestView.swift; sourceTree = "<group>"; };
 		E57D43A721104E5D54A2B9C1 /* Pods-BrokeBets-BrokeBetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +211,7 @@
 		E38B7FDC25D82B72008D8399 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				E3F52D7225F1325B009B10CE /* create contest */,
 				E3B6221C25DF273A00B3ACE3 /* bottom tabs */,
 				E342063625DC6202000CCE7A /* LoginViewV2.swift */,
 				E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */,
@@ -202,6 +219,7 @@
 				E3C9685D25DD7D100097963E /* LoginView.swift */,
 				E3292ED225E6E0C7007189EC /* CreateUsernameView.swift */,
 				E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */,
+				E30C2A7225ED99A0000A04CA /* TestBottomSheet.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -297,6 +315,7 @@
 		E3B6221B25DF271C00B3ACE3 /* contests */ = {
 			isa = PBXGroup;
 			children = (
+				E3F52D7825F1815C009B10CE /* inProgress */,
 				E3292EB525E5731E007189EC /* completed */,
 				E3BA0EFF25E050FE00D9C041 /* upcoming */,
 				E38B7FD725D82B6A008D8399 /* ContestsView.swift */,
@@ -374,6 +393,7 @@
 			children = (
 				E3BA0F0B25E153C400D9C041 /* UpcomingContestsRepository.swift */,
 				E3292EC325E5BBDF007189EC /* CompletedContestsRepository.swift */,
+				E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -385,6 +405,9 @@
 				E3BA0F1B25E154C100D9C041 /* UpcomingContestGame.swift */,
 				E3292EC825E5BC74007189EC /* CompletedContest.swift */,
 				E3292ECD25E5BC88007189EC /* CompletedContestGame.swift */,
+				E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */,
+				E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */,
+				E3F52D6D25F057A2009B10CE /* LiveGameScoreboard.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -395,6 +418,23 @@
 				E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */,
 			);
 			path = ModelTests;
+			sourceTree = "<group>";
+		};
+		E3F52D7225F1325B009B10CE /* create contest */ = {
+			isa = PBXGroup;
+			children = (
+				E3F52D7325F1329A009B10CE /* CreateContestView.swift */,
+			);
+			path = "create contest";
+			sourceTree = "<group>";
+		};
+		E3F52D7825F1815C009B10CE /* inProgress */ = {
+			isa = PBXGroup;
+			children = (
+				E3F52D7925F18177009B10CE /* InProgressContestView.swift */,
+				E3E5C71725F19F0800AAB992 /* InProgressGameView.swift */,
+			);
+			path = inProgress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -675,6 +715,7 @@
 			files = (
 				E3292ED825E6E129007189EC /* CreateUsernameVM.swift in Sources */,
 				E394BDFB25CDD434002C89B9 /* ContentView.swift in Sources */,
+				E3F52D6925F0352B009B10CE /* InProgressContestGame.swift in Sources */,
 				E3D8E3E225EC069000A3A88E /* CompletedContestGamesListView.swift in Sources */,
 				E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */,
 				E3BA0F1C25E154C100D9C041 /* UpcomingContestGame.swift in Sources */,
@@ -684,8 +725,10 @@
 				E3997E3325EACD7A00530C26 /* CompletedContestsListVM.swift in Sources */,
 				E3BA0F0425E1537900D9C041 /* UpcomingContestsListVM.swift in Sources */,
 				E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */,
+				E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */,
 				E3292EC425E5BBDF007189EC /* CompletedContestsRepository.swift in Sources */,
 				E3292EC925E5BC74007189EC /* CompletedContest.swift in Sources */,
+				E3F52D7A25F18177009B10CE /* InProgressContestView.swift in Sources */,
 				E38B7FDE25D82BE5008D8399 /* UpcomingContestsListView.swift in Sources */,
 				E38B7FD825D82B6A008D8399 /* ContestsView.swift in Sources */,
 				E3292EBC25E57E27007189EC /* CompletedContestView.swift in Sources */,
@@ -694,13 +737,18 @@
 				E3292ED325E6E0C7007189EC /* CreateUsernameView.swift in Sources */,
 				E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */,
 				E394BDF925CDD434002C89B9 /* BrokeBetsApp.swift in Sources */,
+				E3E5C71825F19F0800AAB992 /* InProgressGameView.swift in Sources */,
 				E3292ECE25E5BC88007189EC /* CompletedContestGame.swift in Sources */,
 				E3C9688525DD90680097963E /* String+Extensions.swift in Sources */,
 				E343348925DDC578004027C3 /* UpcomingContestBetslipGameView.swift in Sources */,
 				E3B621F125DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift in Sources */,
+				E30C2A7325ED99A0000A04CA /* TestBottomSheet.swift in Sources */,
+				E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */,
 				E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */,
+				E3F52D6E25F057A2009B10CE /* LiveGameScoreboard.swift in Sources */,
 				E3B621E125DEEBBD00B3ACE3 /* UserService.swift in Sources */,
 				E3D8E3E725EC070700A3A88E /* CompletedContestGameView.swift in Sources */,
+				E3F52D7425F1329A009B10CE /* CreateContestView.swift in Sources */,
 				E3BA0F0C25E153C400D9C041 /* UpcomingContestsRepository.swift in Sources */,
 				E3B621E925DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift in Sources */,
 				E3292EB725E57707007189EC /* CustomRoundedRect.swift in Sources */,

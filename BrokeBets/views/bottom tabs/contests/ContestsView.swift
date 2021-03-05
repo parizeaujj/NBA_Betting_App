@@ -13,6 +13,8 @@ struct ContestsView: View {
     
     @State private var selectedTab = 0
     
+    @State private var isCreateContestSheetPresented = false
+    
     var body: some View {
         
         NavigationView {
@@ -48,6 +50,8 @@ struct ContestsView: View {
                 Spacer()
                 
             }
+            
+
             .background(Color.gray.opacity(0.05))
             .navigationBarTitle("Contests", displayMode: .inline)
             .navigationBarItems(trailing:
@@ -55,6 +59,7 @@ struct ContestsView: View {
                                     HStack{
                                         Button(action: {
                                             print("pressed")
+                                            isCreateContestSheetPresented = true
                                         }, label: {
                                             Image(systemName: "plus.square")
                                                 .font(Font.system(.title).bold())
@@ -72,7 +77,10 @@ struct ContestsView: View {
                                     }
             )
             
-        }.accentColor(.white)
+        }
+        .accentColor(.white)
+        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: CreateContestView.init)
+        
         
     }
 }

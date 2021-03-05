@@ -1,14 +1,13 @@
 //
-//  CompletedContestView.swift
+//  InProgressContestView.swift
 //  BrokeBets
 //
-//  Created by Todd Weidler on 2/23/21.
+//  Created by Todd Weidler on 3/4/21.
 //
 
 import SwiftUI
 
-
-struct CompletedContestViewStyleBag{
+struct InProgressContestViewStyleBag{
     
     let boxScoreColHPaddings: (drafted: CGFloat?, forced: CGFloat?, total: CGFloat?)
     let mainFontType: Font
@@ -25,40 +24,23 @@ struct CompletedContestViewStyleBag{
 }
 
 
-
-struct CompletedContestView: View {
+struct InProgressContestView: View {
     
     @EnvironmentObject var userScreenInfo: UserScreenInfo
     
-    private var completedContest: CompletedContest
-    private var accentColor: Color
-    private var userTotalBoldStyle: Font.Weight
-    private var oppTotalBoldStyle: Font.Weight
+    private var inProgressContest: InProgressContest
+    private var accentColor: Color = .blue
   
-    init(completedContest: CompletedContest){
-        self.completedContest = completedContest
-
-        switch(completedContest.result){
-            case .Won:
-                self.accentColor = .green
-                self.userTotalBoldStyle = .black
-                self.oppTotalBoldStyle = .regular
-                break
-            case .Lost:
-                self.accentColor = .red
-                self.userTotalBoldStyle = .regular
-                self.oppTotalBoldStyle = .black
-                break
-        default:
-                self.accentColor = Color.black.opacity(0.65)
-                self.userTotalBoldStyle = .regular
-                self.oppTotalBoldStyle = .regular
-        }
+  
+    init(inProgressContest: InProgressContest){
+        self.inProgressContest = inProgressContest
     }
     
     var body: some View {
         
-        NavigationLink(destination: CompletedContestGamesListView(contest: completedContest)
+        NavigationLink(destination:
+                        Text("helloo")
+//                        InProgressContestGamesListView(contest: inProgressContest)
                         .navigationBarTitle("Contest Betslip", displayMode: .inline))
         {
             
@@ -67,34 +49,18 @@ struct CompletedContestView: View {
                 HStack(alignment: .bottom, spacing: 0) {
                     
                     VStack(alignment: .leading, spacing: 0){
-                        
-                        HStack{
-                            Text("Result:")
-                                .font(.caption)
-                                .foregroundColor(Color.black)
-                                .fontWeight(.semibold)
-                                .padding(.bottom, 2)
-                                .padding(.leading, 5)
-                            
-                            Text(completedContest.result.rawValue)
-                                .font(.caption)
-                                .foregroundColor(accentColor)
-                                .fontWeight(.bold)
-                                .padding(.bottom, 2)
-                        }
-                        
-                        
+                                  
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
                         Text("You")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
                             .padding(.leading, 5)
                         
-                        Text("\(completedContest.opponent)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                        Text("\(inProgressContest.opponent)")
+                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
                             .fontWeight(.bold)
                             .foregroundColor(.blue)
                             .lineLimit(1)
@@ -110,17 +76,17 @@ struct CompletedContestView: View {
                             .foregroundColor(.black)
                             .font(.caption)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.completedContestViewStyleBag.boxScoreColHPaddings.drafted)
+                            .padding(.horizontal, userScreenInfo.inProgressContestViewStyleBag.boxScoreColHPaddings.drafted)
                         
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
-                        Text("\(completedContest.userDraftedWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                        Text("\(inProgressContest.userDraftedWins)")
+                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
-                        Text("\(completedContest.opponentDraftedWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                        Text("\(inProgressContest.opponentDraftedWins)")
+                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -132,20 +98,20 @@ struct CompletedContestView: View {
                             .foregroundColor(.black)
                             .font(.caption)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.completedContestViewStyleBag.boxScoreColHPaddings.forced)
+                            .padding(.horizontal, userScreenInfo.inProgressContestViewStyleBag.boxScoreColHPaddings.forced)
                             
                     
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                             
                     
                         
-                        Text("\(completedContest.userForcedWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                        Text("\(inProgressContest.userForcedWins)")
+                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
-                        Text("\(completedContest.opponentForcedWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                        Text("\(inProgressContest.opponentForcedWins)")
+                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -159,20 +125,18 @@ struct CompletedContestView: View {
                             .font(.caption)
                             .foregroundColor(.black)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.completedContestViewStyleBag.boxScoreColHPaddings.total)
+                            .padding(.horizontal, userScreenInfo.inProgressContestViewStyleBag.boxScoreColHPaddings.total)
 
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
-                        Text("\(completedContest.userTotalWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                        Text("\(inProgressContest.userTotalWins)")
+                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
-                            .fontWeight(completedContest.result == .Won ? .black : .regular)
                             .padding(.vertical, 6)
 
-                        Text("\(completedContest.opponentTotalWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                        Text("\(inProgressContest.opponentTotalWins)")
+                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
-                            .fontWeight(completedContest.result == .Won ? .regular: .black)
                             .padding(.vertical, 6)
 
                     }.fixedSize()
@@ -180,14 +144,14 @@ struct CompletedContestView: View {
                 
                 HStack {
                     HStack{
-                        Text("Total Bets:")
+                        Text("Bets Completed:")
                             .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
                             .padding(.top, 5)
                             .padding(.leading, 10)
                         
-                        Text("\(completedContest.numBets)")
+                        Text("\(inProgressContest.numBetsCompleted)")
                             .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
@@ -199,16 +163,16 @@ struct CompletedContestView: View {
                     
                     HStack{
                         HStack(spacing: 6){
-                            Text("Completed:")
+                            Text("Bets Remaining:")
                                 .font(.caption)
                                 .fontWeight(.semibold)
-                                .foregroundColor(Color(red: 0, green: 38/255, blue: 77/255))
+                                .foregroundColor(.black)
                                 .padding(.top, 5)
                             
-                            Text("\(completedContest.contestCompletionDateStr)")
+                            Text("\(inProgressContest.numBetsRemaining)")
                                 .font(.caption)
                                 .fontWeight(.semibold)
-                                .foregroundColor(Color(red: 0, green: 38/255, blue: 77/255))
+                                .foregroundColor(.black)
                                 .padding(.top, 5)
                                 .padding(.trailing, 10)
                         }
@@ -221,27 +185,22 @@ struct CompletedContestView: View {
         .overlay(CustomRoundedRect(tabColor: accentColor))
         .padding(.horizontal, 6)
     }
-    
-    
 }
 
-//struct CompletedContestView_Previews: PreviewProvider {
+
+//struct InProgressContestView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        CompletedContestView(completedContest: CompletedContest(opponent: "CodyShowstoppa", numBets: 4, result: .Won, userScores: (total: 3, drafted: 2, forced: 1), oppScores: (total: 1, drafted: 1, forced: 0), completionDT: Date(), games: [
-//
-//            CompletedContestGame(homeTeam: "HOU Rockets", awayTeam: "ORL Magic", htScore: 107, atScore: 117, completedDT: Date(), specialDayType: .Today, ouBet: "OVER 215.5", ouBetRes: .Won, spreadBet: "ORL -7", spreadBetRes: .Won, gameWinner: .AWAY)
-//        ]
-//
-//
-//        )).environmentObject(UserScreenInfo(.regular))
+//        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository().mockData[0], playerUid: "testToddUid")!
+//        )
+//        .environmentObject(UserScreenInfo(.regular))
 //    }
 //}
 
-
-struct CompletedContestView_Previews: PreviewProvider {
+struct InProgressContestView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedContestView(completedContest: CompletedContest(data: MockCompletedContestsRepository().mockData[0], playerUid: "testToddUid")!
+        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository().mockData["contest1"]!, playerUid: "testToddUid")!
         )
-        .environmentObject(UserScreenInfo(.regular))
+        .environmentObject(UserScreenInfo(.small))
     }
 }
+

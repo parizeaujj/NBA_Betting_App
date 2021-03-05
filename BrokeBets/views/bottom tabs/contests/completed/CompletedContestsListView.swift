@@ -27,7 +27,6 @@ struct CompletedContestsListView: View {
                     CompletedContestView(completedContest: contest)
                         
                     }
-//                    .buttonStyle(PlainButtonStyle())
             }
         }
     }

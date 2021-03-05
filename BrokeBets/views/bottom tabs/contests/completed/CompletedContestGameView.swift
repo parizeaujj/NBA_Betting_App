@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-
-
-
-
 struct CompletedContestGameViewStyleBag{
     
     let paddings: (leadingTeamsBox: CGFloat, trailingScoresBox: CGFloat)
@@ -43,6 +39,8 @@ struct CompletedContestGameView: View {
     var game: CompletedContestGame
     var ouResultColor: Color?
     var spreadResultColor: Color?
+    var homeTotalBoldStyle: Font.Weight
+    var awayTotalBoldStyle: Font.Weight
     
     init(game: CompletedContestGame){
         
@@ -62,6 +60,20 @@ struct CompletedContestGameView: View {
                 case .Won: self.spreadResultColor = .green
                 case .Push: self.spreadResultColor = Color.black.opacity(0.65)
             }
+        }
+        
+        switch(game.gameWinner){
+            case .HOME:
+                self.homeTotalBoldStyle = .black
+                self.awayTotalBoldStyle = .regular
+                break
+            case .AWAY:
+                self.homeTotalBoldStyle = .regular
+                self.awayTotalBoldStyle = .black
+                break
+            case .TIE:
+                self.homeTotalBoldStyle = .regular
+                self.awayTotalBoldStyle = .regular
         }
     }
     
@@ -95,7 +107,9 @@ struct CompletedContestGameView: View {
                         VStack(alignment: .leading) {
                             Text("MIN Timberwolves")
                                 .lineLimit(1)
+                                
                                 .font(userScreenInfo.completedContestGameViewStyleBag.mainFontType)
+                                
                                 .padding(.vertical, 5)
 
                             Text("\(game.awayTeam)")
@@ -110,12 +124,13 @@ struct CompletedContestGameView: View {
                         VStack(alignment: HorizontalAlignment.trailing) {
                             Text("\(game.homeTeamScore)")
                                 .font(userScreenInfo.completedContestGameViewStyleBag.mainFontType)
-                                .fontWeight(.black)
+                                .fontWeight(homeTotalBoldStyle)
                                 .padding(.vertical, 5)
                                 
                             
                             Text("\(game.awayTeamScore)")
                                 .font(userScreenInfo.completedContestGameViewStyleBag.mainFontType)
+                                .fontWeight(awayTotalBoldStyle)
                                 .padding(.vertical, 5)
                         }.padding(.trailing, userScreenInfo.completedContestGameViewStyleBag.paddings.trailingScoresBox) // 20, 10, 15
 
@@ -161,7 +176,6 @@ struct CompletedContestGameView: View {
                             .padding(.vertical, 5)
                             
                         }
-//                        .frame(minWidth: 87)
                         .frame(minWidth: userScreenInfo.completedContestGameViewStyleBag.betsColFrameWidth)
                         
                         .fixedSize()
