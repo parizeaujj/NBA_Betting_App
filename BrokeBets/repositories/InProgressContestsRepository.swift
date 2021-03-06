@@ -134,9 +134,6 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
         }
         
     }
-    
-    
-    
 }
 
 // MOCK
