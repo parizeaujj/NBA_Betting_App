@@ -7,22 +7,15 @@
 
 import SwiftUI
 
-class OpponentSearchVM: ObservableObject {
-    
-    var currentSelectedUsername: String? = nil
-    var setOpponentSelection: (String?) -> Void
-    
-    init(currentSelectedUsername: String?, setOpponentSelection: @escaping (String?) -> Void){
-        self.currentSelectedUsername = currentSelectedUsername
-        self.setOpponentSelection = setOpponentSelection
-    }
-}
+
+
 
 class CreateContestVM: ObservableObject {
     
     @Published var selectedOpponentUsername: String? = nil
     @Published var isSearchScreenActive = false
-        
+    
+    
     
     init(){
         
@@ -53,6 +46,7 @@ struct CreateContestView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @EnvironmentObject var userService: UserService
     
     @StateObject var createContestVM = CreateContestVM()
     
@@ -71,8 +65,12 @@ struct CreateContestView: View {
             
             ZStack{
                 
+                
                 Color.gray.opacity(0.2)
                     .edgesIgnoringSafeArea(.bottom)
+                
+            
+                
                 VStack{
                     
                     VStack{
@@ -82,11 +80,12 @@ struct CreateContestView: View {
                             Spacer()
                             
                             NavigationLink(
-                                destination: DetailTestView(opponentSearchVM: OpponentSearchVM(currentSelectedUsername: createContestVM.selectedOpponentUsername, setOpponentSelection: { username in
+                                destination: OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUsername: createContestVM.selectedOpponentUsername, setOpponentSelection: { username in
                                         createContestVM.setSelectedUsername(username: username)
-                                    }
+                                }, userService: userService
                                 )
-                                ),
+                                )
+                                ,
                                 isActive: $createContestVM.isSearchScreenActive,
                                 label: {
                                     
@@ -219,5 +218,6 @@ struct DetailTestView: View {
 struct CreateContestView_Previews: PreviewProvider {
     static var previews: some View {
         CreateContestView()
+            .environmentObject(UserService())
     }
 }

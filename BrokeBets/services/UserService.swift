@@ -10,6 +10,12 @@ import FirebaseFirestore
 import AuthenticationServices
 
 
+struct User: Identifiable {
+    var id = UUID()
+    var uid: String
+    var username: String
+}
+
 enum UsernameCreationResult: Any {
     case UsernameTaken
     case UserHasUsernameAlready
@@ -221,6 +227,78 @@ class UserService: ObservableObject {
             }
             
             completion(resultType)
+        }
+    }
+    
+    
+    
+    func getUsernames(startingWith partialStr: String, completion: @escaping ([User]?) -> Void) {
+        
+        
+//        let endStrIndex = partialStr.index(<#T##i: String.Index##String.Index#>, offsetBy: <#T##String.IndexDistance#>)
+        
+//        let lastChar = partialStr.suffix(2)
+//
+//        if lastChar == "z" {
+//
+//        }
+//        else{
+//
+//        }
+        
+        let endStr = partialStr + "\u{f8ff}"
+        
+        let usernameQuery = db.collection("users").whereField("username", isGreaterThanOrEqualTo: partialStr).whereField("username", isLessThanOrEqualTo: endStr)
+        
+        usernameQuery.getDocuments(){ (querySnapshot, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                completion(nil)
+                return
+            }
+            
+            guard let documents = querySnapshot?.documents else {
+                print("No users found")
+                completion([])
+                return
+            }
+            
+            var users: [User] = []
+            
+            for document in documents {
+                
+                let data = document.data()
+                
+                guard let username = data["username"] as? String else {
+                    print("error parsing document from users collection for username field")
+                    completion(nil)
+                    return
+                }
+                
+                users.append(User(uid: document.documentID, username: username))
+            
+            }
+            print("Num users found: \(users.count)")
+            completion(users)
+        }
+    }
+}
+
+
+
+extension String {
+    
+    func getNextLetterInAlphabet() -> String? {
+        
+        guard let uc = UnicodeScalar(self) else {
+            return nil
+        }
+        switch uc {
+            case "A" ..< "Z", "a" ..< "z":
+                return String(UnicodeScalar(uc.value + 1)!)
+            default:
+                return nil
         }
     }
 }
