@@ -35,8 +35,6 @@ struct InProgressContestGameView: View {
     @EnvironmentObject var userScreenInfo: UserScreenInfo
     
     var game: InProgressContestGame
-    var ouResultColor: Color?
-    var spreadResultColor: Color?
     
     init(game: InProgressContestGame){
         self.game = game
@@ -64,7 +62,7 @@ struct InProgressContestGameView: View {
                     
                     Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                     
-                    HStack(spacing: 0){
+                    HStack(alignment: .top, spacing: 0){
                         HStack{
                             VStack(alignment: .leading) {
                                 Text("\(game.homeTeam)")
@@ -102,7 +100,7 @@ struct InProgressContestGameView: View {
                         
                         
                         HStack(alignment: .top, spacing: 0){
-                            VStack(spacing: 0){
+                            VStack(spacing: 0 ){
                                 
                                 
                                 Text("Bets")
@@ -124,14 +122,12 @@ struct InProgressContestGameView: View {
                                             .font(userScreenInfo.inProgressContestGameViewStyleBag.secondaryFontType)
                                         
                                     }
+//                                    Spacer()
                                 }
                                 .padding(.horizontal, 5)
                                 .padding(.vertical, 5)
-                                
                             }
-                            //                        .frame(minWidth: 87)
                             .frame(minWidth: userScreenInfo.inProgressContestGameViewStyleBag.betsColFrameWidth)
-                            
                             .fixedSize()
                             
                         }

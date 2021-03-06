@@ -169,15 +169,12 @@ struct CompletedContestGameView: View {
                                         .font(userScreenInfo.completedContestGameViewStyleBag.secondaryFontType)
 
                                 }
-                                
-
                             }
                             .padding(.horizontal, 5)
                             .padding(.vertical, 5)
                             
                         }
                         .frame(minWidth: userScreenInfo.completedContestGameViewStyleBag.betsColFrameWidth)
-                        
                         .fixedSize()
 
                         Divider()
@@ -185,7 +182,6 @@ struct CompletedContestGameView: View {
                     
                         VStack(spacing: 0){
                             
-                         
                             Text("Results")
                                 .font(userScreenInfo.completedContestGameViewStyleBag.secondaryFontType)
 
@@ -234,7 +230,7 @@ struct CompletedContestGameView_Previews: PreviewProvider {
         
         if let games = MockCompletedContestsRepository().mockData[0]["games"] as? [[String: Any]]{
             CompletedContestGameView(game:
-                                        CompletedContestGame(game: games[0], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
+                                        CompletedContestGame(game: games[1], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
             ).environmentObject(UserScreenInfo(.small))
         }
     }
