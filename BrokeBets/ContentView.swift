@@ -32,7 +32,9 @@ struct ContentView: View {
         if true {
 
             if(true){
-                MainAppView()
+//                MainAppView()
+//                    .environmentObject(userService)
+                InProgressContestGamesListView(inProgressGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository()))
                     .environmentObject(userService)
             }
         }

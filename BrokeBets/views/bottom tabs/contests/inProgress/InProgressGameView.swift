@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct InProgressContestGameViewStyleBag {
     
@@ -30,14 +31,17 @@ struct InProgressContestGameViewStyleBag {
 }
 
 
+
+
 struct InProgressContestGameView: View {
     
     @EnvironmentObject var userScreenInfo: UserScreenInfo
     
-    var game: InProgressContestGame
+    @ObservedObject var viewModel: InProgressContestGameVM
     
-    init(game: InProgressContestGame){
-        self.game = game
+    
+    init(viewModel: InProgressContestGameVM){
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -50,7 +54,7 @@ struct InProgressContestGameView: View {
                 VStack(spacing: 0) {
                     
                     HStack{
-                        Text("2nd 3:26")
+                        Text("\(viewModel.gameScoreboard.timeLeftStr)")
                             .font(.caption)
                             .foregroundColor(Color.red)
                             .fontWeight(.semibold)
@@ -65,12 +69,12 @@ struct InProgressContestGameView: View {
                     HStack(alignment: .top, spacing: 0){
                         HStack{
                             VStack(alignment: .leading) {
-                                Text("\(game.homeTeam)")
+                                Text("\(viewModel.game.homeTeam)")
                                     .lineLimit(1)
                                     .font(userScreenInfo.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
                                 
-                                Text("\(game.awayTeam)")
+                                Text("\(viewModel.game.awayTeam)")
                                     .lineLimit(1)
                                     .font(userScreenInfo.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
@@ -80,17 +84,15 @@ struct InProgressContestGameView: View {
                             Spacer()
                             
                             VStack(alignment: HorizontalAlignment.trailing) {
-                                Text("0")
+                                Text("\(viewModel.gameScoreboard.homeScore)")
                                     .font(userScreenInfo.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
                                 
                                 
-                                Text("000")
+                                Text("\(viewModel.gameScoreboard.awayScore)")
                                     .font(userScreenInfo.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
                             }.padding(.trailing, userScreenInfo.inProgressContestGameViewStyleBag.paddings.trailingScoresBox) // 20, 10, 15
-                            
-                            //                        Spacer()
                             
                         }
                         .padding(.leading, 5)
@@ -113,11 +115,11 @@ struct InProgressContestGameView: View {
                                 VStack(alignment: .center, spacing: 10){
                                     
                                     
-                                    if let spreadBet = game.spreadBet {
+                                    if let spreadBet = viewModel.game.spreadBet {
                                         Text("\(spreadBet)")
                                             .font(userScreenInfo.inProgressContestGameViewStyleBag.secondaryFontType)                                }
                                     
-                                    if let ouBet = game.overUnderBet {
+                                    if let ouBet = viewModel.game.overUnderBet {
                                         Text("\(ouBet)")
                                             .font(userScreenInfo.inProgressContestGameViewStyleBag.secondaryFontType)
                                         
@@ -150,8 +152,8 @@ struct InProgressContestGameView_Previews: PreviewProvider {
         
         if let games = MockInProgressContestsRepository().mockData["contest1"]!["inProgressGames"] as? [[String: Any]]{
             
-            InProgressContestGameView(game:
-                                        InProgressContestGame(game: games[0], playerLookupPrefix: "player1")!
+            InProgressContestGameView(viewModel: InProgressContestGameVM(game: InProgressContestGame(game: games[0], playerLookupPrefix: "player1")!, inProgressContestsRepo: MockInProgressContestsRepository())
+                                        
             ).environmentObject(UserScreenInfo(.small))
         }
     }

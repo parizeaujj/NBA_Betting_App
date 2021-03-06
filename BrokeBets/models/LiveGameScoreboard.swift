@@ -13,10 +13,19 @@ struct LiveGameScoreboard: Codable, Identifiable {
     var id = UUID()
     var homeTeam: String
     var awayTeam: String
-    var homeScore: Int
-    var awayScore: Int
+    var homeScore: Int = 0
+    var awayScore: Int = 0
     var timeLeftStr: String
-    var timeGameStarted: Date // used for sorting
+//    var timeGameStarted: Date // used for sorting
+    
+    init(homeTeam: String, awayTeam: String, timeLeftStr: String){
+
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        self.timeLeftStr = timeLeftStr
+    }
+    
+    
     
     init?(data: [String: Any]){
         
@@ -25,21 +34,43 @@ struct LiveGameScoreboard: Codable, Identifiable {
               let homeScore = data["homeScore"] as? Int,
               let awayScore = data["awayScore"] as? Int,
               let isOverTime = data["isOverTime"] as? Bool,
-              let timeGameStartedTS = data["timeGameStarted"] as? Timestamp,
-              let minsLeftInQtr = data["minsLeftInQtr"] as? Int,
-              let secsLeftInQtr = data["secsLeftInQtr"] as? Double
+//              let timeGameStartedTS = data["timeGameStarted"] as? Timestamp,
+              let minsLeftInQtr = data["minsLeftInQtr"] as? Int
+//              let secsLeftInQtr = data["secsLeftInQtr"] as? Double
         else {
             return nil
         }
         
         
-        self.timeGameStarted = timeGameStartedTS.dateValue()
+//        self.timeGameStarted = timeGameStartedTS.dateValue()
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
         self.homeScore = homeScore
         self.awayScore = awayScore
         self.timeLeftStr = ""
+        
         var timeLeftStr = ""
+        
+        //
+        let secsLeftInQtr: Double
+        
+        if let secsDbl = data["secsLeftInQtr"] as? Double {
+            secsLeftInQtr = secsDbl
+        }
+        else{
+            
+            guard let secsInt = data["secsLeftInQtr"] as? Int else {
+                return nil
+            }
+            
+            secsLeftInQtr = Double(secsInt)
+            
+        }
+        
+        
+
+        
+        
         
         if(isOverTime){
             
@@ -80,9 +111,14 @@ struct LiveGameScoreboard: Codable, Identifiable {
     func getFormattedTimeLeft(mins: Int, secs: Double) -> String? {
         
         if mins == 0 {
-            return String(format: "%d:%.1f", secs)
+            
+            return String(format: "%.1f", secs)
         }
         else if mins > 0 {
+            
+            if(secs < 10){
+                return "\(mins):0\(Int(secs))"
+            }
             
             return "\(mins):\(Int(secs))"
             
