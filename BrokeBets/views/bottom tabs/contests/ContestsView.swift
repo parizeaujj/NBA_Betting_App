@@ -10,10 +10,9 @@ import SwiftUI
 struct ContestsView: View {
     
     @EnvironmentObject var userService: UserService
-
     @State private var selectedTab = 0
-    
     @State private var isCreateContestSheetPresented = false
+    @Binding var isShowingProfileModal: Bool
     
     var body: some View {
         
@@ -72,9 +71,11 @@ struct ContestsView: View {
                                         .padding(.trailing, 10)
                                         
                                         Button(action: {
-                                           
-                                            userService.logout()
-                                            
+                                        
+                                            withAnimation{
+                                                isShowingProfileModal = true
+                                            }
+                                          
                                         }, label: {
                                             Image(systemName: "person.circle")
                                                 .font(Font.system(.title).bold())
@@ -85,14 +86,12 @@ struct ContestsView: View {
         }
         .accentColor(.white)
         .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: CreateContestView.init)
-        
-        
     }
 }
 
 struct ContestsView_Previews: PreviewProvider {
     static var previews: some View {
-        ContestsView()
+        ContestsView(isShowingProfileModal: .constant(false))
             .environmentObject(UserScreenInfo(.regular))
     }
 }
