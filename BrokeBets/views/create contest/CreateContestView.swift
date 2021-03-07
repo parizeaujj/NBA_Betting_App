@@ -15,8 +15,6 @@ class CreateContestVM: ObservableObject {
     @Published var selectedOpponentUsername: String? = nil
     @Published var isSearchScreenActive = false
     
-    
-    
     init(){
         
         
@@ -32,12 +30,9 @@ class CreateContestVM: ObservableObject {
         }
     }
     
-    
+    // To be implemented...
     func sendContestInvitation(){
-        
-        
-        
-        
+        print("send contest invitation button pressed")
     }
 }
 
@@ -65,11 +60,8 @@ struct CreateContestView: View {
             
             ZStack{
                 
-                
                 Color.gray.opacity(0.2)
                     .edgesIgnoringSafeArea(.bottom)
-                
-            
                 
                 VStack{
                     
@@ -97,8 +89,7 @@ struct CreateContestView: View {
                                         Text("Choose Opponent")
                                             .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                                     }
-                                
-                                    
+                                 
                                 })
                         }
                         .padding(.vertical, 5)
@@ -139,8 +130,6 @@ struct CreateContestView: View {
                     .padding()
                     .padding(.top, 25)
                     
-                    
-                    
                     Spacer()
                     
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
@@ -150,17 +139,16 @@ struct CreateContestView: View {
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding([.vertical], 15)
-                            .background(Color(UIColor.systemBlue).opacity(false ? 0.4 : 1.0))
+                            .background(Color(UIColor.systemBlue).opacity(createContestVM.selectedOpponentUsername == nil ? 0.4 : 1.0))
                             .cornerRadius(25)
                     })
+                    .disabled(createContestVM.selectedOpponentUsername == nil)
                     .padding(.bottom, 50)
                     .padding(.horizontal, 45)
                     
                    
                 }
-            
-    
-                
+               
             }
             .navigationBarTitle("New Contest", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
@@ -174,46 +162,6 @@ struct CreateContestView: View {
     }
 }
 
-
-
-struct DetailTestView: View {
-    
-    @ObservedObject var opponentSearchVM: OpponentSearchVM
-    
-    
-    var body: some View {
-        
-        VStack(spacing: 10){
-            Text("\(opponentSearchVM.currentSelectedUsername ?? "No username selected")")
-                        
-            Button(action: {
-                
-                opponentSearchVM.setOpponentSelection("Toddw123")
-                
-            }, label: {
-                Text("choose a username test")
-//                    .foregroundColor(.black)
-            })
-            
-            Button(action: {
-                
-                opponentSearchVM.setOpponentSelection("Cody123")
-                
-            }, label: {
-                Text("choose a different username test")
-//                    .foregroundColor(.black)
-            })
-            
-            Button(action: {
-                
-                opponentSearchVM.setOpponentSelection(nil)
-                
-            }, label: {
-                Text("deselect a username test")
-            })
-        }.accentColor(.blue)
-    }
-}
 
 struct CreateContestView_Previews: PreviewProvider {
     static var previews: some View {
