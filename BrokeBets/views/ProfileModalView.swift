@@ -1,5 +1,5 @@
 //
-//  TestBottomSheet.swift
+//  ProfileModalView.swift
 //  BrokeBets
 //
 //  Created by Todd Weidler on 3/1/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TestTopSheet: View {
+struct ProfileModalView: View {
     
     @State var isShowingTopModal = false
     
@@ -99,8 +99,8 @@ struct TestTopSheet: View {
     }
 }
 
-struct TestTopSheet_Previews: PreviewProvider {
+struct ProfileModalView_Previews: PreviewProvider {
     static var previews: some View {
-        TestTopSheet()
+        ProfileModalView()
     }
 }

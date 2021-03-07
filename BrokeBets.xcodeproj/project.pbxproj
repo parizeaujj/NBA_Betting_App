@@ -13,7 +13,7 @@
 		A62EBD295F56B79163046937 /* Pods_BrokeBets_BrokeBetsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097BB6BE178A92D74989CC75 /* Pods_BrokeBets_BrokeBetsUITests.framework */; };
 		CA55357D25F401F00054DB21 /* OpponentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55357C25F401F00054DB21 /* OpponentSearchView.swift */; };
 		D7F25272195959FCDE4D2795 /* Pods_BrokeBetsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE799F47475663F47858987 /* Pods_BrokeBetsTests.framework */; };
-		E30C2A7325ED99A0000A04CA /* TestBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C2A7225ED99A0000A04CA /* TestBottomSheet.swift */; };
+		E30C2A7325ED99A0000A04CA /* ProfileModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */; };
 		E30E773125F44AC40069876D /* OpponentSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E773025F44AC40069876D /* OpponentSearchVM.swift */; };
 		E328B6B125F42C6F0027EBB3 /* InProgressContestsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328B6B025F42C6F0027EBB3 /* InProgressContestsListVM.swift */; };
 		E3292EB725E57707007189EC /* CustomRoundedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3292EB625E57707007189EC /* CustomRoundedRect.swift */; };
@@ -97,7 +97,7 @@
 		CC6F103B9C84320B302281C0 /* Pods-BrokeBetsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8597B5732F19E9C927F860A /* Pods-BrokeBetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA770B23555B11C24054428D /* Pods_BrokeBets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E30C2A7225ED99A0000A04CA /* TestBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBottomSheet.swift; sourceTree = "<group>"; };
+		E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalView.swift; sourceTree = "<group>"; };
 		E30E773025F44AC40069876D /* OpponentSearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentSearchVM.swift; sourceTree = "<group>"; };
 		E328B6B025F42C6F0027EBB3 /* InProgressContestsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestsListVM.swift; sourceTree = "<group>"; };
 		E3292EB625E57707007189EC /* CustomRoundedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedRect.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 				E3C9685D25DD7D100097963E /* LoginView.swift */,
 				E3292ED225E6E0C7007189EC /* CreateUsernameView.swift */,
 				E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */,
-				E30C2A7225ED99A0000A04CA /* TestBottomSheet.swift */,
+				E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -768,7 +768,7 @@
 				E3C9688525DD90680097963E /* String+Extensions.swift in Sources */,
 				E343348925DDC578004027C3 /* UpcomingContestGameView.swift in Sources */,
 				E3B621F125DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift in Sources */,
-				E30C2A7325ED99A0000A04CA /* TestBottomSheet.swift in Sources */,
+				E30C2A7325ED99A0000A04CA /* ProfileModalView.swift in Sources */,
 				E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */,
 				E30E773125F44AC40069876D /* OpponentSearchVM.swift in Sources */,
 				E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */,
