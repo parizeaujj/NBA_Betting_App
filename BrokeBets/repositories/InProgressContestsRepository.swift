@@ -81,15 +81,13 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
                 }
                 
                 
-                guard let contestData = InProgressContest(data: document.data(), playerUid: "testUID") else {
+                guard let contestData = InProgressContest(data: document.data(), playerUid: "testUID", contestId: document.documentID) else {
                     print("Issue creating contest")
                     return
                 }
                 
                 
-                // adds the contest to the dictionary using the document id as the key
-                //we need to find another way to do this, maybe a separate array just for the dictionary
-                //contests[document.documentID] = contestData
+                contests[document.documentID] = contestData
             }
                 
             // checks if we need to update the gameIds Set
@@ -175,7 +173,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                  "numBetsRemaining": 4,
             
                 "inProgressGameIds": ["game1id", "game2id", "game3id"],
-                "upcomingGames": [
+                "upcoming_games": [
                
                        // upcoming game 1
                        ["awayTeam": "HOU Rockets",
@@ -204,7 +202,8 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                    ],
             
             
-                 "completedGames": [
+                 // completedGames
+                 "completed_games": [
                     
                     // completed game 1
                     ["awayTeam": "HOU Rockets",
@@ -276,7 +275,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                     ]
                  ],
             
-                "inProgressGames": [
+                "inProgress_games": [
                
                // in-progress game 1
                [
@@ -492,7 +491,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
 //                tempGameIds.insert(gameId)
 //            }
             
-            contests[contestId] = InProgressContest(data: contestData, playerUid: "testToddUid")!
+            contests[contestId] = InProgressContest(data: contestData, playerUid: "testToddUid", contestId: contestId)!
         }
         
         getGameScoresData()
@@ -523,12 +522,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
     }
     
     func updateGamesAfterSomeTime(){
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
-//
-        
-//        }
-        
+                
         self.cancellable = Timer.publish(every: 10, on: .main, in: .common)
             .autoconnect()
             .sink() {

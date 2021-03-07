@@ -35,13 +35,14 @@ struct ContestsView: View {
                 
                 // controls which tab is shown for the contests screen
                 if(selectedTab == 0){
-                    UpcomingContestsListView()
+                    UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: MockUpcomingContestsRepository()))
                 }
                 else if(selectedTab == 1){
-                    InProgressContestsListView()
+                    //
+                    InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: MockInProgressContestsRepository()))
                 }
                 else if(selectedTab == 2){
-                    CompletedContestsListView()
+                    CompletedContestsListView(viewModel: CompletedContestsListVM(completedContestsRepo: CompletedContestsRepository()))
                 }
                 else{
                     UpcomingContestsListView()

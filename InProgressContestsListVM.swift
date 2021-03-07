@@ -9,7 +9,7 @@ import Combine
 
 class InProgressContestsListVM: ObservableObject {
     
-    @Published var inProgressContests: [String : InProgressContest] = [:]
+    @Published var inProgressContests: [InProgressContest] = []
     
     private let inProgressContestsRepo: InProgressContestsRepositoryProtocol
     
@@ -21,7 +21,9 @@ class InProgressContestsListVM: ObservableObject {
         
         // setups up subscriber that listens for changes to the upcoming contests that are stored in 'inProgressContestsRepo'
         inProgressContestsRepo.inProgressContestsPublisher
-            .assign(to: \.inProgressContests, on: self)
+            .sink { contestsDict in
+                self.inProgressContests = Array(contestsDict.values)
+            }
             .store(in: &cancellables)
         
     }

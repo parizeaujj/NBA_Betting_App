@@ -39,8 +39,8 @@ struct InProgressContestView: View {
     var body: some View {
         
         NavigationLink(destination:
-                        Text("helloo")
-//                        InProgressContestGamesListView(contest: inProgressContest)
+                        InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: inProgressContest.contestId, inProgressContestRepo: MockInProgressContestsRepository()))
+                        
                         .navigationBarTitle("Contest Betslip", displayMode: .inline))
         {
             
@@ -198,7 +198,7 @@ struct InProgressContestView: View {
 
 struct InProgressContestView_Previews: PreviewProvider {
     static var previews: some View {
-        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository().mockData["contest1"]!, playerUid: "testToddUid")!
+        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository().mockData["contest1"]!, playerUid: "testToddUid", contestId: "contest1")!
         )
         .environmentObject(UserScreenInfo(.small))
     }

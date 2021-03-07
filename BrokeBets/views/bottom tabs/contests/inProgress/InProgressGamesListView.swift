@@ -10,12 +10,11 @@ import SwiftUI
 struct InProgressContestGamesListView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var inProgressGamesListVM: InProgressContestGamesListVM
+    @StateObject var inProgressContestGamesListVM: InProgressContestGamesListVM
         
     
     var body: some View {
         
-    
             VStack(spacing: 0){
                                 
                 VStack(alignment: .leading){
@@ -23,7 +22,7 @@ struct InProgressContestGamesListView: View {
                     HStack{
                         Text("Opponent:")
                             .font(.title3)
-                        Text(inProgressGamesListVM.inProgressContest!.opponent)
+                        Text(inProgressContestGamesListVM.inProgressContest!.opponent)
                             .font(.title3)
                             .foregroundColor(.blue)
                             .fontWeight(.bold)
@@ -32,7 +31,7 @@ struct InProgressContestGamesListView: View {
                     HStack{
                         Text("Total bets:")
                             .font(.title3)
-                        Text("\(inProgressGamesListVM.inProgressContest!.numBets)")
+                        Text("\(inProgressContestGamesListVM.inProgressContest!.numBets)")
                             .font(.title3)
                             .fontWeight(.bold)
                     }.padding(.top, 4)
@@ -47,7 +46,7 @@ struct InProgressContestGamesListView: View {
                 ScrollView {
                     LazyVStack {
                         
-                        if let inProgressGames = inProgressGamesListVM.inProgressContest?.inProgressGames {
+                        if let inProgressGames = inProgressContestGamesListVM.inProgressContest?.inProgressGames {
                             
                             Text("In Progress")
                                 .font(.caption)
@@ -59,14 +58,14 @@ struct InProgressContestGamesListView: View {
                             
                             ForEach(inProgressGames) { game in
                                 
-                                InProgressContestGameView(viewModel: InProgressContestGameVM(game: game, inProgressContestsRepo: self.inProgressGamesListVM.inProgressContestsRepo))
+                                InProgressContestGameView(viewModel: InProgressContestGameVM(game: game, inProgressContestsRepo: self.inProgressContestGamesListVM.inProgressContestsRepo))
                                     
                                     .padding(.top, 5)
                             }
                             .padding(.horizontal, 10)
                         }
                         
-                        if let upcomingGames = inProgressGamesListVM.inProgressContest?.upcomingGames {
+                        if let upcomingGames = inProgressContestGamesListVM.inProgressContest?.upcomingGames {
                             
                             Text("Upcoming")
                                 .font(.caption)
@@ -84,7 +83,7 @@ struct InProgressContestGamesListView: View {
                         }
                         
                         
-                        if let completedGames = inProgressGamesListVM.inProgressContest?.completedGames {
+                        if let completedGames = inProgressContestGamesListVM.inProgressContest?.completedGames {
                             
                             Text("Completed")
                                 .font(.caption)
@@ -103,7 +102,7 @@ struct InProgressContestGamesListView: View {
                     }
                 }
             }
-            .onReceive(inProgressGamesListVM.contestJustCompletedPublisher, perform: { _ in
+            .onReceive(inProgressContestGamesListVM.contestJustCompletedPublisher, perform: { _ in
                 presentationMode.wrappedValue.dismiss() })
         
     }
@@ -112,10 +111,8 @@ struct InProgressContestGamesListView: View {
 struct InProgressContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
         
-        InProgressContestGamesListView(inProgressGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository()))
+        InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository()))
                         .environmentObject(UserScreenInfo(.small))
     }
 }
-
-
 

@@ -9,16 +9,19 @@ import Combine
 
 class InProgressContestGamesListVM: ObservableObject {
     
+    let contestId: String
     let inProgressContestsRepo: InProgressContestsRepositoryProtocol
     private var cancellables: [AnyCancellable] = []
     
     @Published var inProgressContest: InProgressContest? = nil
     
     var contestJustCompletedPublisher = PassthroughSubject<Void, Never>()
+    
     //    @Published var contestJustCompleted: Bool = false
     
     init(contestId: String, inProgressContestRepo: InProgressContestsRepositoryProtocol){
         
+        self.contestId = contestId
         self.inProgressContestsRepo = inProgressContestRepo
         
         // subscribe

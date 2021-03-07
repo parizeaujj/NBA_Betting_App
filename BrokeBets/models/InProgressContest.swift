@@ -10,6 +10,7 @@ import Foundation
 struct InProgressContest: Codable, Identifiable {
 
     var id = UUID()
+    var contestId: String // used for referencing the particular contest in the inProgressContests dictionary in InProgressContestsRepository
     var opponent: String
     
     var numBets: Int
@@ -29,7 +30,7 @@ struct InProgressContest: Codable, Identifiable {
     var inProgressGames: [InProgressContestGame]?
     
 
-    init?(data: [String:Any], playerUid: String){
+    init?(data: [String:Any], playerUid: String, contestId: String){
         
         guard let player1_uid = data["player1_uid"] as? String,
               let player2_uid = data["player2_uid"] as? String,
@@ -50,6 +51,7 @@ struct InProgressContest: Codable, Identifiable {
         }
         
         
+        self.contestId = contestId
         self.numBets = numBets
         self.numBetsRemaining = numBetsRemaining
         self.numBetsCompleted = numBetsCompleted

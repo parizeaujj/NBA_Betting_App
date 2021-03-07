@@ -68,10 +68,6 @@ struct LiveGameScoreboard: Codable, Identifiable {
         }
         
         
-
-        
-        
-        
         if(isOverTime){
             
             // if there isnt a value for the numOverTime at this point then we have a big problem
