@@ -91,7 +91,8 @@ struct InProgressContest: Codable, Identifiable {
         let todaysSimpleDate = SimpleDate(date: Date())
         
 
-        if let upcomingGames = data["upcomingGames"] as? [[String: Any]] {
+        //change these names back after testing with Firebase
+        if let upcomingGames = data["upcoming_games"] as? [[String: Any]] {
             // gets all the upcoming games for the contest
             var upGames: [UpcomingContestGame] = []
 
@@ -108,7 +109,7 @@ struct InProgressContest: Codable, Identifiable {
         }
         
         
-        if let completedGames = data["completedGames"] as? [[String: Any]]{
+        if let completedGames = data["completed_games"] as? [[String: Any]]{
             // gets all the completed games for the contest
             var compGames: [CompletedContestGame] = []
 
@@ -124,7 +125,7 @@ struct InProgressContest: Codable, Identifiable {
             self.completedGames = compGames
         }
         
-        if let inProgressGames = data["inProgressGames"] as? [[String: Any]] {
+        if let inProgressGames = data["inProgress_games"] as? [[String: Any]] {
             
             // gets all the in progress games for the contest
             var ipGames: [InProgressContestGame] = []

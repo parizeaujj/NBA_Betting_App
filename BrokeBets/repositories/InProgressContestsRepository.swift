@@ -48,7 +48,7 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
         
         //TODO: Replace "testUID" with variable for user's UID
         db.collection("contests")
-            .whereField("contestStatus", isEqualTo: "completed")
+            .whereField("contestStatus", isEqualTo: "inprogress")
             .whereField("players", arrayContains: "testUID")
             .addSnapshotListener { (querySnapshot, error) in
                 
@@ -61,7 +61,7 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
             
             var tempGameIds: Set<String> = []
                 
-            // Loops through each upcoming contest from firebase
+            // Loops through each inprogress contest from firebase
             //TODO: Replace "testUID" with variable for user's UID
             for document in documents{
                 
@@ -88,7 +88,8 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
                 
                 
                 // adds the contest to the dictionary using the document id as the key
-                contests[document.documentID] = contestData
+                //we need to find another way to do this, maybe a separate array just for the dictionary
+                //contests[document.documentID] = contestData
             }
                 
             // checks if we need to update the gameIds Set

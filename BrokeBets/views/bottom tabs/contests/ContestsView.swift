@@ -38,7 +38,7 @@ struct ContestsView: View {
                     UpcomingContestsListView()
                 }
                 else if(selectedTab == 1){
-                    Text("In Progress")
+                    InProgressContestsListView()
                 }
                 else if(selectedTab == 2){
                     CompletedContestsListView()
