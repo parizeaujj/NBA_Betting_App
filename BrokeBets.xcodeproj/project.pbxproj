@@ -66,7 +66,6 @@
 		E3F52D6E25F057A2009B10CE /* LiveGameScoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6D25F057A2009B10CE /* LiveGameScoreboard.swift */; };
 		E3F52D7425F1329A009B10CE /* CreateContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D7325F1329A009B10CE /* CreateContestView.swift */; };
 		E3F52D7A25F18177009B10CE /* InProgressContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D7925F18177009B10CE /* InProgressContestView.swift */; };
-		E3F76BC825F56787004E9815 /* DO_NOT_RUN.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F76BC725F56787004E9815 /* DO_NOT_RUN.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,7 +157,6 @@
 		E3F52D6D25F057A2009B10CE /* LiveGameScoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveGameScoreboard.swift; sourceTree = "<group>"; };
 		E3F52D7325F1329A009B10CE /* CreateContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContestView.swift; sourceTree = "<group>"; };
 		E3F52D7925F18177009B10CE /* InProgressContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestView.swift; sourceTree = "<group>"; };
-		E3F76BC725F56787004E9815 /* DO_NOT_RUN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DO_NOT_RUN.swift; sourceTree = "<group>"; };
 		E57D43A721104E5D54A2B9C1 /* Pods-BrokeBets-BrokeBetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,7 +234,6 @@
 				E3292ED225E6E0C7007189EC /* CreateUsernameView.swift */,
 				E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */,
 				E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */,
-				E3F76BC725F56787004E9815 /* DO_NOT_RUN.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -752,7 +749,6 @@
 				E3BA0F0425E1537900D9C041 /* UpcomingContestsListVM.swift in Sources */,
 				E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */,
 				E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */,
-				E3F76BC825F56787004E9815 /* DO_NOT_RUN.swift in Sources */,
 				E3292EC425E5BBDF007189EC /* CompletedContestsRepository.swift in Sources */,
 				E3292EC925E5BC74007189EC /* CompletedContest.swift in Sources */,
 				E3F52D7A25F18177009B10CE /* InProgressContestView.swift in Sources */,
