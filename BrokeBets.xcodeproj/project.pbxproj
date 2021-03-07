@@ -55,6 +55,7 @@
 		E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */; };
 		E3C9688525DD90680097963E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688425DD90680097963E /* String+Extensions.swift */; };
 		E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */; };
+		E3C9E1B125F5788F00B719B9 /* CreateContestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9E1B025F5788F00B719B9 /* CreateContestVM.swift */; };
 		E3D8E3E225EC069000A3A88E /* CompletedContestGamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */; };
 		E3D8E3E725EC070700A3A88E /* CompletedContestGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */; };
 		E3DCE9F725F2871100B063A3 /* ChosenOpponentChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DCE9F625F2871100B063A3 /* ChosenOpponentChip.swift */; };
@@ -146,6 +147,7 @@
 		E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleButton.swift; sourceTree = "<group>"; };
 		E3C9688425DD90680097963E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestView.swift; sourceTree = "<group>"; };
+		E3C9E1B025F5788F00B719B9 /* CreateContestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContestVM.swift; sourceTree = "<group>"; };
 		E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGamesListView.swift; sourceTree = "<group>"; };
 		E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGameView.swift; sourceTree = "<group>"; };
 		E3DCE9F625F2871100B063A3 /* ChosenOpponentChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenOpponentChip.swift; sourceTree = "<group>"; };
@@ -395,12 +397,13 @@
 			isa = PBXGroup;
 			children = (
 				E3292ED725E6E129007189EC /* CreateUsernameVM.swift */,
+				E3C9E1B025F5788F00B719B9 /* CreateContestVM.swift */,
+				E30E773025F44AC40069876D /* OpponentSearchVM.swift */,
 				E3BA0F0325E1537900D9C041 /* UpcomingContestsListVM.swift */,
 				E3997E3225EACD7A00530C26 /* CompletedContestsListVM.swift */,
 				E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */,
 				E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */,
 				E328B6B025F42C6F0027EBB3 /* InProgressContestsListVM.swift */,
-				E30E773025F44AC40069876D /* OpponentSearchVM.swift */,
 			);
 			name = "view models";
 			path = ..;
@@ -745,6 +748,7 @@
 				E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */,
 				E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */,
 				E3BA0EF525E048A900D9C041 /* UpcomingContestGamesListView.swift in Sources */,
+				E3C9E1B125F5788F00B719B9 /* CreateContestVM.swift in Sources */,
 				E3997E3325EACD7A00530C26 /* CompletedContestsListVM.swift in Sources */,
 				E3BA0F0425E1537900D9C041 /* UpcomingContestsListVM.swift in Sources */,
 				E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */,

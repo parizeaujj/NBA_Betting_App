@@ -16,9 +16,7 @@ class InProgressContestGamesListVM: ObservableObject {
     @Published var inProgressContest: InProgressContest? = nil
     
     var contestJustCompletedPublisher = PassthroughSubject<Void, Never>()
-    
-    //    @Published var contestJustCompleted: Bool = false
-    
+        
     init(contestId: String, inProgressContestRepo: InProgressContestsRepositoryProtocol){
         
         self.contestId = contestId
