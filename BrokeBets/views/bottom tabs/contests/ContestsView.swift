@@ -10,7 +10,7 @@ import SwiftUI
 struct ContestsView: View {
     
     @EnvironmentObject var userService: UserService
-    
+
     @State private var selectedTab = 0
     
     @State private var isCreateContestSheetPresented = false
@@ -39,7 +39,11 @@ struct ContestsView: View {
                 }
                 else if(selectedTab == 1){
                     //
-                    InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: MockInProgressContestsRepository()))
+                    let inProgressContestsRepo: InProgressContestsRepositoryProtocol = InProgressContestsRepository()
+                    
+                    InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: inProgressContestsRepo)
+                    )
+                        
                 }
                 else if(selectedTab == 2){
                     CompletedContestsListView(viewModel: CompletedContestsListVM(completedContestsRepo: CompletedContestsRepository()))

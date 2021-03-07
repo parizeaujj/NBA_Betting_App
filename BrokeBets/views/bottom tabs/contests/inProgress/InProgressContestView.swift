@@ -30,16 +30,17 @@ struct InProgressContestView: View {
     
     private var inProgressContest: InProgressContest
     private var accentColor: Color = .blue
+    private var inProgressContestsRepo: InProgressContestsRepositoryProtocol
   
-  
-    init(inProgressContest: InProgressContest){
+    init(inProgressContest: InProgressContest, inProgressContestsRepo: InProgressContestsRepositoryProtocol){
         self.inProgressContest = inProgressContest
+        self.inProgressContestsRepo = inProgressContestsRepo
     }
     
     var body: some View {
         
         NavigationLink(destination:
-                        InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: inProgressContest.contestId, inProgressContestRepo: MockInProgressContestsRepository()))
+                        InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: inProgressContest.contestId, inProgressContestRepo: inProgressContestsRepo))
                         
                         .navigationBarTitle("Contest Betslip", displayMode: .inline))
         {
@@ -198,7 +199,7 @@ struct InProgressContestView: View {
 
 struct InProgressContestView_Previews: PreviewProvider {
     static var previews: some View {
-        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository().mockData["contest1"]!, playerUid: "testToddUid", contestId: "contest1")!
+        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository().mockData["contest1"]!, playerUid: "testToddUid", contestId: "contest1")!, inProgressContestsRepo: MockInProgressContestsRepository()
         )
         .environmentObject(UserScreenInfo(.small))
     }

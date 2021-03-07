@@ -11,7 +11,7 @@ class InProgressContestsListVM: ObservableObject {
     
     @Published var inProgressContests: [InProgressContest] = []
     
-    private let inProgressContestsRepo: InProgressContestsRepositoryProtocol
+    let inProgressContestsRepo: InProgressContestsRepositoryProtocol
     
     private var cancellables: [AnyCancellable] = []
     

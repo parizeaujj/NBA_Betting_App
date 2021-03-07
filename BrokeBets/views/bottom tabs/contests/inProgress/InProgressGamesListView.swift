@@ -113,6 +113,7 @@ struct InProgressContestGamesListView_Previews: PreviewProvider {
         
         InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository()))
                         .environmentObject(UserScreenInfo(.small))
+            .environmentObject(MockUpcomingContestsRepository())
     }
 }
 

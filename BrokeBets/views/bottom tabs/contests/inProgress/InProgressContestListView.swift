@@ -22,7 +22,7 @@ import SwiftUI
                 
                 ForEach(viewModel.inProgressContests) { contest in
                      
-                     InProgressContestView(inProgressContest: contest)
+                    InProgressContestView(inProgressContest: contest, inProgressContestsRepo: viewModel.inProgressContestsRepo)
                  }
              }
          }

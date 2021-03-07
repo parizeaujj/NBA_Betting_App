@@ -127,7 +127,7 @@ struct InProgressContest: Codable, Identifiable {
             self.completedGames = compGames
         }
         
-        if let inProgressGames = data["inProgress_games"] as? [[String: Any]] {
+        if let inProgressGames = data["inprogress_games"] as? [[String: Any]] {
             
             // gets all the in progress games for the contest
             var ipGames: [InProgressContestGame] = []

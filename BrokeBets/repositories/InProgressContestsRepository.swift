@@ -8,7 +8,7 @@ import Foundation
 import FirebaseFirestore
 import Combine
 
-protocol InProgressContestsRepositoryProtocol {
+protocol InProgressContestsRepositoryProtocol{
 
     var inProgressContests: [String : InProgressContest] { get }
     var inProgressContestsPublisher: Published<[String : InProgressContest]>.Publisher { get }
@@ -275,7 +275,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                     ]
                  ],
             
-                "inProgress_games": [
+                "inprogress_games": [
                
                // in-progress game 1
                [
