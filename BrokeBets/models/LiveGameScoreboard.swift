@@ -38,6 +38,7 @@ struct LiveGameScoreboard: Codable, Identifiable {
               let minsLeftInQtr = data["minsLeftInQtr"] as? Int
 //              let secsLeftInQtr = data["secsLeftInQtr"] as? Double
         else {
+            print("error right here")
             return nil
         }
         
@@ -60,6 +61,7 @@ struct LiveGameScoreboard: Codable, Identifiable {
         else{
             
             guard let secsInt = data["secsLeftInQtr"] as? Int else {
+                print("error right here 2")
                 return nil
             }
             
@@ -72,6 +74,7 @@ struct LiveGameScoreboard: Codable, Identifiable {
             
             // if there isnt a value for the numOverTime at this point then we have a big problem
             guard let numOverTime = data["numOverTime"] as? Int else {
+                print("error right here 3")
                 return nil
             }
             
@@ -80,6 +83,7 @@ struct LiveGameScoreboard: Codable, Identifiable {
         else{
             
             guard let currentQuarter = data["currentQuarter"] as? Int else {
+                print("error right here 4")
                 return nil
             }
             
@@ -88,7 +92,9 @@ struct LiveGameScoreboard: Codable, Identifiable {
                 case 2: timeLeftStr += "2nd"
                 case 3: timeLeftStr += "3rd"
                 case 4: timeLeftStr += "4th"
-                default: return nil // if it isnt overtime and the current quarter is not in 1, 2, 3, or 4, then we have a big problem
+                default:
+                    print("error right here 5")
+                    return nil // if it isnt overtime and the current quarter is not in 1, 2, 3, or 4, then we have a big problem
             }
         }
         

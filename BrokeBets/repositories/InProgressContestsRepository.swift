@@ -94,8 +94,10 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
             if self.gameIds.count == 0 || self.gameIds != tempGameIds {
                 self.gameIds = tempGameIds
                 
-                // reset listener that listens for game score/timeleft information
+                print("hererere")
                 
+                // reset listener that listens for game score/timeleft information
+                self.getGameScoresData()
             }
             
             // Updates the publisher to the new values
