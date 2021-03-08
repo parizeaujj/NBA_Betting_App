@@ -129,10 +129,13 @@ Todd Weidler - username screen to ensure unique usernames [U006], completed cont
 
 ## Task Allocation
 
-JJ Parizeau - file management
+JJ Parizeau - added in progress contests list view, file management, and updated database model
 
 Fabrizio Herrera - added the search bar feature, created automated unit test for time formatting
 
-Member3 - description
+Todd Weidler - added in progress contests and in progress contest game views, added logout feature, and create username modal
 
+Aland Nguyen - worked on updated docs
+
+Devontay Eluett - docs and project management
 
