@@ -11,6 +11,7 @@
 		8473F81C25F49304005BC632 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8473F81B25F49304005BC632 /* GoogleService-Info.plist */; };
 		8473F82125F493A7005BC632 /* InProgressContestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473F82025F493A7005BC632 /* InProgressContestListView.swift */; };
 		A62EBD295F56B79163046937 /* Pods_BrokeBets_BrokeBetsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097BB6BE178A92D74989CC75 /* Pods_BrokeBets_BrokeBetsUITests.framework */; };
+		CA2A518D25F5C431001FB326 /* TimeFormatStringUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A518C25F5C431001FB326 /* TimeFormatStringUnitTests.swift */; };
 		CA55357D25F401F00054DB21 /* OpponentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55357C25F401F00054DB21 /* OpponentSearchView.swift */; };
 		D7F25272195959FCDE4D2795 /* Pods_BrokeBetsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE799F47475663F47858987 /* Pods_BrokeBetsTests.framework */; };
 		E30C2A7325ED99A0000A04CA /* ProfileModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */; };
@@ -94,6 +95,7 @@
 		8473F81B25F49304005BC632 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8473F82025F493A7005BC632 /* InProgressContestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestListView.swift; sourceTree = "<group>"; };
 		BFE799F47475663F47858987 /* Pods_BrokeBetsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBetsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA2A518C25F5C431001FB326 /* TimeFormatStringUnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeFormatStringUnitTests.swift; path = ../../../../Desktop/TimeFormatStringUnitTests.swift; sourceTree = "<group>"; };
 		CA55357C25F401F00054DB21 /* OpponentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentSearchView.swift; sourceTree = "<group>"; };
 		CC6F103B9C84320B302281C0 /* Pods-BrokeBetsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8597B5732F19E9C927F860A /* Pods-BrokeBetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 		E3E43CAB25EC69CA00226BBE /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
+				CA2A518C25F5C431001FB326 /* TimeFormatStringUnitTests.swift */,
 				E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */,
 			);
 			path = ModelTests;
@@ -795,6 +798,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BE0B25CDD435002C89B9 /* BrokeBetsTests.swift in Sources */,
+				CA2A518D25F5C431001FB326 /* TimeFormatStringUnitTests.swift in Sources */,
 				E3E43CAD25EC6A0C00226BBE /* DateFormatStringUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
