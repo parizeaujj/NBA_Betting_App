@@ -57,7 +57,7 @@ We will be using the MVVM pattern for our frontend and so almost all of our clas
 
 # Data Design
 
-![](/artifacts/ERD_v2.jpg)
+![](/artifacts/ERD_v2.pdf)
 
 Data Design Description
 
