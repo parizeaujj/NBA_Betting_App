@@ -94,17 +94,5 @@ class TimeFormatStringUnitTest: XCTestCase {
         
         XCTAssert("7.9" == time_output)
     }
-    
-    func test_nonzero_minutes_and_seconds_with_multiple_digits_after_decimal() throws {
-        
-        let mins = 1
-        let secs = 7.8669
-        
-        let sut = LiveGameScoreboard(homeTeam: "", awayTeam: "", timeLeftStr: "")
-        
-        let time_output = sut.getFormattedTimeLeft(mins: mins, secs: secs)
-        
-        XCTAssert("1:08" == time_output)
-    }
 }
 
