@@ -131,6 +131,8 @@ Todd Weidler - username screen to ensure unique usernames [U006], completed cont
 
 JJ Parizeau - file management
 
-Member2 - description
+Fabrizio Herrera - added the search bar feature, created automated unit test for time formatting
+
+Member3 - description
 
 
