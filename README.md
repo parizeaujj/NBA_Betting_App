@@ -123,14 +123,19 @@ Todd Weidler - username screen to ensure unique usernames [U006], completed cont
 - [Source Code](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBets)
 - [Automated Tests](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBetsTests/ModelTests)
 - [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
-- Product Demonstration
+- [Product Demonstration](https://vimeo.com/520765283)
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 - [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
 
 ## Task Allocation
 
-JJ Parizeau - file management
+JJ Parizeau - added in progress contests list view, file management, and updated database model
 
-Member2 - description
+Fabrizio Herrera - added the search bar feature, created automated unit test for time formatting
 
+Todd Weidler - added in progress contests and in progress contest game views, added logout feature, and create username modal
+
+Aland Nguyen - worked on updated docs
+
+Devontay Eluett - docs and project management
 
