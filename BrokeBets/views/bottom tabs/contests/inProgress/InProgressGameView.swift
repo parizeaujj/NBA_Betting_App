@@ -158,5 +158,3 @@ struct InProgressContestGameView_Previews: PreviewProvider {
         }
     }
 }
-
-

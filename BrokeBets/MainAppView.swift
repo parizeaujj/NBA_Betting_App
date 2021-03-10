@@ -18,7 +18,8 @@ struct MainAppView: View {
                 ContestsView(isShowingProfileModal: $isShowingContestModal).tab(title: "Contests", image: "outline-emoji_events-black-24dp", selectedImage: "emoji_events-black-24dp")
                 Text("Betslip Screen").tab(title: "Betslip", image: "outline-receipt_long-black-24dp", selectedImage: "receipt_long-black-24dp")
                 Text("Invitations Screen").tab(title: "Invitations", image: "tray", selectedImage: "tray.fill", badgeValue: "2")
-                Text("Drafts Screen").tab(title: "Drafts", image: "outline-assignment-black-24dp", selectedImage: "assignment-black-24dp")
+                DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()))
+                                .tab(title: "Drafts", image: "outline-assignment-black-24dp", selectedImage: "assignment-black-24dp")
                 Text("Statistics Screen").tab(title: "Statistics", image: "outline-leaderboard-black-24dp", selectedImage: "leaderboard-black-24dp")
             }.accentColor(.black)
             

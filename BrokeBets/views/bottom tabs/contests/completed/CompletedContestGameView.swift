@@ -231,7 +231,7 @@ struct CompletedContestGameView_Previews: PreviewProvider {
         if let games = MockCompletedContestsRepository().mockData[0]["games"] as? [[String: Any]]{
             CompletedContestGameView(game:
                                         CompletedContestGame(game: games[1], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
-            ).environmentObject(UserScreenInfo(.small))
+            ).environmentObject(UserScreenInfo(.xsmall))
         }
     }
 }

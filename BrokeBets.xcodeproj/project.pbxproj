@@ -24,6 +24,7 @@
 		E3292ED825E6E129007189EC /* CreateUsernameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3292ED725E6E129007189EC /* CreateUsernameVM.swift */; };
 		E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342063625DC6202000CCE7A /* LoginViewV2.swift */; };
 		E343348925DDC578004027C3 /* UpcomingContestGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E343348825DDC578004027C3 /* UpcomingContestGameView.swift */; };
+		E34D80E325F97EFB0083849C /* DraftBetCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */; };
 		E36039B825F3E937005BFC15 /* InProgressContestGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */; };
 		E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */; };
 		E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FCD25D82AA8008D8399 /* TopTabs.swift */; };
@@ -41,6 +42,15 @@
 		E394BE1625CDD435002C89B9 /* BrokeBetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BE1525CDD435002C89B9 /* BrokeBetsUITests.swift */; };
 		E3997E2E25EACCFD00530C26 /* CompletedContestsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3997E2D25EACCFD00530C26 /* CompletedContestsListView.swift */; };
 		E3997E3325EACD7A00530C26 /* CompletedContestsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3997E3225EACD7A00530C26 /* CompletedContestsListVM.swift */; };
+		E39EE88825F69C220027968E /* AvailableDraftGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE88725F69C220027968E /* AvailableDraftGameView.swift */; };
+		E39EE88D25F6CF800027968E /* DraftBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE88C25F6CF800027968E /* DraftBoardView.swift */; };
+		E39EE89225F7C8D50027968E /* DraftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE89125F7C8D50027968E /* DraftView.swift */; };
+		E39EE89725F7CFDF0027968E /* DraftsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE89625F7CFDF0027968E /* DraftsListView.swift */; };
+		E39EE89C25F924340027968E /* DraftsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE89B25F924340027968E /* DraftsRepository.swift */; };
+		E39EE8A125F926BB0027968E /* Draft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE8A025F926BB0027968E /* Draft.swift */; };
+		E39EE8A625F926CB0027968E /* DraftRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE8A525F926CB0027968E /* DraftRound.swift */; };
+		E39EE8AB25F93EC10027968E /* DraftGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE8AA25F93EC10027968E /* DraftGame.swift */; };
+		E39EE8B025F9514B0027968E /* DraftsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE8AF25F9514B0027968E /* DraftsListVM.swift */; };
 		E3B621E125DEEBBD00B3ACE3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B621E025DEEBBD00B3ACE3 /* UserService.swift */; };
 		E3B621E925DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B621E825DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift */; };
 		E3B621F125DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B621F025DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift */; };
@@ -110,6 +120,7 @@
 		E3292ED725E6E129007189EC /* CreateUsernameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameVM.swift; sourceTree = "<group>"; };
 		E342063625DC6202000CCE7A /* LoginViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewV2.swift; sourceTree = "<group>"; };
 		E343348825DDC578004027C3 /* UpcomingContestGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestGameView.swift; sourceTree = "<group>"; };
+		E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBetCapsule.swift; sourceTree = "<group>"; };
 		E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGameVM.swift; sourceTree = "<group>"; };
 		E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		E38B7FCD25D82AA8008D8399 /* TopTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabs.swift; sourceTree = "<group>"; };
@@ -133,6 +144,15 @@
 		E394BE1725CDD435002C89B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3997E2D25EACCFD00530C26 /* CompletedContestsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestsListView.swift; sourceTree = "<group>"; };
 		E3997E3225EACD7A00530C26 /* CompletedContestsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestsListVM.swift; sourceTree = "<group>"; };
+		E39EE88725F69C220027968E /* AvailableDraftGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableDraftGameView.swift; sourceTree = "<group>"; };
+		E39EE88C25F6CF800027968E /* DraftBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBoardView.swift; sourceTree = "<group>"; };
+		E39EE89125F7C8D50027968E /* DraftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftView.swift; sourceTree = "<group>"; };
+		E39EE89625F7CFDF0027968E /* DraftsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftsListView.swift; sourceTree = "<group>"; };
+		E39EE89B25F924340027968E /* DraftsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftsRepository.swift; sourceTree = "<group>"; };
+		E39EE8A025F926BB0027968E /* Draft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draft.swift; sourceTree = "<group>"; };
+		E39EE8A525F926CB0027968E /* DraftRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftRound.swift; sourceTree = "<group>"; };
+		E39EE8AA25F93EC10027968E /* DraftGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftGame.swift; sourceTree = "<group>"; };
+		E39EE8AF25F9514B0027968E /* DraftsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftsListVM.swift; sourceTree = "<group>"; };
 		E3B621DB25DEC19B00B3ACE3 /* BrokeBets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrokeBets.entitlements; sourceTree = "<group>"; };
 		E3B621E025DEEBBD00B3ACE3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E3B621E825DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntireBetslipCompletedGameView.swift; sourceTree = "<group>"; };
@@ -366,6 +386,11 @@
 		E3B6221E25DF27BA00B3ACE3 /* drafts */ = {
 			isa = PBXGroup;
 			children = (
+				E39EE88725F69C220027968E /* AvailableDraftGameView.swift */,
+				E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */,
+				E39EE88C25F6CF800027968E /* DraftBoardView.swift */,
+				E39EE89125F7C8D50027968E /* DraftView.swift */,
+				E39EE89625F7CFDF0027968E /* DraftsListView.swift */,
 			);
 			path = drafts;
 			sourceTree = "<group>";
@@ -403,9 +428,10 @@
 				E30E773025F44AC40069876D /* OpponentSearchVM.swift */,
 				E3BA0F0325E1537900D9C041 /* UpcomingContestsListVM.swift */,
 				E3997E3225EACD7A00530C26 /* CompletedContestsListVM.swift */,
-				E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */,
-				E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */,
 				E328B6B025F42C6F0027EBB3 /* InProgressContestsListVM.swift */,
+				E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */,
+				E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */,
+				E39EE8AF25F9514B0027968E /* DraftsListVM.swift */,
 			);
 			name = "view models";
 			path = ..;
@@ -417,6 +443,7 @@
 				E3BA0F0B25E153C400D9C041 /* UpcomingContestsRepository.swift */,
 				E3292EC325E5BBDF007189EC /* CompletedContestsRepository.swift */,
 				E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */,
+				E39EE89B25F924340027968E /* DraftsRepository.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -431,6 +458,9 @@
 				E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */,
 				E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */,
 				E3F52D6D25F057A2009B10CE /* LiveGameScoreboard.swift */,
+				E39EE8A025F926BB0027968E /* Draft.swift */,
+				E39EE8AA25F93EC10027968E /* DraftGame.swift */,
+				E39EE8A525F926CB0027968E /* DraftRound.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -747,13 +777,16 @@
 				E38C528E25F2F0C1005C659B /* InProgressGamesListView.swift in Sources */,
 				CA55357D25F401F00054DB21 /* OpponentSearchView.swift in Sources */,
 				E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */,
+				E39EE8B025F9514B0027968E /* DraftsListVM.swift in Sources */,
 				E3BA0F1C25E154C100D9C041 /* UpcomingContestGame.swift in Sources */,
 				E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */,
 				E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */,
 				E3BA0EF525E048A900D9C041 /* UpcomingContestGamesListView.swift in Sources */,
 				E3C9E1B125F5788F00B719B9 /* CreateContestVM.swift in Sources */,
 				E3997E3325EACD7A00530C26 /* CompletedContestsListVM.swift in Sources */,
+				E39EE88D25F6CF800027968E /* DraftBoardView.swift in Sources */,
 				E3BA0F0425E1537900D9C041 /* UpcomingContestsListVM.swift in Sources */,
+				E39EE8A625F926CB0027968E /* DraftRound.swift in Sources */,
 				E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */,
 				E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */,
 				E3292EC425E5BBDF007189EC /* CompletedContestsRepository.swift in Sources */,
@@ -767,9 +800,11 @@
 				E328B6B125F42C6F0027EBB3 /* InProgressContestsListVM.swift in Sources */,
 				E3BA0F1425E153EF00D9C041 /* UpcomingContest.swift in Sources */,
 				E3292ED325E6E0C7007189EC /* CreateUsernameView.swift in Sources */,
+				E39EE89725F7CFDF0027968E /* DraftsListView.swift in Sources */,
 				E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */,
 				E3DCE9F725F2871100B063A3 /* ChosenOpponentChip.swift in Sources */,
 				E394BDF925CDD434002C89B9 /* BrokeBetsApp.swift in Sources */,
+				E39EE8A125F926BB0027968E /* Draft.swift in Sources */,
 				E3E5C71825F19F0800AAB992 /* InProgressGameView.swift in Sources */,
 				E3292ECE25E5BC88007189EC /* CompletedContestGame.swift in Sources */,
 				E3C9688525DD90680097963E /* String+Extensions.swift in Sources */,
@@ -777,16 +812,21 @@
 				E3B621F125DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift in Sources */,
 				E30C2A7325ED99A0000A04CA /* ProfileModalView.swift in Sources */,
 				E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */,
+				E39EE88825F69C220027968E /* AvailableDraftGameView.swift in Sources */,
 				E30E773125F44AC40069876D /* OpponentSearchVM.swift in Sources */,
 				E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */,
 				E3F52D6E25F057A2009B10CE /* LiveGameScoreboard.swift in Sources */,
+				E34D80E325F97EFB0083849C /* DraftBetCapsule.swift in Sources */,
 				E36039B825F3E937005BFC15 /* InProgressContestGameVM.swift in Sources */,
+				E39EE89C25F924340027968E /* DraftsRepository.swift in Sources */,
 				E3B621E125DEEBBD00B3ACE3 /* UserService.swift in Sources */,
 				E3D8E3E725EC070700A3A88E /* CompletedContestGameView.swift in Sources */,
 				E3F52D7425F1329A009B10CE /* CreateContestView.swift in Sources */,
 				E3BA0F0C25E153C400D9C041 /* UpcomingContestsRepository.swift in Sources */,
+				E39EE8AB25F93EC10027968E /* DraftGame.swift in Sources */,
 				E3B621E925DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift in Sources */,
 				E3292EB725E57707007189EC /* CustomRoundedRect.swift in Sources */,
+				E39EE89225F7C8D50027968E /* DraftView.swift in Sources */,
 				E3C9685E25DD7D100097963E /* LoginView.swift in Sources */,
 				E38B7FEF25D82E67008D8399 /* UINavigationController+Extensions.swift in Sources */,
 				E38B7FE725D82E27008D8399 /* UITabBarController+Extensions.swift in Sources */,

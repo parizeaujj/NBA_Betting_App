@@ -32,7 +32,9 @@ struct ContentView: View {
         if true {
 
             if(true){
-                MainAppView()
+                DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()))
+//                DraftView(draft: Draft(data: MockDraftsRepository().mockData[0], playerUid: "testToddUid", draftId: "draftid1")!)
+//                MainAppView()
 //                    .environmentObject(userService)
 //                InProgressContestGamesListView(inProgressGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository()))
 //                    .environmentObject(userService)
