@@ -77,6 +77,4 @@ class DateFormatStringUnitTests: XCTestCase {
         
         XCTAssertTrue(specialDayType == .Today)
     }
-    
-
 }

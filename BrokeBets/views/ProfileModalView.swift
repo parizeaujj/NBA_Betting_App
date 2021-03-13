@@ -57,7 +57,7 @@ struct ProfileModalView: View {
                         .padding(.horizontal)
                     
                     Button(action: {
-                        
+                        print("user logged out")
                         userService.logout()
                         
                     }, label: {

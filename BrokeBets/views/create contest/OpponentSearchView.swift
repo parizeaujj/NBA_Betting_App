@@ -25,6 +25,7 @@ struct OpponentSearchView: View {
                     HStack {
                         
                         TextField("Enter a username", text: self.$opponentSearchVM.usernameText)
+                            .foregroundColor(.black)
                             .autocapitalization(.none)
                             .keyboardType(.asciiCapable)
                             .disableAutocorrection(true)
@@ -107,7 +108,7 @@ struct OpponentSearchView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .accentColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .accentColor(.blue)
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.vertical)
@@ -127,5 +128,7 @@ struct SearchBarView_Previews: PreviewProvider {
    
         OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUsername: nil, setOpponentSelection: { _ in }, userService: UserService()))
             .environmentObject(UserScreenInfo(.regular))
+//            .environment(\.colorScheme, .light)
+            .preferredColorScheme(.light)
     }
 }

@@ -25,6 +25,7 @@
 		E342063725DC6202000CCE7A /* LoginViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342063625DC6202000CCE7A /* LoginViewV2.swift */; };
 		E343348925DDC578004027C3 /* UpcomingContestGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E343348825DDC578004027C3 /* UpcomingContestGameView.swift */; };
 		E34D80E325F97EFB0083849C /* DraftBetCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */; };
+		E34D80EB25F989440083849C /* DraftPickSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D80EA25F989440083849C /* DraftPickSelectionView.swift */; };
 		E36039B825F3E937005BFC15 /* InProgressContestGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */; };
 		E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */; };
 		E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FCD25D82AA8008D8399 /* TopTabs.swift */; };
@@ -60,6 +61,7 @@
 		E3BA0F1425E153EF00D9C041 /* UpcomingContest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA0F1325E153EF00D9C041 /* UpcomingContest.swift */; };
 		E3BA0F1C25E154C100D9C041 /* UpcomingContestGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA0F1B25E154C100D9C041 /* UpcomingContestGame.swift */; };
 		E3BB843525F3C5A6008121C8 /* InProgressContestGamesListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */; };
+		E3BBF30B25FD757900EEAF90 /* DraftBoardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */; };
 		E3C9685E25DD7D100097963E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9685D25DD7D100097963E /* LoginView.swift */; };
 		E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */; };
 		E3C9688525DD90680097963E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688425DD90680097963E /* String+Extensions.swift */; };
@@ -70,6 +72,7 @@
 		E3D8E3E225EC069000A3A88E /* CompletedContestGamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */; };
 		E3D8E3E725EC070700A3A88E /* CompletedContestGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */; };
 		E3DCE9F725F2871100B063A3 /* ChosenOpponentChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DCE9F625F2871100B063A3 /* ChosenOpponentChip.swift */; };
+		E3E3FFF025FBD96000892B5C /* DraftPickSelectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E3FFEF25FBD96000892B5C /* DraftPickSelectionVM.swift */; };
 		E3E43CAD25EC6A0C00226BBE /* DateFormatStringUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */; };
 		E3E5C71825F19F0800AAB992 /* InProgressGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E5C71725F19F0800AAB992 /* InProgressGameView.swift */; };
 		E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */; };
@@ -121,6 +124,7 @@
 		E342063625DC6202000CCE7A /* LoginViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewV2.swift; sourceTree = "<group>"; };
 		E343348825DDC578004027C3 /* UpcomingContestGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestGameView.swift; sourceTree = "<group>"; };
 		E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBetCapsule.swift; sourceTree = "<group>"; };
+		E34D80EA25F989440083849C /* DraftPickSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPickSelectionView.swift; sourceTree = "<group>"; };
 		E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGameVM.swift; sourceTree = "<group>"; };
 		E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		E38B7FCD25D82AA8008D8399 /* TopTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabs.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 		E3BA0F1325E153EF00D9C041 /* UpcomingContest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContest.swift; sourceTree = "<group>"; };
 		E3BA0F1B25E154C100D9C041 /* UpcomingContestGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestGame.swift; sourceTree = "<group>"; };
 		E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGamesListVM.swift; sourceTree = "<group>"; };
+		E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBoardVM.swift; sourceTree = "<group>"; };
 		E3C9685D25DD7D100097963E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleButton.swift; sourceTree = "<group>"; };
 		E3C9688425DD90680097963E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -173,6 +178,7 @@
 		E3D8E3E125EC069000A3A88E /* CompletedContestGamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGamesListView.swift; sourceTree = "<group>"; };
 		E3D8E3E625EC070700A3A88E /* CompletedContestGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGameView.swift; sourceTree = "<group>"; };
 		E3DCE9F625F2871100B063A3 /* ChosenOpponentChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenOpponentChip.swift; sourceTree = "<group>"; };
+		E3E3FFEF25FBD96000892B5C /* DraftPickSelectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPickSelectionVM.swift; sourceTree = "<group>"; };
 		E3E43CAC25EC6A0C00226BBE /* DateFormatStringUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatStringUnitTests.swift; sourceTree = "<group>"; };
 		E3E5C71725F19F0800AAB992 /* InProgressGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressGameView.swift; sourceTree = "<group>"; };
 		E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContest.swift; sourceTree = "<group>"; };
@@ -386,11 +392,12 @@
 		E3B6221E25DF27BA00B3ACE3 /* drafts */ = {
 			isa = PBXGroup;
 			children = (
+				E39EE89625F7CFDF0027968E /* DraftsListView.swift */,
+				E39EE89125F7C8D50027968E /* DraftView.swift */,
+				E34D80EA25F989440083849C /* DraftPickSelectionView.swift */,
 				E39EE88725F69C220027968E /* AvailableDraftGameView.swift */,
 				E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */,
 				E39EE88C25F6CF800027968E /* DraftBoardView.swift */,
-				E39EE89125F7C8D50027968E /* DraftView.swift */,
-				E39EE89625F7CFDF0027968E /* DraftsListView.swift */,
 			);
 			path = drafts;
 			sourceTree = "<group>";
@@ -432,6 +439,8 @@
 				E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */,
 				E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */,
 				E39EE8AF25F9514B0027968E /* DraftsListVM.swift */,
+				E3E3FFEF25FBD96000892B5C /* DraftPickSelectionVM.swift */,
+				E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */,
 			);
 			name = "view models";
 			path = ..;
@@ -801,6 +810,7 @@
 				E3BA0F1425E153EF00D9C041 /* UpcomingContest.swift in Sources */,
 				E3292ED325E6E0C7007189EC /* CreateUsernameView.swift in Sources */,
 				E39EE89725F7CFDF0027968E /* DraftsListView.swift in Sources */,
+				E34D80EB25F989440083849C /* DraftPickSelectionView.swift in Sources */,
 				E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */,
 				E3DCE9F725F2871100B063A3 /* ChosenOpponentChip.swift in Sources */,
 				E394BDF925CDD434002C89B9 /* BrokeBetsApp.swift in Sources */,
@@ -809,6 +819,7 @@
 				E3292ECE25E5BC88007189EC /* CompletedContestGame.swift in Sources */,
 				E3C9688525DD90680097963E /* String+Extensions.swift in Sources */,
 				E343348925DDC578004027C3 /* UpcomingContestGameView.swift in Sources */,
+				E3BBF30B25FD757900EEAF90 /* DraftBoardVM.swift in Sources */,
 				E3B621F125DF0FF100B3ACE3 /* CompletedContestBetslipGameView.swift in Sources */,
 				E30C2A7325ED99A0000A04CA /* ProfileModalView.swift in Sources */,
 				E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */,
@@ -824,6 +835,7 @@
 				E3F52D7425F1329A009B10CE /* CreateContestView.swift in Sources */,
 				E3BA0F0C25E153C400D9C041 /* UpcomingContestsRepository.swift in Sources */,
 				E39EE8AB25F93EC10027968E /* DraftGame.swift in Sources */,
+				E3E3FFF025FBD96000892B5C /* DraftPickSelectionVM.swift in Sources */,
 				E3B621E925DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift in Sources */,
 				E3292EB725E57707007189EC /* CustomRoundedRect.swift in Sources */,
 				E39EE89225F7C8D50027968E /* DraftView.swift in Sources */,

@@ -7,17 +7,134 @@
 
 import SwiftUI
 
-//struct DraftBoardView: View {
-//    var body: some View {
-//
-//        
-//
-//
-//    }
-//}
-//
-//struct DraftBoardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DraftBoardView()
-//    }
-//}
+struct DraftBoardView: View {
+    
+    @StateObject var viewModel: DraftBoardVM
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        
+        ZStack{
+            
+            VStack{
+                VStack(spacing: 20){
+                    
+                    Group{
+                        HStack{
+                            
+                            Text("VS")
+                                .fontWeight(.bold)
+                                .font(.subheadline)
+                            
+                            Text("\(viewModel.draft.opponent)")
+                                .foregroundColor(.blue)
+                                .fontWeight(.bold)
+                            
+                            Spacer()
+                            
+                            
+                            Text("Expires: \(viewModel.draft.draftExpirationDateTimeStr)")
+                                .font(.footnote)
+                        }
+                        .padding(.top)
+                        
+                        HStack{
+                            
+                            
+                            Text("Round")
+                                .font(.subheadline)
+                            
+                            
+                            Text("\(viewModel.draft.currentRound)")
+                                .fontWeight(.bold)
+                            
+                            Text("of")
+                                .font(.subheadline)
+                            
+                            
+                            Text("\(viewModel.draft.totalRounds)")
+                                .fontWeight(.bold)
+                            
+                            Spacer()
+                        }
+                    }
+                    .padding(.horizontal)
+                    
+                    Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
+                }
+                .background(Color.white)
+                
+                
+                
+                ScrollView{
+                    
+                    if let draftRounds = viewModel.draft.userDraftRoundsResults {
+                        
+                        LazyVStack(alignment: .leading, spacing: 0){
+                            
+                            
+                            ForEach(draftRounds){ draftRound in
+                                
+                                HStack{
+                                    Text("Round \(draftRound.round)")
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                }
+                                .padding(.leading)
+                                .padding(.top, 10)
+                                
+                                VStack(alignment: .leading, spacing: 5){
+                                    
+                                    if let drafted = draftRound.draftedBetStr {
+                                        Text("Drafted: \(drafted)")
+                                    }
+                                    else{
+                                        Text("Drafted: TBD")
+                                    }
+                                    if let forced = draftRound.forcedBetStr {
+                                        Text("Drafted: \(forced)")
+                                    }
+                                    else{
+                                        Text("Forced: TBD")
+                                    }
+                                }
+                                .padding(.vertical, 10)
+                                .padding(.leading)
+                                
+                                Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
+                                
+                            }
+                        }
+                    }
+                    else{
+                        
+                        Text("No completed draft rounds yet")
+                            .padding()
+                        
+                    }
+                }
+            }
+        }
+        .onReceive(viewModel.draftDoesNotExistAnymore, perform: { _ in
+            presentationMode.wrappedValue.dismiss()
+        })
+        
+    }
+}
+
+struct DraftBoardView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView{
+            NavigationLink(
+                destination: DraftBoardView(viewModel: DraftBoardVM(draft: Draft(data: MockDraftsRepository().mockData["draftid1"]!, playerUid: "testToddUid")!, draftsRepo: MockDraftsRepository()))
+                    .navigationBarTitle("", displayMode: .inline),
+                isActive: .constant(true),
+                label: {
+                    Text("")
+                })
+            
+        }
+        
+        
+    }
+}

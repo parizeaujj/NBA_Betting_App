@@ -174,6 +174,8 @@ struct Draft: Identifiable {
             
         }
       
+        self.userDraftRoundsResults = roundPicks.sorted{ $0.round > $1.round}
+        
         
         var gamesPool: [DraftGame] = []
         
@@ -186,6 +188,13 @@ struct Draft: Identifiable {
             gamesPool.append(draftGame)
         }
         
-        self.gamesPool = gamesPool
+        self.gamesPool = gamesPool.filter({$0.isSpreadBetStillAvailable || $0.isOverUnderBetStillAvailable}).sorted {
+            
+            if($0.gameStartDateTime != $1.gameStartDateTime){
+               return $0.gameStartDateTime < $1.gameStartDateTime
+            }
+            
+            return $0.gameId < $1.gameId
+        }
     }
 }

@@ -38,6 +38,7 @@ struct CreateContestView: View {
                     VStack{
                         HStack{
                             Text("Opponent:")
+                                .foregroundColor(.black)
                             
                             Spacer()
                             
@@ -128,7 +129,10 @@ struct CreateContestView: View {
                     .foregroundColor(.white)
             }))
            
-        }.accentColor(.white)
+        }
+        .accentColor(.white)
+//        .background(Color.white)
+        .environment(\.colorScheme, .light)
     }
 }
 
@@ -136,6 +140,7 @@ struct CreateContestView: View {
 struct CreateContestView_Previews: PreviewProvider {
     static var previews: some View {
         CreateContestView()
+            .preferredColorScheme(.dark)
             .environmentObject(UserService())
     }
 }

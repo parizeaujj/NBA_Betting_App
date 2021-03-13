@@ -20,7 +20,10 @@ class DraftsListVM: ObservableObject {
         self.draftsRepo = draftsRepo
         
         self.draftsRepo.draftsPublisher
-            .sink { drafts in
+            .sink { draftsDict in
+                
+                let drafts = Array(draftsDict.values)
+                
                 self.drafts = drafts.sorted {
                     
                     if($0.isUserTurn != $1.isUserTurn){

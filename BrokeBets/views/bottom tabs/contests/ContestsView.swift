@@ -29,7 +29,8 @@ struct ContestsView: View {
                                .padding(.bottom, 10)
                                .frame(width: UIScreen.main.bounds.size.width / 3)
                                 
-                }.frame(maxWidth: .infinity).padding(.top, 15).background(Color(UIColor.systemBlue))
+                }
+                .frame(maxWidth: .infinity).padding(.top, 15).background(Color(UIColor.systemBlue))
                 
                 
                 // controls which tab is shown for the contests screen
@@ -54,8 +55,6 @@ struct ContestsView: View {
                 Spacer()
                 
             }
-            
-
             .background(Color.gray.opacity(0.05))
             .navigationBarTitle("Contests", displayMode: .inline)
             .navigationBarItems(trailing:
@@ -86,6 +85,7 @@ struct ContestsView: View {
         }
         .accentColor(.white)
         .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: CreateContestView.init)
+        .preferredColorScheme(.light)
     }
 }
 

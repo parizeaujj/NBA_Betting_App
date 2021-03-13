@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct ContentView: View {
     
@@ -18,7 +19,7 @@ struct ContentView: View {
 //
 //            if(userService.doesHaveUsername){
 //                MainAppView()
-//                    .environmentObject(userService)
+////                    .environmentObject(userService)
 //            }
 //            else{
 //                CreateUsernameView(viewModel: CreateUsernameVM(userService: userService))
@@ -26,13 +27,17 @@ struct ContentView: View {
 //        }
 //        else {
 //            LoginView()
-//                .environmentObject(userService)
+////                .environmentObject(userService)
 //        }
 
         if true {
 
             if(true){
-                DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()))
+                if let games  = MockDraftsRepository().mockData["draftid1"]!["games_pool"] as? [[String: Any]]{
+                    
+                    AvailableDraftGameView(game: DraftGame(data: games[0])!)
+                }
+//                DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()))
 //                DraftView(draft: Draft(data: MockDraftsRepository().mockData[0], playerUid: "testToddUid", draftId: "draftid1")!)
 //                MainAppView()
 //                    .environmentObject(userService)

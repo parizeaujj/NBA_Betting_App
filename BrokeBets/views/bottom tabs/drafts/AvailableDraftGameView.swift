@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct AvailableDraftGameView: View {
+    
+    var game: DraftGame
+ 
+    init(game: DraftGame){
+        self.game = game
+    }
+    
     var body: some View {
   
         HStack(spacing: 0){
                 
                 VStack(alignment: .leading, spacing: 0){
                     
-                    Text("Today at 8:00pm")
+                    Text("\(game.gameStartDateTimeStr)")
                         .font(.caption)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .padding(.top, 8)
@@ -23,31 +30,33 @@ struct AvailableDraftGameView: View {
                     
                     Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                     
-                    HStack{
-                        
+                    HStack(spacing: 0){
                         
                         VStack(alignment: .leading, spacing: 0){
-                            Text("HOU Rockets")
+                            
+                            Text("\(game.homeTeam)")
                                 .font(.subheadline)
                                 .padding(.leading)
                                 .padding(.top, 14)
                                 .padding(.bottom, 11)
                             
-                            Text("MIN Timberwolves")
+                            Text("\(game.awayTeam)")
+                                .lineLimit(1)
                                 .font(.subheadline)
                                 .padding(.leading)
                                 .padding(.top, 11)
                                 .padding(.bottom, 14)
                         }
-                        .padding(.trailing)
+                    
+                        Spacer()
                         
-                  
                         Rectangle().frame(width: 1.5, height: nil, alignment: .leading).foregroundColor(Color.gray)
                     }
-                    .background(Color.gray.opacity(0.15))
-                   
+                    .frame(minWidth: 155)
+                    .background(Color.gray.opacity(0.12))
+                    
                 }
-                .fixedSize()
+                .fixedSize(horizontal: false, vertical: true)
                 
                 VStack(spacing: 0){
                     
@@ -62,37 +71,36 @@ struct AvailableDraftGameView: View {
                     
                     HStack(spacing:0){
                         
-                        
                         VStack(spacing: 0){
                             
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Button(action: {}, label: {
                                 
-                                DraftBetCapsule(label: "HOU +7", isDisabled: false)
+                                DraftBetCapsule(label: game.homeSpreadBetStr, isDisabled: game.isSpreadBetStillAvailable)
                                     .padding(.top, 10)
                                     .padding(.bottom, 7)
                                 
                             })
-                            .disabled(false)
+                            .disabled(game.isSpreadBetStillAvailable)
                         
-                            
                             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                                 
-                                DraftBetCapsule(label: "MIN -7", isDisabled: false)
+                                DraftBetCapsule(label: game.awaySpreadBetStr, isDisabled: game.isSpreadBetStillAvailable)
                                     .padding(.top, 7)
                                     .padding(.bottom, 10)
                                 
-                            }).disabled(false)
-                            
+                            })
+                            .disabled(game.isSpreadBetStillAvailable)
+        
                         }
                         
                         Rectangle().frame(width: 1.5, height: nil, alignment: .leading).foregroundColor(Color.gray)
                     }
-                    .background(Color.gray.opacity(0.15))
+                   
+                    .background(Color.gray.opacity(0.12))
                    
                 }
                 .fixedSize()
-                
-                
+               
                 VStack(spacing: 0){
                     
                     Text("O/U")
@@ -107,26 +115,24 @@ struct AvailableDraftGameView: View {
 
                             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                                 
-                                DraftBetCapsule(label: "o 225.5", isDisabled: false)
+                                DraftBetCapsule(label: game.overBetStr, isDisabled: game.isOverUnderBetStillAvailable)
                                     .padding(.top, 10)
                                     .padding(.bottom, 7)
                                 
-                            }).disabled(false)
+                            }).disabled(game.isOverUnderBetStillAvailable)
                             
-                        
                             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                                 
-                                DraftBetCapsule(label: "u 225.5", isDisabled: true)
+                                DraftBetCapsule(label: game.underBetStr, isDisabled: game.isOverUnderBetStillAvailable)
                                     .padding(.top, 7)
                                     .padding(.bottom, 10)
                                 
                             })
-                            .disabled(true)
+                            .disabled(game.isOverUnderBetStillAvailable)
 
                         }
-                        
                     }
-                    .background(Color.gray.opacity(0.15))
+                    .background(Color.gray.opacity(0.12))
                     
                 }
                 .fixedSize()
@@ -134,17 +140,20 @@ struct AvailableDraftGameView: View {
         }
         .accentColor(.black)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/))
-      
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1.0))
+//        .padding(.horizontal, 10)
     }
 }
 
 
 
-
-
 struct AvailableDraftGameView_Previews: PreviewProvider {
     static var previews: some View {
-        AvailableDraftGameView()
+        
+        
+        if let games  = MockDraftsRepository().mockData["draftid1"]!["games_pool"] as? [[String: Any]]{
+            
+            AvailableDraftGameView(game: DraftGame(data: games[0])!)
+        }
     }
 }

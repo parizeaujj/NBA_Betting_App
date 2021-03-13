@@ -102,7 +102,7 @@ struct DraftView: View {
                         })
                     
                     NavigationLink(
-                        destination: Text("Destination"),
+                        destination: DraftPickSelectionView(viewModel: DraftPickSelectionVM(draft: draft, draftsRepo: MockDraftsRepository())),
                         label: {
                             
                             Text("Select Pick")
@@ -119,6 +119,7 @@ struct DraftView: View {
                         .disabled(!draft.isUserTurn)
                     
                 }
+                .accentColor(.blue)
                 .padding(.vertical, 12)
                 
             }
@@ -134,6 +135,6 @@ struct DraftView: View {
 
 struct DraftView_Previews: PreviewProvider {
     static var previews: some View {
-        DraftView(draft: Draft(data: MockDraftsRepository().mockData[0], playerUid: "testToddUid")!)
+        DraftView(draft: Draft(data: MockDraftsRepository().mockData["draftid1"]!, playerUid: "testToddUid")!)
     }
 }

@@ -14,7 +14,6 @@ struct DraftsListView: View {
     
     var body: some View {
         
-        
         NavigationView{
             
             ZStack{

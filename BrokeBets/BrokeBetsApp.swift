@@ -70,6 +70,7 @@ struct BrokeBetsApp: App {
                     .environmentObject(UserService())
                     .environmentObject(UserScreenInfo(getScreenSizeType()))
                     .environment(\.colorScheme, .light)
+                    .preferredColorScheme(.light)
         }
     }
     
