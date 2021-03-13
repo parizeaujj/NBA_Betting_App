@@ -86,7 +86,7 @@ struct DraftView: View {
                 VStack(spacing: 12){
                     
                     NavigationLink(
-                        destination: Text("Destination"),
+                        destination: DraftBoardView(viewModel: DraftBoardVM(draft: draft, draftsRepo: MockDraftsRepository())),
                         label: {
                            
                             Text("View board")

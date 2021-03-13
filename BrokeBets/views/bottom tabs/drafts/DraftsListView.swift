@@ -11,6 +11,9 @@ import SwiftUI
 struct DraftsListView: View {
     
     @StateObject var draftsListVM: DraftsListVM
+    @EnvironmentObject var userService: UserService
+    @State private var isCreateContestSheetPresented = false
+    @Binding var isShowingProfileModal: Bool
     
     var body: some View {
         
@@ -56,8 +59,8 @@ struct DraftsListView: View {
                                     
                                     HStack{
                                         Button(action: {
-//                                            print("pressed")
-//                                            isCreateContestSheetPresented = true
+                                            print("pressed")
+                                            isCreateContestSheetPresented = true
                                         }, label: {
                                             Image(systemName: "plus.square")
                                                 .font(Font.system(.title).bold())
@@ -66,9 +69,9 @@ struct DraftsListView: View {
                                         
                                         Button(action: {
                                         
-//                                            withAnimation{
-//                                                isShowingProfileModal = true
-//                                            }
+                                            withAnimation{
+                                                isShowingProfileModal = true
+                                            }
                                           
                                         }, label: {
                                             Image(systemName: "person.circle")
@@ -84,6 +87,6 @@ struct DraftsListView: View {
 
 struct DraftsListView_Previews: PreviewProvider {
     static var previews: some View {
-        DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()))
+        DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()), isShowingProfileModal: .constant(false))
     }
 }
