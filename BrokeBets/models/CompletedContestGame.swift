@@ -81,7 +81,10 @@ struct CompletedContestGame: Codable, Identifiable {
         self.awayTeam = awayTeam
         self.homeTeamScore = homeTeamScore
         self.awayTeamScore = awayTeamScore
-        self.gameWinner = GameWinner(rawValue: gameWinner.uppercased())!
+        guard let gameWinnerCasted = GameWinner(rawValue: gameWinner.uppercased()) else {
+            return nil
+        }
+        self.gameWinner = gameWinnerCasted
         
         let gameCompletionDt = ts.dateValue()
         self.gameCompletionDateTime = gameCompletionDt
