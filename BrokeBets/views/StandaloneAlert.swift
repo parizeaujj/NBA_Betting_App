@@ -31,7 +31,7 @@ struct ContentView: View {
     var body: some View {
         Button("RandomBet") {
            showing = true
-           selectedbet = "jjjj";
+           selectedbet = "Fillerbet";
          }
         
         .alert(isPresented: $showing, content: {self.alert}) //view modifier

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0439B38325FD680B0019BBFF /* StandaloneAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439B38225FD680B0019BBFF /* StandaloneAlert.swift */; };
 		4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80225FD36A400913F1B /* UpcomingContestTest.swift */; };
 		4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */; };
 		780CC5543B010C56AF333A05 /* Pods_BrokeBets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA770B23555B11C24054428D /* Pods_BrokeBets.framework */; };
@@ -105,6 +106,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0439B38225FD680B0019BBFF /* StandaloneAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandaloneAlert.swift; sourceTree = "<group>"; };
 		097BB6BE178A92D74989CC75 /* Pods_BrokeBets_BrokeBetsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets_BrokeBetsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F98490B460D6530CB2D949E /* Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4095F80225FD36A400913F1B /* UpcomingContestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestTest.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				E3292ED225E6E0C7007189EC /* CreateUsernameView.swift */,
 				E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */,
 				E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */,
+				0439B38225FD680B0019BBFF /* StandaloneAlert.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				E3F52D7A25F18177009B10CE /* InProgressContestView.swift in Sources */,
 				E38B7FDE25D82BE5008D8399 /* UpcomingContestsListView.swift in Sources */,
 				E3BB843525F3C5A6008121C8 /* InProgressContestGamesListVM.swift in Sources */,
+				0439B38325FD680B0019BBFF /* StandaloneAlert.swift in Sources */,
 				E38B7FD825D82B6A008D8399 /* ContestsView.swift in Sources */,
 				E3292EBC25E57E27007189EC /* CompletedContestView.swift in Sources */,
 				E3997E2E25EACCFD00530C26 /* CompletedContestsListView.swift in Sources */,
