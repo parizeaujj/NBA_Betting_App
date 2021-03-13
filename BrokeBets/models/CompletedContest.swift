@@ -110,7 +110,7 @@ struct CompletedContest : Codable, Identifiable {
             return nil
         }
         
-        guard let result = ContestResult(rawValue: playerResults[playerLookupType.rawValue]!.uppercased()) else {
+        guard let result = ContestResult(rawValue: playerResults[playerLookupType.rawValue]?.uppercased() ?? "") else {
             return nil
         }
         
