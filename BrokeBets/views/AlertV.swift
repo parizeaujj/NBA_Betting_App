@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct ContentView: View {
     
     @State private var showing = false;
-    
+    @State private var selectedbet = "";
     var alert: Alert{
          Alert(
             
             title: Text("Confirm selection"),
-            message: Text("Are you want to select this bet?"),
+            message: Text("Are you want to select the following bet: " + selectedbet),
             primaryButton: .default(
                   Text("Yes"),
                   action: {}
@@ -29,9 +29,12 @@ struct SwiftUIView: View {
     }
     
     var body: some View {
-        Button("Random") {
+        Button("RandomBet") {
            showing = true
-         }.alert(isPresented: $showing, content: {self.alert})
+           selectedbet = "jjjj";
+         }
+        
+        .alert(isPresented: $showing, content: {self.alert}) //view modifier
            
         
     }
@@ -39,6 +42,6 @@ struct SwiftUIView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        ContentView()
     }
 }
