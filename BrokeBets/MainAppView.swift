@@ -18,7 +18,7 @@ struct MainAppView: View {
                 ContestsView(isShowingProfileModal: $isShowingContestModal).tab(title: "Contests", image: "outline-emoji_events-black-24dp", selectedImage: "emoji_events-black-24dp")
                 Text("Betslip Screen").tab(title: "Betslip", image: "outline-receipt_long-black-24dp", selectedImage: "receipt_long-black-24dp")
                 Text("Invitations Screen").tab(title: "Invitations", image: "tray", selectedImage: "tray.fill", badgeValue: "2")
-                DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()))
+                DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()), isShowingProfileModal: $isShowingContestModal)
                                 .tab(title: "Drafts", image: "outline-assignment-black-24dp", selectedImage: "assignment-black-24dp")
                 Text("Statistics Screen").tab(title: "Statistics", image: "outline-leaderboard-black-24dp", selectedImage: "leaderboard-black-24dp")
             }.accentColor(.black)
@@ -35,5 +35,6 @@ struct MainAppView_Previews: PreviewProvider {
     static var previews: some View {
         MainAppView()
             .environmentObject(UserScreenInfo(.regular))
+            .environmentObject(UserService())
     }
 }
