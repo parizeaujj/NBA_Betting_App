@@ -221,6 +221,23 @@ class CompletedContestsUnitTests: XCTestCase {
         XCTAssertNil(completedContestInstance, "Assert nil for contestResults player1 key misspelled failed.")
     }
     
+    //Invalid Values for keyvalue pair of contestResults
+    func test_completedContest_contestResults_result_values_misspelled() throws {
+        
+        //change something in mock data
+        mockData.removeValue(forKey: "contestResults")
+        mockData["contestResults"] = [
+            "player1": "Invalid",
+            "player2": "Invalid"
+         ]
+        
+        //load it in
+        let completedContestInstance: CompletedContest? = CompletedContest(data: mockData, playerUid: testUID)
+        
+        //assert
+        XCTAssertNil(completedContestInstance, "Assert nil for contestResults result_values misspelled failed.")
+    }
+    
     //games as empty dictionary
     func test_completedContest_empty_games_dictionary() throws {
         
@@ -235,14 +252,35 @@ class CompletedContestsUnitTests: XCTestCase {
         XCTAssertNotNil(completedContestInstance, "Assert not nil for empty games dictionary failed.")
     }
     
-    //add games from CompletedContestGame UnitTests.swift //space for readability
+    //add games from CompletedContestGameUnitTests.swift
+    //correctly formatted
+    func test_completedContest_games_correct() throws {
+        
+        //change something in mock data
+        mockData.removeValue(forKey: "games")
+        mockData["games"] = [CompletedContestGameUnitTests().game]
+        
+        //load it in
+        let completedContestInstance: CompletedContest? = CompletedContest(data: mockData, playerUid: testUID)
+        
+        //assert
+        XCTAssertNotNil(completedContestInstance, "Assert not nil for games correct failed.")
+    }
+    
+    //add games from CompletedContestGameUnitTests.swift
+    //incorrectly formatted
+    func test_completedContest_invalid_games_dictionary() throws {
+        
+        //change something in mock data
+        mockData.removeValue(forKey: "games")
+        mockData["games"] = ["Invalid": "Data"]
+        
+        //load it in
+        let completedContestInstance: CompletedContest? = CompletedContest(data: mockData, playerUid: testUID)
+        
+        //assert
+        XCTAssertNil(completedContestInstance, "Assert nil for invalid games dictionary failed.")
+    }
     
     
-    //
-    /*
-     "contestResults": [
-        "player1": "WON",
-        "player2": "LOST"
-     ],
-     */
 }
