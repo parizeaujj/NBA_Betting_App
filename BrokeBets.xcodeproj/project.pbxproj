@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80225FD36A400913F1B /* UpcomingContestTest.swift */; };
+		4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */; };
 		780CC5543B010C56AF333A05 /* Pods_BrokeBets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA770B23555B11C24054428D /* Pods_BrokeBets.framework */; };
 		84464B7325FD2B640046B0CF /* CompletedContestGameUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84464B7225FD2B640046B0CF /* CompletedContestGameUnitTests.swift */; };
 		845D3ADC25FD106B00DEE76A /* CompletedContestsUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D3ADB25FD106B00DEE76A /* CompletedContestsUnitTests.swift */; };
@@ -102,6 +104,8 @@
 /* Begin PBXFileReference section */
 		097BB6BE178A92D74989CC75 /* Pods_BrokeBets_BrokeBetsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets_BrokeBetsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F98490B460D6530CB2D949E /* Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4095F80225FD36A400913F1B /* UpcomingContestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestTest.swift; sourceTree = "<group>"; };
+		4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestGameTest.swift; sourceTree = "<group>"; };
 		40C596F50F10E2D82C5EE325 /* Pods-BrokeBets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets/Pods-BrokeBets.release.xcconfig"; sourceTree = "<group>"; };
 		71EED93567F6274CBA95B207 /* Pods-BrokeBets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets/Pods-BrokeBets.debug.xcconfig"; sourceTree = "<group>"; };
 		84464B7225FD2B640046B0CF /* CompletedContestGameUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGameUnitTests.swift; sourceTree = "<group>"; };
@@ -476,6 +480,8 @@
 				E3C9E1C925F5CA5000B719B9 /* TimeFormatStringUnitTests.swift */,
 				845D3ADB25FD106B00DEE76A /* CompletedContestsUnitTests.swift */,
 				84464B7225FD2B640046B0CF /* CompletedContestGameUnitTests.swift */,
+				4095F80225FD36A400913F1B /* UpcomingContestTest.swift */,
+				4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */,
 			);
 			path = ModelTests;
 			sourceTree = "<group>";
@@ -847,6 +853,8 @@
 				E394BE0B25CDD435002C89B9 /* BrokeBetsTests.swift in Sources */,
 				84464B7325FD2B640046B0CF /* CompletedContestGameUnitTests.swift in Sources */,
 				E3C9E1CA25F5CA5000B719B9 /* TimeFormatStringUnitTests.swift in Sources */,
+				4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */,
+				4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */,
 				E3E43CAD25EC6A0C00226BBE /* DateFormatStringUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
