@@ -160,7 +160,7 @@ Fabrizio Herrera -
 
 Todd Weidler - 
 
-Aland Nguyen - 
+Aland Nguyen - Created some tests for UpcomingContests along with UpcomingContestGames
 
 Devontay Eluett - 
 
