@@ -6,19 +6,17 @@
 //
 
 import Foundation
-
-import Foundation
 import FirebaseFirestore
 import Combine
 
-protocol DraftsRepositoryProtocol{
+protocol DraftsRepositoryProtocol {
 
     var drafts: [String: Draft] { get }
     var draftsPublisher: Published<[String: Draft]>.Publisher { get }
     var draftsPublished: Published<[String: Draft]> { get }
     
     
-    func getDrafts() -> Void
+    func getDrafts(uid: String) -> Void
     
 }
 
@@ -29,12 +27,47 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
     var draftsPublished: Published<[String: Draft]> { _drafts }
     
     private var db = Firestore.firestore()
+    private var draftsListenerHandle: ListenerRegistration? = nil
     
-    func getDrafts() {
+    init(uid: String){
         
-        
-        
+        getDrafts(uid: uid)
     }
+    
+    func getDrafts(uid: String) {
+        
+        self.draftsListenerHandle = db.collection("drafts")
+            .whereField("draftStatus", isEqualTo: "active")
+            .whereField("players", arrayContains: uid)
+            .addSnapshotListener { (querySnapshot, error) in
+                
+                guard let documents = querySnapshot?.documents else {
+                    print("No documents")
+                    return
+                }
+                
+                var drafts: [String: Draft] = [:]
+                
+                for document in documents {
+                    
+                    guard let draft = Draft(data: document.data(), playerUid: uid) else {
+                        print("Issue getting draft")
+                        return
+                    }
+                    
+                    drafts[document.documentID] = draft
+                    
+                }
+                
+                self.drafts = drafts
+            }
+    }
+    
+    deinit {
+        self.draftsListenerHandle?.remove()
+        print("listener for drafts has been removed")
+    }
+    
 }
 
 
@@ -186,11 +219,11 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
     
     
     
-    init(){
-        getDrafts()
+    init(uid: String){
+        getDrafts(uid: uid)
     }
     
-    func getDrafts() {
+    func getDrafts(uid: String) {
         
         
         var drafts: [String: Draft] = [:]
@@ -198,11 +231,17 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         
         for (draftId, draftData) in self.mockData {
             
-            drafts[draftId] = Draft(data: draftData, playerUid: "testToddUid")!
+            drafts[draftId] = Draft(data: draftData, playerUid: uid)!
            
         }
        
         self.drafts = drafts
     }
+    
+    func stopListeningForDrafts(){
+        
+        print("no longer listening for drafts data")
+    }
+    
 }
 

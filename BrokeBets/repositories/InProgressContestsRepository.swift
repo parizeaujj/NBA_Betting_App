@@ -19,7 +19,7 @@ protocol InProgressContestsRepositoryProtocol{
     var liveGameScoreboardsPublisher: Published<[String : LiveGameScoreboard]>.Publisher { get }
     var liveGameScoreboardsPublished: Published<[String : LiveGameScoreboard]> { get }
     
-    func getInProgressContests() -> Void
+    func getInProgressContests(uid: String) -> Void
     
 }
 
@@ -39,12 +39,13 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
     
     private var gameIds: Set<String> = []
     private var gameScoreListenerHandle: ListenerRegistration? = nil
+    private var inProgressContestsListenerHandle: ListenerRegistration? = nil
     
-    init() {
-        getInProgressContests()
+    init(uid: String) {
+        getInProgressContests(uid: uid)
     }
     
-    func getInProgressContests() {
+    func getInProgressContests(uid: String) {
         
         //TODO: Replace "testUID" with variable for user's UID
         db.collection("contests")
@@ -135,6 +136,12 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
         }
         
     }
+    
+    deinit {
+        self.inProgressContestsListenerHandle?.remove()
+        self.gameScoreListenerHandle?.remove()
+        print("listener for upcoming contests and live game scores has been removed")
+    }
 }
 
 // MOCK
@@ -154,9 +161,6 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
     private var maxUpdates = 3
     private var gameIds: Set<String> = []
     
-    
-    // [ [String: [String: Any] ] ]
-    // let mockData: [String: [String: Any]] = [
     let mockData: [ String: [String: Any] ] = [
         
         "contest1": [
@@ -462,38 +466,23 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
     private var mockCurrentGameScores: [String: [String: Any]]
     
     
-    init() {
+    init(uid: String) {
         
         self.mockCurrentGameScores = mockGameScoresOverTime[0]
-        getInProgressContests()
+        getInProgressContests(uid: uid)
         
        updateGamesAfterSomeTime()
         
     }
     
-    func getInProgressContests(){
-        
+    func getInProgressContests(uid: String){
         
         var contests: [String: InProgressContest] = [:]
         
-//        var tempGameIds: Set<String> = []
         
         for (contestId, contestData) in self.mockData {
-
-//            guard let contestGameIds = contestData["inProgressGameIds"] as? [String] else {
-//                print("Issue getting game ids for in progress contest")
-//                return
-//            }
-//
-//            // avoids unnessary reallocations when adding new items to Set
-//            tempGameIds.reserveCapacity(tempGameIds.capacity + contestGameIds.count)
-//
-//            // add all of the inProgressGameIds for that contest to the temporary Set
-//            for gameId in contestGameIds {
-//                tempGameIds.insert(gameId)
-//            }
             
-            contests[contestId] = InProgressContest(data: contestData, playerUid: "testToddUid", contestId: contestId)!
+            contests[contestId] = InProgressContest(data: contestData, playerUid: uid, contestId: contestId)!
         }
         
         getGameScoresData()

@@ -228,7 +228,7 @@ struct CompletedContestGameView: View {
 struct CompletedContestGameView_Previews: PreviewProvider {
     static var previews: some View {
         
-        if let games = MockCompletedContestsRepository().mockData[0]["games"] as? [[String: Any]]{
+        if let games = MockCompletedContestsRepository(uid: "testToddUid").mockData[0]["games"] as? [[String: Any]]{
             CompletedContestGameView(game:
                                         CompletedContestGame(game: games[1], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
             ).environmentObject(UserScreenInfo(.xsmall))

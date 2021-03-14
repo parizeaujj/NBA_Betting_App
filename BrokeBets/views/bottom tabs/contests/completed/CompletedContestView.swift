@@ -240,7 +240,7 @@ struct CompletedContestView: View {
 
 struct CompletedContestView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedContestView(completedContest: CompletedContest(data: MockCompletedContestsRepository().mockData[0], playerUid: "testToddUid")!
+        CompletedContestView(completedContest: CompletedContest(data: MockCompletedContestsRepository(uid: "testToddUid").mockData[0], playerUid: "testToddUid")!
         )
         .environmentObject(UserScreenInfo(.regular))
     }

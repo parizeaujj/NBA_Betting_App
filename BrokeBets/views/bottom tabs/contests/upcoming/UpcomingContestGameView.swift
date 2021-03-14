@@ -252,7 +252,7 @@ struct UpcomingContestGameView: View {
 struct UpcomingContestGameView_Previews: PreviewProvider {
     static var previews: some View {
         
-        if let games = MockUpcomingContestsRepository().mockData[0]["games"] as? [[String: Any]]{
+        if let games = MockUpcomingContestsRepository(uid: "testToddUid").mockData[0]["games"] as? [[String: Any]]{
             UpcomingContestGameView(game:
                                         UpcomingContestGame(game: games[0], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
             ).environmentObject(UserScreenInfo(.regular))

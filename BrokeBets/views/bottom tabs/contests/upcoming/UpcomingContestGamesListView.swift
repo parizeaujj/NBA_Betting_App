@@ -86,7 +86,7 @@ struct UpcomingContestGamesListView : View {
 struct UpcomingContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
         UpcomingContestGamesListView(
-            contest: UpcomingContest(data: MockUpcomingContestsRepository().mockData[0], playerUid: "testToddUid")!
+            contest: UpcomingContest(data: MockUpcomingContestsRepository(uid: "testToddUid").mockData[0], playerUid: "testToddUid")!
         )
     }
 }

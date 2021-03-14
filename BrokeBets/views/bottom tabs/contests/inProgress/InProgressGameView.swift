@@ -150,9 +150,9 @@ struct InProgressContestGameView: View {
 struct InProgressContestGameView_Previews: PreviewProvider {
     static var previews: some View {
         
-        if let games = MockInProgressContestsRepository().mockData["contest1"]!["inProgressGames"] as? [[String: Any]]{
+        if let games = MockInProgressContestsRepository(uid: "testToddUid").mockData["contest1"]!["inProgressGames"] as? [[String: Any]]{
             
-            InProgressContestGameView(viewModel: InProgressContestGameVM(game: InProgressContestGame(game: games[0], playerLookupPrefix: "player1")!, inProgressContestsRepo: MockInProgressContestsRepository())
+            InProgressContestGameView(viewModel: InProgressContestGameVM(game: InProgressContestGame(game: games[0], playerLookupPrefix: "player1")!, inProgressContestsRepo: MockInProgressContestsRepository(uid: "testToddUid"))
                                         
             ).environmentObject(UserScreenInfo(.small))
         }

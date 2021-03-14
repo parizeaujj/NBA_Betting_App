@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView2: View {
     
     @State private var showing = false;
     @State private var selectedbet = "";
@@ -42,6 +42,6 @@ struct ContentView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView2()
     }
 }

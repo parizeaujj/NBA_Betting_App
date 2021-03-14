@@ -12,7 +12,8 @@ struct UpcomingContestsListView : View {
     
     @ObservedObject var viewModel: UpcomingContestsListVM
     
-    init(viewModel: UpcomingContestsListVM = UpcomingContestsListVM()){
+    
+    init(viewModel: UpcomingContestsListVM){
         self.viewModel = viewModel
     }
     
@@ -36,7 +37,7 @@ struct UpcomingContestsListView : View {
 
 struct UpcomingContestsListView_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: MockUpcomingContestsRepository()
+        UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: MockUpcomingContestsRepository(uid: "testToddUid")
         )
         ).environmentObject(UserScreenInfo(.regular))
     }

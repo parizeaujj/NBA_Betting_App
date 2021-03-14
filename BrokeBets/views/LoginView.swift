@@ -10,9 +10,9 @@ import FirebaseAuth
 import AuthenticationServices
 
 
-struct LoginView: View {
+struct LoginView<T: ObservableObject & AppStateProtocol>: View {
     
-    @EnvironmentObject var userService : UserService
+    @EnvironmentObject var appState: T
     
     var body: some View {
         
@@ -32,10 +32,10 @@ struct LoginView: View {
                
                 SignInWithAppleButton(
                     onRequest: { request in
-                        userService.startSignInWithAppleFlow(request)
+                        appState.userService.startSignInWithAppleFlow(request)
                     },
                     onCompletion: { result in
-                        userService.finishSignInWithAppleFlow(result)
+                        appState.userService.finishSignInWithAppleFlow(result)
                     }
                 )
                 .signInWithAppleButtonStyle(.white)
@@ -58,8 +58,8 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
-            .environmentObject(UserService())
+        LoginView<MockAppState>()
+            .environmentObject(MockAppState())
     }
 }
 

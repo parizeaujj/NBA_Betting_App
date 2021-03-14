@@ -11,6 +11,7 @@ struct CreateContestView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @EnvironmentObject var appState: AppState
     @EnvironmentObject var userService: UserService
     
     @StateObject var createContestVM = CreateContestVM()
@@ -45,7 +46,7 @@ struct CreateContestView: View {
                             NavigationLink(
                                 destination: OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUsername: createContestVM.selectedOpponentUsername, setOpponentSelection: { username in
                                         createContestVM.setSelectedUsername(username: username)
-                                }, userService: userService
+                                }, userService: appState.userService
                                 )
                                 )
                                 ,
@@ -142,5 +143,6 @@ struct CreateContestView_Previews: PreviewProvider {
         CreateContestView()
             .preferredColorScheme(.dark)
             .environmentObject(UserService())
+            .environmentObject(AppState())
     }
 }

@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct ProfileModalView: View {
+struct ProfileModalView<T: ObservableObject & AppStateProtocol>: View {
     
     @Binding var isShowingProfileModal: Bool
     
-    @EnvironmentObject var userService: UserService
+    @EnvironmentObject var appState: T
+//    @EnvironmentObject var userService: UserService
     
     var body: some View {
         
@@ -58,7 +59,7 @@ struct ProfileModalView: View {
                     
                     Button(action: {
                         print("user logged out")
-                        userService.logout()
+                        appState.userService.logout()
                         
                     }, label: {
                         Text("Sign out")
@@ -90,7 +91,7 @@ struct ProfileModalView: View {
 
 struct ProfileModalView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileModalView(isShowingProfileModal: .constant(false))
+        ProfileModalView<MockAppState>(isShowingProfileModal: .constant(false))
             .environmentObject(UserService())
     }
 }

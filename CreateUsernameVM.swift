@@ -15,7 +15,7 @@ enum UsernameError: String {
 
 class CreateUsernameVM: ObservableObject {
     
-    private let userService: UserService
+    private var userService: UserServiceProtocol
    
     @Published var shouldBeDisabled = true
     @Published var usernameError: UsernameError = .None
@@ -53,7 +53,7 @@ class CreateUsernameVM: ObservableObject {
     }
     
     
-    init(userService: UserService){
+    init(userService: UserServiceProtocol){
         self.userService = userService
     }
     
@@ -71,7 +71,14 @@ class CreateUsernameVM: ObservableObject {
             switch(resultType){
             
                 case .Success:
-                    self.userService.doesHaveUsername = true
+                    
+                    guard let uid = self.userService.currentUserUid() else {
+                        fatalError("something is really wrong, the user is in the process of creating a username for their account but they are not logged in")
+                    }
+                    
+                    self.userService.user = User(uid: uid, username: self.username)
+                    
+//                    self.userService.doesHaveUsername = true
                     print("username added to database")
                     return
                     

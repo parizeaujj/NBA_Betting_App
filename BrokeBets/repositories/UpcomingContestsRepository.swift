@@ -14,7 +14,7 @@ protocol UpcomingContestsRepositoryProtocol {
     var upcomingContestsPublished: Published<[UpcomingContest]> { get }
     
     
-    func getUpcomingContests() -> Void
+    func getUpcomingContests(uid: String) -> Void
     
 }
 
@@ -73,16 +73,16 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
         self.upcomingContests = previewData
     }
     
-    init(){
-        getUpcomingContests()
+    init(uid: String){
+        getUpcomingContests(uid: uid)
     }
     
     
-    func getUpcomingContests() {
+    func getUpcomingContests(uid: String) {
         
         self.upcomingContests = self.mockData.map { contest -> UpcomingContest in
                     
-                    UpcomingContest(data: contest, playerUid: "testToddUid")!
+                    UpcomingContest(data: contest, playerUid: uid)!
                     
                 }
     }
@@ -98,15 +98,17 @@ class UpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observable
     var upcomingContestsPublisher: Published<[UpcomingContest]>.Publisher { $upcomingContests }
         
     private var db = Firestore.firestore()
+    private var upcomingContestsListenerHandle: ListenerRegistration? = nil
     
-    init() {
+    
+    init(uid: String) {
        
-        getUpcomingContests()
+        getUpcomingContests(uid: uid)
     }
     
-    func getUpcomingContests() {
+    func getUpcomingContests(uid: String) {
         
-        db.collection("contests")
+        self.upcomingContestsListenerHandle = db.collection("contests")
             .whereField("contestStatus", isEqualTo: "upcoming")
             .whereField("players", arrayContains: "hyW3nBBstdbQhsRcpoMHWyOActg1")
             .addSnapshotListener { (querySnapshot, error) in
@@ -131,5 +133,10 @@ class UpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observable
             // Updates the publisher to the new values
             self.upcomingContests = contests
         }
+    }
+    
+    deinit {
+        self.upcomingContestsListenerHandle?.remove()
+        print("listener for upcoming contests has been removed")
     }
 }

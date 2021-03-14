@@ -15,7 +15,7 @@ class InProgressContestsListVM: ObservableObject {
     
     private var cancellables: [AnyCancellable] = []
     
-    init(inProgressContestsRepo: InProgressContestsRepositoryProtocol = InProgressContestsRepository()){
+    init(inProgressContestsRepo: InProgressContestsRepositoryProtocol){
         
         self.inProgressContestsRepo = inProgressContestsRepo
         
@@ -27,4 +27,17 @@ class InProgressContestsListVM: ObservableObject {
             .store(in: &cancellables)
         
     }
+    
+//    init(inProgressContestsRepo: InProgressContestsRepositoryProtocol = InProgressContestsRepository()){
+//
+//        self.inProgressContestsRepo = inProgressContestsRepo
+//
+//        // setups up subscriber that listens for changes to the upcoming contests that are stored in 'inProgressContestsRepo'
+//        inProgressContestsRepo.inProgressContestsPublisher
+//            .sink { contestsDict in
+//                self.inProgressContests = Array(contestsDict.values)
+//            }
+//            .store(in: &cancellables)
+//
+//    }
 }

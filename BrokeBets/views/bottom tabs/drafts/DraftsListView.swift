@@ -11,7 +11,6 @@ import SwiftUI
 struct DraftsListView: View {
     
     @StateObject var draftsListVM: DraftsListVM
-    @EnvironmentObject var userService: UserService
     @State private var isCreateContestSheetPresented = false
     @Binding var isShowingProfileModal: Bool
     
@@ -87,6 +86,7 @@ struct DraftsListView: View {
 
 struct DraftsListView_Previews: PreviewProvider {
     static var previews: some View {
-        DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository()), isShowingProfileModal: .constant(false))
+        DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository(uid: "testToddUid")), isShowingProfileModal: .constant(false))
+            
     }
 }

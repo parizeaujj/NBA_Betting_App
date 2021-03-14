@@ -65,7 +65,7 @@ struct CompletedContestGamesListView: View {
 
 struct CompletedContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedContestGamesListView(contest: CompletedContest(data: MockCompletedContestsRepository().mockData[0], playerUid: "testToddUid")!
+        CompletedContestGamesListView(contest: CompletedContest(data: MockCompletedContestsRepository(uid: "testToddUid").mockData[0], playerUid: "testToddUid")!
         ).environmentObject(UserScreenInfo(.regular))
     }
 }

@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ContestsView: View {
+struct ContestsView<T: ObservableObject & AppStateProtocol>: View {
     
-    @EnvironmentObject var userService: UserService
+    @EnvironmentObject var appState: T
     @State private var selectedTab = 0
     @State private var isCreateContestSheetPresented = false
     @Binding var isShowingProfileModal: Bool
@@ -35,22 +35,29 @@ struct ContestsView: View {
                 
                 // controls which tab is shown for the contests screen
                 if(selectedTab == 0){
-                    UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: MockUpcomingContestsRepository()))
+                    
+                    if let repo = appState.upcomingContestsRepo {
+                        UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: repo))
+                    }
+                   
                 }
                 else if(selectedTab == 1){
-                    //
-                    let inProgressContestsRepo: InProgressContestsRepositoryProtocol = InProgressContestsRepository()
-                    
-                    InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: inProgressContestsRepo)
-                    )
-                        
+                                        
+                    if let repo = appState.inProgressContestsRepo {
+                        InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: repo)
+                        )
+                    }
                 }
                 else if(selectedTab == 2){
-                    CompletedContestsListView(viewModel: CompletedContestsListVM(completedContestsRepo: CompletedContestsRepository()))
+                    
+                    if let repo = appState.completedContestsRepo {
+                        
+                        CompletedContestsListView(viewModel: CompletedContestsListVM(completedContestsRepo: repo))
+                    }
                 }
-                else{
-                    UpcomingContestsListView()
-                }
+//                else{
+//                    UpcomingContestsListView()
+//                }
                 
                 Spacer()
                 
@@ -91,7 +98,8 @@ struct ContestsView: View {
 
 struct ContestsView_Previews: PreviewProvider {
     static var previews: some View {
-        ContestsView(isShowingProfileModal: .constant(false))
+        ContestsView<MockAppState>(isShowingProfileModal: .constant(false))
             .environmentObject(UserScreenInfo(.regular))
+            .environmentObject(MockAppState())
     }
 }

@@ -119,7 +119,7 @@ struct UpcomingContestView_Previews: PreviewProvider {
 
 
     static var previews: some View {
-        UpcomingContestView(upcomingContest: UpcomingContest(data:  MockUpcomingContestsRepository().mockData[0], playerUid: "testToddUid")!
+        UpcomingContestView(upcomingContest: UpcomingContest(data:  MockUpcomingContestsRepository(uid: "testToddUid").mockData[0], playerUid: "testToddUid")!
         )
         .environmentObject(UserScreenInfo(.regular))
 

@@ -15,7 +15,7 @@ protocol CompletedContestsRepositoryProtocol {
     var completedContestsPublisher: Published<[CompletedContest]>.Publisher { get }
     var completedContestsPublished: Published<[CompletedContest]> { get }
     
-    func getCompletedContests() -> Void
+    func getCompletedContests(uid: String) -> Void
     
 }
 
@@ -26,12 +26,13 @@ class CompletedContestsRepository: CompletedContestsRepositoryProtocol, Observab
     var completedContestsPublished: Published<[CompletedContest]> { _completedContests }
         
     private var db = Firestore.firestore()
+    private var completedContestsListenerHandle: ListenerRegistration? = nil
     
-    init() {
-        getCompletedContests()
+    init(uid: String) {
+        getCompletedContests(uid: uid)
     }
     
-    func getCompletedContests() {
+    func getCompletedContests(uid: String) {
         
         //TODO: Replace "testUID" with variable for user's UID
         db.collection("contests")
@@ -60,6 +61,11 @@ class CompletedContestsRepository: CompletedContestsRepositoryProtocol, Observab
             // Updates the publisher to the new values
             self.completedContests = contests
         }
+    }
+    
+    deinit {
+        self.completedContestsListenerHandle?.remove()
+        print("listener for upcoming contests has been removed")
     }
 }
 
@@ -164,15 +170,15 @@ class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, Obse
     ]
     
     
-    init() {
-        getCompletedContests()
+    init(uid: String) {
+        getCompletedContests(uid: uid)
     }
     
-    func getCompletedContests(){
+    func getCompletedContests(uid: String){
         
         self.completedContests = self.mockData.map { contest -> CompletedContest in
             
-            CompletedContest(data: contest, playerUid: "testToddUid")!
+            CompletedContest(data: contest, playerUid: uid)!
             
         }
     }

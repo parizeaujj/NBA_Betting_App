@@ -27,6 +27,7 @@ struct InProgressContestViewStyleBag{
 struct InProgressContestView: View {
     
     @EnvironmentObject var userScreenInfo: UserScreenInfo
+//    @EnvironmentObject var appState: T
     
     private var inProgressContest: InProgressContest
     private var accentColor: Color = .blue
@@ -199,9 +200,10 @@ struct InProgressContestView: View {
 
 struct InProgressContestView_Previews: PreviewProvider {
     static var previews: some View {
-        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository().mockData["contest1"]!, playerUid: "testToddUid", contestId: "contest1")!, inProgressContestsRepo: MockInProgressContestsRepository()
+        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository(uid: "testToddUid").mockData["contest1"]!, playerUid: "testToddUid", contestId: "contest1")!, inProgressContestsRepo: MockInProgressContestsRepository(uid: "testToddUid")
         )
         .environmentObject(UserScreenInfo(.small))
+        .environmentObject(MockAppState())
     }
 }
 

@@ -126,7 +126,7 @@ struct DraftBoardView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             NavigationLink(
-                destination: DraftBoardView(viewModel: DraftBoardVM(draft: Draft(data: MockDraftsRepository().mockData["draftid1"]!, playerUid: "testToddUid")!, draftsRepo: MockDraftsRepository()))
+                destination: DraftBoardView(viewModel: DraftBoardVM(draft: Draft(data: MockDraftsRepository(uid: "testToddUid").mockData["draftid1"]!, playerUid: "testToddUid")!, draftsRepo: MockDraftsRepository(uid: "testToddUid")))
                     .navigationBarTitle("", displayMode: .inline),
                 isActive: .constant(true),
                 label: {

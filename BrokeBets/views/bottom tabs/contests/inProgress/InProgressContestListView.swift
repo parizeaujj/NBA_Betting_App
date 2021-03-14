@@ -7,11 +7,11 @@
 
 import SwiftUI
 
- struct InProgressContestsListView: View {
+struct InProgressContestsListView: View {
      
      @ObservedObject var viewModel: InProgressContestsListVM
       
-     init(viewModel: InProgressContestsListVM = InProgressContestsListVM()){
+     init(viewModel: InProgressContestsListVM){
          self.viewModel = viewModel
      }
      
@@ -31,8 +31,10 @@ import SwiftUI
 
  struct InProgressContestsListView_Previews: PreviewProvider {
      static var previews: some View {
-         InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: MockInProgressContestsRepository())
-         ).environmentObject(UserScreenInfo(.regular))
+         InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: MockInProgressContestsRepository(uid: "testToddUid"))
+         )
+         .environmentObject(UserScreenInfo(.regular))
+         .environmentObject(MockAppState())
      }
  }
  

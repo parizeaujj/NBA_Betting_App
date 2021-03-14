@@ -13,8 +13,14 @@ import AuthenticationServices
 struct User: Identifiable {
     var id = UUID()
     var uid: String
-    var username: String
+    var username: String?
 }
+
+//struct User: Identifiable {
+//    var id = UUID()
+//    var uid: String
+//    var username: String
+//}
 
 enum UsernameCreationResult: Any {
     case UsernameTaken
@@ -24,11 +30,54 @@ enum UsernameCreationResult: Any {
 }
 
 
-class UserService: ObservableObject {
+protocol UserServiceProtocol {
     
-    @Published var isLoggedIn: Bool = false
-    @Published var doesHaveUsername: Bool = false
-    private var username: String?
+    var user: User? { get set }
+    var userPublisher: Published<User?>.Publisher { get }
+    var userPublished: Published<User?> { get }
+    
+    func currentUserUid() -> String?
+    func startSignInWithAppleFlow(_ request: ASAuthorizationAppleIDRequest)
+    func finishSignInWithAppleFlow(_ result: Result<ASAuthorization, Error>)
+    func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void)
+    func getUsernames(startingWith partialStr: String, completion: @escaping ([User]?) -> Void)
+    func logout()
+}
+
+
+class MockUserService: ObservableObject, UserServiceProtocol {
+    
+    @Published var user: User? = nil
+    var userPublisher: Published<User?>.Publisher { $user }
+    var userPublished: Published<User?>{ _user }
+    
+    func currentUserUid() -> String? {
+        return user?.uid
+    }
+    
+    func startSignInWithAppleFlow(_ request: ASAuthorizationAppleIDRequest){}
+    func finishSignInWithAppleFlow(_ result: Result<ASAuthorization, Error>){}
+    func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void){}
+    func getUsernames(startingWith partialStr: String, completion: @escaping ([User]?) -> Void){}
+    
+    func logout(){
+        print("logout button pressed")
+    }
+}
+
+
+class UserService: ObservableObject, UserServiceProtocol {
+    
+//    @Published var isLoggedIn: Bool = false
+//    @Published var doesHaveUsername: Bool = false
+//    private var username: String?
+    
+    
+    @Published var user: User? = nil
+    var userPublisher: Published<User?>.Publisher { $user }
+    var userPublished: Published<User?>{ _user }
+    
+    
     
     // database connection
     private let db = Firestore.firestore()
@@ -45,20 +94,45 @@ class UserService: ObservableObject {
                                 
                 self.getUsername(){ username in
                     
-                    if username != nil {
-                        self.username = username
-                        self.doesHaveUsername = true
-                    }
-                    self.isLoggedIn = true
+                    self.user = User(uid: user!.uid, username: username)
+                    
                 }
             }
             else {
-                self.isLoggedIn = false
-                self.username = nil
-                self.doesHaveUsername = false
+                self.user = nil
             }
         }
     }
+    
+    func currentUserUid() -> String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
+    
+//    init(){
+//
+//        Auth.auth().addStateDidChangeListener { auth, user in
+//
+//            if user != nil {
+//
+//                print("user is logged in")
+//
+//                self.getUsername(){ username in
+//
+//                    if username != nil {
+//                        self.username = username
+//                        self.doesHaveUsername = true
+//                    }
+//                    self.isLoggedIn = true
+//                }
+//            }
+//            else {
+//                self.isLoggedIn = false
+//                self.username = nil
+//                self.doesHaveUsername = false
+//            }
+//        }
+//    }
     
     
     func logout(){
@@ -68,7 +142,7 @@ class UserService: ObservableObject {
     func startSignInWithAppleFlow(_ request: ASAuthorizationAppleIDRequest){
         let nonce = String.randomNonceString()
         self.currentNonce = nonce
-        request.requestedScopes = [.fullName, .email]
+        request.requestedScopes = [.email]
         request.nonce = nonce.sha256
         
         print("\"start sign in with apple flow\" finished")
@@ -95,7 +169,7 @@ class UserService: ObservableObject {
                 }
                 
                 //Creating a request for firebase
-                let credential = OAuthProvider.credential(withProviderID: "apple.com",idToken: idTokenString,rawNonce: nonce)
+                let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString,rawNonce: nonce)
                 
                 self.authenticateWithFirebase(with: credential)
                                 
@@ -234,17 +308,6 @@ class UserService: ObservableObject {
     
     func getUsernames(startingWith partialStr: String, completion: @escaping ([User]?) -> Void) {
         
-        
-//        let endStrIndex = partialStr.index(<#T##i: String.Index##String.Index#>, offsetBy: <#T##String.IndexDistance#>)
-        
-//        let lastChar = partialStr.suffix(2)
-//
-//        if lastChar == "z" {
-//
-//        }
-//        else{
-//
-//        }
         
         let endStr = partialStr + "\u{f8ff}"
         

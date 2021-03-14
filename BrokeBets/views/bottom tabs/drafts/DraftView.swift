@@ -86,7 +86,7 @@ struct DraftView: View {
                 VStack(spacing: 12){
                     
                     NavigationLink(
-                        destination: DraftBoardView(viewModel: DraftBoardVM(draft: draft, draftsRepo: MockDraftsRepository())),
+                        destination: DraftBoardView(viewModel: DraftBoardVM(draft: draft, draftsRepo: MockDraftsRepository(uid: "testToddUid"))),
                         label: {
                            
                             Text("View board")
@@ -102,7 +102,7 @@ struct DraftView: View {
                         })
                     
                     NavigationLink(
-                        destination: DraftPickSelectionView(viewModel: DraftPickSelectionVM(draft: draft, draftsRepo: MockDraftsRepository())),
+                        destination: DraftPickSelectionView(viewModel: DraftPickSelectionVM(draft: draft, draftsRepo: MockDraftsRepository(uid: "testToddUid"))),
                         label: {
                             
                             Text("Select Pick")
@@ -135,6 +135,6 @@ struct DraftView: View {
 
 struct DraftView_Previews: PreviewProvider {
     static var previews: some View {
-        DraftView(draft: Draft(data: MockDraftsRepository().mockData["draftid1"]!, playerUid: "testToddUid")!)
+        DraftView(draft: Draft(data: MockDraftsRepository(uid: "testToddUid").mockData["draftid1"]!, playerUid: "testToddUid")!)
     }
 }

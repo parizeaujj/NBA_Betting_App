@@ -111,9 +111,9 @@ struct InProgressContestGamesListView: View {
 struct InProgressContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
         
-        InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository()))
+        InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository(uid: "testToddUid")))
                         .environmentObject(UserScreenInfo(.small))
-            .environmentObject(MockUpcomingContestsRepository())
+            .environmentObject(MockUpcomingContestsRepository(uid: "testToddUid"))
     }
 }
 

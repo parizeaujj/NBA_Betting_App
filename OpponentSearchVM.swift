@@ -9,7 +9,7 @@ import Foundation
 
 class OpponentSearchVM: ObservableObject {
     
-    private var userService: UserService
+    private var userService: UserServiceProtocol
     
     @Published var usernameText: String = "" {
         didSet {
@@ -27,7 +27,7 @@ class OpponentSearchVM: ObservableObject {
     var currentSelectedUsername: String? = nil
     var setOpponentSelection: (String?) -> Void
     
-    init(currentSelectedUsername: String?, setOpponentSelection: @escaping (String?) -> Void, userService: UserService){
+    init(currentSelectedUsername: String?, setOpponentSelection: @escaping (String?) -> Void, userService: UserServiceProtocol){
         self.currentSelectedUsername = currentSelectedUsername
         self.setOpponentSelection = setOpponentSelection
         self.userService = userService

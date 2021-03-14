@@ -16,7 +16,7 @@ class CompletedContestsListVM: ObservableObject {
     private var cancellables: [AnyCancellable] = []
     
     
-    init(completedContestsRepo: CompletedContestsRepositoryProtocol = CompletedContestsRepository()){
+    init(completedContestsRepo: CompletedContestsRepositoryProtocol){
         
         self.completedContestsRepo = completedContestsRepo
         
@@ -26,5 +26,15 @@ class CompletedContestsListVM: ObservableObject {
             .store(in: &cancellables)
         
     }
+//    init(completedContestsRepo: CompletedContestsRepositoryProtocol = CompletedContestsRepository()){
+//
+//        self.completedContestsRepo = completedContestsRepo
+//
+//        // setups up subscriber that listens for changes to the upcoming contests that are stored in 'completedContestsRepo'
+//        completedContestsRepo.completedContestsPublisher
+//            .assign(to: \.completedContests, on: self)
+//            .store(in: &cancellables)
+//
+//    }
 }
 

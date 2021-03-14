@@ -62,7 +62,7 @@ struct OpponentSearchView: View {
                                     
                                     HStack{
                                         
-                                        Text("\(user.username)")
+                                        Text("\(user.username ?? "none")")
                                             .font(.headline)
                                             
                                         Spacer()
