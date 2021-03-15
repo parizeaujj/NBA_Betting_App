@@ -34,7 +34,7 @@ struct DraftsListView: View {
                         LazyVStack {
                             
                             ForEach(draftsListVM.drafts) { draft in
-                                DraftView(draft: draft)
+                                DraftView(draft: draft, draftsRepo: draftsListVM.draftsRepo)
                                 
                             }
                         }

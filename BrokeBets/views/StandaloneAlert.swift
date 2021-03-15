@@ -14,16 +14,23 @@ struct ContentView2: View {
     var alert: Alert{
          Alert(
             
-            title: Text("Confirm selection"),
-            message: Text("Are you want to select the following bet: " + selectedbet),
-            primaryButton: .default(
-                  Text("Yes"),
+            title: Text("Confirm Draft Selection"),
+            message:
+                Text("\n" + selectedbet),
+            primaryButton:
+                .default(
+                Text("Confirm").foregroundColor(.red),
                   action: {}
-            ),
-            secondaryButton: .destructive(
-                 Text("No")
-                
             )
+            ,
+            secondaryButton:
+                
+                .destructive(
+                    Text("Cancel"), action: {
+                    
+                    }
+            )
+            
         )
         
     }
@@ -31,7 +38,7 @@ struct ContentView2: View {
     var body: some View {
         Button("RandomBet") {
            showing = true
-           selectedbet = "Fillerbet";
+           selectedbet = "HOU -7 (vs CLE)";
          }
         
         .alert(isPresented: $showing, content: {self.alert}) //view modifier

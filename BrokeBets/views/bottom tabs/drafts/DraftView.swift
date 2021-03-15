@@ -12,9 +12,11 @@ struct DraftView: View {
     var draft: Draft
     var turnText: String
     var turnTextColor: Color
+    var draftsRepo: DraftsRepositoryProtocol
     
-    init(draft: Draft){
+    init(draft: Draft, draftsRepo: DraftsRepositoryProtocol){
         self.draft = draft
+        self.draftsRepo = draftsRepo
         
         if(draft.isUserTurn){
             turnText = "Your Turn"
@@ -86,7 +88,7 @@ struct DraftView: View {
                 VStack(spacing: 12){
                     
                     NavigationLink(
-                        destination: DraftBoardView(viewModel: DraftBoardVM(draft: draft, draftsRepo: MockDraftsRepository(uid: "testToddUid"))),
+                        destination: DraftBoardView(viewModel: DraftBoardVM(draft: draft, draftsRepo: draftsRepo)),
                         label: {
                            
                             Text("View board")
@@ -102,7 +104,7 @@ struct DraftView: View {
                         })
                     
                     NavigationLink(
-                        destination: DraftPickSelectionView(viewModel: DraftPickSelectionVM(draft: draft, draftsRepo: MockDraftsRepository(uid: "testToddUid"))),
+                        destination: DraftPickSelectionView(viewModel: DraftPickSelectionVM(draft: draft, draftsRepo: draftsRepo)),
                         label: {
                             
                             Text("Select Pick")
@@ -112,7 +114,7 @@ struct DraftView: View {
                                 .foregroundColor(Color.white.opacity(draft.isUserTurn ? 1 : 0.8))
                                 .background(Color.black.opacity(draft.isUserTurn ? 1 : 0.08))
                                 .clipShape(Capsule())
-                                .overlay(Capsule().strokeBorder(Color.black, lineWidth: 1.0))
+                                .overlay(Capsule().strokeBorder(draft.isUserTurn ? Color.black: Color.clear, lineWidth: 1.0))
                             
                             
                         })
@@ -135,6 +137,6 @@ struct DraftView: View {
 
 struct DraftView_Previews: PreviewProvider {
     static var previews: some View {
-        DraftView(draft: Draft(data: MockDraftsRepository(uid: "testToddUid").mockData["draftid1"]!, playerUid: "testToddUid")!)
+        DraftView(draft: Draft(data: MockDraftsRepository(uid: "testToddUid").mockData["draftid1"]!, playerUid: "testToddUid")!, draftsRepo: MockDraftsRepository(uid: "testToddUid"))
     }
 }

@@ -10,7 +10,6 @@
 		0439B38325FD680B0019BBFF /* StandaloneAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439B38225FD680B0019BBFF /* StandaloneAlert.swift */; };
 		4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80225FD36A400913F1B /* UpcomingContestTest.swift */; };
 		4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */; };
-		4095F81325FE7EEC00913F1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4095F81225FE7EEC00913F1B /* GoogleService-Info.plist */; };
 		780CC5543B010C56AF333A05 /* Pods_BrokeBets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA770B23555B11C24054428D /* Pods_BrokeBets.framework */; };
 		84464B7325FD2B640046B0CF /* CompletedContestGameUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84464B7225FD2B640046B0CF /* CompletedContestGameUnitTests.swift */; };
 		845D3ADC25FD106B00DEE76A /* CompletedContestsUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D3ADB25FD106B00DEE76A /* CompletedContestsUnitTests.swift */; };
@@ -83,6 +82,7 @@
 		E3EA6C2825FEBCD90019AAC0 /* RootAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C2725FEBCD90019AAC0 /* RootAppVM.swift */; };
 		E3EA6C3025FEBDB10019AAC0 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C2F25FEBDB10019AAC0 /* AppState.swift */; };
 		E3EA6C3525FEBE150019AAC0 /* UserScreenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */; };
+		E3EA6C4025FEBFD20019AAC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3EA6C3F25FEBFD20019AAC0 /* GoogleService-Info.plist */; };
 		E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */; };
 		E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */; };
 		E3F52D6925F0352B009B10CE /* InProgressContestGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */; };
@@ -114,7 +114,6 @@
 		1F98490B460D6530CB2D949E /* Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4095F80225FD36A400913F1B /* UpcomingContestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestTest.swift; sourceTree = "<group>"; };
 		4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestGameTest.swift; sourceTree = "<group>"; };
-		4095F81225FE7EEC00913F1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40C596F50F10E2D82C5EE325 /* Pods-BrokeBets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets/Pods-BrokeBets.release.xcconfig"; sourceTree = "<group>"; };
 		71EED93567F6274CBA95B207 /* Pods-BrokeBets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets/Pods-BrokeBets.debug.xcconfig"; sourceTree = "<group>"; };
 		84464B7225FD2B640046B0CF /* CompletedContestGameUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGameUnitTests.swift; sourceTree = "<group>"; };
@@ -197,6 +196,7 @@
 		E3EA6C2725FEBCD90019AAC0 /* RootAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAppVM.swift; sourceTree = "<group>"; };
 		E3EA6C2F25FEBDB10019AAC0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScreenInfo.swift; sourceTree = "<group>"; };
+		E3EA6C3F25FEBFD20019AAC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContest.swift; sourceTree = "<group>"; };
 		E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestsRepository.swift; sourceTree = "<group>"; };
 		E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGame.swift; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 				E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */,
 				E394BDFC25CDD435002C89B9 /* Assets.xcassets */,
 				E394BE0125CDD435002C89B9 /* Info.plist */,
-				4095F81225FE7EEC00913F1B /* GoogleService-Info.plist */,
+				E3EA6C3F25FEBFD20019AAC0 /* GoogleService-Info.plist */,
 				E3B621DB25DEC19B00B3ACE3 /* BrokeBets.entitlements */,
 				E394BDFE25CDD435002C89B9 /* Preview Content */,
 			);
@@ -639,8 +639,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */,
+				E3EA6C4025FEBFD20019AAC0 /* GoogleService-Info.plist in Resources */,
 				E394BDFD25CDD435002C89B9 /* Assets.xcassets in Resources */,
-				4095F81325FE7EEC00913F1B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

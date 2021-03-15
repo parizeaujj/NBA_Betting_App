@@ -13,6 +13,9 @@ struct DraftPickSelectionView: View {
     @StateObject var viewModel: DraftPickSelectionVM
     @Environment(\.presentationMode) var presentationMode
     
+    @State private var didSelectDraftPick: Bool = false
+    @State private var selectedDraftPick: DraftPickSelection? = nil
+    
     var body: some View {
         
         ZStack{
@@ -67,10 +70,13 @@ struct DraftPickSelectionView: View {
                         
                         ForEach(viewModel.draft.gamesPool){ game in
                             
-                            AvailableDraftGameView(game: game)
+                            AvailableDraftGameView(game: game, round: viewModel.draft.currentRound, onDraftPickSelection: { pick in
+                                
+                                self.selectedDraftPick = pick
+                                self.didSelectDraftPick = true
+                            })
                             
                         }
-                        
                     }
                     .padding(.horizontal, 8)
                 }
@@ -80,7 +86,29 @@ struct DraftPickSelectionView: View {
                 
             }
         }
-        .onReceive(viewModel.draftDoesNotExistAnymore, perform: { _ in
+        .alert(isPresented: $didSelectDraftPick, content: {
+            Alert(
+               
+               title: Text("Confirm Draft Selection"),
+               message:
+                Text("\n" + (self.selectedDraftPick!.draftedPick["betDisplayStr"] as! String)),
+               primaryButton:
+                   .default(
+                   Text("Confirm").foregroundColor(.red),
+                     action: {
+                        self.viewModel.makeDraftPickSelection(draftPickSelection: self.selectedDraftPick!)
+                     }
+               )
+               ,
+               secondaryButton:
+                    .destructive(
+                       Text("Cancel"), action: {
+                            self.selectedDraftPick = nil
+                       }
+               )
+           )
+        })
+        .onReceive(viewModel.popToMainDraftsScreen, perform: { _ in
             presentationMode.wrappedValue.dismiss()
         })
     }

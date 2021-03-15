@@ -238,7 +238,7 @@ class UserService: ObservableObject, UserServiceProtocol {
     }
     
     
-    func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void) -> Void {
+    func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void){
         
         guard let uid = Auth.auth().currentUser?.uid else {
             fatalError("user has access to 'create username' screen but is not logged in yet")

@@ -10,9 +10,14 @@ import SwiftUI
 struct AvailableDraftGameView: View {
     
     var game: DraftGame
- 
-    init(game: DraftGame){
+    var draftRound: Int
+    var onDraftPickSelection: (DraftPickSelection) -> Void
+    
+    
+    init(game: DraftGame, round: Int, onDraftPickSelection: @escaping (DraftPickSelection) -> Void){
         self.game = game
+        self.onDraftPickSelection = onDraftPickSelection
+        self.draftRound = round
     }
     
     var body: some View {
@@ -73,23 +78,35 @@ struct AvailableDraftGameView: View {
                         
                         VStack(spacing: 0){
                             
-                            Button(action: {}, label: {
+                            Button(action: {
                                 
-                                DraftBetCapsule(label: game.homeSpreadBetStr, isDisabled: game.isSpreadBetStillAvailable)
+                                let pick = DraftPickSelection(gameId: game.gameId, round: draftRound, pick: game.homeSpreadBetStr, inversePick: game.awaySpreadBetStr, homeTeam: game.homeTeam, awayTeam: game.awayTeam, betType: .spread)
+                                
+                                self.onDraftPickSelection(pick)
+                                
+                            }, label: {
+                                
+                                DraftBetCapsule(label: game.homeSpreadBetStr, isDisabled: !game.isSpreadBetStillAvailable)
                                     .padding(.top, 10)
                                     .padding(.bottom, 7)
                                 
                             })
-                            .disabled(game.isSpreadBetStillAvailable)
+                            .disabled(!game.isSpreadBetStillAvailable)
                         
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Button(action: {
                                 
-                                DraftBetCapsule(label: game.awaySpreadBetStr, isDisabled: game.isSpreadBetStillAvailable)
+                                let pick = DraftPickSelection(gameId: game.gameId, round: draftRound, pick: game.awaySpreadBetStr, inversePick: game.homeSpreadBetStr, homeTeam: game.homeTeam, awayTeam: game.awayTeam, betType: .spread)
+                                
+                                self.onDraftPickSelection(pick)
+                                
+                            }, label: {
+                                
+                                DraftBetCapsule(label: game.awaySpreadBetStr, isDisabled: !game.isSpreadBetStillAvailable)
                                     .padding(.top, 7)
                                     .padding(.bottom, 10)
                                 
                             })
-                            .disabled(game.isSpreadBetStillAvailable)
+                            .disabled(!game.isSpreadBetStillAvailable)
         
                         }
                         
@@ -113,22 +130,32 @@ struct AvailableDraftGameView: View {
                          
                         VStack(spacing: 0){
 
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Button(action: {
                                 
-                                DraftBetCapsule(label: game.overBetStr, isDisabled: game.isOverUnderBetStillAvailable)
+                                let pick = DraftPickSelection(gameId: game.gameId, round: draftRound, pick: game.overBetStr, inversePick: game.underBetStr, homeTeam: game.homeTeam, awayTeam: game.awayTeam, betType: .overUnder)
+                                
+                                self.onDraftPickSelection(pick)
+                                
+                            }, label: {
+                                
+                                DraftBetCapsule(label: game.overBetStr, isDisabled: !game.isOverUnderBetStillAvailable)
                                     .padding(.top, 10)
                                     .padding(.bottom, 7)
                                 
-                            }).disabled(game.isOverUnderBetStillAvailable)
+                            }).disabled(!game.isOverUnderBetStillAvailable)
                             
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Button(action: {
+                                let pick = DraftPickSelection(gameId: game.gameId, round: draftRound, pick: game.underBetStr, inversePick: game.overBetStr, homeTeam: game.homeTeam, awayTeam: game.awayTeam, betType: .overUnder)
                                 
-                                DraftBetCapsule(label: game.underBetStr, isDisabled: game.isOverUnderBetStillAvailable)
+                                self.onDraftPickSelection(pick)
+                            }, label: {
+                                
+                                DraftBetCapsule(label: game.underBetStr, isDisabled: !game.isOverUnderBetStillAvailable)
                                     .padding(.top, 7)
                                     .padding(.bottom, 10)
                                 
                             })
-                            .disabled(game.isOverUnderBetStillAvailable)
+                            .disabled(!game.isOverUnderBetStillAvailable)
 
                         }
                     }
@@ -142,6 +169,7 @@ struct AvailableDraftGameView: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1.0))
 //        .padding(.horizontal, 10)
+        
     }
 }
 
@@ -153,7 +181,7 @@ struct AvailableDraftGameView_Previews: PreviewProvider {
         
         if let games  = MockDraftsRepository(uid: "testToddUid").mockData["draftid1"]!["games_pool"] as? [[String: Any]]{
             
-            AvailableDraftGameView(game: DraftGame(data: games[0])!)
+            AvailableDraftGameView(game: DraftGame(data: games[0])!, round: 1, onDraftPickSelection: {_ in })
         }
     }
 }

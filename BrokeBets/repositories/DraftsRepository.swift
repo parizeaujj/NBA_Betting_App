@@ -9,28 +9,31 @@ import Foundation
 import FirebaseFirestore
 import Combine
 
+
+
 protocol DraftsRepositoryProtocol {
 
     var drafts: [String: Draft] { get }
     var draftsPublisher: Published<[String: Draft]>.Publisher { get }
     var draftsPublished: Published<[String: Draft]> { get }
     
-    
+    func makeDraftPickSelection(draftPickSelection: DraftPickSelection, draft: Draft, completion: @escaping (Result<Void, Error>) -> Void)
     func getDrafts(uid: String) -> Void
     
 }
 
 final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
-    
+ 
     @Published var drafts: [String: Draft] = [:]
     var draftsPublisher: Published<[String: Draft]>.Publisher { $drafts }
     var draftsPublished: Published<[String: Draft]> { _drafts }
     
+    private var uid: String
     private var db = Firestore.firestore()
     private var draftsListenerHandle: ListenerRegistration? = nil
     
     init(uid: String){
-        
+        self.uid = uid
         getDrafts(uid: uid)
     }
     
@@ -62,6 +65,72 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                 self.drafts = drafts
             }
     }
+    
+    
+    func makeDraftPickSelection(draftPickSelection: DraftPickSelection, draft: Draft, completion: @escaping (Result<Void, Error>) -> Void){
+        
+        let userLookupPrefix = draft.userPlayerType.rawValue
+        let oppLookupPrefix = draft.oppPlayerType.rawValue
+        
+        var isDraftCompleted: Bool = false
+        var newDraftRound = draft.currentRound
+        
+//        guard let affected_gameId = draftPickSelection.draftedPick["gameId"] as? String else {
+//            fatalError("something is really wrong: gameId is not in the draftedPick dictionary for the draft pick selection")
+//        }
+//
+        
+        
+//
+//        var games_pool = draft.gamesPool
+//
+//        var affected_game = games_pool.firstIndex{$0.gameId == affected_gameId}
+//
+//
+//
+//        var updated_game: [String: Any] = ["gameId": affected_gameId, "homeTeam": games]
+        
+        
+//        for game in games_pool {
+//
+//            if(game.gameId == affected_gameId){
+//
+//                break
+//            }
+//        }
+        
+        
+        if(draft.userPlayerType == .PlayerTwo){
+            
+            if(draft.currentRound == draft.totalRounds){
+                isDraftCompleted = true
+            }
+            else{
+                newDraftRound += 1
+            }
+        }
+        else{
+            newDraftRound += 1
+        }
+        
+        let draftDocRef = db.collection("drafts").document(draft.draftId)
+        
+        draftDocRef.updateData([
+            "\(userLookupPrefix)_drafted_picks": FieldValue.arrayUnion([draftPickSelection.draftedPick]),
+            "\(oppLookupPrefix)_forced_picks": FieldValue.arrayUnion([draftPickSelection.inversePick]),
+            "currentRound": newDraftRound,
+            "draftStatus": isDraftCompleted ? "completed" : "active",
+            "currentPlayerTurn": oppLookupPrefix
+            
+        ]){ err in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                completion(.success(())) // ewwww why so many parenthesis, swift?
+            }
+        }
+    }
+    
     
     deinit {
         self.draftsListenerHandle?.remove()
@@ -236,6 +305,10 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         }
        
         self.drafts = drafts
+    }
+    
+    func makeDraftPickSelection(draftPickSelection: DraftPickSelection, draft: Draft, completion: @escaping (Result<Void, Error>) -> Void){
+        completion(.success(()))
     }
     
     func stopListeningForDrafts(){
