@@ -154,7 +154,7 @@ Devontay Eluett - docs and project management
 
 ## Task Allocation
 
-JJ Parizeau - 
+JJ Parizeau - Created unit tests for completedContests/games and worked on Firebase test data
 
 Fabrizio Herrera - Developed unit tests for InProgressContests and InProgressContestsGames
 
