@@ -156,7 +156,7 @@ Devontay Eluett - docs and project management
 
 JJ Parizeau - 
 
-Fabrizio Herrera - 
+Fabrizio Herrera - Developed unit tests for InProgressContests and InProgressContestsGames
 
 Todd Weidler - 
 
