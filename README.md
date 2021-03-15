@@ -139,7 +139,7 @@ Aland Nguyen - worked on updated docs
 
 Devontay Eluett - docs and project management
 
-# Sprint 5
+# Sprint 6
 
 - [Trello Board](https://trello.com/b/5Ppmtzr9/nbaproject) (Backlogs and Requirements)
 - [Burndown Chart](https://docs.google.com/spreadsheets/d/1yH0KR5KbaLNB6CdsgioEyApJBqAQPM_B6DqtgAyF9ys/edit?usp=sharing)
