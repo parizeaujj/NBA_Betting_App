@@ -136,39 +136,51 @@ class DraftUnitTests: XCTestCase {
         XCTAssertNil(draftInstance, "Assert nil failed. Should've returned nil cause draftExpirationDateTime is nil.")
     }
     
-    //drafted picks
-    //forced picks
-    //games pool
     
-    //add games from CompletedContestGameUnitTests.swift
-    //correctly formatted
-//    func test_completedContest_games_correct() throws {
-//
-//        //change something in mock data
-//        mockData.removeValue(forKey: "games")
-//        mockData["games"] = [CompletedContestGameUnitTests().game]
-//
-//        //load it in
-//        let completedContestInstance: CompletedContest? = CompletedContest(data: mockData, playerUid: testUID)
-//
-//        //assert
-//        XCTAssertNotNil(completedContestInstance, "Assert not nil for games correct failed.")
-//    }
-//
-//    //add games from CompletedContestGameUnitTests.swift
-//    //incorrectly formatted
-//    func test_completedContest_invalid_games_dictionary() throws {
-//
-//        //change something in mock data
-//        mockData.removeValue(forKey: "games")
-//        mockData["games"] = ["Invalid": "Data"]
-//
-//        //load it in
-//        let completedContestInstance: CompletedContest? = CompletedContest(data: mockData, playerUid: testUID)
-//
-//        //assert
-//        XCTAssertNil(completedContestInstance, "Assert nil for invalid games dictionary failed.")
-//    }
+    
+    
+    //games pool
+    //add games pool from CompletedContestGameUnitTests.swift
+    func test_draft_games_correct() throws {
+
+        //correct games_pool data
+        mockData.removeValue(forKey: "games_pool")
+        mockData["games_pool"] = [DraftGameUnitTests().mockData]
+
+        //load it in
+        let draftInstance: Draft? = Draft(data: mockData, playerUid: playerUid)
+
+        //assert
+        XCTAssertNotNil(draftInstance, "Assert not nil for games_pool with correct data failed.")
+    }
+    
+    //drafted picks
+    func test_draft_games_player1_drafted_picks() throws {
+
+        //correct player1_drafted_picks data
+        mockData.removeValue(forKey: "player1_drafted_picks")
+        mockData["player1_drafted_picks"] = [DraftRoundUnitTests().mockDataDrafted]
+
+        //load it in
+        let draftInstance: Draft? = Draft(data: mockData, playerUid: playerUid)
+
+        //assert
+        XCTAssertNotNil(draftInstance, "Assert not nil for player1_drafted_picks with correct data failed.")
+    }
+
+    //forced picks
+    func test_draft_games_player1_forced_picks() throws {
+
+        //correct player1_drafted_picks data
+        mockData.removeValue(forKey: "player1_forced_picks")
+        mockData["player1_forced_picks"] = [DraftRoundUnitTests().mockDataForced]
+
+        //load it in
+        let draftInstance: Draft? = Draft(data: mockData, playerUid: playerUid)
+
+        //assert
+        XCTAssertNotNil(draftInstance, "Assert not nil for player1_drafted_picks with correct data failed.")
+    }
     
     
 }
