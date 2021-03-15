@@ -166,3 +166,33 @@ Devontay Eluett - Worked on alert functionality for drafts
 
 
 
+
+# Sprint 7
+
+- [Trello Board](https://trello.com/b/5Ppmtzr9/nbaproject) (Backlogs and Requirements)
+- [Burndown Chart](https://docs.google.com/spreadsheets/d/1wJXVGMroO6vzOIZUehiMhNV_avLuVa1iQwsxW40ozYA/edit?usp=sharing)
+- [Velocity Chart](https://docs.google.com/spreadsheets/d/19NiffaIBn3zLbjg6jmhpLCJWMidPjQ7hmEVjF_mxBWI/edit?usp=sharing)
+- [System Architecture](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/architecture.md)
+- [Source Code](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBets)
+- [Automated Tests](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBetsTests/ModelTests)
+- [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
+- Product Demonstration
+- [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
+- [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
+
+## Task Allocation
+
+JJ Parizeau - 
+
+Fabrizio Herrera - 
+
+Todd Weidler - 
+
+Aland Nguyen - 
+
+Devontay Eluett - 
+
+
+
+
+
