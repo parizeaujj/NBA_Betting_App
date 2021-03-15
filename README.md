@@ -162,7 +162,7 @@ Todd Weidler - Worked on the drafts views, view models, and drafts repository
 
 Aland Nguyen - Created some tests for UpcomingContests along with UpcomingContestGames
 
-Devontay Eluett - 
+Devontay Eluett - Worked on alert functionality for drafts
 
 
 
