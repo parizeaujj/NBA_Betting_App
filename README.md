@@ -148,7 +148,7 @@ Devontay Eluett - docs and project management
 - [Source Code](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBets)
 - [Automated Tests](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBetsTests/ModelTests)
 - [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
-- Product Demonstration
+- [Product Demonstration](https://vimeo.com/523599602)
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 - [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
 
@@ -158,7 +158,7 @@ JJ Parizeau -
 
 Fabrizio Herrera - Developed unit tests for InProgressContests and InProgressContestsGames
 
-Todd Weidler - 
+Todd Weidler - Worked on the drafts views, view models, and drafts repository
 
 Aland Nguyen - Created some tests for UpcomingContests along with UpcomingContestGames
 
