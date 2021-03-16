@@ -11,8 +11,8 @@ struct ReceivedInvitation: Identifiable {
     
     var id = UUID()
     var invitationId: String
-    var invitee_uname: String
-    var invitee_uid: String
+    var invitor_uname: String
+    var invitor_uid: String
     var draftRounds: Int
     var expirationDateTime: Date
     var expirationDateTimeStr: String
@@ -20,8 +20,8 @@ struct ReceivedInvitation: Identifiable {
     init?(data: [String: Any]){
         
         guard let invitationId = data["invitationId"] as? String,
-              let invitee_uname = data["invitee_uname"] as? String,
-              let invitee_uid = data["invitee_uid"] as? String,
+              let invitor_uname = data["invitor_uname"] as? String,
+              let invitor_uid = data["invitor_uid"] as? String,
               let draftRounds = data["draftRounds"] as? Int,
               let ts = data["expirationDateTime"] as? Timestamp
         else {
@@ -30,8 +30,8 @@ struct ReceivedInvitation: Identifiable {
         
     
         self.invitationId = invitationId
-        self.invitee_uid = invitee_uid
-        self.invitee_uname = invitee_uname
+        self.invitor_uid = invitor_uid
+        self.invitor_uname = invitor_uname
         self.draftRounds = draftRounds
         
         

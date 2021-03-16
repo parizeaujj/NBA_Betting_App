@@ -29,8 +29,8 @@ class MockSentInvitationsRepository: SentInvitationsRepositoryProtocol, Observab
         
         [
             "invitationId": "invitationId1",
-            "invitee_uid": "testToddUid",
-            "invitee_uname":  "todd123",
+            "invitor_uid": "testToddUid",
+            "invitor_uname":  "todd123",
             "recipient_uid": "testUID1",
             "recipient_uname": "codyshowstoppa",
             "invitationStatus": "pending",
@@ -40,8 +40,8 @@ class MockSentInvitationsRepository: SentInvitationsRepositoryProtocol, Observab
         [
             "invitationId": "invitationId2",
             
-            "invitee_uid": "testToddUid",
-            "invitee_uname":  "todd123",
+            "invitor_uid": "testToddUid",
+            "invitor_uname":  "todd123",
             "recipient_uid": "testUID2",
             "recipient_uname": "greg444",
             
@@ -51,8 +51,8 @@ class MockSentInvitationsRepository: SentInvitationsRepositoryProtocol, Observab
         ],
         [
             "invitationId": "invitationId3",
-            "invitee_uid": "testToddUid",
-            "invitee_uname":  "todd123",
+            "invitor_uid": "testToddUid",
+            "invitor_uname":  "todd123",
             "recipient_uid": "testUID3",
             "recipient_uname": "matt_smith2",
             "invitationStatus": "pending",

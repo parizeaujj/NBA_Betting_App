@@ -21,7 +21,7 @@ struct ReceivedInvitationView: View {
                     Text("From:")
                         .font(.footnote)
                         .padding(.trailing, 5)
-                    Text("\(invitation.invitee_uname)")
+                    Text("\(invitation.invitor_uname)")
                         .font(.body)
                         .foregroundColor(.blue)
                         .fontWeight(.semibold)

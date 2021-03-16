@@ -32,8 +32,8 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
         
         [
             "invitationId": "invitationId1",
-            "invitee_uid": "testUID1",
-            "invitee_uname": "testUname1",
+            "invitor_uid": "testUID1",
+            "invitor_uname": "testUname1",
             "recipient_uid": "testToddUid",
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
@@ -42,8 +42,8 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
         ],
         [
             "invitationId": "invitationId2",
-            "invitee_uid": "testUID2",
-            "invitee_uname": "testUname2",
+            "invitor_uid": "testUID2",
+            "invitor_uname": "testUname2",
             "recipient_uid": "testToddUid",
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
@@ -52,8 +52,8 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
         ],
         [
             "invitationId": "invitationId3",
-            "invitee_uid": "testUID3",
-            "invitee_uname": "testUname3",
+            "invitor_uid": "testUID3",
+            "invitor_uname": "testUname3",
             "recipient_uid": "testToddUid",
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
@@ -62,8 +62,8 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
         ],
         [
             "invitationId": "invitationId4",
-            "invitee_uid": "testUID4",
-            "invitee_uname": "testUname4",
+            "invitor_uid": "testUID4",
+            "invitor_uname": "testUname4",
             "recipient_uid": "testToddUid",
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
@@ -91,4 +91,34 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
     func rejectInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
         completion(.success(()))
     }
+}
+
+
+class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, ObservableObject {
+    
+    @Published var receivedInvitations: [ReceivedInvitation] = []
+    var receivedInvitationsPublished: Published<[ReceivedInvitation]> { _receivedInvitations }
+    var receivedInvitationsPublisher: Published<[ReceivedInvitation]>.Publisher { $receivedInvitations }
+    
+    init(uid: String){
+        getReceivedInvitations(uid: uid)
+    }
+    
+    func getReceivedInvitations(uid: String){
+        
+        
+       
+        
+        
+    }
+    
+    func acceptInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
+        completion(.success(()))
+    }
+    
+    func rejectInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
+        completion(.success(()))
+    }
+    
+    
 }
