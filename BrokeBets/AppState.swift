@@ -51,7 +51,7 @@ class MockAppState: AppStateProtocol {
     func deinitializeAllRepos(){
         self.draftsRepo = nil
         self.receivedInvitationsRepo = nil
-//        self.sentInvitationsRepo = nil
+        self.sentInvitationsRepo = nil
         self.upcomingContestsRepo = nil
         self.inProgressContestsRepo = nil
         self.completedContestsRepo = nil
@@ -71,31 +71,46 @@ class AppState: AppStateProtocol {
     
     private var cancellables: [AnyCancellable] = []
     
-    init(){
+
+    init(shouldByPassLogin: Bool = false){
         
-        FirebaseApp.configure()
+       
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
         
-        self.userService = UserService()
-        
-        userService.userPublisher.sink { user in
+        if(shouldByPassLogin){
             
-            guard let user = user, user.username != nil else {
-                self.deinitializeAllRepos()
-                return
+            let uid = "hyW3nBBstdbQhsRcpoMHWyOActg1"
+            self.userService = MockUserService()
+            self.userService.user = User(uid: uid, username: "testTodd123")
+            
+            self.initializeAllRepos(uid: uid)
+        }
+        else{
+            
+            self.userService = UserService()
+            
+            userService.userPublisher.sink { user in
+                
+                guard let user = user, user.username != nil else {
+                    self.deinitializeAllRepos()
+                    return
+                }
+                
+                self.initializeAllRepos(uid: user.uid)
+                
             }
-            
-            self.initializeAllRepos(uid: user.uid)
+            .store(in: &cancellables)
             
         }
-        .store(in: &cancellables)
-        
     }
     
     private func initializeAllRepos(uid: String){
         
         draftsRepo = DraftsRepository(uid: uid)
-//        self.receivedInvitationsRepo = ReceivedInvitationsRepository(uid: uid)
-//        self.sentInvitationsRepo = SentInvitationsRepository(uid: uid)
+        receivedInvitationsRepo = ReceivedInvitationsRepository(uid: uid)
+        sentInvitationsRepo = MockSentInvitationsRepository(uid: uid)
         upcomingContestsRepo = UpcomingContestsRepository(uid: uid)
         completedContestsRepo = CompletedContestsRepository(uid: uid)
         inProgressContestsRepo = InProgressContestsRepository(uid: uid)

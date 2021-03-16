@@ -34,9 +34,8 @@ struct MainAppView<T: AppStateProtocol>: View {
 
 struct MainAppView_Previews: PreviewProvider {
     static var previews: some View {
-        MainAppView<MockAppState>()
+        MainAppView<AppState>()
             .environmentObject(UserScreenInfo(.regular))
-            .environmentObject(UserService())
-            .environmentObject(MockAppState())
+            .environmentObject(AppState(shouldByPassLogin: true))
     }
 }

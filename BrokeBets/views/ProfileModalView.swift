@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileModalView<T: ObservableObject & AppStateProtocol>: View {
+struct ProfileModalView<T: AppStateProtocol>: View {
     
     @Binding var isShowingProfileModal: Bool
     

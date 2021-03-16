@@ -79,7 +79,8 @@ struct InvitationsView<T: AppStateProtocol>: View {
 
 struct InvitationsView_Previews: PreviewProvider {
     static var previews: some View {
-        InvitationsView<MockAppState>(isShowingProfileModal: .constant(false))
-            .environmentObject(MockAppState())
+        InvitationsView<AppState>(isShowingProfileModal: .constant(false))
+//            .environmentObject(MockAppState())
+            .environmentObject(AppState(shouldByPassLogin: true))
     }
 }

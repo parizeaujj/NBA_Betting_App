@@ -15,8 +15,9 @@ struct BrokeBetsApp: App {
     
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelagate
     
-    let appState = MockAppState()
-
+    let appState = AppState(shouldByPassLogin: true)
+    
+    
     var body: some Scene {
         WindowGroup {
             RootAppView(rootAppVM: RootAppVM(appState: appState))

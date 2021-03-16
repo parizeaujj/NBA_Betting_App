@@ -100,17 +100,49 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
     var receivedInvitationsPublished: Published<[ReceivedInvitation]> { _receivedInvitations }
     var receivedInvitationsPublisher: Published<[ReceivedInvitation]>.Publisher { $receivedInvitations }
     
+    private var db = Firestore.firestore()
+    private var receivedInvitationsListenerHandle: ListenerRegistration? = nil
+    
+    
     init(uid: String){
         getReceivedInvitations(uid: uid)
     }
     
     func getReceivedInvitations(uid: String){
         
-        
+        self.receivedInvitationsListenerHandle = db.collection("invitations")
+            .whereField("invitationStatus", isEqualTo: "pending")
+            .whereField("recipient_uid", isEqualTo: "hyW3nBBstdbQhsRcpoMHWyOActg1")
+            .addSnapshotListener { (querySnapshot, error) in
+                
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            var receivedInvitations: [ReceivedInvitation] = []
+            
+            // Loops through each upcoming contest from firebase
+            for document in documents{
+                guard let invitation = ReceivedInvitation(data: document.data()) else {
+                    print("Issue getting received invitation")
+                    return
+                }
+                
+                receivedInvitations.append(invitation)
+            }
+            
+            // Updates the publisher to the new values
+            self.receivedInvitations = receivedInvitations
+        }
+    }
+    
+    deinit {
+        self.receivedInvitationsListenerHandle?.remove()
+        print("listener for received invitations has been removed")
+    }
        
         
-        
-    }
     
     func acceptInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
         completion(.success(()))

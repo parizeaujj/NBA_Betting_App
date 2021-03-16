@@ -16,11 +16,6 @@ struct User: Identifiable {
     var username: String?
 }
 
-//struct User: Identifiable {
-//    var id = UUID()
-//    var uid: String
-//    var username: String
-//}
 
 enum UsernameCreationResult: Any {
     case UsernameTaken
@@ -68,10 +63,6 @@ class MockUserService: ObservableObject, UserServiceProtocol {
 
 class UserService: ObservableObject, UserServiceProtocol {
     
-//    @Published var isLoggedIn: Bool = false
-//    @Published var doesHaveUsername: Bool = false
-//    private var username: String?
-    
     
     @Published var user: User? = nil
     var userPublisher: Published<User?>.Publisher { $user }
@@ -108,33 +99,7 @@ class UserService: ObservableObject, UserServiceProtocol {
         return Auth.auth().currentUser?.uid
     }
     
-    
-//    init(){
-//
-//        Auth.auth().addStateDidChangeListener { auth, user in
-//
-//            if user != nil {
-//
-//                print("user is logged in")
-//
-//                self.getUsername(){ username in
-//
-//                    if username != nil {
-//                        self.username = username
-//                        self.doesHaveUsername = true
-//                    }
-//                    self.isLoggedIn = true
-//                }
-//            }
-//            else {
-//                self.isLoggedIn = false
-//                self.username = nil
-//                self.doesHaveUsername = false
-//            }
-//        }
-//    }
-    
-    
+
     func logout(){
         try? Auth.auth().signOut()
     }
