@@ -14,6 +14,9 @@
 		845D3ADC25FD106B00DEE76A /* CompletedContestsUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D3ADB25FD106B00DEE76A /* CompletedContestsUnitTests.swift */; };
 		8473F82125F493A7005BC632 /* InProgressContestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473F82025F493A7005BC632 /* InProgressContestListView.swift */; };
 		84B8EF6525FEC988009BFA04 /* DraftUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EF6425FEC988009BFA04 /* DraftUnitTests.swift */; };
+		84CB814325FFF75700845340 /* DraftRoundUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB814225FFF75700845340 /* DraftRoundUnitTests.swift */; };
+		84CB814825FFF78100845340 /* DraftGameUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB814725FFF78100845340 /* DraftGameUnitTests.swift */; };
+		84CB815025FFF7C700845340 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84CB814F25FFF7C700845340 /* GoogleService-Info.plist */; };
 		A62EBD295F56B79163046937 /* Pods_BrokeBets_BrokeBetsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097BB6BE178A92D74989CC75 /* Pods_BrokeBets_BrokeBetsUITests.framework */; };
 		CA2476A325FEEF2000B136FE /* InProgressContestUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2476A225FEEF2000B136FE /* InProgressContestUnitTest.swift */; };
 		CA2476AB25FEEF3D00B136FE /* InProgressContestGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2476AA25FEEF3D00B136FE /* InProgressContestGameTest.swift */; };
@@ -134,6 +137,9 @@
 		845D3ADB25FD106B00DEE76A /* CompletedContestsUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestsUnitTests.swift; sourceTree = "<group>"; };
 		8473F82025F493A7005BC632 /* InProgressContestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestListView.swift; sourceTree = "<group>"; };
 		84B8EF6425FEC988009BFA04 /* DraftUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftUnitTests.swift; sourceTree = "<group>"; };
+		84CB814225FFF75700845340 /* DraftRoundUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftRoundUnitTests.swift; sourceTree = "<group>"; };
+		84CB814725FFF78100845340 /* DraftGameUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftGameUnitTests.swift; sourceTree = "<group>"; };
+		84CB814F25FFF7C700845340 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFE799F47475663F47858987 /* Pods_BrokeBetsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBetsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2476A225FEEF2000B136FE /* InProgressContestUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestUnitTest.swift; sourceTree = "<group>"; };
 		CA2476AA25FEEF3D00B136FE /* InProgressContestGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGameTest.swift; sourceTree = "<group>"; };
@@ -564,6 +570,8 @@
 				84B8EF6425FEC988009BFA04 /* DraftUnitTests.swift */,
 				CA2476A225FEEF2000B136FE /* InProgressContestUnitTest.swift */,
 				CA2476AA25FEEF3D00B136FE /* InProgressContestGameTest.swift */,
+				84CB814225FFF75700845340 /* DraftRoundUnitTests.swift */,
+				84CB814725FFF78100845340 /* DraftGameUnitTests.swift */,
 			);
 			path = ModelTests;
 			sourceTree = "<group>";
@@ -702,6 +710,7 @@
 				E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */,
 				E3809B702600EA4700443E46 /* GoogleService-Info.plist in Resources */,
 				E394BDFD25CDD435002C89B9 /* Assets.xcassets in Resources */,
+				84CB815025FFF7C700845340 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +959,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CB814325FFF75700845340 /* DraftRoundUnitTests.swift in Sources */,
 				845D3ADC25FD106B00DEE76A /* CompletedContestsUnitTests.swift in Sources */,
 				E394BE0B25CDD435002C89B9 /* BrokeBetsTests.swift in Sources */,
 				CA2476A325FEEF2000B136FE /* InProgressContestUnitTest.swift in Sources */,
@@ -958,6 +968,7 @@
 				84B8EF6525FEC988009BFA04 /* DraftUnitTests.swift in Sources */,
 				E3C9E1CA25F5CA5000B719B9 /* TimeFormatStringUnitTests.swift in Sources */,
 				4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */,
+				84CB814825FFF78100845340 /* DraftGameUnitTests.swift in Sources */,
 				4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */,
 				E3E43CAD25EC6A0C00226BBE /* DateFormatStringUnitTests.swift in Sources */,
 			);

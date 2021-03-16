@@ -57,7 +57,7 @@ We will be using the MVVM pattern for our frontend and so almost all of our clas
 
 # Data Design
 
-![](/artifacts/ERD_updated.jpg)
+![](/artifacts/ERD-2.jpg)
 
 Data Design Description
 
@@ -77,7 +77,7 @@ We also need to make sure the NBA scores are updated frequently (every minute) t
 
 # User Interface Design
 
-![](/artifacts/UI.png)
+![](/artifacts/UI-4.jpg)
 
 UI Description
 ---
