@@ -22,9 +22,6 @@ struct DraftPickSelectionView: View {
             
             Color.white
             
-//            Color.gray.opacity(0.1)
-//                .edgesIgnoringSafeArea(.bottom)
-            
             VStack{
                 
                 VStack(spacing: 20){

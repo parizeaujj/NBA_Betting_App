@@ -149,8 +149,18 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
     }
     
     func rejectInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
-        completion(.success(()))
+        
+        let draftDocRef = db.collection("invitations").document(invitation.invitationId)
+        
+        draftDocRef.updateData([
+            "invitationStatus": "rejected",
+            "rejectedDateTime": Timestamp(date: Date())
+        ]){ err in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                completion(.success(())) // ewwww why so many parenthesis, swift?
+            }
+        }
     }
-    
-    
 }

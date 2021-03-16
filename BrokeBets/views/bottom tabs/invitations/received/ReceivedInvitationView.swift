@@ -11,6 +11,8 @@ struct ReceivedInvitationView: View {
     
     var invitation: ReceivedInvitation
     
+    var onInvitationAction: (InvitationAction) -> Void
+    
     var body: some View {
         
         HStack(spacing: 0){
@@ -43,10 +45,14 @@ struct ReceivedInvitationView: View {
             VStack(alignment: .trailing, spacing: 0){
                 
                 HStack{
-                    AcceptButtonView(action: {})
+                    AcceptButtonView(action: {
+                        self.onInvitationAction(InvitationAction(action: .accepted, invitation: self.invitation))
+                    })
                         .frame(minWidth: 86)
                 
-                    DeclineButtonView(action: {})
+                    DeclineButtonView(action: {
+                        self.onInvitationAction(InvitationAction(action: .declined, invitation: self.invitation))
+                    })
                         .frame(minWidth: 86)
                 }
                 .padding(.top, 5)
@@ -65,6 +71,6 @@ struct ReceivedInvitationView: View {
 
 struct ReceivedInvitationView_Previews: PreviewProvider {
     static var previews: some View {
-    ReceivedInvitationView(invitation: ReceivedInvitation(data: MockReceivedInvitationsRepository(uid: "testToddUid").mockData[0])!)
+        ReceivedInvitationView(invitation: ReceivedInvitation(data: MockReceivedInvitationsRepository(uid: "testToddUid").mockData[0])!, onInvitationAction: {_ in })
     }
 }
