@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0439B38325FD680B0019BBFF /* StandaloneAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439B38225FD680B0019BBFF /* StandaloneAlert.swift */; };
 		4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80225FD36A400913F1B /* UpcomingContestTest.swift */; };
 		4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */; };
 		780CC5543B010C56AF333A05 /* Pods_BrokeBets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA770B23555B11C24054428D /* Pods_BrokeBets.framework */; };
@@ -16,11 +15,18 @@
 		8473F82125F493A7005BC632 /* InProgressContestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473F82025F493A7005BC632 /* InProgressContestListView.swift */; };
 		84B8EF6525FEC988009BFA04 /* DraftUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EF6425FEC988009BFA04 /* DraftUnitTests.swift */; };
 		A62EBD295F56B79163046937 /* Pods_BrokeBets_BrokeBetsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097BB6BE178A92D74989CC75 /* Pods_BrokeBets_BrokeBetsUITests.framework */; };
-		CA15491725FEE48F006B701E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA15491625FEE48F006B701E /* GoogleService-Info.plist */; };
 		CA2476A325FEEF2000B136FE /* InProgressContestUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2476A225FEEF2000B136FE /* InProgressContestUnitTest.swift */; };
 		CA2476AB25FEEF3D00B136FE /* InProgressContestGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2476AA25FEEF3D00B136FE /* InProgressContestGameTest.swift */; };
 		CA55357D25F401F00054DB21 /* OpponentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA55357C25F401F00054DB21 /* OpponentSearchView.swift */; };
 		D7F25272195959FCDE4D2795 /* Pods_BrokeBetsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE799F47475663F47858987 /* Pods_BrokeBetsTests.framework */; };
+		E301E84B2600ED20001BD186 /* ReceivedInvitationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301E84A2600ED20001BD186 /* ReceivedInvitationsListView.swift */; };
+		E301E8502600ED69001BD186 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301E84F2600ED69001BD186 /* ReceivedInvitationView.swift */; };
+		E301E8552600EE32001BD186 /* AcceptButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301E8542600EE32001BD186 /* AcceptButtonView.swift */; };
+		E301E85A2600F0DA001BD186 /* DeclineButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301E8592600F0DA001BD186 /* DeclineButtonView.swift */; };
+		E301E8642600FB5E001BD186 /* SentInvitationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301E8632600FB5E001BD186 /* SentInvitationsListView.swift */; };
+		E301E86C26010058001BD186 /* SentInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301E86B26010058001BD186 /* SentInvitationView.swift */; };
+		E301E871260109EA001BD186 /* ReceivedInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301E870260109EA001BD186 /* ReceivedInvitation.swift */; };
+		E301E87626010D2B001BD186 /* SentInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301E87526010D2B001BD186 /* SentInvitation.swift */; };
 		E30C2A7325ED99A0000A04CA /* ProfileModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */; };
 		E30E773125F44AC40069876D /* OpponentSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E773025F44AC40069876D /* OpponentSearchVM.swift */; };
 		E328B6B125F42C6F0027EBB3 /* InProgressContestsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328B6B025F42C6F0027EBB3 /* InProgressContestsListVM.swift */; };
@@ -36,6 +42,8 @@
 		E34D80E325F97EFB0083849C /* DraftBetCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */; };
 		E34D80EB25F989440083849C /* DraftPickSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D80EA25F989440083849C /* DraftPickSelectionView.swift */; };
 		E36039B825F3E937005BFC15 /* InProgressContestGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */; };
+		E3809B702600EA4700443E46 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3809B6F2600EA4700443E46 /* GoogleService-Info.plist */; };
+		E3809B782600EAAB00443E46 /* InvitationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3809B772600EAAB00443E46 /* InvitationsView.swift */; };
 		E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */; };
 		E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FCD25D82AA8008D8399 /* TopTabs.swift */; };
 		E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FD225D82AF1008D8399 /* MainAppView.swift */; };
@@ -69,6 +77,10 @@
 		E3BA0F0C25E153C400D9C041 /* UpcomingContestsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA0F0B25E153C400D9C041 /* UpcomingContestsRepository.swift */; };
 		E3BA0F1425E153EF00D9C041 /* UpcomingContest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA0F1325E153EF00D9C041 /* UpcomingContest.swift */; };
 		E3BA0F1C25E154C100D9C041 /* UpcomingContestGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA0F1B25E154C100D9C041 /* UpcomingContestGame.swift */; };
+		E3BA2E1726010FDB00EAF404 /* ReceivedInvitationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA2E1626010FDB00EAF404 /* ReceivedInvitationsRepository.swift */; };
+		E3BA2E1D2601144400EAF404 /* ReceivedInvitationsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA2E1C2601144400EAF404 /* ReceivedInvitationsListVM.swift */; };
+		E3BA2E25260119D800EAF404 /* SentInvitationsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA2E24260119D800EAF404 /* SentInvitationsListVM.swift */; };
+		E3BA2E2A260119F800EAF404 /* SentInvitationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA2E29260119F800EAF404 /* SentInvitationsRepository.swift */; };
 		E3BB843525F3C5A6008121C8 /* InProgressContestGamesListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */; };
 		E3BBF30B25FD757900EEAF90 /* DraftBoardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */; };
 		E3C9685E25DD7D100097963E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9685D25DD7D100097963E /* LoginView.swift */; };
@@ -86,7 +98,6 @@
 		E3EA6C2825FEBCD90019AAC0 /* RootAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C2725FEBCD90019AAC0 /* RootAppVM.swift */; };
 		E3EA6C3025FEBDB10019AAC0 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C2F25FEBDB10019AAC0 /* AppState.swift */; };
 		E3EA6C3525FEBE150019AAC0 /* UserScreenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */; };
-		E3EA6C4025FEBFD20019AAC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3EA6C3F25FEBFD20019AAC0 /* GoogleService-Info.plist */; };
 		E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */; };
 		E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */; };
 		E3F52D6925F0352B009B10CE /* InProgressContestGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */; };
@@ -113,7 +124,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0439B38225FD680B0019BBFF /* StandaloneAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandaloneAlert.swift; sourceTree = "<group>"; };
 		097BB6BE178A92D74989CC75 /* Pods_BrokeBets_BrokeBetsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets_BrokeBetsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F98490B460D6530CB2D949E /* Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4095F80225FD36A400913F1B /* UpcomingContestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestTest.swift; sourceTree = "<group>"; };
@@ -125,13 +135,20 @@
 		8473F82025F493A7005BC632 /* InProgressContestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestListView.swift; sourceTree = "<group>"; };
 		84B8EF6425FEC988009BFA04 /* DraftUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftUnitTests.swift; sourceTree = "<group>"; };
 		BFE799F47475663F47858987 /* Pods_BrokeBetsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBetsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA15491625FEE48F006B701E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA2476A225FEEF2000B136FE /* InProgressContestUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestUnitTest.swift; sourceTree = "<group>"; };
 		CA2476AA25FEEF3D00B136FE /* InProgressContestGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGameTest.swift; sourceTree = "<group>"; };
 		CA55357C25F401F00054DB21 /* OpponentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentSearchView.swift; sourceTree = "<group>"; };
 		CC6F103B9C84320B302281C0 /* Pods-BrokeBetsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8597B5732F19E9C927F860A /* Pods-BrokeBetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBetsTests.release.xcconfig"; path = "Target Support Files/Pods-BrokeBetsTests/Pods-BrokeBetsTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA770B23555B11C24054428D /* Pods_BrokeBets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrokeBets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E301E84A2600ED20001BD186 /* ReceivedInvitationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationsListView.swift; sourceTree = "<group>"; };
+		E301E84F2600ED69001BD186 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
+		E301E8542600EE32001BD186 /* AcceptButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptButtonView.swift; sourceTree = "<group>"; };
+		E301E8592600F0DA001BD186 /* DeclineButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclineButtonView.swift; sourceTree = "<group>"; };
+		E301E8632600FB5E001BD186 /* SentInvitationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitationsListView.swift; sourceTree = "<group>"; };
+		E301E86B26010058001BD186 /* SentInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitationView.swift; sourceTree = "<group>"; };
+		E301E870260109EA001BD186 /* ReceivedInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitation.swift; sourceTree = "<group>"; };
+		E301E87526010D2B001BD186 /* SentInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitation.swift; sourceTree = "<group>"; };
 		E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalView.swift; sourceTree = "<group>"; };
 		E30E773025F44AC40069876D /* OpponentSearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentSearchVM.swift; sourceTree = "<group>"; };
 		E328B6B025F42C6F0027EBB3 /* InProgressContestsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestsListVM.swift; sourceTree = "<group>"; };
@@ -147,6 +164,8 @@
 		E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBetCapsule.swift; sourceTree = "<group>"; };
 		E34D80EA25F989440083849C /* DraftPickSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPickSelectionView.swift; sourceTree = "<group>"; };
 		E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGameVM.swift; sourceTree = "<group>"; };
+		E3809B6F2600EA4700443E46 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3809B772600EAAB00443E46 /* InvitationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsView.swift; sourceTree = "<group>"; };
 		E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		E38B7FCD25D82AA8008D8399 /* TopTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabs.swift; sourceTree = "<group>"; };
 		E38B7FD225D82AF1008D8399 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
@@ -187,6 +206,10 @@
 		E3BA0F0B25E153C400D9C041 /* UpcomingContestsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestsRepository.swift; sourceTree = "<group>"; };
 		E3BA0F1325E153EF00D9C041 /* UpcomingContest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContest.swift; sourceTree = "<group>"; };
 		E3BA0F1B25E154C100D9C041 /* UpcomingContestGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestGame.swift; sourceTree = "<group>"; };
+		E3BA2E1626010FDB00EAF404 /* ReceivedInvitationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationsRepository.swift; sourceTree = "<group>"; };
+		E3BA2E1C2601144400EAF404 /* ReceivedInvitationsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationsListVM.swift; sourceTree = "<group>"; };
+		E3BA2E24260119D800EAF404 /* SentInvitationsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitationsListVM.swift; sourceTree = "<group>"; };
+		E3BA2E29260119F800EAF404 /* SentInvitationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitationsRepository.swift; sourceTree = "<group>"; };
 		E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGamesListVM.swift; sourceTree = "<group>"; };
 		E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBoardVM.swift; sourceTree = "<group>"; };
 		E3C9685D25DD7D100097963E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -204,7 +227,6 @@
 		E3EA6C2725FEBCD90019AAC0 /* RootAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAppVM.swift; sourceTree = "<group>"; };
 		E3EA6C2F25FEBDB10019AAC0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScreenInfo.swift; sourceTree = "<group>"; };
-		E3EA6C3F25FEBFD20019AAC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContest.swift; sourceTree = "<group>"; };
 		E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestsRepository.swift; sourceTree = "<group>"; };
 		E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGame.swift; sourceTree = "<group>"; };
@@ -265,6 +287,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E301E8612600FB1B001BD186 /* received */ = {
+			isa = PBXGroup;
+			children = (
+				E301E84A2600ED20001BD186 /* ReceivedInvitationsListView.swift */,
+				E301E84F2600ED69001BD186 /* ReceivedInvitationView.swift */,
+				E301E8542600EE32001BD186 /* AcceptButtonView.swift */,
+				E301E8592600F0DA001BD186 /* DeclineButtonView.swift */,
+			);
+			path = received;
+			sourceTree = "<group>";
+		};
+		E301E8622600FB40001BD186 /* sent */ = {
+			isa = PBXGroup;
+			children = (
+				E301E8632600FB5E001BD186 /* SentInvitationsListView.swift */,
+				E301E86B26010058001BD186 /* SentInvitationView.swift */,
+			);
+			path = sent;
+			sourceTree = "<group>";
+		};
 		E3292EB525E5731E007189EC /* completed */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,7 +330,6 @@
 				E3292ED225E6E0C7007189EC /* CreateUsernameView.swift */,
 				E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */,
 				E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */,
-				0439B38225FD680B0019BBFF /* StandaloneAlert.swift */,
 				E394BDFA25CDD434002C89B9 /* RootAppView.swift */,
 				E38B7FD225D82AF1008D8399 /* MainAppView.swift */,
 			);
@@ -341,7 +382,7 @@
 				E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */,
 				E394BDFC25CDD435002C89B9 /* Assets.xcassets */,
 				E394BE0125CDD435002C89B9 /* Info.plist */,
-				CA15491625FEE48F006B701E /* GoogleService-Info.plist */,
+				E3809B6F2600EA4700443E46 /* GoogleService-Info.plist */,
 				E3B621DB25DEC19B00B3ACE3 /* BrokeBets.entitlements */,
 				E394BDFE25CDD435002C89B9 /* Preview Content */,
 			);
@@ -432,6 +473,9 @@
 		E3B6221F25DF27C700B3ACE3 /* invitations */ = {
 			isa = PBXGroup;
 			children = (
+				E301E8622600FB40001BD186 /* sent */,
+				E301E8612600FB1B001BD186 /* received */,
+				E3809B772600EAAB00443E46 /* InvitationsView.swift */,
 			);
 			path = invitations;
 			sourceTree = "<group>";
@@ -469,6 +513,8 @@
 				E39EE8AF25F9514B0027968E /* DraftsListVM.swift */,
 				E3E3FFEF25FBD96000892B5C /* DraftPickSelectionVM.swift */,
 				E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */,
+				E3BA2E1C2601144400EAF404 /* ReceivedInvitationsListVM.swift */,
+				E3BA2E24260119D800EAF404 /* SentInvitationsListVM.swift */,
 			);
 			name = "view models";
 			path = ..;
@@ -481,6 +527,8 @@
 				E3292EC325E5BBDF007189EC /* CompletedContestsRepository.swift */,
 				E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */,
 				E39EE89B25F924340027968E /* DraftsRepository.swift */,
+				E3BA2E1626010FDB00EAF404 /* ReceivedInvitationsRepository.swift */,
+				E3BA2E29260119F800EAF404 /* SentInvitationsRepository.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -498,6 +546,8 @@
 				E39EE8A025F926BB0027968E /* Draft.swift */,
 				E39EE8AA25F93EC10027968E /* DraftGame.swift */,
 				E39EE8A525F926CB0027968E /* DraftRound.swift */,
+				E301E870260109EA001BD186 /* ReceivedInvitation.swift */,
+				E301E87526010D2B001BD186 /* SentInvitation.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -650,7 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */,
-				CA15491725FEE48F006B701E /* GoogleService-Info.plist in Resources */,
+				E3809B702600EA4700443E46 /* GoogleService-Info.plist in Resources */,
 				E394BDFD25CDD435002C89B9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,11 +867,16 @@
 				8473F82125F493A7005BC632 /* InProgressContestListView.swift in Sources */,
 				E3EA6C2825FEBCD90019AAC0 /* RootAppVM.swift in Sources */,
 				E394BDFB25CDD434002C89B9 /* RootAppView.swift in Sources */,
+				E301E87626010D2B001BD186 /* SentInvitation.swift in Sources */,
 				E3F52D6925F0352B009B10CE /* InProgressContestGame.swift in Sources */,
 				E3D8E3E225EC069000A3A88E /* CompletedContestGamesListView.swift in Sources */,
+				E3809B782600EAAB00443E46 /* InvitationsView.swift in Sources */,
+				E301E85A2600F0DA001BD186 /* DeclineButtonView.swift in Sources */,
 				E38C528E25F2F0C1005C659B /* InProgressGamesListView.swift in Sources */,
 				CA55357D25F401F00054DB21 /* OpponentSearchView.swift in Sources */,
 				E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */,
+				E301E871260109EA001BD186 /* ReceivedInvitation.swift in Sources */,
+				E301E86C26010058001BD186 /* SentInvitationView.swift in Sources */,
 				E39EE8B025F9514B0027968E /* DraftsListVM.swift in Sources */,
 				E3BA0F1C25E154C100D9C041 /* UpcomingContestGame.swift in Sources */,
 				E38B7FD325D82AF1008D8399 /* MainAppView.swift in Sources */,
@@ -840,18 +895,23 @@
 				E3F52D7A25F18177009B10CE /* InProgressContestView.swift in Sources */,
 				E38B7FDE25D82BE5008D8399 /* UpcomingContestsListView.swift in Sources */,
 				E3BB843525F3C5A6008121C8 /* InProgressContestGamesListVM.swift in Sources */,
-				0439B38325FD680B0019BBFF /* StandaloneAlert.swift in Sources */,
 				E38B7FD825D82B6A008D8399 /* ContestsView.swift in Sources */,
 				E3292EBC25E57E27007189EC /* CompletedContestView.swift in Sources */,
 				E3997E2E25EACCFD00530C26 /* CompletedContestsListView.swift in Sources */,
+				E301E8502600ED69001BD186 /* ReceivedInvitationView.swift in Sources */,
+				E301E84B2600ED20001BD186 /* ReceivedInvitationsListView.swift in Sources */,
 				E328B6B125F42C6F0027EBB3 /* InProgressContestsListVM.swift in Sources */,
+				E3BA2E25260119D800EAF404 /* SentInvitationsListVM.swift in Sources */,
 				E3BA0F1425E153EF00D9C041 /* UpcomingContest.swift in Sources */,
+				E301E8642600FB5E001BD186 /* SentInvitationsListView.swift in Sources */,
 				E3292ED325E6E0C7007189EC /* CreateUsernameView.swift in Sources */,
 				E39EE89725F7CFDF0027968E /* DraftsListView.swift in Sources */,
 				E34D80EB25F989440083849C /* DraftPickSelectionView.swift in Sources */,
+				E3BA2E1D2601144400EAF404 /* ReceivedInvitationsListVM.swift in Sources */,
 				E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */,
 				E3DCE9F725F2871100B063A3 /* ChosenOpponentChip.swift in Sources */,
 				E394BDF925CDD434002C89B9 /* BrokeBetsApp.swift in Sources */,
+				E3BA2E1726010FDB00EAF404 /* ReceivedInvitationsRepository.swift in Sources */,
 				E39EE8A125F926BB0027968E /* Draft.swift in Sources */,
 				E3E5C71825F19F0800AAB992 /* InProgressGameView.swift in Sources */,
 				E3292ECE25E5BC88007189EC /* CompletedContestGame.swift in Sources */,
@@ -874,6 +934,7 @@
 				E3BA0F0C25E153C400D9C041 /* UpcomingContestsRepository.swift in Sources */,
 				E39EE8AB25F93EC10027968E /* DraftGame.swift in Sources */,
 				E3E3FFF025FBD96000892B5C /* DraftPickSelectionVM.swift in Sources */,
+				E301E8552600EE32001BD186 /* AcceptButtonView.swift in Sources */,
 				E3B621E925DF0BB500B3ACE3 /* EntireBetslipCompletedGameView.swift in Sources */,
 				E3292EB725E57707007189EC /* CustomRoundedRect.swift in Sources */,
 				E3EA6C3025FEBDB10019AAC0 /* AppState.swift in Sources */,
@@ -881,6 +942,7 @@
 				E3C9685E25DD7D100097963E /* LoginView.swift in Sources */,
 				E38B7FEF25D82E67008D8399 /* UINavigationController+Extensions.swift in Sources */,
 				E38B7FE725D82E27008D8399 /* UITabBarController+Extensions.swift in Sources */,
+				E3BA2E2A260119F800EAF404 /* SentInvitationsRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,23 +8,18 @@
 import SwiftUI
 import Firebase
 
+
+
 @main
 struct BrokeBetsApp: App {
     
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelagate
     
-    var appState: AppState
-    
-    init(){
-        FirebaseApp.configure()
-        
-        self.appState = AppState()
-        
-    }
-    
+    let appState = MockAppState()
+
     var body: some Scene {
         WindowGroup {
-                RootAppView<AppState>(rootAppVM: RootAppVM(appState: appState))
+            RootAppView(rootAppVM: RootAppVM(appState: appState))
                     .environmentObject(appState)
                     .environmentObject(UserScreenInfo(getScreenSizeType()))
                     .environment(\.colorScheme, .light)
@@ -49,6 +44,14 @@ struct BrokeBetsApp: App {
 }
 
 
+//extension AppStateProtocol {
+//    
+//    private(set) var userService: UserService {
+//        get { UserService() }
+//        set {}
+//    }
+//    func deinitializeAllRepos(){}
+//}
 
 //class AppDelegate: NSObject, UIApplicationDelegate {
 //

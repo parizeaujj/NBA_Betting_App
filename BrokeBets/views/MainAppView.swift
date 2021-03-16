@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainAppView<T: ObservableObject & AppStateProtocol>: View {
+struct MainAppView<T: AppStateProtocol>: View {
     
     @EnvironmentObject var appState: T
     @State var selectedTab = 0

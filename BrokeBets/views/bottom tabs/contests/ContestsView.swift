@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContestsView<T: ObservableObject & AppStateProtocol>: View {
+struct ContestsView<T: AppStateProtocol>: View {
     
     @EnvironmentObject var appState: T
     @State private var selectedTab = 0
@@ -55,10 +55,7 @@ struct ContestsView<T: ObservableObject & AppStateProtocol>: View {
                         CompletedContestsListView(viewModel: CompletedContestsListVM(completedContestsRepo: repo))
                     }
                 }
-//                else{
-//                    UpcomingContestsListView()
-//                }
-                
+
                 Spacer()
                 
             }

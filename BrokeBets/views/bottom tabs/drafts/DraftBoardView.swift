@@ -92,7 +92,7 @@ struct DraftBoardView: View {
                                         Text("Drafted: TBD")
                                     }
                                     if let forced = draftRound.forcedBetStr {
-                                        Text("Drafted: \(forced)")
+                                        Text("Forced: \(forced)")
                                     }
                                     else{
                                         Text("Forced: TBD")

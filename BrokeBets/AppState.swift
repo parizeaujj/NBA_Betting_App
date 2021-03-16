@@ -7,25 +7,32 @@
 
 import Foundation
 import Combine
+import Firebase
 
-protocol AppStateProtocol {
+protocol AppStateProtocol: ObservableObject {
     
     var userService: UserServiceProtocol { get }
     var draftsRepo: DraftsRepositoryProtocol? { get }
+    var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol? { get }
+    var sentInvitationsRepo: SentInvitationsRepositoryProtocol? { get }
     var upcomingContestsRepo: UpcomingContestsRepositoryProtocol? { get }
     var completedContestsRepo: CompletedContestsRepositoryProtocol? { get }
     var inProgressContestsRepo: InProgressContestsRepositoryProtocol? { get }
+    
     func deinitializeAllRepos()
 }
 
 
-class MockAppState: ObservableObject, AppStateProtocol {
+class MockAppState: AppStateProtocol {
     
     private(set) var userService: UserServiceProtocol
     private(set) var draftsRepo: DraftsRepositoryProtocol?
+    private(set) var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol?
+    private(set) var sentInvitationsRepo: SentInvitationsRepositoryProtocol?
     private(set) var upcomingContestsRepo: UpcomingContestsRepositoryProtocol?
     private(set) var completedContestsRepo: CompletedContestsRepositoryProtocol?
     private(set) var inProgressContestsRepo: InProgressContestsRepositoryProtocol?
+    
     
     init(){
         
@@ -34,6 +41,8 @@ class MockAppState: ObservableObject, AppStateProtocol {
         self.userService.user = User(uid: uid, username: "todd123")
         
         draftsRepo = MockDraftsRepository(uid: uid)
+        receivedInvitationsRepo = MockReceivedInvitationsRepository(uid: uid)
+        sentInvitationsRepo = MockSentInvitationsRepository(uid: uid)
         upcomingContestsRepo = MockUpcomingContestsRepository(uid: uid)
         completedContestsRepo = MockCompletedContestsRepository(uid: uid)
         inProgressContestsRepo = MockInProgressContestsRepository(uid: uid)
@@ -41,16 +50,20 @@ class MockAppState: ObservableObject, AppStateProtocol {
     
     func deinitializeAllRepos(){
         self.draftsRepo = nil
+        self.receivedInvitationsRepo = nil
+//        self.sentInvitationsRepo = nil
         self.upcomingContestsRepo = nil
         self.inProgressContestsRepo = nil
         self.completedContestsRepo = nil
     }
 }
 
-class AppState: ObservableObject, AppStateProtocol {
+class AppState: AppStateProtocol {
     
     private(set) var userService: UserServiceProtocol
     private(set) var draftsRepo: DraftsRepositoryProtocol?
+    private(set) var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol?
+    private(set) var sentInvitationsRepo: SentInvitationsRepositoryProtocol?
     private(set) var upcomingContestsRepo: UpcomingContestsRepositoryProtocol?
     private(set) var completedContestsRepo: CompletedContestsRepositoryProtocol?
     private(set) var inProgressContestsRepo: InProgressContestsRepositoryProtocol?
@@ -59,6 +72,8 @@ class AppState: ObservableObject, AppStateProtocol {
     private var cancellables: [AnyCancellable] = []
     
     init(){
+        
+        FirebaseApp.configure()
         
         self.userService = UserService()
         
@@ -79,6 +94,8 @@ class AppState: ObservableObject, AppStateProtocol {
     private func initializeAllRepos(uid: String){
         
         draftsRepo = DraftsRepository(uid: uid)
+//        self.receivedInvitationsRepo = ReceivedInvitationsRepository(uid: uid)
+//        self.sentInvitationsRepo = SentInvitationsRepository(uid: uid)
         upcomingContestsRepo = UpcomingContestsRepository(uid: uid)
         completedContestsRepo = CompletedContestsRepository(uid: uid)
         inProgressContestsRepo = InProgressContestsRepository(uid: uid)
@@ -87,6 +104,8 @@ class AppState: ObservableObject, AppStateProtocol {
     
     func deinitializeAllRepos(){
         draftsRepo = nil
+        receivedInvitationsRepo = nil
+        sentInvitationsRepo = nil
         upcomingContestsRepo = nil
         completedContestsRepo = nil
         inProgressContestsRepo = nil

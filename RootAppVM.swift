@@ -7,7 +7,7 @@
 
 import Combine
 
-class RootAppVM: ObservableObject {
+class RootAppVM<T: ObservableObject & AppStateProtocol>: ObservableObject {
     
     @Published var isLoggedIn: Bool = false {
         didSet {
@@ -21,9 +21,9 @@ class RootAppVM: ObservableObject {
     
     private var cancellables: [AnyCancellable] = []
     
-    private(set) var appState: AppStateProtocol
+    private(set) var appState: T
     
-    init(appState: AppStateProtocol){
+    init(appState: T){
         
         self.appState = appState
         

@@ -8,9 +8,9 @@
 import SwiftUI
 import FirebaseFirestore
 
-struct RootAppView<T: ObservableObject & AppStateProtocol>: View {
+struct RootAppView<T: AppStateProtocol>: View {
     
-    @StateObject var rootAppVM: RootAppVM
+    @StateObject var rootAppVM: RootAppVM<T>
     
     var body: some View {
         
