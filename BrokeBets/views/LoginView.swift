@@ -10,7 +10,7 @@ import FirebaseAuth
 import AuthenticationServices
 
 
-struct LoginView<T: ObservableObject & AppStateProtocol>: View {
+struct LoginView<T: AppStateProtocol >: View {
     
     @EnvironmentObject var appState: T
     

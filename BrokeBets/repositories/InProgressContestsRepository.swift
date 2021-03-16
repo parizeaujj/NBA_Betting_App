@@ -50,7 +50,7 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
         //TODO: Replace "testUID" with variable for user's UID
         db.collection("contests")
             .whereField("contestStatus", isEqualTo: "inprogress")
-            .whereField("players", arrayContains: "testUID")
+            .whereField("players", arrayContains: uid)
             .addSnapshotListener { (querySnapshot, error) in
                 
             guard let documents = querySnapshot?.documents else {
@@ -82,7 +82,7 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
                 }
                 
                 
-                guard let contestData = InProgressContest(data: document.data(), playerUid: "testUID", contestId: document.documentID) else {
+                guard let contestData = InProgressContest(data: document.data(), playerUid: uid, contestId: document.documentID) else {
                     print("Issue creating contest")
                     return
                 }
@@ -112,7 +112,13 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
             self.gameScoreListenerHandle!.remove()
         }
         
-        self.gameScoreListenerHandle = db.collection("games").whereField("gameId", in: Array(self.gameIds)).addSnapshotListener { querySnapshot, error in
+        if self.gameIds.count == 0 {
+            return
+        }
+        
+        self.gameScoreListenerHandle = db.collection("games")
+            .whereField("gameId", in: Array(self.gameIds))
+            .addSnapshotListener { querySnapshot, error in
             
             guard let documents = querySnapshot?.documents else {
                 print("No documents for games query")

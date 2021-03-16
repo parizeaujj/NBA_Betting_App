@@ -110,7 +110,7 @@ class UpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observable
         
         self.upcomingContestsListenerHandle = db.collection("contests")
             .whereField("contestStatus", isEqualTo: "upcoming")
-            .whereField("players", arrayContains: "hyW3nBBstdbQhsRcpoMHWyOActg1")
+            .whereField("players", arrayContains: uid)
             .addSnapshotListener { (querySnapshot, error) in
                 
             guard let documents = querySnapshot?.documents else {
@@ -122,7 +122,7 @@ class UpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observable
             
             // Loops through each upcoming contest from firebase
             for document in documents{
-                guard let contest = UpcomingContest(data: document.data(), playerUid: "hyW3nBBstdbQhsRcpoMHWyOActg1") else {
+                guard let contest = UpcomingContest(data: document.data(), playerUid: uid) else {
                     print("Issue getting contest")
                     return
                 }

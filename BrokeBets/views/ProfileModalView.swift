@@ -92,6 +92,5 @@ struct ProfileModalView<T: AppStateProtocol>: View {
 struct ProfileModalView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileModalView<MockAppState>(isShowingProfileModal: .constant(false))
-            .environmentObject(UserService())
     }
 }

@@ -34,10 +34,9 @@ class CompletedContestsRepository: CompletedContestsRepositoryProtocol, Observab
     
     func getCompletedContests(uid: String) {
         
-        //TODO: Replace "testUID" with variable for user's UID
         db.collection("contests")
             .whereField("contestStatus", isEqualTo: "completed")
-            .whereField("players", arrayContains: "testUID")
+            .whereField("players", arrayContains: uid)
             .addSnapshotListener { (querySnapshot, error) in
                 
             guard let documents = querySnapshot?.documents else {
@@ -48,9 +47,8 @@ class CompletedContestsRepository: CompletedContestsRepositoryProtocol, Observab
             var contests: [CompletedContest] = []
             
             // Loops through each upcoming contest from firebase
-            //TODO: Replace "testUID" with variable for user's UID
             for document in documents{
-                guard let contest = CompletedContest(data: document.data(), playerUid: "testUID") else {
+                guard let contest = CompletedContest(data: document.data(), playerUid: uid) else {
                     print("Issue getting contest")
                     return
                 }

@@ -112,7 +112,7 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
         
         self.receivedInvitationsListenerHandle = db.collection("invitations")
             .whereField("invitationStatus", isEqualTo: "pending")
-            .whereField("recipient_uid", isEqualTo: "hyW3nBBstdbQhsRcpoMHWyOActg1")
+            .whereField("recipient_uid", isEqualTo: uid)
             .addSnapshotListener { (querySnapshot, error) in
                 
             guard let documents = querySnapshot?.documents else {
@@ -122,7 +122,7 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
             
             var receivedInvitations: [ReceivedInvitation] = []
             
-            // Loops through each upcoming contest from firebase
+            // Loops through each recieved invitation from firebase
             for document in documents{
                 guard let invitation = ReceivedInvitation(data: document.data()) else {
                     print("Issue getting received invitation")

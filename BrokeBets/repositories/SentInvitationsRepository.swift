@@ -73,3 +73,51 @@ class MockSentInvitationsRepository: SentInvitationsRepositoryProtocol, Observab
         
     }
 }
+
+class SentInvitationsRepository: SentInvitationsRepositoryProtocol, ObservableObject {
+    
+    @Published var sentInvitations: [SentInvitation] = []
+    var sentInvitationsPublished: Published<[SentInvitation]> { _sentInvitations }
+    var sentInvitationsPublisher: Published<[SentInvitation]>.Publisher { $sentInvitations }
+    
+    private var db = Firestore.firestore()
+    private var sentInvitationsListenerHandle: ListenerRegistration? = nil
+    
+    init(uid: String){
+        getSentInvitations(uid: uid)
+    }
+    
+    func getSentInvitations(uid: String){
+      
+        self.sentInvitationsListenerHandle = db.collection("invitations")
+            .whereField("invitationStatus", in: ["pending", "rejected"])
+            .whereField("invitor_uid", isEqualTo: uid)
+            .addSnapshotListener { (querySnapshot, error) in
+                
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            var sentInvitations: [SentInvitation] = []
+            
+            // Loops through each sent invitation from firebase
+            for document in documents{
+                guard let invitation = SentInvitation(data: document.data()) else {
+                    print("Issue getting sent invitation")
+                    return
+                }
+                
+                sentInvitations.append(invitation)
+            }
+            
+            // Updates the publisher to the new values
+            self.sentInvitations = sentInvitations
+        }
+    }
+    
+    deinit {
+        self.sentInvitationsListenerHandle?.remove()
+        print("listener for sent invitations has been removed")
+    }
+}

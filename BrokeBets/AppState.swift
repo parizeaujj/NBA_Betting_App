@@ -110,7 +110,7 @@ class AppState: AppStateProtocol {
         
         draftsRepo = DraftsRepository(uid: uid)
         receivedInvitationsRepo = ReceivedInvitationsRepository(uid: uid)
-        sentInvitationsRepo = MockSentInvitationsRepository(uid: uid)
+        sentInvitationsRepo = SentInvitationsRepository(uid: uid)
         upcomingContestsRepo = UpcomingContestsRepository(uid: uid)
         completedContestsRepo = CompletedContestsRepository(uid: uid)
         inProgressContestsRepo = InProgressContestsRepository(uid: uid)
