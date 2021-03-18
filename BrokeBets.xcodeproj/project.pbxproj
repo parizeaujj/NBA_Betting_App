@@ -60,6 +60,7 @@
 		E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E394BDFF25CDD435002C89B9 /* Preview Assets.xcassets */; };
 		E394BE0B25CDD435002C89B9 /* BrokeBetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BE0A25CDD435002C89B9 /* BrokeBetsTests.swift */; };
 		E394BE1625CDD435002C89B9 /* BrokeBetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E394BE1525CDD435002C89B9 /* BrokeBetsUITests.swift */; };
+		E39884D32602BBEE00E8EA5A /* CreateContestInvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39884D22602BBEE00E8EA5A /* CreateContestInvitationService.swift */; };
 		E3997E2E25EACCFD00530C26 /* CompletedContestsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3997E2D25EACCFD00530C26 /* CompletedContestsListView.swift */; };
 		E3997E3325EACD7A00530C26 /* CompletedContestsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3997E3225EACD7A00530C26 /* CompletedContestsListVM.swift */; };
 		E39EE88825F69C220027968E /* AvailableDraftGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EE88725F69C220027968E /* AvailableDraftGameView.swift */; };
@@ -190,6 +191,7 @@
 		E394BE1125CDD435002C89B9 /* BrokeBetsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrokeBetsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E394BE1525CDD435002C89B9 /* BrokeBetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokeBetsUITests.swift; sourceTree = "<group>"; };
 		E394BE1725CDD435002C89B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E39884D22602BBEE00E8EA5A /* CreateContestInvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContestInvitationService.swift; sourceTree = "<group>"; };
 		E3997E2D25EACCFD00530C26 /* CompletedContestsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestsListView.swift; sourceTree = "<group>"; };
 		E3997E3225EACD7A00530C26 /* CompletedContestsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestsListVM.swift; sourceTree = "<group>"; };
 		E39EE88725F69C220027968E /* AvailableDraftGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableDraftGameView.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B621E025DEEBBD00B3ACE3 /* UserService.swift */,
+				E39884D22602BBEE00E8EA5A /* CreateContestInvitationService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -914,6 +917,7 @@
 				E3997E2E25EACCFD00530C26 /* CompletedContestsListView.swift in Sources */,
 				E301E8502600ED69001BD186 /* ReceivedInvitationView.swift in Sources */,
 				E301E84B2600ED20001BD186 /* ReceivedInvitationsListView.swift in Sources */,
+				E39884D32602BBEE00E8EA5A /* CreateContestInvitationService.swift in Sources */,
 				E328B6B125F42C6F0027EBB3 /* InProgressContestsListVM.swift in Sources */,
 				E3BA2E25260119D800EAF404 /* SentInvitationsListVM.swift in Sources */,
 				E3BA0F1425E153EF00D9C041 /* UpcomingContest.swift in Sources */,

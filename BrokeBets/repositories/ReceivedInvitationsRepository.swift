@@ -145,6 +145,18 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
         
     
     func acceptInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
+        
+//        let docRef = db.collection("available_games").document("current")
+//
+//        db.runTransaction(<#T##updateBlock: (Transaction, NSErrorPointer) -> Any?##(Transaction, NSErrorPointer) -> Any?#>, completion: <#T##(Any?, Error?) -> Void#>)
+//
+//
+        
+        
+        
+        
+        
+        
         completion(.success(()))
     }
     

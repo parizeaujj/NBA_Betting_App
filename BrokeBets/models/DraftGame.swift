@@ -23,6 +23,7 @@ struct DraftGame: Identifiable {
     var overBetStr: String
     var underBetStr: String
     
+    var dictionary: [String: Any]
     
     init?(data: [String: Any]){
         
@@ -69,5 +70,8 @@ struct DraftGame: Identifiable {
         let specialDayType = dateTime.getSpecialDayType(todaysSimpleDate: todaysSimpleDate)
         self.gameStartDateTimeStr = dateTime.createDateTimeString(with: specialDayType, completionStatus: .Upcoming)
         
+        
+        self.dictionary = data
+            
     }
 }

@@ -18,7 +18,8 @@ struct LoginView<T: AppStateProtocol >: View {
         
         ZStack{
             
-            Color(UIColor.systemBlue).opacity(0.95)
+            Color(UIColor.systemBlue)
+//                .opacity(0.95)
             
             VStack {
                 
