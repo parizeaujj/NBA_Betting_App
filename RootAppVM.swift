@@ -9,15 +9,20 @@ import Combine
 
 class RootAppVM<T: ObservableObject & AppStateProtocol>: ObservableObject {
     
-    @Published var isLoggedIn: Bool = false {
+    @Published var isLoggedIn: Bool? = nil {
         didSet {
-            if oldValue && !isLoggedIn {
-                self.appState.deinitializeAllRepos()
+            
+            if let oldVal = oldValue, let curVal = isLoggedIn{
+                if oldVal && !curVal {
+                    self.appState.deinitializeAllRepos()
+                }
             }
         }
     }
     
     @Published var doesHaveUsername: Bool = false
+    
+    @Published var didFinishSetup: Bool = false
     
     private var cancellables: [AnyCancellable] = []
     
@@ -28,6 +33,8 @@ class RootAppVM<T: ObservableObject & AppStateProtocol>: ObservableObject {
         self.appState = appState
         
         listenForAuthChanges()
+        
+       
     }
     
     private func listenForAuthChanges(){
@@ -38,6 +45,7 @@ class RootAppVM<T: ObservableObject & AppStateProtocol>: ObservableObject {
                 if user != nil {
                     
                     if(user!.username != nil ){
+                    
                         self.doesHaveUsername = true
                         self.isLoggedIn = true
                     }
@@ -49,6 +57,10 @@ class RootAppVM<T: ObservableObject & AppStateProtocol>: ObservableObject {
                 else{
                     self.doesHaveUsername = false
                     self.isLoggedIn = false
+                }
+                
+                if(!self.didFinishSetup){
+                    self.didFinishSetup = true
                 }
             }
             .store(in: &cancellables)

@@ -45,14 +45,6 @@ struct BrokeBetsApp: App {
 }
 
 
-//extension AppStateProtocol {
-//    
-//    private(set) var userService: UserService {
-//        get { UserService() }
-//        set {}
-//    }
-//    func deinitializeAllRepos(){}
-//}
 
 //class AppDelegate: NSObject, UIApplicationDelegate {
 //

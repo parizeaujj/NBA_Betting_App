@@ -88,7 +88,7 @@ struct ContestsView<T: AppStateProtocol>: View {
             
         }
         .accentColor(.white)
-        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: CreateContestView.init)
+        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: {CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: appState.createContestInvitationService!, userService: appState.userService)) })
         .preferredColorScheme(.light)
     }
 }

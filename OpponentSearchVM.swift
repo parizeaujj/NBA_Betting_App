@@ -24,18 +24,19 @@ class OpponentSearchVM: ObservableObject {
     
     @Published var searchResults: [User] = []
     
-    var currentSelectedUsername: String? = nil
-    var setOpponentSelection: (String?) -> Void
+    var currentSelectedUser: User? = nil
+    var setOpponentSelection: (User?) -> Void
     
-    init(currentSelectedUsername: String?, setOpponentSelection: @escaping (String?) -> Void, userService: UserServiceProtocol){
-        self.currentSelectedUsername = currentSelectedUsername
+    
+    init(currentSelectedUser: User?, setOpponentSelection: @escaping (User?) -> Void, userService: UserServiceProtocol){
+        self.currentSelectedUser = currentSelectedUser
         self.setOpponentSelection = setOpponentSelection
         self.userService = userService
     }
     
     func updateSearchResults(){
         
-        userService.getUsernames(startingWith: self.usernameText){ users in
+        userService.getUsers(startingWith: self.usernameText){ users in
             
             if let users = users {
                 self.searchResults = users

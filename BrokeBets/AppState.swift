@@ -12,6 +12,7 @@ import Firebase
 protocol AppStateProtocol: ObservableObject {
     
     var userService: UserServiceProtocol { get }
+    var createContestInvitationService: CreateContestInvitationServiceProtocol? { get }
     var draftsRepo: DraftsRepositoryProtocol? { get }
     var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol? { get }
     var sentInvitationsRepo: SentInvitationsRepositoryProtocol? { get }
@@ -26,6 +27,7 @@ protocol AppStateProtocol: ObservableObject {
 class MockAppState: AppStateProtocol {
     
     private(set) var userService: UserServiceProtocol
+    private(set) var createContestInvitationService: CreateContestInvitationServiceProtocol?
     private(set) var draftsRepo: DraftsRepositoryProtocol?
     private(set) var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol?
     private(set) var sentInvitationsRepo: SentInvitationsRepositoryProtocol?
@@ -40,6 +42,7 @@ class MockAppState: AppStateProtocol {
         self.userService = MockUserService()
         self.userService.user = User(uid: uid, username: "todd123")
         
+        createContestInvitationService = MockCreateContestInvitationService(user: self.userService.user!)
         draftsRepo = MockDraftsRepository(uid: uid)
         receivedInvitationsRepo = MockReceivedInvitationsRepository(uid: uid)
         sentInvitationsRepo = MockSentInvitationsRepository(uid: uid)
@@ -61,6 +64,7 @@ class MockAppState: AppStateProtocol {
 class AppState: AppStateProtocol {
     
     private(set) var userService: UserServiceProtocol
+    private(set) var createContestInvitationService: CreateContestInvitationServiceProtocol?
     private(set) var draftsRepo: DraftsRepositoryProtocol?
     private(set) var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol?
     private(set) var sentInvitationsRepo: SentInvitationsRepositoryProtocol?
@@ -82,15 +86,16 @@ class AppState: AppStateProtocol {
         if(shouldByPassLogin){
             
             let uid = "hyW3nBBstdbQhsRcpoMHWyOActg1"
-            self.userService = MockUserService()
+            self.userService = UserService(shouldByPassLogin: shouldByPassLogin)
             self.userService.user = User(uid: uid, username: "testTodd123")
             
+            self.createContestInvitationService = CreateContestInvitationService(user: self.userService.user!)
             self.initializeAllRepos(uid: uid)
         }
         else{
             
             self.userService = UserService()
-            
+           
             userService.userPublisher.sink { user in
                 
                 guard let user = user, user.username != nil else {
@@ -98,6 +103,7 @@ class AppState: AppStateProtocol {
                     return
                 }
                 
+                self.createContestInvitationService = CreateContestInvitationService(user: self.userService.user!)
                 self.initializeAllRepos(uid: user.uid)
                 
             }

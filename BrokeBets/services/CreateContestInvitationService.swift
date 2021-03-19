@@ -9,10 +9,11 @@ import Foundation
 import FirebaseFirestore
 
 
-enum ContestCreationResult {
-    case success
-    case not_enough_games_failure
-    case db_failure
+enum ContestCreationResult: String {
+    case success = ""
+    case no_games_left = "Sorry, there are no available games to bet on right now. Try again later."
+    case not_enough_games_failure = "Not enough games available. Select a different value for the number of draft rounds."
+    case db_failure = "Sorry, there was an error creating your contest invitation, please try again."
 }
 
 
@@ -37,14 +38,14 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
     var availableGamesPublished: Published<[AvailableGame]> { _availableGames }
     
     
-    let mockData: [[String: Any]] = [
+    var mockData: [[String: Any]] = [
 
         [
             "gameId": "gameid1",
             "homeTeam": "HOU Rockets",
             "awayTeam": "CLE Cavaliers",
             "gameStartDateTime": Timestamp(date: Date()),
-            "isSpreadBetStillAvailable": false,
+            "isSpreadBetStillAvailable": true,
             "isOverUnderBetStillAvailable": true,
             "isHomeTeamFavorite": true,
             "spreadFavoriteBetStr": "HOU -4",
@@ -59,7 +60,7 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
             "awayTeam": "SA Spurs",
             "gameStartDateTime": Timestamp(date: Date()),
             "isSpreadBetStillAvailable": true,
-            "isOverUnderBetStillAvailable": false,
+            "isOverUnderBetStillAvailable": true,
             "isHomeTeamFavorite": false,
             "spreadFavoriteBetStr": "SA -3",
             "spreadUnderdogBetStr": "LA +3",
@@ -72,7 +73,7 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
             "awayTeam": "GS Warriors",
             "gameStartDateTime": Timestamp(date: Date()),
             "isSpreadBetStillAvailable": true,
-            "isOverUnderBetStillAvailable": false,
+            "isOverUnderBetStillAvailable": true,
             "isHomeTeamFavorite": true,
             "spreadFavoriteBetStr": "PHI -5",
             "spreadUnderdogBetStr": "GS +5",
@@ -84,7 +85,7 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
             "homeTeam": "CHI Bulls",
             "awayTeam": "POR Trail Blazers",
             "gameStartDateTime": Timestamp(date: Date()),
-            "isSpreadBetStillAvailable": false,
+            "isSpreadBetStillAvailable": true,
             "isOverUnderBetStillAvailable": true,
             "isHomeTeamFavorite": false,
             "spreadFavoriteBetStr": "POR -3.5",
@@ -95,11 +96,27 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
     ]
     
     
+    let extraGame: [String: Any] = [
+    
+        "gameId": "gameid5",
+        "homeTeam": "NO Pelicans",
+        "awayTeam": "SAC Kings",
+        "gameStartDateTime": Timestamp(date: Date()),
+        "isSpreadBetStillAvailable": true,
+        "isOverUnderBetStillAvailable": true,
+        "isHomeTeamFavorite": true,
+        "spreadFavoriteBetStr": "NO -8",
+        "spreadUnderdogBetStr": "SAC +8",
+        "overBetStr": "o 223",
+        "underBetStr": "u 223"
+    ]
     
     init(user: User){
         self.user = user
         
         getAvailableGames()
+        
+        addAvailableGameAfterTenSeconds()
     }
     
     func getAvailableGames(){
@@ -110,7 +127,17 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
     }
     
     func createContestInvitation(selectedOpponent: User, numDraftRounds: Int, completion: @escaping (ContestCreationResult) -> Void){
-        completion(.success)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            completion(.no_games_left)
+        }
+    }
+    
+    func addAvailableGameAfterTenSeconds(){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.availableGames.append(AvailableGame(data: self.extraGame)!)
+            print("after 10 seconds...")
+        }
     }
 }
 
@@ -148,7 +175,13 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
                 
                 for document in documents {
                     
-                    guard let game = AvailableGame(data: document.data()) else {
+                    var data = document.data()
+                    
+                    // inject default data
+                    data["isSpreadBetStillAvailable"] = true
+                    data["isOverUnderBetStillAvailable"] = true
+                    
+                    guard let game = AvailableGame(data: data) else {
                         print("Issue getting available game")
                         return
                     }
@@ -164,22 +197,31 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
     
     func createContestInvitation(selectedOpponent: User, numDraftRounds: Int, completion: @escaping (ContestCreationResult) -> Void){
         
-   
         let invitor_uid = user.uid
         let invitor_uname = user.username
         
         let recipient_uid = selectedOpponent.uid
         let recipient_uname = selectedOpponent.username
         
+        let numAvailableGames = self.availableGames.count
+                
         
-        if self.availableGames.count <= numDraftRounds {
+        guard numAvailableGames != 0 else {
+            completion(.no_games_left)
+            return
+        }
+        
+        
+        
+        guard numDraftRounds <= numAvailableGames else {
             completion(.not_enough_games_failure)
             return
         }
         
+        
         let sortedGames = self.availableGames.sorted { $0.gameStartDateTime < $1.gameStartDateTime }
         
-        let latestAcceptableGameStart = sortedGames[numDraftRounds].gameStartDateTime
+        let latestAcceptableGameStart = sortedGames[numAvailableGames - numDraftRounds].gameStartDateTime
         
         let invitationExpirationDateTime = Calendar.current.date(byAdding: .minute, value: -30, to: latestAcceptableGameStart)!
         
@@ -208,7 +250,8 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
             "recipient_uid": recipient_uid,
             "recipient_uname": recipient_uname!,
             "draftRounds": numDraftRounds,
-            "expirationDateTime": Timestamp(date: invitationExpirationDateTime)
+            "expirationDateTime": Timestamp(date: invitationExpirationDateTime),
+            "games_pool": self.availableGames.map { $0.dictionary }
         
         ], forDocument: newInvitationDocRef)
         
@@ -217,10 +260,16 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
             "invitationIds": FieldValue.arrayUnion([newInvitationDocRef.documentID])
         ], forDocument: expirationSubDocRef)
         
-
-        
-        
-        
+        batch.commit { error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                completion(.db_failure)
+                return
+            }
+            
+            completion(.success)
+            
+        }
     }
-    
 }

@@ -16,7 +16,7 @@ struct OpponentSearchView: View {
         ZStack(alignment: .top) {
             
             Color.gray.opacity(0.2)
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0){
                 
@@ -52,7 +52,9 @@ struct OpponentSearchView: View {
                             
                             Button(action: {
                                 
-                                opponentSearchVM.setOpponentSelection(user.username)
+                                self.opponentSearchVM.setOpponentSelection(user)
+                                
+                                
                                 
                             }, label: {
                                 
@@ -126,7 +128,7 @@ struct SearchBarView_Previews: PreviewProvider {
     
     static var previews: some View {
    
-        OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUsername: nil, setOpponentSelection: { _ in }, userService: UserService()))
+        OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUser: nil, setOpponentSelection: { _ in }, userService: MockUserService()))
             .environmentObject(UserScreenInfo(.regular))
 //            .environment(\.colorScheme, .light)
             .preferredColorScheme(.light)

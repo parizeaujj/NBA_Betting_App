@@ -8,8 +8,9 @@
 import SwiftUI
 
 
-struct DraftsListView: View {
+struct DraftsListView<T: AppStateProtocol>: View {
     
+    @EnvironmentObject var appState: T
     @StateObject var draftsListVM: DraftsListVM
     @State private var isCreateContestSheetPresented = false
     @Binding var isShowingProfileModal: Bool
@@ -79,14 +80,17 @@ struct DraftsListView: View {
                                     }.padding(.vertical)
             )
             
-        }.accentColor(.white)
-        
+        }
+        .accentColor(.white)
+        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: {CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: appState.createContestInvitationService!, userService: appState.userService)) })
+        .preferredColorScheme(.light)
     }
 }
 
 struct DraftsListView_Previews: PreviewProvider {
     static var previews: some View {
-        DraftsListView(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository(uid: "testToddUid")), isShowingProfileModal: .constant(false))
+        DraftsListView<MockAppState>(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository(uid: "testToddUid")), isShowingProfileModal: .constant(false))
+            .environmentObject(MockAppState())
             
     }
 }

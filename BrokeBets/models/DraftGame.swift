@@ -25,6 +25,7 @@ struct DraftGame: Identifiable {
     
     var dictionary: [String: Any]
     
+    
     init?(data: [String: Any]){
         
         guard let gameId = data["gameId"] as? String,
