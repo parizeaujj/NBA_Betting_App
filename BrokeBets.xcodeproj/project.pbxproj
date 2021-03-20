@@ -10,7 +10,6 @@
 		4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80225FD36A400913F1B /* UpcomingContestTest.swift */; };
 		4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */; };
 		4095F8422606547100913F1B /* SentInvitationUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F8412606547100913F1B /* SentInvitationUnitTests.swift */; };
-		4095F8472606549D00913F1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4095F8462606549D00913F1B /* GoogleService-Info.plist */; };
 		4095F84F2606553700913F1B /* ReceivedInvitationUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F84E2606553700913F1B /* ReceivedInvitationUnitTests.swift */; };
 		780CC5543B010C56AF333A05 /* Pods_BrokeBets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA770B23555B11C24054428D /* Pods_BrokeBets.framework */; };
 		84464B7325FD2B640046B0CF /* CompletedContestGameUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84464B7225FD2B640046B0CF /* CompletedContestGameUnitTests.swift */; };
@@ -107,6 +106,7 @@
 		E3EA6C3025FEBDB10019AAC0 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C2F25FEBDB10019AAC0 /* AppState.swift */; };
 		E3EA6C3525FEBE150019AAC0 /* UserScreenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */; };
 		E3EE112026067E9E0035A4EC /* DraftPickSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EE111F26067E9E0035A4EC /* DraftPickSelection.swift */; };
+		E3EE11282606C2C60035A4EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3EE11272606C2C60035A4EC /* GoogleService-Info.plist */; };
 		E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */; };
 		E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */; };
 		E3F52D6925F0352B009B10CE /* InProgressContestGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */; };
@@ -138,7 +138,6 @@
 		4095F80225FD36A400913F1B /* UpcomingContestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestTest.swift; sourceTree = "<group>"; };
 		4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestGameTest.swift; sourceTree = "<group>"; };
 		4095F8412606547100913F1B /* SentInvitationUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitationUnitTests.swift; sourceTree = "<group>"; };
-		4095F8462606549D00913F1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4095F84E2606553700913F1B /* ReceivedInvitationUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationUnitTests.swift; sourceTree = "<group>"; };
 		40C596F50F10E2D82C5EE325 /* Pods-BrokeBets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets/Pods-BrokeBets.release.xcconfig"; sourceTree = "<group>"; };
 		71EED93567F6274CBA95B207 /* Pods-BrokeBets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets/Pods-BrokeBets.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +244,7 @@
 		E3EA6C2F25FEBDB10019AAC0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScreenInfo.swift; sourceTree = "<group>"; };
 		E3EE111F26067E9E0035A4EC /* DraftPickSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPickSelection.swift; sourceTree = "<group>"; };
+		E3EE11272606C2C60035A4EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContest.swift; sourceTree = "<group>"; };
 		E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestsRepository.swift; sourceTree = "<group>"; };
 		E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGame.swift; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 				E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */,
 				E394BDFC25CDD435002C89B9 /* Assets.xcassets */,
 				E394BE0125CDD435002C89B9 /* Info.plist */,
-				4095F8462606549D00913F1B /* GoogleService-Info.plist */,
+				E3EE11272606C2C60035A4EC /* GoogleService-Info.plist */,
 				E3B621DB25DEC19B00B3ACE3 /* BrokeBets.entitlements */,
 				E394BDFE25CDD435002C89B9 /* Preview Content */,
 			);
@@ -734,7 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */,
-				4095F8472606549D00913F1B /* GoogleService-Info.plist in Resources */,
+				E3EE11282606C2C60035A4EC /* GoogleService-Info.plist in Resources */,
 				E394BDFD25CDD435002C89B9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
