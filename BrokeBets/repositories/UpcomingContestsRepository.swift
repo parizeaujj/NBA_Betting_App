@@ -37,7 +37,7 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
              "player2_uid": "testOppUid",
              "player2_uname": "testOpp",
              "numBets": 3,
-             "games": [
+             "upcomingGames": [
                 
                         // game 1
                         ["awayTeam": "HOU Rockets",

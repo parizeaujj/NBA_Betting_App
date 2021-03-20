@@ -28,13 +28,13 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
     var draftsPublisher: Published<[String: Draft]>.Publisher { $drafts }
     var draftsPublished: Published<[String: Draft]> { _drafts }
     
-    private var uid: String
+    private var user: User
     private var db = Firestore.firestore()
     private var draftsListenerHandle: ListenerRegistration? = nil
     
-    init(uid: String){
-        self.uid = uid
-        getDrafts(uid: uid)
+    init(user: User){
+        self.user = user
+        getDrafts(uid: user.uid)
     }
     
     func getDrafts(uid: String) {
@@ -72,57 +72,152 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         let userLookupPrefix = draft.userPlayerType.rawValue
         let oppLookupPrefix = draft.oppPlayerType.rawValue
         
+        let player1_uid: String
+        let player1_uname: String
+        let player2_uid: String
+        let player2_uname: String
+        
         var isDraftCompleted: Bool = false
         var newDraftRound = draft.currentRound
-        
-//        guard let affected_gameId = draftPickSelection.draftedPick["gameId"] as? String else {
-//            fatalError("something is really wrong: gameId is not in the draftedPick dictionary for the draft pick selection")
-//        }
-//
+        var games_pool = draft.gamesPool
         
         
-//
-//        var games_pool = draft.gamesPool
-//
-//        var affected_game = games_pool.firstIndex{$0.gameId == affected_gameId}
-//
-//
-//
-//        var updated_game: [String: Any] = ["gameId": affected_gameId, "homeTeam": games]
+        let batch = db.batch()
+        
+        guard let affected_gameId = draftPickSelection.draftedPick["gameId"] as? String else {
+            fatalError("something is really wrong: gameId is not in the draftedPick dictionary for the draft pick selection")
+        }
+        
+        guard let affectedGameIndex = games_pool.firstIndex(where:{$0.gameId == affected_gameId}) else {
+            fatalError("something is really wrong: gameId of the selected pick is for a game that is not among the games in the games_pool")
+        }
+        
+
+        guard let betTypeOfPick = BetType(rawValue: draftPickSelection.draftedPick["betType"] as! String) else {
+            fatalError("something is really wrong: the betType is not in the draftedPick dictionary for the draft pick selection")
+        }
         
         
-//        for game in games_pool {
-//
-//            if(game.gameId == affected_gameId){
-//
-//                break
-//            }
-//        }
         
         
-        if(draft.userPlayerType == .PlayerTwo){
+        
+        if draft.userPlayerType == .PlayerTwo {
             
-            if(draft.currentRound == draft.totalRounds){
+            player1_uid = draft.opponent_uid
+            player1_uname = draft.opponent
+            player2_uid = self.user.uid
+            player2_uname = self.user.username!
+            
+            if draft.currentRound == draft.totalRounds {
                 isDraftCompleted = true
             }
             else{
                 newDraftRound += 1
             }
         }
-        else{
-            newDraftRound += 1
+        else {
+            
+            player1_uid = self.user.uid
+            player1_uname = self.user.username!
+            player2_uid = draft.opponent_uid
+            player2_uname = draft.opponent
         }
+        
+        
+        
+        // update the appropriate field that tracks whether a bet type for a given game is still available to be betted on for the given draft and updates the bets strings for each player for the respective game
+        switch(betTypeOfPick){
+            case .overUnder:
+                
+                
+                games_pool[affectedGameIndex].updateOverUnderBetAvailablity(to: false)
+                
+                games_pool[affectedGameIndex].updatePlayerOverUnderBetStrings(userLookupType: draft.userPlayerType, userBetStr: draftPickSelection.draftedPick["betInfo"] as! String, oppBetStr: draftPickSelection.inversePick["betInfo"] as! String)
+        
+            case .spread:
+                games_pool[affectedGameIndex].updateSpreadBetAvailablity(to: false)
+                
+                games_pool[affectedGameIndex].updatePlayerSpreadBetStrings(userLookupType: draft.userPlayerType, userBetStr: draftPickSelection.draftedPick["betInfo"] as! String, oppBetStr: draftPickSelection.inversePick["betInfo"] as! String)
+        }
+            
+        
+        
+        // if the draft will be completed with this pick then we will also create a new upcoming contest with the draft info
+        
+        if isDraftCompleted {
+            
+            let newContestDocRef = db.collection("contests").document()
+            
+            
+            let upcomingContestGames: [[String: Any]] = games_pool.compactMap { game in
+                
+                if game.isSpreadBetStillAvailable && game.isOverUnderBetStillAvailable {
+                    return nil
+                }
+                
+                var upcomingContestGame: [String: Any] = [:]
+                
+                upcomingContestGame["gameId"] = game.gameId
+                upcomingContestGame["homeTeam"] = game.homeTeam
+                upcomingContestGame["awayTeam"] = game.awayTeam
+                upcomingContestGame["gameStartDateTime"] = Timestamp(date: game.gameStartDateTime)
+                
+                if !game.isSpreadBetStillAvailable {
+                    
+                    upcomingContestGame["spreadBet"] = [
+                        
+                        "player1": game.player1_spreadBetStr!,
+                        "player2": game.player2_spreadBetStr!
+                    ]
+                }
+                
+                if !game.isOverUnderBetStillAvailable {
+                    
+                    upcomingContestGame["overUnderBet"] = [
+                        
+                        "player1": game.player1_ouBetStr!,
+                        "player2": game.player2_ouBetStr!
+                    ]
+                }
+                
+                return upcomingContestGame
+            }
+            
+            
+            
+            batch.setData([
+            
+                "contestId": newContestDocRef.documentID,
+                "contestStatus": "upcoming",
+                "firstGameStartDateTime": Timestamp(date: draft.draftExpirationDateTime),
+                "player1_uid": player1_uid,
+                "player1_uname": player1_uname,
+                "player2_uid": player2_uid,
+                "player2_uname": player2_uname,
+                "players": [player1_uid, player2_uid],
+                "numBets": draft.totalRounds * 2,
+                "upcomingGames": upcomingContestGames
+            
+            ], forDocument: newContestDocRef)
+            
+        }
+        
         
         let draftDocRef = db.collection("drafts").document(draft.draftId)
         
-        draftDocRef.updateData([
+        // update the draft document
+        batch.updateData([
             "\(userLookupPrefix)_drafted_picks": FieldValue.arrayUnion([draftPickSelection.draftedPick]),
             "\(oppLookupPrefix)_forced_picks": FieldValue.arrayUnion([draftPickSelection.inversePick]),
             "currentRound": newDraftRound,
             "draftStatus": isDraftCompleted ? "completed" : "active",
-            "currentPlayerTurn": oppLookupPrefix
-            
-        ]){ err in
+            "currentPlayerTurn": oppLookupPrefix,
+            "games_pool": games_pool.map {$0.dictionary}
+        ], forDocument: draftDocRef)
+        
+        
+        
+        batch.commit { err in
             if let err = err {
                 completion(.failure(err))
             } else {
@@ -146,6 +241,7 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
     var draftsPublisher: Published<[String: Draft]>.Publisher { $drafts }
     var draftsPublished: Published<[String: Draft]> { _drafts }
     
+    private var user: User
     
     let mockData: [ String: [String: Any] ] = [
         
@@ -288,8 +384,10 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
     
     
     
-    init(uid: String){
-        getDrafts(uid: uid)
+    init(user: User){
+        
+        self.user = user
+        getDrafts(uid: user.uid)
     }
     
     func getDrafts(uid: String) {

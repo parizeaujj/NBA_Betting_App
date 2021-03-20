@@ -13,7 +13,7 @@ struct CreateContestView: View {
     @StateObject var createContestVM: CreateContestVM
     @State var isDraftRoundsOpen = false
     @State var showingSuccessNotice = false
-    @State var showingSuccessNotic3364 = false
+    @State var showingSuccessNotic334 = false
     
     @State var showErrorMessage = false
     @State var errorMessage: String = ""

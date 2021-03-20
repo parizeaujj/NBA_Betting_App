@@ -113,9 +113,12 @@ struct DraftPickSelectionView: View {
 
 struct DraftPickSelectionView_Previews: PreviewProvider {
     static var previews: some View {
+        
+        let user = User(uid: "testToddUid", username: "testTodd123")
+        
         NavigationView{
             NavigationLink(
-                destination: DraftPickSelectionView(viewModel: DraftPickSelectionVM(draft: Draft(data: MockDraftsRepository(uid: "testToddUid").mockData["draftid1"]!, playerUid: "testToddUid")!, draftsRepo: MockDraftsRepository(uid: "testToddUid")))
+                destination: DraftPickSelectionView(viewModel: DraftPickSelectionVM(draft: Draft(data: MockDraftsRepository(user: user).mockData["draftid1"]!, playerUid: user.uid)!, draftsRepo: MockDraftsRepository(user: user)))
                     .navigationBarTitle("", displayMode: .inline),
                 isActive: .constant(true),
                 label: {

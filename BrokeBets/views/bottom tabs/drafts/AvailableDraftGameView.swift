@@ -179,7 +179,7 @@ struct AvailableDraftGameView_Previews: PreviewProvider {
     static var previews: some View {
         
         
-        if let games  = MockDraftsRepository(uid: "testToddUid").mockData["draftid1"]!["games_pool"] as? [[String: Any]]{
+        if let games  = MockDraftsRepository(user: User(uid: "testToddUid", username: "testTodd123")).mockData["draftid1"]!["games_pool"] as? [[String: Any]]{
             
             AvailableDraftGameView(game: DraftGame(data: games[0])!, round: 1, onDraftPickSelection: {_ in })
         }

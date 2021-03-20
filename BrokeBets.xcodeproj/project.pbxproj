@@ -104,6 +104,7 @@
 		E3EA6C2825FEBCD90019AAC0 /* RootAppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C2725FEBCD90019AAC0 /* RootAppVM.swift */; };
 		E3EA6C3025FEBDB10019AAC0 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C2F25FEBDB10019AAC0 /* AppState.swift */; };
 		E3EA6C3525FEBE150019AAC0 /* UserScreenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */; };
+		E3EE112026067E9E0035A4EC /* DraftPickSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EE111F26067E9E0035A4EC /* DraftPickSelection.swift */; };
 		E3F52D5F25EFEB99009B10CE /* InProgressContest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */; };
 		E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */; };
 		E3F52D6925F0352B009B10CE /* InProgressContestGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */; };
@@ -239,6 +240,7 @@
 		E3EA6C2725FEBCD90019AAC0 /* RootAppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAppVM.swift; sourceTree = "<group>"; };
 		E3EA6C2F25FEBDB10019AAC0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScreenInfo.swift; sourceTree = "<group>"; };
+		E3EE111F26067E9E0035A4EC /* DraftPickSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPickSelection.swift; sourceTree = "<group>"; };
 		E3F52D5E25EFEB99009B10CE /* InProgressContest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContest.swift; sourceTree = "<group>"; };
 		E3F52D6325F02C3F009B10CE /* InProgressContestsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestsRepository.swift; sourceTree = "<group>"; };
 		E3F52D6825F0352B009B10CE /* InProgressContestGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGame.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				E39EE8A525F926CB0027968E /* DraftRound.swift */,
 				E301E870260109EA001BD186 /* ReceivedInvitation.swift */,
 				E301E87526010D2B001BD186 /* SentInvitation.swift */,
+				E3EE111F26067E9E0035A4EC /* DraftPickSelection.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 			files = (
 				E3292ED825E6E129007189EC /* CreateUsernameVM.swift in Sources */,
 				8473F82125F493A7005BC632 /* InProgressContestListView.swift in Sources */,
+				E3EE112026067E9E0035A4EC /* DraftPickSelection.swift in Sources */,
 				E3EA6C2825FEBCD90019AAC0 /* RootAppVM.swift in Sources */,
 				E394BDFB25CDD434002C89B9 /* RootAppView.swift in Sources */,
 				E39884E5260506EB00E8EA5A /* AnimatedSuccessHUD.swift in Sources */,

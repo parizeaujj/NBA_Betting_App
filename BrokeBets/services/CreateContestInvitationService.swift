@@ -205,13 +205,10 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
         
         let numAvailableGames = self.availableGames.count
                 
-        
         guard numAvailableGames != 0 else {
             completion(.no_games_left)
             return
         }
-        
-        
         
         guard numDraftRounds <= numAvailableGames else {
             completion(.not_enough_games_failure)
@@ -224,23 +221,16 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
         let latestAcceptableGameStart = sortedGames[numAvailableGames - numDraftRounds].gameStartDateTime
         
         let invitationExpirationDateTime = Calendar.current.date(byAdding: .minute, value: -30, to: latestAcceptableGameStart)!
-        
-
-        // get id of invitation time by converting invitationExpirationDateTime to a UTC string
-        let utcDateFormatter = DateFormatter()
-        utcDateFormatter.timeZone = TimeZone(identifier: "UTC")
-        utcDateFormatter.dateFormat = "yyyy-MM-dd-HH:mm"
-        let id = utcDateFormatter.string(from: invitationExpirationDateTime)
+        let id = invitationExpirationDateTime.customUTCDateString()
 
         let expirationSubDocRef = db.collection("invitation_expiration_subscriptions").document(id)
-        
         let newInvitationDocRef = db.collection("invitations").document()
         
         
         // batched write
-        
         let batch = db.batch();
         
+        // creates the invitation document
         batch.setData([
             
             "invitationId": newInvitationDocRef.documentID,
@@ -256,9 +246,11 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
         ], forDocument: newInvitationDocRef)
         
       
+        // adds the newly created invitation id to the array of ids for its corresponding expiration time so that it is watched for expiration
         batch.updateData([
             "invitationIds": FieldValue.arrayUnion([newInvitationDocRef.documentID])
         ], forDocument: expirationSubDocRef)
+        
         
         batch.commit { error in
             

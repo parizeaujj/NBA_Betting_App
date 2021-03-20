@@ -137,6 +137,8 @@ struct DraftView: View {
 
 struct DraftView_Previews: PreviewProvider {
     static var previews: some View {
-        DraftView(draft: Draft(data: MockDraftsRepository(uid: "testToddUid").mockData["draftid1"]!, playerUid: "testToddUid")!, draftsRepo: MockDraftsRepository(uid: "testToddUid"))
+        
+        let user = User(uid: "testToddUid", username: "testTodd123")
+        DraftView(draft: Draft(data: MockDraftsRepository(user: user).mockData["draftid1"]!, playerUid: user.uid)!, draftsRepo: MockDraftsRepository(user: user))
     }
 }

@@ -48,7 +48,7 @@ struct UpcomingContest : Codable, Identifiable {
               let player2_uname = data["player2_uname"] as? String,
               let numBets = data["numBets"] as? Int,
               let ts = data["firstGameStartDateTime"] as? Timestamp,
-              let games = data["games"] as? [[String: Any]]
+              let games = data["upcomingGames"] as? [[String: Any]]
             
         else {
             return nil

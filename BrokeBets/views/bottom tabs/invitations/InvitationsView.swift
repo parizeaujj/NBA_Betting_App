@@ -7,9 +7,31 @@
 
 import SwiftUI
 
+class InvitationsVM<T: AppStateProtocol>: ObservableObject {
+    
+    let receivedInvitationsListVM: ReceivedInvitationsListVM
+    let sentInvitationsListVM: SentInvitationsListVM
+    
+    let appState: T
+    
+    init(appState: T){
+        
+        self.appState = appState
+        
+        self.receivedInvitationsListVM = ReceivedInvitationsListVM(receivedInvitationsRepo: appState.receivedInvitationsRepo!)
+        
+        self.sentInvitationsListVM = SentInvitationsListVM(sentInvitationsRepo: appState.sentInvitationsRepo!)
+        
+    }
+}
+
 struct InvitationsView<T: AppStateProtocol>: View {
     
-    @EnvironmentObject var appState: T
+    
+    @StateObject var invitationsVM: InvitationsVM<T>
+    
+    
+//    @EnvironmentObject var appState: T
     @State private var selectedTab = 0
     @State private var isCreateContestSheetPresented = false
     @Binding var isShowingProfileModal: Bool
@@ -35,12 +57,15 @@ struct InvitationsView<T: AppStateProtocol>: View {
             
             if(selectedTab == 0){
             
-                ReceivedInvitationsListView(receivedInvitationsListVM: ReceivedInvitationsListVM(receivedInvitationsRepo: appState.receivedInvitationsRepo!))
+                ReceivedInvitationsListView(receivedInvitationsListVM: invitationsVM.receivedInvitationsListVM)
+//                ReceivedInvitationsListView(receivedInvitationsListVM: ReceivedInvitationsListVM(receivedInvitationsRepo: appState.receivedInvitationsRepo!))
                 
             }
             else{
-                SentInvitationsListView(sentInvitationsListVM: SentInvitationsListVM(sentInvitationsRepo: appState.sentInvitationsRepo!))
                 
+                SentInvitationsListView(sentInvitationsListVM: invitationsVM.sentInvitationsListVM)
+//                SentInvitationsListView(sentInvitationsListVM: SentInvitationsListVM(sentInvitationsRepo: appState.sentInvitationsRepo!))
+//
             }
         
             Spacer()
@@ -72,15 +97,17 @@ struct InvitationsView<T: AppStateProtocol>: View {
         )
         }
         .accentColor(.white)
-        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: { CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: appState.createContestInvitationService!, userService: appState.userService)) })
+        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: { CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: invitationsVM.appState.createContestInvitationService!, userService: invitationsVM.appState.userService)) })
         .preferredColorScheme(.light)
     }
 }
 
 struct InvitationsView_Previews: PreviewProvider {
     static var previews: some View {
-        InvitationsView<AppState>(isShowingProfileModal: .constant(false))
-//            .environmentObject(MockAppState())
-            .environmentObject(AppState(shouldByPassLogin: true))
+        
+        let appState = MockAppState()
+        
+        InvitationsView(invitationsVM: InvitationsVM(appState: appState), isShowingProfileModal: .constant(false))
+//            .environmentObject(appState)
     }
 }

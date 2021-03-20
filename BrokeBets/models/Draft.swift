@@ -13,6 +13,7 @@ struct Draft: Identifiable {
     var id = UUID()
     var draftId: String
     var opponent: String
+    var opponent_uid: String
     var isUserTurn: Bool
     var totalRounds: Int
     var currentRound: Int
@@ -54,11 +55,13 @@ struct Draft: Identifiable {
             userPlayerType = .PlayerOne
             oppPlayerType = .PlayerTwo
             self.opponent = player2_uname
+            self.opponent_uid = player2_uid
         }
         else if(playerUid == player2_uid){
             userPlayerType = .PlayerTwo
             oppPlayerType = .PlayerOne
             self.opponent = player1_uname
+            self.opponent_uid = player1_uid
         }
         else{
             print("here2")

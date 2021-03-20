@@ -20,7 +20,7 @@ struct MainAppView<T: AppStateProtocol>: View {
                 ContestsView<T>(isShowingProfileModal: $isShowingProfileModal)
                     .tab(title: "Contests", image: "outline-emoji_events-black-24dp", selectedImage: "emoji_events-black-24dp")
                 Text("Betslip Screen").tab(title: "Betslip", image: "outline-receipt_long-black-24dp", selectedImage: "receipt_long-black-24dp")
-                InvitationsView<T>(isShowingProfileModal: $isShowingProfileModal)
+                InvitationsView<T>(invitationsVM: InvitationsVM(appState: appState), isShowingProfileModal: $isShowingProfileModal)
                     .tab(title: "Invitations", image: "tray", selectedImage: "tray.fill", badgeValue: "2")
                 DraftsListView<T>(draftsListVM: DraftsListVM(draftsRepo: appState.draftsRepo!), isShowingProfileModal: $isShowingProfileModal)
                                 .tab(title: "Drafts", image: "outline-assignment-black-24dp", selectedImage: "assignment-black-24dp")
@@ -39,8 +39,10 @@ struct MainAppView<T: AppStateProtocol>: View {
 struct MainAppView_Previews: PreviewProvider {
     static var previews: some View {
         
-        MainAppView<AppState>()
+        let appState = MockAppState()
+        
+        MainAppView<MockAppState>()
             .environmentObject(UserScreenInfo(.regular))
-            .environmentObject(AppState())
+            .environmentObject(appState)
     }
 }

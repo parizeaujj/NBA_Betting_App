@@ -89,7 +89,8 @@ struct DraftsListView<T: AppStateProtocol>: View {
 
 struct DraftsListView_Previews: PreviewProvider {
     static var previews: some View {
-        DraftsListView<MockAppState>(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository(uid: "testToddUid")), isShowingProfileModal: .constant(false))
+        
+        DraftsListView<MockAppState>(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository(user: User(uid: "testToddUid", username: "testTodd123"))), isShowingProfileModal: .constant(false))
             .environmentObject(MockAppState())
             
     }

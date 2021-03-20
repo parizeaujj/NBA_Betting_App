@@ -63,17 +63,31 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
             "draftRounds": 7,
             "games_pool": []
         ],
+        
         [
-            "invitationId": "invitationId4",
-            "invitor_uid": "testUID4",
-            "invitor_uname": "testUname4",
+            "invitationId": "invitationId5",
+            "invitor_uid": "testUID5",
+            "invitor_uname": "testUname5",
             "recipient_uid": "testToddUid",
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
-            "expirationDateTime": Timestamp(date: Date() + 24*60*60),
-            "draftRounds": 2,
+            "expirationDateTime": Timestamp(date: Date() + 2*24*60*60),
+            "draftRounds": 6,
             "games_pool": []
-        ]
+        ],
+        
+//        [
+//            "invitationId": "invitationId4",
+//            "invitor_uid": "testUID4",
+//            "invitor_uname": "testUname4",
+//            "recipient_uid": "testToddUid",
+//            "recipient_uname": "todd123",
+//            "invitationStatus": "pending",
+//            "expirationDateTime": Timestamp(date: Date() + 24*60*60),
+//            "draftRounds": 2,
+//            "games_pool": []
+//        ]
+        
     ]
     
     let mockData2: [[String: Any]] = [
@@ -133,50 +147,31 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
             "draftRounds": 6,
             "games_pool": []
         ],
-        [
-            "invitationId": "invitationId6",
-            "invitor_uid": "testUID6",
-            "invitor_uname": "testUname6",
-            "recipient_uid": "testToddUid",
-            "recipient_uname": "todd123",
-            "invitationStatus": "pending",
-            "expirationDateTime": Timestamp(date: Date() + 3*24*60*60),
-            "draftRounds": 6,
-            "games_pool": []
-        ]
+//
+//        [
+//            "invitationId": "invitationId6",
+//            "invitor_uid": "testUID6",
+//            "invitor_uname": "testUname6",
+//            "recipient_uid": "testToddUid",
+//            "recipient_uname": "todd123",
+//            "invitationStatus": "pending",
+//            "expirationDateTime": Timestamp(date: Date() + 3*24*60*60),
+//            "draftRounds": 6,
+//            "games_pool": []
+//        ]
+        
+        
     ]
     
-    let newInvitation: [String: Any] = [
-            "invitationId": "invitationId5",
-            "invitor_uid": "testUID5",
-            "invitor_uname": "testUname5",
-            "recipient_uid": "testToddUid",
-            "recipient_uname": "todd123",
-            "invitationStatus": "pending",
-            "expirationDateTime": Timestamp(date: Date() + 2*24*60*60),
-            "draftRounds": 6,
-            "games_pool": []
-        ]
-    
-    let newInvitation2: [String: Any] = [
-            "invitationId": "invitationId6",
-            "invitor_uid": "testUID6",
-            "invitor_uname": "testUname6",
-            "recipient_uid": "testToddUid",
-            "recipient_uname": "todd123",
-            "invitationStatus": "pending",
-            "expirationDateTime": Timestamp(date: Date() + 3*24*60*60),
-            "draftRounds": 6,
-            "games_pool": []
-        ]
+   
         
     
     init(user: User){
         self.user = user
         getReceivedInvitations(uid: user.uid)
         
-//        removeInvitationAfterFiveSeconds()
-        addInvitationAfterFiveSeconds()
+        removeInvitationsAfterFiveSeconds()
+//        addInvitationAfterFiveSeconds()
     }
     
     func getReceivedInvitations(uid: String){
@@ -187,15 +182,7 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
         
     }
     
-    func removeInvitationAfterFiveSeconds(){
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.receivedInvitations.removeFirst()
-            print("after 5 seconds...")
-        }
-    }
-    
-    func addInvitationAfterFiveSeconds(){
+    func removeInvitationsAfterFiveSeconds(){
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             
@@ -204,12 +191,29 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
         }
     }
     
+//    func addInvitationAfterFiveSeconds(){
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//
+//            self.receivedInvitations = self.mockData.map { invitation in ReceivedInvitation(data: invitation)! }
+//            print("after 5 seconds...")
+//        }
+//    }
+    
     func acceptInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
-        completion(.failure(NSError()))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+            completion(.failure(NSError()))
+        }
+        
+        
     }
     
     func rejectInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
-        completion(.success(()))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+            completion(.success(()))
+        }
     }
 }
 
@@ -277,22 +281,21 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
         let player2_uname = user.username!
         
         let draftExpirationDateTime = Calendar.current.date(byAdding: .minute, value: 30, to: invitation.expirationDateTime)!
-       
-        // get id of draft time by converting draftExpirationDateTime to a UTC string
-        let utcDateFormatter = DateFormatter()
-        utcDateFormatter.timeZone = TimeZone(identifier: "UTC")
-        utcDateFormatter.dateFormat = "yyyy-MM-dd-HH:mm"
-        let id = utcDateFormatter.string(from: draftExpirationDateTime)
-
-        let expirationSubDocRef = db.collection("draft_expiration_subscriptions").document(id)
+        let draftExpirationDocId = draftExpirationDateTime.customUTCDateString()
+        let draftExpirationSubDocRef = db.collection("draft_expiration_subscriptions").document(draftExpirationDocId)
+        
+        let invitationExpirationDocId = invitation.expirationDateTime.customUTCDateString()
+        let invitationExpirationSubDocRef = db.collection("invitation_expiration_subscriptions").document(invitationExpirationDocId)
         
         let newDraftDocRef = db.collection("drafts").document()
         
+        let invitationDocRef = db.collection("invitations").document(invitation.invitationId)
         
         // batched write
         
         let batch = db.batch();
         
+        // create the draft document
         batch.setData([
             "draftId": newDraftDocRef.documentID,
             "draftStatus": "active",
@@ -312,10 +315,24 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
             "player2_forced_picks": []
         ], forDocument: newDraftDocRef)
         
-      
+        
+        // update the invitation status for the invitation document
+        batch.updateData([
+            "invitationStatus": "accepted",
+        ], forDocument: invitationDocRef)
+        
+        
+        // add the newly created draft's draft id to the array of ids for the corresponding expiration time so that it will be watched for expiration
         batch.updateData([
             "draftIds": FieldValue.arrayUnion([newDraftDocRef.documentID])
-        ], forDocument: expirationSubDocRef)
+        ], forDocument: draftExpirationSubDocRef)
+        
+        
+        // remove the invitation id from the array of ids for its corresponding expiration time so that it is not marked as expired when that time comes
+        batch.updateData([
+            "invitationIds": FieldValue.arrayRemove([invitation.invitationId])
+        ], forDocument: invitationExpirationSubDocRef)
+        
         
         batch.commit { error in
             
@@ -332,17 +349,45 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
     
     func rejectInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
         
-        let draftDocRef = db.collection("invitations").document(invitation.invitationId)
+        let id = invitation.expirationDateTime.customUTCDateString()
         
-        draftDocRef.updateData([
+        let invitationExpirationSubDocRef = db.collection("invitation_expiration_subscriptions").document(id)
+        
+        let invitationDocRef = db.collection("invitations").document(invitation.invitationId)
+        
+        let batch = db.batch();
+        
+        // remove the invitation id from the array of ids for its corresponding expiration time so that it is not marked as expired when that time comes
+        batch.updateData([
+            "invitationIds": FieldValue.arrayRemove([invitation.invitationId])
+        ], forDocument: invitationExpirationSubDocRef)
+        
+        
+        // update the invitation status for the invitation document
+        batch.updateData([
             "invitationStatus": "rejected",
             "rejectedDateTime": Timestamp(date: Date())
-        ]){ err in
+        ], forDocument: invitationDocRef)
+        
+        batch.commit { err in
             if let err = err {
                 completion(.failure(err))
             } else {
                 completion(.success(())) // ewwww why so many parenthesis, swift?
             }
         }
+    }
+}
+
+
+extension Date {
+    
+    func customUTCDateString() -> String {
+        
+        let utcDateFormatter = DateFormatter()
+        utcDateFormatter.timeZone = TimeZone(identifier: "UTC")
+        utcDateFormatter.dateFormat = "yyyy-MM-dd-HH:mm"
+        
+        return utcDateFormatter.string(from: self)
     }
 }
