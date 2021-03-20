@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80225FD36A400913F1B /* UpcomingContestTest.swift */; };
 		4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */; };
+		4095F8422606547100913F1B /* SentInvitationUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F8412606547100913F1B /* SentInvitationUnitTests.swift */; };
+		4095F8472606549D00913F1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4095F8462606549D00913F1B /* GoogleService-Info.plist */; };
+		4095F84F2606553700913F1B /* ReceivedInvitationUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095F84E2606553700913F1B /* ReceivedInvitationUnitTests.swift */; };
 		780CC5543B010C56AF333A05 /* Pods_BrokeBets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA770B23555B11C24054428D /* Pods_BrokeBets.framework */; };
 		84464B7325FD2B640046B0CF /* CompletedContestGameUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84464B7225FD2B640046B0CF /* CompletedContestGameUnitTests.swift */; };
 		845D3ADC25FD106B00DEE76A /* CompletedContestsUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D3ADB25FD106B00DEE76A /* CompletedContestsUnitTests.swift */; };
@@ -44,7 +47,6 @@
 		E34D80E325F97EFB0083849C /* DraftBetCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */; };
 		E34D80EB25F989440083849C /* DraftPickSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D80EA25F989440083849C /* DraftPickSelectionView.swift */; };
 		E36039B825F3E937005BFC15 /* InProgressContestGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */; };
-		E3809B702600EA4700443E46 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3809B6F2600EA4700443E46 /* GoogleService-Info.plist */; };
 		E3809B782600EAAB00443E46 /* InvitationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3809B772600EAAB00443E46 /* InvitationsView.swift */; };
 		E38B7FC925D82A8D008D8399 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */; };
 		E38B7FCE25D82AA8008D8399 /* TopTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38B7FCD25D82AA8008D8399 /* TopTabs.swift */; };
@@ -134,6 +136,9 @@
 		1F98490B460D6530CB2D949E /* Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets-BrokeBetsUITests/Pods-BrokeBets-BrokeBetsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4095F80225FD36A400913F1B /* UpcomingContestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestTest.swift; sourceTree = "<group>"; };
 		4095F80725FD36CF00913F1B /* UpcomingContestGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestGameTest.swift; sourceTree = "<group>"; };
+		4095F8412606547100913F1B /* SentInvitationUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitationUnitTests.swift; sourceTree = "<group>"; };
+		4095F8462606549D00913F1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4095F84E2606553700913F1B /* ReceivedInvitationUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationUnitTests.swift; sourceTree = "<group>"; };
 		40C596F50F10E2D82C5EE325 /* Pods-BrokeBets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets.release.xcconfig"; path = "Target Support Files/Pods-BrokeBets/Pods-BrokeBets.release.xcconfig"; sourceTree = "<group>"; };
 		71EED93567F6274CBA95B207 /* Pods-BrokeBets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrokeBets.debug.xcconfig"; path = "Target Support Files/Pods-BrokeBets/Pods-BrokeBets.debug.xcconfig"; sourceTree = "<group>"; };
 		84464B7225FD2B640046B0CF /* CompletedContestGameUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedContestGameUnitTests.swift; sourceTree = "<group>"; };
@@ -172,7 +177,6 @@
 		E34D80E225F97EFB0083849C /* DraftBetCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBetCapsule.swift; sourceTree = "<group>"; };
 		E34D80EA25F989440083849C /* DraftPickSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftPickSelectionView.swift; sourceTree = "<group>"; };
 		E36039B725F3E937005BFC15 /* InProgressContestGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGameVM.swift; sourceTree = "<group>"; };
-		E3809B6F2600EA4700443E46 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E3809B772600EAAB00443E46 /* InvitationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsView.swift; sourceTree = "<group>"; };
 		E38B7FC825D82A8D008D8399 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		E38B7FCD25D82AA8008D8399 /* TopTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabs.swift; sourceTree = "<group>"; };
@@ -405,7 +409,7 @@
 				E3EA6C3425FEBE150019AAC0 /* UserScreenInfo.swift */,
 				E394BDFC25CDD435002C89B9 /* Assets.xcassets */,
 				E394BE0125CDD435002C89B9 /* Info.plist */,
-				E3809B6F2600EA4700443E46 /* GoogleService-Info.plist */,
+				4095F8462606549D00913F1B /* GoogleService-Info.plist */,
 				E3B621DB25DEC19B00B3ACE3 /* BrokeBets.entitlements */,
 				E394BDFE25CDD435002C89B9 /* Preview Content */,
 			);
@@ -589,6 +593,8 @@
 				CA2476AA25FEEF3D00B136FE /* InProgressContestGameTest.swift */,
 				84CB814225FFF75700845340 /* DraftRoundUnitTests.swift */,
 				84CB814725FFF78100845340 /* DraftGameUnitTests.swift */,
+				4095F8412606547100913F1B /* SentInvitationUnitTests.swift */,
+				4095F84E2606553700913F1B /* ReceivedInvitationUnitTests.swift */,
 			);
 			path = ModelTests;
 			sourceTree = "<group>";
@@ -725,7 +731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */,
-				E3809B702600EA4700443E46 /* GoogleService-Info.plist in Resources */,
+				4095F8472606549D00913F1B /* GoogleService-Info.plist in Resources */,
 				E394BDFD25CDD435002C89B9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -982,6 +988,7 @@
 				84CB814325FFF75700845340 /* DraftRoundUnitTests.swift in Sources */,
 				845D3ADC25FD106B00DEE76A /* CompletedContestsUnitTests.swift in Sources */,
 				E394BE0B25CDD435002C89B9 /* BrokeBetsTests.swift in Sources */,
+				4095F8422606547100913F1B /* SentInvitationUnitTests.swift in Sources */,
 				CA2476A325FEEF2000B136FE /* InProgressContestUnitTest.swift in Sources */,
 				CA2476AB25FEEF3D00B136FE /* InProgressContestGameTest.swift in Sources */,
 				84464B7325FD2B640046B0CF /* CompletedContestGameUnitTests.swift in Sources */,
@@ -990,6 +997,7 @@
 				4095F80825FD36CF00913F1B /* UpcomingContestGameTest.swift in Sources */,
 				84CB814825FFF78100845340 /* DraftGameUnitTests.swift in Sources */,
 				4095F80325FD36A400913F1B /* UpcomingContestTest.swift in Sources */,
+				4095F84F2606553700913F1B /* ReceivedInvitationUnitTests.swift in Sources */,
 				E3E43CAD25EC6A0C00226BBE /* DateFormatStringUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
