@@ -7,7 +7,7 @@
 
 import Combine
 
-class RootAppVM<T: ObservableObject & AppStateProtocol>: ObservableObject {
+class RootAppVM<T: AppStateProtocol>: ObservableObject {
     
     @Published var isLoggedIn: Bool? = nil {
         didSet {
