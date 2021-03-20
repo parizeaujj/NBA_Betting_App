@@ -44,7 +44,7 @@ class MockAppState: AppStateProtocol {
         
         createContestInvitationService = MockCreateContestInvitationService(user: self.userService.user!)
         draftsRepo = MockDraftsRepository(uid: uid)
-        receivedInvitationsRepo = MockReceivedInvitationsRepository(uid: uid)
+        receivedInvitationsRepo = MockReceivedInvitationsRepository(user: self.userService.user!)
         sentInvitationsRepo = MockSentInvitationsRepository(uid: uid)
         upcomingContestsRepo = MockUpcomingContestsRepository(uid: uid)
         completedContestsRepo = MockCompletedContestsRepository(uid: uid)
@@ -115,7 +115,7 @@ class AppState: AppStateProtocol {
     private func initializeAllRepos(uid: String){
         
         draftsRepo = DraftsRepository(uid: uid)
-        receivedInvitationsRepo = ReceivedInvitationsRepository(uid: uid)
+        receivedInvitationsRepo = ReceivedInvitationsRepository(user: self.userService.user!)
         sentInvitationsRepo = SentInvitationsRepository(uid: uid)
         upcomingContestsRepo = UpcomingContestsRepository(uid: uid)
         completedContestsRepo = CompletedContestsRepository(uid: uid)

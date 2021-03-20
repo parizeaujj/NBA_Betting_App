@@ -15,6 +15,8 @@ class ReceivedInvitationsListVM: ObservableObject {
     
     private var cancellables: [AnyCancellable] = []
     
+    var didHaveError = PassthroughSubject<Void, Never>()
+    
     init(receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol){
         
         self.receivedInvitationsRepo = receivedInvitationsRepo
@@ -45,6 +47,7 @@ class ReceivedInvitationsListVM: ObservableObject {
                 print("successfully accepted invitation and created corresponding draft")
             case .failure(_):
                 print("failed to accept invitation and create draft")
+                self.didHaveError.send()
             }
         }
     }
@@ -58,6 +61,7 @@ class ReceivedInvitationsListVM: ObservableObject {
                 print("successfully rejected invitation")
             case .failure(_):
                 print("failed to reject invitation")
+                self.didHaveError.send()
             }
         }
     }

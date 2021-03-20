@@ -71,6 +71,6 @@ struct ReceivedInvitationView: View {
 
 struct ReceivedInvitationView_Previews: PreviewProvider {
     static var previews: some View {
-        ReceivedInvitationView(invitation: ReceivedInvitation(data: MockReceivedInvitationsRepository(uid: "testToddUid").mockData[0])!, onInvitationAction: {_ in })
+        ReceivedInvitationView(invitation: ReceivedInvitation(data: MockReceivedInvitationsRepository(user: User(uid: "testToddUid", username: "testTodd123")).mockData[0])!, onInvitationAction: {_ in })
     }
 }

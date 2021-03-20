@@ -9,6 +9,8 @@ import FirebaseFirestore
 
 struct ReceivedInvitation: Identifiable {
     
+    typealias AvailableGame = DraftGame
+    
     var id = UUID()
     var invitationId: String
     var invitor_uname: String
@@ -16,6 +18,7 @@ struct ReceivedInvitation: Identifiable {
     var draftRounds: Int
     var expirationDateTime: Date
     var expirationDateTimeStr: String
+    var gamesPool: [AvailableGame]
     
     init?(data: [String: Any]){
         
@@ -23,7 +26,8 @@ struct ReceivedInvitation: Identifiable {
               let invitor_uname = data["invitor_uname"] as? String,
               let invitor_uid = data["invitor_uid"] as? String,
               let draftRounds = data["draftRounds"] as? Int,
-              let ts = data["expirationDateTime"] as? Timestamp
+              let ts = data["expirationDateTime"] as? Timestamp,
+              let gamesPoolData = data["games_pool"] as? [[String: Any]]
         else {
             return nil
         }
@@ -45,5 +49,17 @@ struct ReceivedInvitation: Identifiable {
         self.expirationDateTimeStr = dateTime.createDateTimeString(with: specialDayType, completionStatus: .Upcoming)
         
         
+        var gamesPool: [AvailableGame] = []
+        
+        for gameData in gamesPoolData {
+            
+            guard let draftGame = AvailableGame(data: gameData) else {
+                print("issue creating available game from games pool for invitation")
+                return nil
+            }
+            gamesPool.append(draftGame)
+        }
+        
+        self.gamesPool = gamesPool
     }
 }

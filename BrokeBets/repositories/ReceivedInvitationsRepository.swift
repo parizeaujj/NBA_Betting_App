@@ -15,7 +15,6 @@ protocol ReceivedInvitationsRepositoryProtocol {
     var receivedInvitationsPublisher: Published<[ReceivedInvitation]>.Publisher { get }
     var receivedInvitationsPublished: Published<[ReceivedInvitation]> { get }
     
-    
     func getReceivedInvitations(uid: String) -> Void
     func acceptInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void)
     func rejectInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void)
@@ -27,6 +26,7 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
     var receivedInvitationsPublished: Published<[ReceivedInvitation]> { _receivedInvitations }
     var receivedInvitationsPublisher: Published<[ReceivedInvitation]>.Publisher { $receivedInvitations }
     
+    private var user: User
   
     let mockData: [[String: Any]] = [
         
@@ -38,7 +38,8 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
             "expirationDateTime": Timestamp(date: Date() + 12*60*60),
-            "draftRounds": 10
+            "draftRounds": 10,
+            "games_pool": []
         ],
         [
             "invitationId": "invitationId2",
@@ -48,7 +49,8 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
             "expirationDateTime": Timestamp(date: Date() + 2*60*60),
-            "draftRounds": 5
+            "draftRounds": 5,
+            "games_pool": []
         ],
         [
             "invitationId": "invitationId3",
@@ -58,7 +60,8 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
             "expirationDateTime": Timestamp(date: Date() + 16*60*60),
-            "draftRounds": 7
+            "draftRounds": 7,
+            "games_pool": []
         ],
         [
             "invitationId": "invitationId4",
@@ -68,24 +71,141 @@ class MockReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, 
             "recipient_uname": "todd123",
             "invitationStatus": "pending",
             "expirationDateTime": Timestamp(date: Date() + 24*60*60),
-            "draftRounds": 2
+            "draftRounds": 2,
+            "games_pool": []
         ]
     ]
     
-    init(uid: String){
-        getReceivedInvitations(uid: uid)
+    let mockData2: [[String: Any]] = [
+        
+        [
+            "invitationId": "invitationId1",
+            "invitor_uid": "testUID1",
+            "invitor_uname": "testUname1",
+            "recipient_uid": "testToddUid",
+            "recipient_uname": "todd123",
+            "invitationStatus": "pending",
+            "expirationDateTime": Timestamp(date: Date() + 12*60*60),
+            "draftRounds": 10,
+            "games_pool": []
+        ],
+        [
+            "invitationId": "invitationId2",
+            "invitor_uid": "testUID2",
+            "invitor_uname": "testUname2",
+            "recipient_uid": "testToddUid",
+            "recipient_uname": "todd123",
+            "invitationStatus": "pending",
+            "expirationDateTime": Timestamp(date: Date() + 2*60*60),
+            "draftRounds": 5,
+            "games_pool": []
+        ],
+        [
+            "invitationId": "invitationId3",
+            "invitor_uid": "testUID3",
+            "invitor_uname": "testUname3",
+            "recipient_uid": "testToddUid",
+            "recipient_uname": "todd123",
+            "invitationStatus": "pending",
+            "expirationDateTime": Timestamp(date: Date() + 16*60*60),
+            "draftRounds": 7,
+            "games_pool": []
+        ],
+        [
+            "invitationId": "invitationId4",
+            "invitor_uid": "testUID4",
+            "invitor_uname": "testUname4",
+            "recipient_uid": "testToddUid",
+            "recipient_uname": "todd123",
+            "invitationStatus": "pending",
+            "expirationDateTime": Timestamp(date: Date() + 24*60*60),
+            "draftRounds": 2,
+            "games_pool": []
+        ],
+        [
+            "invitationId": "invitationId5",
+            "invitor_uid": "testUID5",
+            "invitor_uname": "testUname5",
+            "recipient_uid": "testToddUid",
+            "recipient_uname": "todd123",
+            "invitationStatus": "pending",
+            "expirationDateTime": Timestamp(date: Date() + 2*24*60*60),
+            "draftRounds": 6,
+            "games_pool": []
+        ],
+        [
+            "invitationId": "invitationId6",
+            "invitor_uid": "testUID6",
+            "invitor_uname": "testUname6",
+            "recipient_uid": "testToddUid",
+            "recipient_uname": "todd123",
+            "invitationStatus": "pending",
+            "expirationDateTime": Timestamp(date: Date() + 3*24*60*60),
+            "draftRounds": 6,
+            "games_pool": []
+        ]
+    ]
+    
+    let newInvitation: [String: Any] = [
+            "invitationId": "invitationId5",
+            "invitor_uid": "testUID5",
+            "invitor_uname": "testUname5",
+            "recipient_uid": "testToddUid",
+            "recipient_uname": "todd123",
+            "invitationStatus": "pending",
+            "expirationDateTime": Timestamp(date: Date() + 2*24*60*60),
+            "draftRounds": 6,
+            "games_pool": []
+        ]
+    
+    let newInvitation2: [String: Any] = [
+            "invitationId": "invitationId6",
+            "invitor_uid": "testUID6",
+            "invitor_uname": "testUname6",
+            "recipient_uid": "testToddUid",
+            "recipient_uname": "todd123",
+            "invitationStatus": "pending",
+            "expirationDateTime": Timestamp(date: Date() + 3*24*60*60),
+            "draftRounds": 6,
+            "games_pool": []
+        ]
+        
+    
+    init(user: User){
+        self.user = user
+        getReceivedInvitations(uid: user.uid)
+        
+//        removeInvitationAfterFiveSeconds()
+        addInvitationAfterFiveSeconds()
     }
     
     func getReceivedInvitations(uid: String){
         
-        self.receivedInvitations = self.mockData.map{ invitation in
+        self.receivedInvitations = self.mockData2.map{ invitation in
             ReceivedInvitation(data: invitation)!
         }
         
     }
     
+    func removeInvitationAfterFiveSeconds(){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.receivedInvitations.removeFirst()
+            print("after 5 seconds...")
+        }
+    }
+    
+    func addInvitationAfterFiveSeconds(){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            
+            self.receivedInvitations = self.mockData.map { invitation in ReceivedInvitation(data: invitation)! }
+            print("after 5 seconds...")
+        }
+    }
+    
     func acceptInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
-        completion(.success(()))
+        completion(.failure(NSError()))
     }
     
     func rejectInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
@@ -103,9 +223,13 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
     private var db = Firestore.firestore()
     private var receivedInvitationsListenerHandle: ListenerRegistration? = nil
     
+    private var user: User
     
-    init(uid: String){
-        getReceivedInvitations(uid: uid)
+    init(user: User){
+        
+        self.user = user
+        
+        getReceivedInvitations(uid: user.uid)
     }
     
     func getReceivedInvitations(uid: String){
@@ -146,18 +270,64 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
     
     func acceptInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){
         
-//        let docRef = db.collection("available_games").document("current")
-//
-//        db.runTransaction(<#T##updateBlock: (Transaction, NSErrorPointer) -> Any?##(Transaction, NSErrorPointer) -> Any?#>, completion: <#T##(Any?, Error?) -> Void#>)
-//
-//
+        let player1_uid = invitation.invitor_uid
+        let player1_uname = invitation.invitor_uname
+        
+        let player2_uid = user.uid
+        let player2_uname = user.username!
+        
+        let draftExpirationDateTime = Calendar.current.date(byAdding: .minute, value: 30, to: invitation.expirationDateTime)!
+       
+        // get id of draft time by converting draftExpirationDateTime to a UTC string
+        let utcDateFormatter = DateFormatter()
+        utcDateFormatter.timeZone = TimeZone(identifier: "UTC")
+        utcDateFormatter.dateFormat = "yyyy-MM-dd-HH:mm"
+        let id = utcDateFormatter.string(from: draftExpirationDateTime)
+
+        let expirationSubDocRef = db.collection("draft_expiration_subscriptions").document(id)
+        
+        let newDraftDocRef = db.collection("drafts").document()
         
         
+        // batched write
         
+        let batch = db.batch();
         
+        batch.setData([
+            "draftId": newDraftDocRef.documentID,
+            "draftStatus": "active",
+            "currentRound": 1,
+            "currentPlayerTurn": "player1",
+            "player1_uid": player1_uid,
+            "player1_uname": player1_uname,
+            "player2_uid": player2_uid,
+            "player2_uname": player2_uname,
+            "players": [player1_uid, player2_uid],
+            "totalRounds": invitation.draftRounds,
+            "draftExpirationDateTime": Timestamp(date: draftExpirationDateTime),
+            "games_pool": invitation.gamesPool.map { $0.dictionary },
+            "player1_drafted_picks": [],
+            "player1_forced_picks": [],
+            "player2_drafted_picks": [],
+            "player2_forced_picks": []
+        ], forDocument: newDraftDocRef)
         
+      
+        batch.updateData([
+            "draftIds": FieldValue.arrayUnion([newDraftDocRef.documentID])
+        ], forDocument: expirationSubDocRef)
         
-        completion(.success(()))
+        batch.commit { error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                completion(.failure(error))
+                return
+            }
+            
+            completion(.success(()))
+            
+        }
     }
     
     func rejectInvitation(invitation: ReceivedInvitation, completion: @escaping (Result<Void, Error>) -> Void){

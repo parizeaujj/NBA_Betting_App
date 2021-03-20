@@ -540,8 +540,7 @@
 				E3BA2E1C2601144400EAF404 /* ReceivedInvitationsListVM.swift */,
 				E3BA2E24260119D800EAF404 /* SentInvitationsListVM.swift */,
 			);
-			name = "view models";
-			path = ..;
+			path = "view models";
 			sourceTree = "<group>";
 		};
 		E3BA0F0125E1532B00D9C041 /* repositories */ = {
