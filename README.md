@@ -184,7 +184,7 @@ Devontay Eluett - Worked on alert functionality for drafts
 
 JJ Parizeau - Recieved Invitation Tests, Product build testing
 
-Fabrizio Herrera - 
+Fabrizio Herrera - Worked on figuring out how the score scraper will work and did tests
 
 Todd Weidler - Finished drafts screen, create contest invitation screen, and splash screen
 
