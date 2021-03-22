@@ -188,7 +188,7 @@ Fabrizio Herrera -
 
 Todd Weidler - 
 
-Aland Nguyen - 
+Aland Nguyen -  Created tests for sentInvitation model
 
 Devontay Eluett - 
 
