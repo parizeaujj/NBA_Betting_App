@@ -190,7 +190,7 @@ Todd Weidler - Finished drafts screen, create contest invitation screen, and spl
 
 Aland Nguyen -  Created tests for sentInvitation model
 
-Devontay Eluett - 
+Devontay Eluett - Created UI tests for Drafting, and Invitations.
 
 
 
