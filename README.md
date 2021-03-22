@@ -182,13 +182,13 @@ Devontay Eluett - Worked on alert functionality for drafts
 
 ## Task Allocation
 
-JJ Parizeau - 
+JJ Parizeau - Recieved Invitation Tests, Product build testing
 
 Fabrizio Herrera - 
 
 Todd Weidler - 
 
-Aland Nguyen - 
+Aland Nguyen -  Created tests for sentInvitation model
 
 Devontay Eluett - 
 
