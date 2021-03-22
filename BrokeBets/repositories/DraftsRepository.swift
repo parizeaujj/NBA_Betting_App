@@ -336,7 +336,9 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "spreadFavoriteBetStr": "HOU -4",
                                 "spreadUnderdogBetStr": "CLE +4",
                                 "overBetStr": "o 218.5",
-                                "underBetStr": "u 218.5"
+                                "underBetStr": "u 218.5",
+                                "player1_spreadBetStr": "HOU -4",
+                                "player2_spreadBetStr": "CLE +4",
                             ],
                             
                             [
@@ -350,7 +352,9 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "spreadFavoriteBetStr": "SA -3",
                                 "spreadUnderdogBetStr": "LA +3",
                                 "overBetStr": "o 224.5",
-                                "underBetStr": "u 224.5"
+                                "underBetStr": "u 224.5",
+                                "player1_ouBetStr": "u 224.5",
+                                "player2_ouBetStr": "o 224.5",
                             ],
                             [
                                 "gameId": "gameid3",
@@ -363,7 +367,9 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "spreadFavoriteBetStr": "PHI -5",
                                 "spreadUnderdogBetStr": "GS +5",
                                 "overBetStr": "o 225",
-                                "underBetStr": "u 225"
+                                "underBetStr": "u 225",
+                                "player1_ouBetStr": "o 225",
+                                "player2_ouBetStr": "u 225"
                             ],
                             [
                                 "gameId": "gameid4",
@@ -376,7 +382,9 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "spreadFavoriteBetStr": "POR -3.5",
                                 "spreadUnderdogBetStr": "CHI +3.5",
                                 "overBetStr": "o 221",
-                                "underBetStr": "u 221"
+                                "underBetStr": "u 221",
+                                "player1_spreadBetStr": "CHI +3.5",
+                                "player2_spreadBetStr": "POR -3.5"
                             ],
                         ]
                 ]

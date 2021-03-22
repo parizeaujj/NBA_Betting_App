@@ -12,7 +12,7 @@ struct RootAppView<T: AppStateProtocol>: View {
     
     @StateObject var rootAppVM: RootAppVM<T>
     
-    @State var shouldShowSplash: Bool = true
+    @State private var shouldShowSplash: Bool = true
     
     var body: some View {
         
@@ -21,9 +21,15 @@ struct RootAppView<T: AppStateProtocol>: View {
             SplashScreen()
                 .onAppear(perform: {
                 
-                    withAnimation(Animation.linear(duration: 2.0)){
-                        shouldShowSplash = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                        withAnimation(Animation.easeOut(duration: 0.3)) {
+                            shouldShowSplash = false
+                        }
                     }
+                    
+//                    withAnimation(Animation.linear(duration: 2.0)){
+//                        shouldShowSplash = false
+//                    }
             })
         }
         else{
