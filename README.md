@@ -186,7 +186,7 @@ JJ Parizeau - Recieved Invitation Tests, Product build testing
 
 Fabrizio Herrera - 
 
-Todd Weidler - 
+Todd Weidler - Finished drafts screen, create contest invitation screen, and splash screen
 
 Aland Nguyen -  Created tests for sentInvitation model
 
