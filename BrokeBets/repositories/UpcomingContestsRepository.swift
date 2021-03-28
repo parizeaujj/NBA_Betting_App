@@ -37,7 +37,7 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
              "player2_uid": "testOppUid",
              "player2_uname": "testOpp",
              "numBets": 3,
-             "upcomingGames": [
+             "upcoming_games": [
                 
                         // game 1
                         ["awayTeam": "HOU Rockets",
@@ -123,7 +123,7 @@ class UpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observable
             // Loops through each upcoming contest from firebase
             for document in documents{
                 guard let contest = UpcomingContest(data: document.data(), playerUid: uid) else {
-                    print("Issue getting contest")
+                    print("Issue getting upcoming contest")
                     return
                 }
                 

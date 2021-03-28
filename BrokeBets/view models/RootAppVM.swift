@@ -40,27 +40,27 @@ class RootAppVM<T: AppStateProtocol>: ObservableObject {
     private func listenForAuthChanges(){
         
         self.appState.userService.userPublisher
-            .sink { user in
+            .sink { [weak self] user in
                 
                 if user != nil {
                     
                     if(user!.username != nil ){
                     
-                        self.doesHaveUsername = true
-                        self.isLoggedIn = true
+                        self?.doesHaveUsername = true
+                        self?.isLoggedIn = true
                     }
                     else{
-                        self.isLoggedIn = true
+                        self?.isLoggedIn = true
                     }
                     
                 }
                 else{
-                    self.doesHaveUsername = false
-                    self.isLoggedIn = false
+                    self?.doesHaveUsername = false
+                    self?.isLoggedIn = false
                 }
                 
-                if(!self.didFinishSetup){
-                    self.didFinishSetup = true
+                if(!(self!.didFinishSetup)){
+                    self?.didFinishSetup = true
                 }
             }
             .store(in: &cancellables)

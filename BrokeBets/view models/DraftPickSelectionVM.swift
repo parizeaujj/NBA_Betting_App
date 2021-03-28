@@ -32,13 +32,13 @@ class DraftPickSelectionVM: ObservableObject {
     func listenForDraftChanges(){
         
         self.draftsRepo.draftsPublisher
-            .sink { drafts in
+            .sink { [weak self] drafts in
                 
-                guard let draft = drafts[self.draftId] else {
+                guard let draft = drafts[self!.draftId] else {
                     print("draft is no longer in dataset")
                     
                     // pop them back to DraftsListView
-                    self.popToMainDraftsScreen.send()
+                    self?.popToMainDraftsScreen.send()
                     return
                 }
                 
@@ -47,12 +47,12 @@ class DraftPickSelectionVM: ObservableObject {
                     print("user drafted from another device, pop them back")
                     
                     // pop them back to DraftsListView because it is not their turn anymore
-                    self.popToMainDraftsScreen.send()
+                    self?.popToMainDraftsScreen.send()
                     return
                 }
                 
     
-                self.draft = draft
+                self?.draft = draft
             }
             .store(in: &cancellables)
         

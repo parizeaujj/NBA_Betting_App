@@ -14,8 +14,16 @@ struct SplashScreen: View {
 
             Color(UIColor.systemBlue)
 
-            Image("splashLogo")
+//            Image("splashLogo")
+            
+//            Image("bbLogo")
 
+            Image("bbLogoPDF")
+//                .resizable()
+////                .scaledToFit()
+//                .frame(width: 150, height: 150)
+//                .overlay(Rectangle().stroke().frame(width: 80, height: 100
+//                ).offset(x: 2, y: -8))
         }
         .edgesIgnoringSafeArea(.all)
     }

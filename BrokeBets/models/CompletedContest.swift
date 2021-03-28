@@ -67,8 +67,9 @@ struct CompletedContest : Codable, Identifiable {
               let playerResults = data["contestResults"] as? [String: String],
               let contestCompletionDateTime = data["completionDateTime"] as? Timestamp,
               let numBets = data["numBets"] as? Int,
-              let games = data["games"] as? [[String: Any]]
+              let games = data["completed_games"] as? [[String: Any]]
         else {
+            print("here__weoffkkkl")
             return nil
         }
         
@@ -107,6 +108,7 @@ struct CompletedContest : Codable, Identifiable {
             self.opponentDraftedWins = player1_drafted
         }
         else{
+            print("issue with playerlookup type in completed contest")
             return nil
         }
         
@@ -131,6 +133,7 @@ struct CompletedContest : Codable, Identifiable {
 
             guard let g = CompletedContestGame(game: game, playerLookupPrefix: playerLookupType.rawValue, todaysSimpleDate: todaysSimpleDate) else {
 
+                print("issue creating completed contest game")
                 return nil
             }
             completedGames.append(g)

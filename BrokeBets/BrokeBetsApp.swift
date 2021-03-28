@@ -12,10 +12,8 @@ import Firebase
 
 @main
 struct BrokeBetsApp: App {
-    
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelagate
-    
-    let appState = AppState(shouldByPassLogin: true)
+        
+    let appState = AppState()
     
     
     var body: some Scene {
@@ -43,14 +41,3 @@ struct BrokeBetsApp: App {
         }
     }
 }
-
-
-
-//class AppDelegate: NSObject, UIApplicationDelegate {
-//
-//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//        FirebaseApp.configure()
-//        print("firebase connected")
-//        return true
-//    }
-//}

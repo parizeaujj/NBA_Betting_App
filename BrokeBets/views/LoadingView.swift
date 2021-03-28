@@ -13,10 +13,11 @@ struct LoadingView: View {
             Color(UIColor.systemBlue)
               
             VStack{
-                Image("brokeBetsLoginLogo")
+//                Image("brokeBetsLoginLogo")
+                Image("bbLogoPDF")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 300, height: 300)
+                    .frame(width: 200, height: 200) // 300, 300
                     .padding(.top, 100)
                 
                 Spacer()

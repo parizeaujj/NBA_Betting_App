@@ -31,14 +31,14 @@ class InProgressContestGameVM: ObservableObject {
     func getGameScore(gameId: String){
         
         inProgressContestsRepo.liveGameScoreboardsPublisher
-            .sink { scoreboards in
+            .sink { [weak self] scoreboards in
                 
                 if let scoreboard = scoreboards[gameId] {
                     
                     // makes sure that the score or time left has changed since last proposed update, if it hasnt then dont update the local copy of it
-                    if scoreboard.homeScore != self.gameScoreboard.homeScore || scoreboard.awayScore != self.gameScoreboard.awayScore || scoreboard.timeLeftStr != self.gameScoreboard.timeLeftStr {
+                    if scoreboard.homeScore != self?.gameScoreboard.homeScore || scoreboard.awayScore != self?.gameScoreboard.awayScore || scoreboard.timeLeftStr != self?.gameScoreboard.timeLeftStr {
                         
-                        self.gameScoreboard = scoreboard
+                        self?.gameScoreboard = scoreboard
                     }
                     
                 }

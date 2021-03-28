@@ -30,11 +30,9 @@ class ReceivedInvitationsListVM: ObservableObject {
         
         // setups up subscriber that listens for changes to the upcoming contests that are stored in 'receivedInvitationsRepo'
         receivedInvitationsRepo.receivedInvitationsPublisher
-            .sink(receiveValue: { receivedInvitations in
-                
-//                withAnimation {
-                    
-                    self.receivedInvitations = receivedInvitations.sorted {
+            .sink(receiveValue: { [weak self] receivedInvitations in
+                                    
+                self?.receivedInvitations = receivedInvitations.sorted {
                         
                         if($0.expirationDateTime == $1.expirationDateTime){
                             return $0.invitationId < $1.invitationId
@@ -42,8 +40,6 @@ class ReceivedInvitationsListVM: ObservableObject {
                         
                         return $0.expirationDateTime < $1.expirationDateTime
                     }
-//                }
-                
             })
             .store(in: &cancellables)
     }

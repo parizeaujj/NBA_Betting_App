@@ -133,11 +133,15 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                 games_pool[affectedGameIndex].updateOverUnderBetAvailablity(to: false)
                 
                 games_pool[affectedGameIndex].updatePlayerOverUnderBetStrings(userLookupType: draft.userPlayerType, userBetStr: draftPickSelection.draftedPick["betInfo"] as! String, oppBetStr: draftPickSelection.inversePick["betInfo"] as! String)
+                
+                games_pool[affectedGameIndex].updateOverUnderBetDrafter(drafterPlayerLookupType: draft.userPlayerType)
         
             case .spread:
                 games_pool[affectedGameIndex].updateSpreadBetAvailablity(to: false)
                 
                 games_pool[affectedGameIndex].updatePlayerSpreadBetStrings(userLookupType: draft.userPlayerType, userBetStr: draftPickSelection.draftedPick["betInfo"] as! String, oppBetStr: draftPickSelection.inversePick["betInfo"] as! String)
+                
+                games_pool[affectedGameIndex].updateSpreadBetDrafter(drafterPlayerLookupType: draft.userPlayerType)
         }
             
         
@@ -145,6 +149,10 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         // if the draft will be completed with this pick then we will also create a new upcoming contest with the draft info
         
         if isDraftCompleted {
+            
+            
+            var associatedGameIds: [String] = []
+            
             
             let newContestDocRef = db.collection("contests").document()
             
@@ -154,6 +162,8 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                 if game.isSpreadBetStillAvailable && game.isOverUnderBetStillAvailable {
                     return nil
                 }
+                
+                associatedGameIds.append(game.gameId)
                 
                 var upcomingContestGame: [String: Any] = [:]
                 
@@ -167,7 +177,8 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                     upcomingContestGame["spreadBet"] = [
                         
                         "player1": game.player1_spreadBetStr!,
-                        "player2": game.player2_spreadBetStr!
+                        "player2": game.player2_spreadBetStr!,
+                        "drafter": game.spreadBetDrafter!
                     ]
                 }
                 
@@ -176,7 +187,8 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                     upcomingContestGame["overUnderBet"] = [
                         
                         "player1": game.player1_ouBetStr!,
-                        "player2": game.player2_ouBetStr!
+                        "player2": game.player2_ouBetStr!,
+                        "drafter": game.ouBetDrafter!
                     ]
                 }
                 
@@ -196,9 +208,21 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                 "player2_uname": player2_uname,
                 "players": [player1_uid, player2_uid],
                 "numBets": draft.totalRounds * 2,
-                "upcomingGames": upcomingContestGames
+                "upcoming_games": upcomingContestGames
             
             ], forDocument: newContestDocRef)
+            
+            
+            associatedGameIds.forEach({ gameId in
+                
+                let associatedContestsDocRef = db.collection("associated_contests").document("\(gameId)")
+                
+                batch.updateData([
+                
+                    "gameIds": FieldValue.arrayUnion([newContestDocRef.documentID])
+                ], forDocument: associatedContestsDocRef)
+                
+            })
             
         }
         
@@ -339,6 +363,7 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "underBetStr": "u 218.5",
                                 "player1_spreadBetStr": "HOU -4",
                                 "player2_spreadBetStr": "CLE +4",
+                                "spreadBetDrafter": "player1"
                             ],
                             
                             [
@@ -355,6 +380,7 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "underBetStr": "u 224.5",
                                 "player1_ouBetStr": "u 224.5",
                                 "player2_ouBetStr": "o 224.5",
+                                "ouBetDrafter": "player1"
                             ],
                             [
                                 "gameId": "gameid3",
@@ -369,7 +395,8 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "overBetStr": "o 225",
                                 "underBetStr": "u 225",
                                 "player1_ouBetStr": "o 225",
-                                "player2_ouBetStr": "u 225"
+                                "player2_ouBetStr": "u 225",
+                                "ouBetDrafter": "player2"
                             ],
                             [
                                 "gameId": "gameid4",
@@ -384,7 +411,8 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "overBetStr": "o 221",
                                 "underBetStr": "u 221",
                                 "player1_spreadBetStr": "CHI +3.5",
-                                "player2_spreadBetStr": "POR -3.5"
+                                "player2_spreadBetStr": "POR -3.5",
+                                "spreadBetDrafter": "player2"
                             ],
                         ]
                 ]

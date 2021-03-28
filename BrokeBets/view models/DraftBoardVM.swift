@@ -30,17 +30,17 @@ class DraftBoardVM: ObservableObject {
     func listenForDraftChanges(){
         
         self.draftsRepo.draftsPublisher
-            .sink { drafts in
+            .sink { [weak self] drafts in
                 
-                guard let draft = drafts[self.draftId] else {
+                guard let draft = drafts[self!.draftId] else {
                     print("draft is no longer in dataset")
                     
                     // pop them back to DraftsListView
-                    self.draftDoesNotExistAnymore.send()
+                    self?.draftDoesNotExistAnymore.send()
                     return
                 }
                 
-                self.draft = draft
+                self?.draft = draft
             }
             .store(in: &cancellables)
     }

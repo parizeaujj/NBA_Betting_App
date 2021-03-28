@@ -16,7 +16,6 @@ struct LiveGameScoreboard: Codable, Identifiable {
     var homeScore: Int = 0
     var awayScore: Int = 0
     var timeLeftStr: String
-//    var timeGameStarted: Date // used for sorting
     
     init(homeTeam: String, awayTeam: String, timeLeftStr: String){
 
@@ -34,16 +33,17 @@ struct LiveGameScoreboard: Codable, Identifiable {
               let homeScore = data["homeScore"] as? Int,
               let awayScore = data["awayScore"] as? Int,
               let isOverTime = data["isOverTime"] as? Bool,
-//              let timeGameStartedTS = data["timeGameStarted"] as? Timestamp,
+              let isEndOfFirst = data["isEndOfFirst"] as? Bool,
+              let isEndOfThird = data["isEndOfThird"] as? Bool,
+              let isHalftime = data["isHalftime"] as? Bool,
+              let isEndOfOverTime = data["isEndOfOverTime"] as? Bool,
               let minsLeftInQtr = data["minsLeftInQtr"] as? Int
-//              let secsLeftInQtr = data["secsLeftInQtr"] as? Double
         else {
             print("error right here")
             return nil
         }
         
         
-//        self.timeGameStarted = timeGameStartedTS.dateValue()
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
         self.homeScore = homeScore
@@ -70,41 +70,58 @@ struct LiveGameScoreboard: Codable, Identifiable {
         }
         
         
-        if(isOverTime){
-            
-            // if there isnt a value for the numOverTime at this point then we have a big problem
-            guard let numOverTime = data["numOverTime"] as? Int else {
-                print("error right here 3")
-                return nil
-            }
-            
-            timeLeftStr += "\(numOverTime)OT"
+        if(isHalftime){
+            timeLeftStr = "Halftime"
+        }
+        else if(isEndOfFirst){
+            timeLeftStr = "End of 1st"
+        }
+        else if(isEndOfThird){
+            timeLeftStr = "End of 3rd"
+        }
+        else if(isEndOfOverTime){
+            timeLeftStr = "End of OT"
         }
         else{
             
-            guard let currentQuarter = data["currentQuarter"] as? Int else {
-                print("error right here 4")
-                return nil
-            }
+            if(isOverTime){
+               
+               // if there isnt a value for the numOverTime at this point then we have a big problem
+               guard let numOverTime = data["numOverTime"] as? Int else {
+                   print("error right here 3")
+                   return nil
+               }
+               
+               timeLeftStr += "\(numOverTime)OT"
+           }
+           else{
+               
+               guard let currentQuarter = data["currentQuarter"] as? Int else {
+                   print("error right here 4")
+                   return nil
+               }
+               
+               switch(currentQuarter){
+                   case 1: timeLeftStr += "1st"
+                   case 2: timeLeftStr += "2nd"
+                   case 3: timeLeftStr += "3rd"
+                   case 4: timeLeftStr += "4th"
+                   default:
+                       print("error right here 5")
+                       return nil // if it isnt overtime and the current quarter is not in 1, 2, 3, or 4, then we have a big problem
+               }
+           }
+           
+           
+           guard let timeStr = getFormattedTimeLeft(mins: minsLeftInQtr, secs: secsLeftInQtr) else {
+               print("Error somewhere, you cannot have negative minutes")
+               return nil
+           }
+           
+           timeLeftStr += " " + timeStr
             
-            switch(currentQuarter){
-                case 1: timeLeftStr += "1st"
-                case 2: timeLeftStr += "2nd"
-                case 3: timeLeftStr += "3rd"
-                case 4: timeLeftStr += "4th"
-                default:
-                    print("error right here 5")
-                    return nil // if it isnt overtime and the current quarter is not in 1, 2, 3, or 4, then we have a big problem
-            }
         }
         
-        
-        guard let timeStr = getFormattedTimeLeft(mins: minsLeftInQtr, secs: secsLeftInQtr) else {
-            print("Error somewhere, you cannot have negative minutes")
-            return nil
-        }
-        
-        timeLeftStr += " " + timeStr
     
         self.timeLeftStr = timeLeftStr
         

@@ -67,24 +67,24 @@ class CreateUsernameVM: ObservableObject {
         // disable button until database call is complete
         isSubmitting = true
         
-        userService.setUsernameIfNotTaken(username: self.username){ resultType in
+        userService.setUsernameIfNotTaken(username: self.username){ [weak self] resultType in
             switch(resultType){
             
                 case .Success:
                     
-                    guard let uid = self.userService.currentUserUid() else {
+                    guard let uid = self?.userService.currentUserUid() else {
                         fatalError("something is really wrong, the user is in the process of creating a username for their account but they are not logged in")
                     }
                     
-                    self.userService.user = User(uid: uid, username: self.username)
+                    self?.userService.user = User(uid: uid, username: self?.username)
                     
 //                    self.userService.doesHaveUsername = true
                     print("username added to database")
                     return
                     
                 case .UsernameTaken:
-                    self.usernameError = .AlreadyTaken
-                    self.isSubmitting = false
+                    self?.usernameError = .AlreadyTaken
+                    self?.isSubmitting = false
                     print("username already taken")
                     return
                     

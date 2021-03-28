@@ -12,7 +12,6 @@ struct ProfileModalView<T: AppStateProtocol>: View {
     @Binding var isShowingProfileModal: Bool
     
     @EnvironmentObject var appState: T
-//    @EnvironmentObject var userService: UserService
     
     var body: some View {
         
@@ -44,7 +43,7 @@ struct ProfileModalView<T: AppStateProtocol>: View {
                     
                     HStack{
                         
-                        Text("codyshowstoppa")
+                        Text("\(appState.userService.user!.username!)")
                             
                             .font(.title2)
                             .fontWeight(.bold)
@@ -92,5 +91,6 @@ struct ProfileModalView<T: AppStateProtocol>: View {
 struct ProfileModalView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileModalView<MockAppState>(isShowingProfileModal: .constant(false))
+            .environmentObject(MockAppState())
     }
 }

@@ -94,9 +94,13 @@ struct ContestsView<T: AppStateProtocol>: View {
 }
 
 struct ContestsView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        ContestsView<MockAppState>(isShowingProfileModal: .constant(false))
+        
+        let appState = AppState(shouldByPassLogin: true)
+        
+        ContestsView<AppState>(isShowingProfileModal: .constant(false))
             .environmentObject(UserScreenInfo(.regular))
-            .environmentObject(MockAppState())
+            .environmentObject(appState)
     }
 }

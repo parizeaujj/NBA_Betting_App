@@ -49,7 +49,7 @@ class CompletedContestsRepository: CompletedContestsRepositoryProtocol, Observab
             // Loops through each upcoming contest from firebase
             for document in documents{
                 guard let contest = CompletedContest(data: document.data(), playerUid: uid) else {
-                    print("Issue getting contest")
+                    print("Issue getting completed contest")
                     return
                 }
                 
@@ -91,7 +91,7 @@ class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, Obse
             "player2": "LOST"
          ],
          "numBets": 3,
-         "games": [
+         "completed_games": [
             
             // game 1
             ["awayTeam": "HOU Rockets",

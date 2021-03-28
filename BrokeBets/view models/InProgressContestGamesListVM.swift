@@ -24,24 +24,24 @@ class InProgressContestGamesListVM: ObservableObject {
         
         // subscribe
         self.inProgressContestsRepo.inProgressContestsPublisher
-            .sink { val in
+            .sink { [weak self] val in
                 
                 if let v = val[contestId] {
                     
                     // if the in progress contest we are currently storing is nil and or the bets remaining and completed are not the exact same as the new value for the in progress contest, then update it, else ignore the message that said it changed
-                    if let ipc = self.inProgressContest {
+                    if let ipc = self?.inProgressContest {
                         
                         if(ipc.numBetsCompleted != v.numBetsCompleted || ipc.numBetsRemaining != v.numBetsRemaining){
-                            self.inProgressContest = v
+                            self?.inProgressContest = v
                         }
                     }
                     else{
-                        self.inProgressContest = v
+                        self?.inProgressContest = v
                     }
                 }
                 else{
                     print("contest was removed from in progress list")
-                    self.contestJustCompletedPublisher.send()
+                    self?.contestJustCompletedPublisher.send()
                 }
             }
             .store(in: &cancellables)

@@ -27,6 +27,9 @@ struct DraftGame: Identifiable {
     private(set) var player2_ouBetStr: String?
     private(set) var player1_spreadBetStr: String?
     private(set) var player2_spreadBetStr: String?
+    
+    private(set) var ouBetDrafter: String?
+    private(set) var spreadBetDrafter: String?
 
     private(set) var dictionary: [String: Any]
     
@@ -72,8 +75,16 @@ struct DraftGame: Identifiable {
                 return nil
             }
             
+            guard let spreadBetDrafterStr = data["spreadBetDrafter"] as? String,
+                  let spreadDrafterPlayerType = PlayerLookupType(rawValue: spreadBetDrafterStr)
+            else {
+                print("error getting spreadBetDrafter")
+                return nil
+            }
+            
             self.player1_spreadBetStr = player1_spreadBetStr
             self.player2_spreadBetStr = player2_spreadBetStr
+            self.spreadBetDrafter = spreadDrafterPlayerType.rawValue
         }
         
         if !isOverUnderBetStillAvailable {
@@ -89,14 +100,21 @@ struct DraftGame: Identifiable {
                 return nil
             }
             
+            
+            guard let ouBetDrafterStr = data["ouBetDrafter"] as? String,
+                  let ouDrafterPlayerType = PlayerLookupType(rawValue: ouBetDrafterStr)
+            else {
+                print("error getting spreadBetDrafter")
+                return nil
+            }
+            
+            
             self.player1_ouBetStr = player1_ouBetStr
             self.player2_ouBetStr = player2_ouBetStr
+            self.ouBetDrafter = ouDrafterPlayerType.rawValue
         }
         
         
-        
-        
-        //
         
         if(isHomeTeamFavorite){
             self.homeSpreadBetStr = spreadFavoriteBetStr
@@ -174,5 +192,16 @@ struct DraftGame: Identifiable {
         self.dictionary["isSpreadBetStillAvailable"] = newValue
     }
     
+    mutating func updateSpreadBetDrafter(drafterPlayerLookupType: PlayerLookupType){
+        
+        self.spreadBetDrafter = drafterPlayerLookupType.rawValue
+        self.dictionary["spreadBetDrafter"] = drafterPlayerLookupType.rawValue
+    }
+    
+    mutating func updateOverUnderBetDrafter(drafterPlayerLookupType: PlayerLookupType){
+        
+        self.ouBetDrafter = drafterPlayerLookupType.rawValue
+        self.dictionary["ouBetDrafter"] = drafterPlayerLookupType.rawValue
+    }
     
 }

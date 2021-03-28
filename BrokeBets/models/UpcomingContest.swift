@@ -48,9 +48,10 @@ struct UpcomingContest : Codable, Identifiable {
               let player2_uname = data["player2_uname"] as? String,
               let numBets = data["numBets"] as? Int,
               let ts = data["firstGameStartDateTime"] as? Timestamp,
-              let games = data["upcomingGames"] as? [[String: Any]]
+              let games = data["upcoming_games"] as? [[String: Any]]
             
         else {
+            print("herekdjkfk")
             return nil
         }
         
@@ -72,6 +73,7 @@ struct UpcomingContest : Codable, Identifiable {
             self.opponent = player1_uname
         }
         else{
+            print("issue with playerlookup type in upcoming contest")
             return nil
         }
         
@@ -90,6 +92,7 @@ struct UpcomingContest : Codable, Identifiable {
 
             guard let g = UpcomingContestGame(game: game, playerLookupPrefix: playerLookupType.rawValue, todaysSimpleDate: todaysSimpleDate) else {
                 
+                print("Error creating upcoming contest game")
                 return nil
             }
             upcomingGames.append(g)

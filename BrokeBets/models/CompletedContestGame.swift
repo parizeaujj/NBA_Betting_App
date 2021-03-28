@@ -73,15 +73,18 @@ struct CompletedContestGame: Codable, Identifiable {
               let gameWinner = game["gameWinner"] as? String,
               let ts = game["gameCompletionDateTime"] as? Timestamp
         else {
+            print("here99999")
             return nil
         }
         
+       
         
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
         self.homeTeamScore = homeTeamScore
         self.awayTeamScore = awayTeamScore
         guard let gameWinnerCasted = GameWinner(rawValue: gameWinner.uppercased()) else {
+            print("issue getting game winner")
             return nil
         }
         self.gameWinner = gameWinnerCasted
@@ -99,14 +102,17 @@ struct CompletedContestGame: Codable, Identifiable {
         if let overUnderBetResults = game["overUnderBetResults"] as? [String: [String: String]]{
            
             guard let userResults = overUnderBetResults[playerLookupPrefix] else {
+                print("issue getting user's ou bet results")
                 return nil
             }
             
             guard let bet = userResults["bet"] else{
+                print("issue getting user's bet for overUnderBetResults")
                 return nil
             }
             
             guard let betResult = userResults["result"] else{
+                print("issue getting user's result for overUnderBetResults")
                 return nil
             }
             
@@ -119,14 +125,17 @@ struct CompletedContestGame: Codable, Identifiable {
         if let spreadBetResults = game["spreadBetResults"] as? [String: [String: String]]{
            
             guard let userResults = spreadBetResults[playerLookupPrefix] else {
+                print("issue getting user's spread bet results")
                 return nil
             }
             
             guard let bet = userResults["bet"] else{
+                print("issue getting user's bet for spreadBetResults")
                 return nil
             }
             
             guard let betResult = userResults["result"] else{
+                print("issue getting user's result for spreadBetResults")
                 return nil
             }
             

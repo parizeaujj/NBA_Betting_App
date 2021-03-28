@@ -20,11 +20,11 @@ class DraftsListVM: ObservableObject {
         self.draftsRepo = draftsRepo
         
         self.draftsRepo.draftsPublisher
-            .sink { draftsDict in
+            .sink { [weak self] draftsDict in
                 
                 let drafts = Array(draftsDict.values)
                 
-                self.drafts = drafts.sorted {
+                self?.drafts = drafts.sorted {
                     
                     if($0.isUserTurn != $1.isUserTurn){
                         return $0.isUserTurn && !$1.isUserTurn

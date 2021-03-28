@@ -36,10 +36,10 @@ class OpponentSearchVM: ObservableObject {
     
     func updateSearchResults(){
         
-        userService.getUsers(startingWith: self.usernameText){ users in
+        userService.getUsers(startingWith: self.usernameText){ [weak self] users in
             
             if let users = users {
-                self.searchResults = users
+                self?.searchResults = users
             }
             else{
                 // error searching for users, present alert

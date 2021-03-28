@@ -128,19 +128,12 @@ struct CreateContestView: View {
             }, label: {
                 Text("Cancel")
                     .foregroundColor(.white)
-//                    .disabled(createContestVM.isLoading)
             }))
            
         }
         .accentColor(.white)
         .environment(\.colorScheme, .light)
-//        .onReceive(createContestVM.showSuccessNotice, perform: { _ in
-//
-//                self.showingSuccessNotice = true
-//
-//
-//
-//        })
+
             
         .alert(isPresented: $showErrorMessage, content: {
 
@@ -200,7 +193,7 @@ struct CreateContestView: View {
 struct CreateContestView_Previews: PreviewProvider {
     static var previews: some View {
         
-        let appState = MockAppState()
+        let appState = AppState(shouldByPassLogin: true)
         
         CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: appState.createContestInvitationService!, userService: appState.userService))
             .preferredColorScheme(.dark)

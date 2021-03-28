@@ -22,9 +22,9 @@ class SentInvitationsListVM: ObservableObject {
         
         // setups up subscriber that listens for changes to the upcoming contests that are stored in 'sentInvitationsRepo'
         sentInvitationsRepo.sentInvitationsPublisher
-            .sink(receiveValue: { sentInvitations in
+            .sink(receiveValue: { [weak self] sentInvitations in
                 
-                self.sentInvitations = sentInvitations.sorted {
+                self?.sentInvitations = sentInvitations.sorted {
                     
                     let timeDiff1: Int
                     let timeDiff2: Int

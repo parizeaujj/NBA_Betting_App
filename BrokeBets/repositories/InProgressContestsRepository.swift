@@ -83,7 +83,7 @@ class InProgressContestsRepository: InProgressContestsRepositoryProtocol, Observ
                 
                 
                 guard let contestData = InProgressContest(data: document.data(), playerUid: uid, contestId: document.documentID) else {
-                    print("Issue creating contest")
+                    print("Issue creating in progress contest")
                     return
                 }
                 
@@ -347,6 +347,10 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "minsLeftInQtr": 2,
             "secsLeftInQtr": 44,
             "isOverTime": false,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false,
             "currentQuarter": 2,
         ],
         "game2id": [
@@ -357,7 +361,11 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "minsLeftInQtr": 4,
             "secsLeftInQtr": 1.5,
             "isOverTime": true,
-            "numOverTime": 2
+            "numOverTime": 2,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false
         ],
         "game3id": [
             "awayTeam": "LA Clippers",
@@ -368,6 +376,10 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "secsLeftInQtr": 4.5,
             "isOverTime": false,
             "currentQuarter": 4,
+            "isEndOfFirst": true,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false,
         ]],
         
         // time = 1, only score/timeleft changed for game1id
@@ -380,6 +392,10 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "secsLeftInQtr": 27,
             "isOverTime": false,
             "currentQuarter": 2,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false
         ],
         "game2id": [
             "awayTeam": "GS Warriors",
@@ -389,7 +405,11 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "minsLeftInQtr": 4,
             "secsLeftInQtr": 1.5,
             "isOverTime": true,
-            "numOverTime": 2
+            "numOverTime": 2,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false,
         ],
         "game3id": [
             "awayTeam": "LA Clippers",
@@ -400,6 +420,10 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "secsLeftInQtr": 4.5,
             "isOverTime": false,
             "currentQuarter": 4,
+            "isEndOfFirst": false,
+            "isEndOfThird": true,
+            "isEndOfOverTime": false,
+            "isHalftime": false,
         ]],
         
         // time = 2, only time changed for game2id
@@ -412,6 +436,10 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "secsLeftInQtr": 27,
             "isOverTime": false,
             "currentQuarter": 2,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false,
         ],
         "game2id": [
             "awayTeam": "GS Warriors",
@@ -421,7 +449,11 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "minsLeftInQtr": 3,
             "secsLeftInQtr": 52,
             "isOverTime": true,
-            "numOverTime": 2
+            "numOverTime": 2,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false,
         ],
         "game3id": [
             "awayTeam": "LA Clippers",
@@ -432,6 +464,10 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "secsLeftInQtr": 4.5,
             "isOverTime": false,
             "currentQuarter": 4,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": true,
         ]],
     
         // time = 3, score/time change for all three games
@@ -444,6 +480,10 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "secsLeftInQtr": 13,
             "isOverTime": false,
             "currentQuarter": 2,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false,
         ],
         "game2id": [
             "awayTeam": "GS Warriors",
@@ -453,7 +493,11 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "minsLeftInQtr": 3,
             "secsLeftInQtr": 31,
             "isOverTime": true,
-            "numOverTime": 2
+            "numOverTime": 2,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": false,
+            "isHalftime": false,
         ],
         "game3id": [
             "awayTeam": "LA Clippers",
@@ -464,6 +508,10 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "secsLeftInQtr": 1.1,
             "isOverTime": false,
             "currentQuarter": 4,
+            "isEndOfFirst": false,
+            "isEndOfThird": false,
+            "isEndOfOverTime": true,
+            "isHalftime": false,
         ]],
     
     

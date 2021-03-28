@@ -76,37 +76,39 @@ struct OpponentSearchView: View {
                             })
                         }
                         
-                        Text("Suggested")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical)
+//                        Text("Suggested")
+//                            .font(.headline)
+//                            .fontWeight(.bold)
+//                            .padding(.horizontal, 20)
+//                            .padding(.vertical)
+//
+//
+//                        // TODO: Implement this lol
+//                        ForEach(1..<4){ user in
+//
+//
+//                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+//
+//                                VStack(spacing: 0){
+//                                    Divider()
+//                                        .padding(.bottom, 15)
+//
+//                                    HStack{
+//
+//                                        Text("Suggested user")
+//                                            .font(.headline)
+//
+//
+//                                        Spacer()
+//                                    }
+//                                    .padding(.bottom, 15)
+//                                    .padding(.horizontal, 23)
+//
+//                                }
+//                            })
+//                        }
                         
                         
-                        // TODO: Implement this lol
-                        ForEach(1..<4){ user in
-                            
-                            
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                
-                                VStack(spacing: 0){
-                                    Divider()
-                                        .padding(.bottom, 15)
-                                    
-                                    HStack{
-                                        
-                                        Text("Suggested user")
-                                            .font(.headline)
-                                            
-                                        
-                                        Spacer()
-                                    }
-                                    .padding(.bottom, 15)
-                                    .padding(.horizontal, 23)
-                                   
-                                }
-                            })
-                        }
                     }
                     .frame(maxWidth: .infinity)
                 }
