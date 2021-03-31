@@ -189,7 +189,7 @@ struct DraftGame: Identifiable {
     mutating func updateOverUnderBetAvailablity(to newValue: Bool){
         
         self.isOverUnderBetStillAvailable = newValue
-        self.dictionary["isSpreadBetStillAvailable"] = newValue
+        self.dictionary["isOverUnderBetStillAvailable"] = newValue
     }
     
     mutating func updateSpreadBetDrafter(drafterPlayerLookupType: PlayerLookupType){

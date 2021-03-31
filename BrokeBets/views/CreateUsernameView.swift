@@ -20,7 +20,6 @@ struct CreateUsernameView: View {
                 Text("Create a Username")
                     .font(.title)
                     .fontWeight(.bold)
-                    //                .padding(.leading, 35)
                     .padding(.top, 45)
                 
            
@@ -34,12 +33,14 @@ struct CreateUsernameView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.black, lineWidth: 2)
                     )
+                    
                     .keyboardType(.asciiCapable)
+//                    .textCase(.uppercase)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
                     .padding(.horizontal, 35)
                     .padding(.top, 25) // was 30
-                
+                    
                 
                 HStack{
                     

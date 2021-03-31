@@ -38,44 +38,44 @@ struct ReceivedInvitationsListView: View {
         ZStack{
             
             VStack{
-                ScrollView{
+                
+                if receivedInvitationsListVM.receivedInvitations.count > 0 {
                     
-                    LazyVStack(spacing: 0){
+                    ScrollView{
                         
-                        Rectangle().frame(width: nil, height: 1.0, alignment: .bottom).foregroundColor(Color.gray)
-                        
-                        ForEach(receivedInvitationsListVM.receivedInvitations){ invitation in
-                            
-                            Group {
-                            ReceivedInvitationView(invitation: invitation, onInvitationAction: {
-                                invitationAction in
-                                //                            self.invitationAction = invitationAction
-                                //                            self.didAcceptOrDeclineInvitation = true
-                                self.alertType = .confirm(invitationAction)
-                                self.showAlert = true
-                            })
-                            .padding(.vertical, 18)
-                            
+                        LazyVStack(spacing: 0){
                             
                             Rectangle().frame(width: nil, height: 1.0, alignment: .bottom).foregroundColor(Color.gray)
                             
+                            ForEach(receivedInvitationsListVM.receivedInvitations){ invitation in
+                                
+                                Group {
+                                ReceivedInvitationView(invitation: invitation, onInvitationAction: {
+                                    invitationAction in
+                                   
+                                    self.alertType = .confirm(invitationAction)
+                                    self.showAlert = true
+                                })
+                                .padding(.vertical, 18)
+                                
+                                
+                                Rectangle().frame(width: nil, height: 1.0, alignment: .bottom).foregroundColor(Color.gray)
+                                
+                                }
                             }
-                          
-//                            .transition(AnyTransition.asymmetric(insertion: .opacity, removal: AnyTransition.opacity.combined(with: AnyTransition.move(edge: .top)).animation(Animation.easeOut(duration: 0.5))))
-                           
-//                            .animation(Animation.easeOut.delay(0.5))
                         }
-                        
-//                        .animation(Animation.easeInOut.delay(0.6))
-                        //                    .transition(.move(edge: .bottom))
-                        //                    .animation(.easeOut)
-                        //                    .transition(AnyTransition.asymmetric(insertion: AnyTransition.move(edge: .top).combined(with: .opacity).animation(Animation.easeIn(duration: 0.4)),
-                        //
-                        //                                removal: AnyTransition.opacity.combined(with: AnyTransition.move(edge: .bottom)).animation(Animation.easeInOut(duration: 0.3).delay(0))))
-                        //                    .animation(Animation.easeInOut(duration: 0.2))
-                        //                    .animation(Animation.easeInOut(duration: 0.4).delay(0.6))
                     }
+                   
+                    
                 }
+                else {
+                    
+                    Text("You have no received invitations")
+                        .font(.title3)
+                        .padding(.top, 100)
+                    
+                }
+                
                 Spacer()
             }
             .alert(isPresented: $showAlert, content: {
@@ -119,7 +119,6 @@ struct ReceivedInvitationsListView: View {
             if receivedInvitationsListVM.isLoading {
                 
                 Color.gray.opacity(0.2)
-//                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     .edgesIgnoringSafeArea(.all)
 
                 ProgressView()

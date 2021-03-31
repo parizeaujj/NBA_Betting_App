@@ -11,10 +11,31 @@ class OpponentSearchVM: ObservableObject {
     
     private var userService: UserServiceProtocol
     
+    private var searchCounter = 0
+    private var searchResultsCache: [String: [User]] = [:]
+    
+    private var lastEmptySearch: String = ""
+    private var wasLastSearchEmpty: Bool = false
+    
     @Published var usernameText: String = "" {
         didSet {
+            
             if usernameText != "" {
-                updateSearchResults()
+            
+                let sanitizedText = usernameText.filter { $0.isLetter || $0.isNumber }
+                
+                if usernameText == sanitizedText {
+                    
+                    if let results = searchResultsCache[usernameText] {
+                        searchResults = results
+                    }
+                    else{
+                        updateSearchResults()
+                    }
+                }
+                else{
+                    searchResults = []
+                }
             }
             else{
                 searchResults = []
@@ -32,13 +53,22 @@ class OpponentSearchVM: ObservableObject {
         self.currentSelectedUser = currentSelectedUser
         self.setOpponentSelection = setOpponentSelection
         self.userService = userService
+    
     }
     
     func updateSearchResults(){
         
-        userService.getUsers(startingWith: self.usernameText){ [weak self] users in
+        print("searching for users")
+        
+        userService.getUsers(startingWith: self.usernameText.lowercased()){ [weak self] (users: [User]?, lookupText: String) in
             
             if let users = users {
+                
+                if let cacheSize = self?.searchResultsCache.count, cacheSize > 20 {
+                    self?.searchResultsCache.removeAll()
+                }
+                
+                self?.searchResultsCache[lookupText] = users
                 self?.searchResults = users
             }
             else{

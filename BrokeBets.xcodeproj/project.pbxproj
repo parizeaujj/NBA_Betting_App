@@ -88,6 +88,7 @@
 		E3BA2E1D2601144400EAF404 /* ReceivedInvitationsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA2E1C2601144400EAF404 /* ReceivedInvitationsListVM.swift */; };
 		E3BA2E25260119D800EAF404 /* SentInvitationsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA2E24260119D800EAF404 /* SentInvitationsListVM.swift */; };
 		E3BA2E2A260119F800EAF404 /* SentInvitationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA2E29260119F800EAF404 /* SentInvitationsRepository.swift */; };
+		E3BB7AB02612623D00097DCC /* launchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3BB7AAF2612623D00097DCC /* launchScreen.storyboard */; };
 		E3BB843525F3C5A6008121C8 /* InProgressContestGamesListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */; };
 		E3BBF30B25FD757900EEAF90 /* DraftBoardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */; };
 		E3C9685E25DD7D100097963E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9685D25DD7D100097963E /* LoginView.swift */; };
@@ -226,6 +227,7 @@
 		E3BA2E1C2601144400EAF404 /* ReceivedInvitationsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationsListVM.swift; sourceTree = "<group>"; };
 		E3BA2E24260119D800EAF404 /* SentInvitationsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitationsListVM.swift; sourceTree = "<group>"; };
 		E3BA2E29260119F800EAF404 /* SentInvitationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentInvitationsRepository.swift; sourceTree = "<group>"; };
+		E3BB7AAF2612623D00097DCC /* launchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launchScreen.storyboard; sourceTree = "<group>"; };
 		E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGamesListVM.swift; sourceTree = "<group>"; };
 		E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBoardVM.swift; sourceTree = "<group>"; };
 		E3C9685D25DD7D100097963E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				E3EE11272606C2C60035A4EC /* GoogleService-Info.plist */,
 				E3B621DB25DEC19B00B3ACE3 /* BrokeBets.entitlements */,
 				E394BDFE25CDD435002C89B9 /* Preview Content */,
+				E3BB7AAF2612623D00097DCC /* launchScreen.storyboard */,
 			);
 			path = BrokeBets;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E394BE0025CDD435002C89B9 /* Preview Assets.xcassets in Resources */,
+				E3BB7AB02612623D00097DCC /* launchScreen.storyboard in Resources */,
 				E3EE11282606C2C60035A4EC /* GoogleService-Info.plist in Resources */,
 				E394BDFD25CDD435002C89B9 /* Assets.xcassets in Resources */,
 			);
@@ -1157,6 +1161,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BrokeBets/BrokeBets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"BrokeBets/Preview Content\"";
 				DEVELOPMENT_TEAM = 634WNQRUXY;
 				ENABLE_PREVIEWS = YES;
@@ -1166,6 +1171,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokebets.BrokeBets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1182,6 +1188,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BrokeBets/BrokeBets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"BrokeBets/Preview Content\"";
 				DEVELOPMENT_TEAM = 634WNQRUXY;
 				ENABLE_PREVIEWS = YES;
@@ -1191,6 +1198,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokebets.BrokeBets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

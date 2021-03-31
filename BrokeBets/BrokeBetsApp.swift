@@ -13,17 +13,20 @@ import Firebase
 @main
 struct BrokeBetsApp: App {
         
-    let appState = AppState()
-    
+    let appState = AppState(shouldByPassLogin: true)
     
     var body: some Scene {
         WindowGroup {
+            
+//            CreateUsernameView(viewModel: CreateUsernameVM(userService: appState.userService))
+//                .environment(\.colorScheme, .light)
+            
             RootAppView(rootAppVM: RootAppVM(appState: appState))
                     .environmentObject(appState)
                     .environmentObject(UserScreenInfo(getScreenSizeType()))
                     .environment(\.colorScheme, .light)
                     .preferredColorScheme(.light)
-                    
+//
         }
     }
     

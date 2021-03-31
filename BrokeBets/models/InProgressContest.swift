@@ -135,7 +135,7 @@ struct InProgressContest: Codable, Identifiable {
             for game in inProgressGames {
 
                 guard let g = InProgressContestGame(game: game, playerLookupPrefix: playerLookupType.rawValue) else {
-
+                    print("issue creating in progress contest game")
                     return nil
                 }
                 ipGames.append(g)

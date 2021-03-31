@@ -151,8 +151,8 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         if isDraftCompleted {
             
             
-            var associatedGameIds: [String] = []
-            
+            var associatedGameIds: Set<String> = []
+            var earliestGameStartDateTime: Date = Calendar.current.date(byAdding: .year, value: 1, to: Date())!
             
             let newContestDocRef = db.collection("contests").document()
             
@@ -163,7 +163,12 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                     return nil
                 }
                 
-                associatedGameIds.append(game.gameId)
+                
+                if(game.gameStartDateTime < earliestGameStartDateTime){
+                    earliestGameStartDateTime = game.gameStartDateTime
+                }
+                
+                associatedGameIds.insert(game.gameId)
                 
                 var upcomingContestGame: [String: Any] = [:]
                 
@@ -201,7 +206,7 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
             
                 "contestId": newContestDocRef.documentID,
                 "contestStatus": "upcoming",
-                "firstGameStartDateTime": Timestamp(date: draft.draftExpirationDateTime),
+                "firstGameStartDateTime": Timestamp(date: earliestGameStartDateTime),
                 "player1_uid": player1_uid,
                 "player1_uname": player1_uname,
                 "player2_uid": player2_uid,
@@ -219,7 +224,7 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                 
                 batch.updateData([
                 
-                    "gameIds": FieldValue.arrayUnion([newContestDocRef.documentID])
+                    "contestIds": FieldValue.arrayUnion([newContestDocRef.documentID])
                 ], forDocument: associatedContestsDocRef)
                 
             })
@@ -243,6 +248,9 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         
         batch.commit { err in
             if let err = err {
+                
+                print("error committing batch for drafts repository")
+                print(err.localizedDescription)
                 completion(.failure(err))
             } else {
                 completion(.success(())) // ewwww why so many parenthesis, swift?

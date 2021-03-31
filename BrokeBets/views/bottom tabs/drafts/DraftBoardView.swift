@@ -68,7 +68,7 @@ struct DraftBoardView: View {
                 
                 ScrollView{
                     
-                    if let draftRounds = viewModel.draft.userDraftRoundsResults {
+                    if let draftRounds = viewModel.draft.userDraftRoundsResults, draftRounds.count > 0 {
                         
                         LazyVStack(alignment: .leading, spacing: 0){
                             

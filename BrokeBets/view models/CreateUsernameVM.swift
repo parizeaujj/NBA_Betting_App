@@ -10,10 +10,15 @@ enum UsernameError: String {
     
     case InvalidLength = "Username must be at least 6 characters"
     case AlreadyTaken = "Username already taken"
+    case InvalidCharacters = "Username can only contain letters and numbers"
     case None = ""
 }
 
 class CreateUsernameVM: ObservableObject {
+    
+    
+    let uppercase = CharacterSet.uppercaseLetters
+    let alphanumerics = CharacterSet.alphanumerics
     
     private var userService: UserServiceProtocol
    
@@ -22,10 +27,8 @@ class CreateUsernameVM: ObservableObject {
     @Published var username: String = "" {
         
         didSet {
-            if username.count > 16 && oldValue.count <= 16 {
-                username = oldValue
-            }
             
+           
             // if there was previously an invalid length error, and the user has since fixed, then get rid of that as an error
             if usernameError == .InvalidLength && username.count >= 6 {
                 usernameError = .None
@@ -39,6 +42,22 @@ class CreateUsernameVM: ObservableObject {
             // enables the button if no network call is happening, the input is not nil, and the button is currently disabled
             if(!isSubmitting && username != "" && shouldBeDisabled){
                 shouldBeDisabled = false
+            }
+            
+            if username.count > 16 && oldValue.count <= 16 {
+                username = oldValue
+                return
+            }
+                        
+            if oldValue != "" {
+                
+                let text = username.filter { $0.isLetter || $0.isNumber }.lowercased()
+                
+                
+                if username != text {
+                    username = text
+                }
+                
             }
         }
     }
@@ -78,7 +97,6 @@ class CreateUsernameVM: ObservableObject {
                     
                     self?.userService.user = User(uid: uid, username: self?.username)
                     
-//                    self.userService.doesHaveUsername = true
                     print("username added to database")
                     return
                     

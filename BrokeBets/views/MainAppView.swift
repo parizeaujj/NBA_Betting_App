@@ -17,7 +17,8 @@ struct MainAppView<T: AppStateProtocol>: View {
         ZStack{
             UIKitTabView {
        
-                ContestsView<T>(isShowingProfileModal: $isShowingProfileModal)
+                ContestsView<T>(contestsVM: ContestsVM(appState: appState),isShowingProfileModal: $isShowingProfileModal)
+//                ContestsView<T>(isShowingProfileModal: $isShowingProfileModal)
                     .tab(title: "Contests", image: "outline-emoji_events-black-24dp", selectedImage: "emoji_events-black-24dp")
 //                Text("Betslip Screen").tab(title: "Betslip", image: "outline-receipt_long-black-24dp", selectedImage: "receipt_long-black-24dp")
                 InvitationsView<T>(invitationsVM: InvitationsVM(appState: appState), isShowingProfileModal: $isShowingProfileModal)
@@ -44,5 +45,11 @@ struct MainAppView_Previews: PreviewProvider {
         MainAppView<MockAppState>()
             .environmentObject(UserScreenInfo(.regular))
             .environmentObject(appState)
+    }
+}
+
+struct MainAppView_Previews_2: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

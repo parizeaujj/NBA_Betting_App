@@ -41,12 +41,12 @@ struct InvitationsView<T: AppStateProtocol>: View {
         NavigationView{
             VStack(spacing: 0){
             
-            Tabs(tabs: .constant(["Recieved", "Sent"]),
+            Tabs(tabs: .constant(["Received", "Sent"]),
                        selection: $selectedTab,
                        underlineColor: .white) { title, isSelected in
                          Text(title)
                            .font(.headline)
-                           .fontWeight(.semibold)
+                           .fontWeight(isSelected ? .semibold : .regular)
                            .foregroundColor(isSelected ? .white : .white)
                            .padding(.bottom, 10)
                            .frame(width: UIScreen.main.bounds.size.width / 2)

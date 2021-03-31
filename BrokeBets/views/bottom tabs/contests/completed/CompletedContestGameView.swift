@@ -105,9 +105,8 @@ struct CompletedContestGameView: View {
                 HStack(spacing: 0){
                     HStack{
                         VStack(alignment: .leading) {
-                            Text("MIN Timberwolves")
+                            Text("\(game.homeTeam)")
                                 .lineLimit(1)
-                                
                                 .font(userScreenInfo.completedContestGameViewStyleBag.mainFontType)
                                 
                                 .padding(.vertical, 5)

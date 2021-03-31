@@ -44,6 +44,7 @@ struct Draft: Identifiable {
             return nil
         }
         
+        print("draftId: \(draftId)")
         
         self.draftId = draftId
         self.currentRound = currentRound
@@ -90,9 +91,9 @@ struct Draft: Identifiable {
             return nil
         }
         
-        if numDrafted + numForced == 0 {
-            return
-        }
+//        if numDrafted + numForced == 0 {
+//            return
+//        }
         
         //
         var orderedDraftedPicks = [[String:Any]](repeating: [:], count: numDrafted)
@@ -188,6 +189,7 @@ struct Draft: Identifiable {
                 print("issue creating draft game from games pool")
                 return nil
             }
+            
             gamesPool.append(draftGame)
         }
         

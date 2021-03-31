@@ -19,16 +19,34 @@ struct CompletedContestsListView: View {
     
     var body: some View {
         
-        ScrollView {
-            LazyVStack {
-                
-                ForEach(viewModel.completedContests) { contest in
-                        
-                    CompletedContestView(completedContest: contest)
-                        
-                    }
+        
+        if(viewModel.completedContests.count > 0){
+            
+            ScrollView {
+                LazyVStack {
+                    
+                    ForEach(viewModel.completedContests) { contest in
+                            
+                        CompletedContestView(completedContest: contest)
+                            
+                        }
+                }
             }
+            
+            
         }
+        else{
+            
+            Text("You have no Completed contests yet")
+                .font(.title3)
+                .padding(.top, 100)
+            
+        }
+        
+        
+        
+        
+        
     }
 }
 

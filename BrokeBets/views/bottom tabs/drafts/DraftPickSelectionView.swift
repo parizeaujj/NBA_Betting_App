@@ -104,10 +104,12 @@ struct DraftPickSelectionView: View {
                        }
                )
            )
+        
         })
         .onReceive(viewModel.popToMainDraftsScreen, perform: { _ in
             presentationMode.wrappedValue.dismiss()
         })
+        .colorScheme(.light)
     }
 }
 

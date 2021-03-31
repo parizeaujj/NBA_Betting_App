@@ -24,7 +24,7 @@ struct DraftView: View {
         }
         else{
             turnText = "Opponent's Turn"
-            turnTextColor = Color.gray
+            turnTextColor = Color(.darkGray)
         }
     }
     
@@ -36,7 +36,7 @@ struct DraftView: View {
                 Text("\(turnText)")
                     .font(.callout)
                     .fontWeight(.semibold)
-                    .foregroundColor(.red)
+                    .foregroundColor(turnTextColor)
                 Spacer()
                 Text("Expires: \(draft.draftExpirationDateTimeStr)")
                     .font(.caption)
@@ -58,9 +58,8 @@ struct DraftView: View {
                         Text("\(draft.opponent)")
                             .foregroundColor(.blue)
                             .font(.callout)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
                     }
-//                    .padding(.vertical, 8)
                     
                     HStack(spacing: 0){
                         Text("Round:")
@@ -78,9 +77,7 @@ struct DraftView: View {
                             .font(.callout)
                             .fontWeight(.black)
                             .padding(.horizontal, 4)
-                    }
-//                    .padding(.vertical, 8)
-                    
+                    }                    
                 }
                 
                 Spacer()

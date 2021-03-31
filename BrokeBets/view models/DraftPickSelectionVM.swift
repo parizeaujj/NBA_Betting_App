@@ -11,7 +11,6 @@ import Combine
 class DraftPickSelectionVM: ObservableObject {
     
     @Published var draft: Draft
-//    @Published var didSelectDraftPick: Bool = false
     
     private let draftId: String
     private var draftsRepo: DraftsRepositoryProtocol
@@ -59,9 +58,7 @@ class DraftPickSelectionVM: ObservableObject {
     }
     
     func makeDraftPickSelection(draftPickSelection: DraftPickSelection){
-        
-        // tbd
-        
+                
         print("confirmed drafted pick")
         
         draftsRepo.makeDraftPickSelection(draftPickSelection: draftPickSelection, draft: self.draft){ result in
@@ -73,8 +70,5 @@ class DraftPickSelectionVM: ObservableObject {
                     self.popToMainDraftsScreen.send()
             }
         }
-        
-     
-        
     }
 }

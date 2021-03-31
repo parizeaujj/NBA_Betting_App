@@ -17,15 +17,27 @@ struct InProgressContestsListView: View {
      
      var body: some View {
          
-         ScrollView {
-             LazyVStack {
-                
-                ForEach(viewModel.inProgressContests) { contest in
-                     
-                    InProgressContestView(inProgressContest: contest, inProgressContestsRepo: viewModel.inProgressContestsRepo)
-                 }
-             }
-         }
+        if viewModel.inProgressContests.count > 0 {
+            
+            ScrollView {
+                LazyVStack {
+                   
+                   ForEach(viewModel.inProgressContests) { contest in
+                        
+                       InProgressContestView(inProgressContest: contest, inProgressContestsRepo: viewModel.inProgressContestsRepo)
+                    }
+                }
+            }
+            
+            
+        }
+        else {
+            
+            Text("You have no In Progress contests")
+                .font(.title3)
+                .padding(.top, 100)
+            
+        }
      }
  }
 

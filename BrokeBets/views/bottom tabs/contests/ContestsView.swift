@@ -7,9 +7,26 @@
 
 import SwiftUI
 
+
+class ContestsVM<T: AppStateProtocol>: ObservableObject {
+    
+    let appState: T
+    
+    init(appState: T){
+        self.appState = appState
+    }
+}
+
+
+
+
 struct ContestsView<T: AppStateProtocol>: View {
     
-    @EnvironmentObject var appState: T
+//    @EnvironmentObject var appState: T
+    
+    @StateObject var contestsVM: ContestsVM<T>
+    
+    
     @State private var selectedTab = 0
     @State private var isCreateContestSheetPresented = false
     @Binding var isShowingProfileModal: Bool
@@ -24,7 +41,7 @@ struct ContestsView<T: AppStateProtocol>: View {
                            underlineColor: .white) { title, isSelected in
                              Text(title)
                                .font(.headline)
-                               .fontWeight(.semibold)
+                               .fontWeight(isSelected ? .semibold : .regular)
                                .foregroundColor(isSelected ? .white : .white)
                                .padding(.bottom, 10)
                                .frame(width: UIScreen.main.bounds.size.width / 3)
@@ -36,21 +53,21 @@ struct ContestsView<T: AppStateProtocol>: View {
                 // controls which tab is shown for the contests screen
                 if(selectedTab == 0){
                     
-                    if let repo = appState.upcomingContestsRepo {
+                    if let repo = contestsVM.appState.upcomingContestsRepo {
                         UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: repo))
                     }
                    
                 }
                 else if(selectedTab == 1){
                                         
-                    if let repo = appState.inProgressContestsRepo {
+                    if let repo = contestsVM.appState.inProgressContestsRepo {
                         InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: repo)
                         )
                     }
                 }
                 else if(selectedTab == 2){
                     
-                    if let repo = appState.completedContestsRepo {
+                    if let repo = contestsVM.appState.completedContestsRepo {
                         
                         CompletedContestsListView(viewModel: CompletedContestsListVM(completedContestsRepo: repo))
                     }
@@ -88,7 +105,7 @@ struct ContestsView<T: AppStateProtocol>: View {
             
         }
         .accentColor(.white)
-        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: {CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: appState.createContestInvitationService!, userService: appState.userService)) })
+        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: {CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: contestsVM.appState.createContestInvitationService!, userService: contestsVM.appState.userService)) })
         .preferredColorScheme(.light)
     }
 }
@@ -99,8 +116,8 @@ struct ContestsView_Previews: PreviewProvider {
         
         let appState = AppState(shouldByPassLogin: true)
         
-        ContestsView<AppState>(isShowingProfileModal: .constant(false))
+        ContestsView<AppState>(contestsVM: ContestsVM(appState: appState), isShowingProfileModal: .constant(false))
             .environmentObject(UserScreenInfo(.regular))
-            .environmentObject(appState)
+//            .environmentObject(appState)
     }
 }

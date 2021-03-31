@@ -14,23 +14,39 @@ struct SentInvitationsListView: View {
     var body: some View {
         
         VStack{
-            ScrollView{
+            
+            if sentInvitationsListVM.sentInvitations.count > 0 {
                 
-                LazyVStack(spacing: 0){
+                ScrollView{
                     
-                    Rectangle().frame(width: nil, height: 1.0, alignment: .bottom).foregroundColor(Color.gray)
-                    
-                    ForEach(sentInvitationsListVM.sentInvitations){ invitation in
-                        
-                        SentInvitationView(invitation: invitation)
-                            .padding(.vertical, 18)
-                           
+                    LazyVStack(spacing: 0){
                         
                         Rectangle().frame(width: nil, height: 1.0, alignment: .bottom).foregroundColor(Color.gray)
                         
+                        ForEach(sentInvitationsListVM.sentInvitations){ invitation in
+                            
+                            SentInvitationView(invitation: invitation)
+                                .padding(.vertical, 18)
+                               
+                            
+                            Rectangle().frame(width: nil, height: 1.0, alignment: .bottom).foregroundColor(Color.gray)
+                            
+                        }
                     }
                 }
+                
             }
+            else {
+                
+                Text("You have not sent any invitations")
+                    .font(.title3)
+                    .padding(.top, 100)
+                
+            }
+            
+            
+            
+            
             Spacer()
         }
     }

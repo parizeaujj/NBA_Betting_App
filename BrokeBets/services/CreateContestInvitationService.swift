@@ -197,8 +197,8 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
     
     func createContestInvitation(selectedOpponent: User, numDraftRounds: Int, completion: @escaping (ContestCreationResult) -> Void){
         
-        let invitor_uid = user.uid
-        let invitor_uname = user.username
+        let invitor_uid = self.user.uid
+        let invitor_uname = self.user.username! 
         
         let recipient_uid = selectedOpponent.uid
         let recipient_uname = selectedOpponent.username
@@ -236,7 +236,7 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
             "invitationId": newInvitationDocRef.documentID,
             "invitationStatus": "pending",
             "invitor_uid": invitor_uid,
-            "invitor_uname": invitor_uname!,
+            "invitor_uname": invitor_uname,
             "recipient_uid": recipient_uid,
             "recipient_uname": recipient_uname!,
             "draftRounds": numDraftRounds,

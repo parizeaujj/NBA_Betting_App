@@ -48,33 +48,44 @@ struct OpponentSearchView: View {
                   
                     VStack(alignment: .leading, spacing: 0){
                     
-                        ForEach(opponentSearchVM.searchResults){ user in
+                        
+                        if opponentSearchVM.searchResults.count > 0 {
                             
-                            Button(action: {
+                            ForEach(opponentSearchVM.searchResults){ user in
                                 
-                                self.opponentSearchVM.setOpponentSelection(user)
-                                
-                                
-                                
-                            }, label: {
-                                
-                                VStack(spacing: 0){
-                                    Divider()
-                                        .padding(.bottom, 15)
+                                Button(action: {
                                     
-                                    HStack{
+                                    self.opponentSearchVM.setOpponentSelection(user)
+                                    
+                                }, label: {
+                                    
+                                    VStack(spacing: 0){
+                                        Divider()
+                                            .padding(.bottom, 15)
                                         
-                                        Text("\(user.username ?? "none")")
-                                            .font(.headline)
+                                        HStack{
                                             
-                                        Spacer()
+                                            Text("\(user.username ?? "none")")
+                                                .font(.headline)
+                                                
+                                            Spacer()
+                                        }
+                                        .padding(.bottom, 15)
+                                        .padding(.horizontal, 23)
+                                       
                                     }
-                                    .padding(.bottom, 15)
-                                    .padding(.horizontal, 23)
-                                   
-                                }
-                            })
+                                })
+                            }
                         }
+                        else if opponentSearchVM.usernameText != "" {
+                            
+                            Text("No users found")
+                            .font(.subheadline)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical)
+                        }
+                        
+                        
                         
 //                        Text("Suggested")
 //                            .font(.headline)
@@ -129,10 +140,12 @@ struct OpponentSearchView: View {
 struct SearchBarView_Previews: PreviewProvider {
     
     static var previews: some View {
+        
+        let appState = AppState(shouldByPassLogin: true)
    
-        OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUser: nil, setOpponentSelection: { _ in }, userService: MockUserService()))
+        OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUser: nil, setOpponentSelection: { _ in }, userService: appState.userService))
             .environmentObject(UserScreenInfo(.regular))
-//            .environment(\.colorScheme, .light)
+            .environment(\.colorScheme, .light)
             .preferredColorScheme(.light)
     }
 }

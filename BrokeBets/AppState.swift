@@ -87,10 +87,10 @@ class AppState: AppStateProtocol {
             
             let uid = "hyW3nBBstdbQhsRcpoMHWyOActg1"
             self.userService = UserService(shouldByPassLogin: shouldByPassLogin)
-            self.userService.user = User(uid: uid, username: "testTodd123")
-            
-            self.createContestInvitationService = CreateContestInvitationService(user: self.userService.user!)
-            self.initializeAllRepos(uid: uid)
+            let user = User(uid: uid, username: "testTodd123")
+            self.userService.user = user
+            self.createContestInvitationService = CreateContestInvitationService(user: user)
+            self.initializeAllRepos(user: user)
         }
         else{
             
@@ -99,12 +99,14 @@ class AppState: AppStateProtocol {
             userService.userPublisher.sink { user in
                 
                 guard let user = user, user.username != nil else {
+                    print("deinitializing repos")
                     self.deinitializeAllRepos()
                     return
                 }
                 
-                self.createContestInvitationService = CreateContestInvitationService(user: self.userService.user!)
-                self.initializeAllRepos(uid: user.uid)
+                print("right hereeeeeeee \(user.username ?? "none" )")
+                self.createContestInvitationService = CreateContestInvitationService(user: user)
+                self.initializeAllRepos(user: user)
                 
             }
             .store(in: &cancellables)
@@ -112,14 +114,15 @@ class AppState: AppStateProtocol {
         }
     }
     
-    private func initializeAllRepos(uid: String){
+    private func initializeAllRepos(user: User){
         
-        draftsRepo = DraftsRepository(user: self.userService.user!)
-        receivedInvitationsRepo = ReceivedInvitationsRepository(user: self.userService.user!)
-        sentInvitationsRepo = SentInvitationsRepository(uid: uid)
-        upcomingContestsRepo = UpcomingContestsRepository(uid: uid)
-        completedContestsRepo = CompletedContestsRepository(uid: uid)
-        inProgressContestsRepo = InProgressContestsRepository(uid: uid)
+        print("initializing repos")
+        draftsRepo = DraftsRepository(user: user)
+        receivedInvitationsRepo = ReceivedInvitationsRepository(user: user)
+        sentInvitationsRepo = SentInvitationsRepository(uid: user.uid)
+        upcomingContestsRepo = UpcomingContestsRepository(uid: user.uid)
+        completedContestsRepo = CompletedContestsRepository(uid: user.uid)
+        inProgressContestsRepo = InProgressContestsRepository(uid: user.uid)
     }
     
     

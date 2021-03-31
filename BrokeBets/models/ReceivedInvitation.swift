@@ -6,6 +6,7 @@
 //
 
 import FirebaseFirestore
+import SwiftUI
 
 struct ReceivedInvitation: Identifiable {
     
@@ -61,5 +62,11 @@ struct ReceivedInvitation: Identifiable {
         }
         
         self.gamesPool = gamesPool
+    }
+}
+
+struct ReceivedInvitation_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

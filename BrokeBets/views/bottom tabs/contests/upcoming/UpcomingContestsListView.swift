@@ -20,17 +20,29 @@ struct UpcomingContestsListView : View {
     
     var body: some View {
         
-        ScrollView {
-            LazyVStack {
-                
-                ForEach(viewModel.upcomingContests) { contest in
-                        
-                    UpcomingContestView(upcomingContest: contest)
-                        
-                    }
-                    .buttonStyle(PlainButtonStyle())
+        if viewModel.upcomingContests.count > 0 {
+            ScrollView {
+                LazyVStack {
+                    
+                    ForEach(viewModel.upcomingContests) { contest in
+                            
+                        UpcomingContestView(upcomingContest: contest)
+                            
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                }
             }
+            
         }
+        else {
+            
+            Text("You have no Upcoming contests")
+                .font(.title3)
+                .padding(.top, 100)
+            
+        }
+        
+        
     }
 }
 

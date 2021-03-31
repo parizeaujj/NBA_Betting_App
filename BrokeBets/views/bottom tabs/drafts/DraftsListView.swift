@@ -92,6 +92,6 @@ struct DraftsListView_Previews: PreviewProvider {
         
         DraftsListView<MockAppState>(draftsListVM: DraftsListVM(draftsRepo: MockDraftsRepository(user: User(uid: "testToddUid", username: "testTodd123"))), isShowingProfileModal: .constant(false))
             .environmentObject(MockAppState())
-            
+        
     }
 }

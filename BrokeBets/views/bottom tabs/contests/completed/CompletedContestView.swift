@@ -166,13 +166,13 @@ struct CompletedContestView: View {
                         Text("\(completedContest.userTotalWins)")
                             .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
-                            .fontWeight(completedContest.result == .Won ? .black : .regular)
+                            .fontWeight(userTotalBoldStyle)
                             .padding(.vertical, 6)
 
                         Text("\(completedContest.opponentTotalWins)")
                             .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
-                            .fontWeight(completedContest.result == .Won ? .regular: .black)
+                            .fontWeight(oppTotalBoldStyle)
                             .padding(.vertical, 6)
 
                     }.fixedSize()
@@ -224,18 +224,6 @@ struct CompletedContestView: View {
     
     
 }
-
-//struct CompletedContestView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CompletedContestView(completedContest: CompletedContest(opponent: "CodyShowstoppa", numBets: 4, result: .Won, userScores: (total: 3, drafted: 2, forced: 1), oppScores: (total: 1, drafted: 1, forced: 0), completionDT: Date(), games: [
-//
-//            CompletedContestGame(homeTeam: "HOU Rockets", awayTeam: "ORL Magic", htScore: 107, atScore: 117, completedDT: Date(), specialDayType: .Today, ouBet: "OVER 215.5", ouBetRes: .Won, spreadBet: "ORL -7", spreadBetRes: .Won, gameWinner: .AWAY)
-//        ]
-//
-//
-//        )).environmentObject(UserScreenInfo(.regular))
-//    }
-//}
 
 
 struct CompletedContestView_Previews: PreviewProvider {

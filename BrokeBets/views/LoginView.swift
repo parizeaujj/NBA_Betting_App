@@ -23,11 +23,18 @@ struct LoginView<T: AppStateProtocol >: View {
             
             VStack {
                 
-                Image("brokeBetsLoginLogo")
+                Image("largeLogo")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 300, height: 300)
-                    .padding(.top, 100)
+                    .frame(width: 150, height: 150)
+//                    .resizable()
+//                    .scaleEffect(0.3)
+////                    .resizable()
+//                    .scaleEffect(2.0)
+//                Image("bbLogoPDF")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 200, height: 200) // 300, 300
+                    .padding(.top, 150)
                     
                 Spacer()
                

@@ -44,7 +44,7 @@ protocol UserServiceProtocol {
     func startSignInWithAppleFlow(_ request: ASAuthorizationAppleIDRequest)
     func finishSignInWithAppleFlow(_ result: Result<ASAuthorization, Error>)
     func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void)
-    func getUsers(startingWith partialStr: String, completion: @escaping ([User]?) -> Void)
+    func getUsers(startingWith partialStr: String, completion: @escaping ([User]?, String) -> Void)
     func logout()
 }
 
@@ -82,11 +82,11 @@ class MockUserService: ObservableObject, UserServiceProtocol {
     func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void){}
     
     
-    func getUsers(startingWith partialStr: String, completion: @escaping ([User]?) -> Void){
+    func getUsers(startingWith partialStr: String, completion: @escaping ([User]?, String) -> Void){
         
         let foundUsers = self.mockUsers.filter { $0.username!.hasPrefix(partialStr)}
         
-        completion(foundUsers)
+        completion(foundUsers, partialStr)
     }
     
     func logout(){
@@ -139,11 +139,15 @@ class UserService: ObservableObject, UserServiceProtocol {
                 self.user = User(uid: user!.uid, username: nil)
                 self.stillCheckingForUsername = true
                 
-                self.getUsername(){ username in
+                print("hereeeee....")
+                self.getUsername { username in
                     
+                    print("hereeeee....\(username ?? "no username")")
                     self.user = User(uid: user!.uid, username: username)
                     self.stillCheckingForUsername = false
+                    print("here after: \(self.user?.username ?? "none")")
                 }
+                
             }
             else {
                 
@@ -330,7 +334,7 @@ class UserService: ObservableObject, UserServiceProtocol {
     
     
     
-    func getUsers(startingWith partialStr: String, completion: @escaping ([User]?) -> Void) {
+    func getUsers(startingWith partialStr: String, completion: @escaping ([User]?, String) -> Void) {
         
         
         let endStr = partialStr + "\u{f8ff}"
@@ -338,18 +342,19 @@ class UserService: ObservableObject, UserServiceProtocol {
         let usernameQuery = db.collection("users")
                               .whereField("username", isGreaterThanOrEqualTo: partialStr).whereField("username", isLessThanOrEqualTo: endStr)
                               .whereField("username", isNotEqualTo: self.user!.username!)
+                              .limit(to: 10)
         
         usernameQuery.getDocuments(){ (querySnapshot, error) in
             
             if let error = error {
                 print(error.localizedDescription)
-                completion(nil)
+                completion(nil, partialStr)
                 return
             }
             
             guard let documents = querySnapshot?.documents else {
                 print("No users found")
-                completion([])
+                completion([], partialStr)
                 return
             }
             
@@ -361,7 +366,7 @@ class UserService: ObservableObject, UserServiceProtocol {
                 
                 guard let username = data["username"] as? String else {
                     print("error parsing document from users collection for username field")
-                    completion(nil)
+                    completion(nil, partialStr)
                     return
                 }
                 
@@ -369,25 +374,7 @@ class UserService: ObservableObject, UserServiceProtocol {
             
             }
             print("Num users found: \(users.count)")
-            completion(users)
-        }
-    }
-}
-
-
-
-extension String {
-    
-    func getNextLetterInAlphabet() -> String? {
-        
-        guard let uc = UnicodeScalar(self) else {
-            return nil
-        }
-        switch uc {
-            case "A" ..< "Z", "a" ..< "z":
-                return String(UnicodeScalar(uc.value + 1)!)
-            default:
-                return nil
+            completion(users, partialStr)
         }
     }
 }

@@ -65,7 +65,7 @@ struct InProgressContestGamesListView: View {
                             .padding(.horizontal, 10)
                         }
                         
-                        if let upcomingGames = inProgressContestGamesListVM.inProgressContest?.upcomingGames {
+                        if let upcomingGames = inProgressContestGamesListVM.inProgressContest?.upcomingGames, upcomingGames.count > 0 {
                             
                             Text("Upcoming")
                                 .font(.caption)
@@ -83,7 +83,7 @@ struct InProgressContestGamesListView: View {
                         }
                         
                         
-                        if let completedGames = inProgressContestGamesListVM.inProgressContest?.completedGames {
+                        if let completedGames = inProgressContestGamesListVM.inProgressContest?.completedGames, completedGames.count > 0  {
                             
                             Text("Completed")
                                 .font(.caption)
