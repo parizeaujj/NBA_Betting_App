@@ -98,23 +98,6 @@ struct UpcomingContestView: View {
 
 
 
-//struct UpcomingContestView_Previews: PreviewProvider {
-//
-//
-//    static var previews: some View {
-//        UpcomingContestView(upcomingContest: UpcomingContest(opponent: "Cody_ShowStoppa", firstGameStartDateTime: Date(), numBets: 3, games: [
-//
-//            UpcomingContestGame(homeTeam: "IND Pacers", awayTeam: "ORL Magic", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "UNDER 225", spreadBet: "IND +2.5"),
-//            UpcomingContestGame(homeTeam: "NO Pelicans", awayTeam: "LA Lakers", gameStartDateTime: Date(), specialDayType: .Today, overUnderBet: "UNDER 215.5", spreadBet: "LA -3")
-//
-//        ]
-//        )
-//        )
-//        .environmentObject(UserScreenInfo(.regular))
-//
-//    }
-//}
-
 struct UpcomingContestView_Previews: PreviewProvider {
 
 

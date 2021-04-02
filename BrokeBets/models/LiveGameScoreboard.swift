@@ -35,6 +35,7 @@ struct LiveGameScoreboard: Codable, Identifiable {
               let isOverTime = data["isOverTime"] as? Bool,
               let isEndOfFirst = data["isEndOfFirst"] as? Bool,
               let isEndOfThird = data["isEndOfThird"] as? Bool,
+              let isEndOfFourth = data["isEndOfFourth"] as? Bool,
               let isHalftime = data["isHalftime"] as? Bool,
               let isEndOfOverTime = data["isEndOfOverTime"] as? Bool,
               let minsLeftInQtr = data["minsLeftInQtr"] as? Int
@@ -78,6 +79,9 @@ struct LiveGameScoreboard: Codable, Identifiable {
         }
         else if(isEndOfThird){
             timeLeftStr = "End of 3rd"
+        }
+        else if(isEndOfFourth){
+            timeLeftStr = "End of 4th"
         }
         else if(isEndOfOverTime){
             timeLeftStr = "End of OT"

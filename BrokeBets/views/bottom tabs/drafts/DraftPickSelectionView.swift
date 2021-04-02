@@ -65,7 +65,7 @@ struct DraftPickSelectionView: View {
                     LazyVStack(spacing: 15){
                         
                         
-                        ForEach(viewModel.draft.gamesPool){ game in
+                        ForEach(viewModel.draft.stillAvailableDraftGames){ game in
                             
                             AvailableDraftGameView(game: game, round: viewModel.draft.currentRound, onDraftPickSelection: { pick in
                                 

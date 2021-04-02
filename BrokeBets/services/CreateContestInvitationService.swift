@@ -21,6 +21,12 @@ protocol CreateContestInvitationServiceProtocol {
         
     typealias AvailableGame = DraftGame
     
+    var maxAvailableDraftRounds: Int { get }
+    var maxAvailableDraftRoundsPublisher: Published<Int>.Publisher  { get }
+    var maxAvailableDraftRoundsPublished: Published<Int>  { get }
+    
+    
+    
     var availableGames: [AvailableGame] { get }
     var availableGamesPublisher: Published<[AvailableGame]>.Publisher { get }
     var availableGamesPublished: Published<[AvailableGame]> { get }
@@ -37,6 +43,10 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
     var availableGamesPublisher: Published<[AvailableGame]>.Publisher { $availableGames }
     var availableGamesPublished: Published<[AvailableGame]> { _availableGames }
     
+    @Published var maxAvailableDraftRounds: Int = 0
+    var maxAvailableDraftRoundsPublisher: Published<Int>.Publisher { $maxAvailableDraftRounds }
+    var maxAvailableDraftRoundsPublished: Published<Int> { _maxAvailableDraftRounds }
+    
     
     var mockData: [[String: Any]] = [
 
@@ -50,6 +60,7 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
             "isHomeTeamFavorite": true,
             "spreadFavoriteBetStr": "HOU -4",
             "spreadUnderdogBetStr": "CLE +4",
+            "doesSpreadBetExist": true,
             "overBetStr": "o 218.5",
             "underBetStr": "u 218.5"
         ],
@@ -64,6 +75,7 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
             "isHomeTeamFavorite": false,
             "spreadFavoriteBetStr": "SA -3",
             "spreadUnderdogBetStr": "LA +3",
+            "doesSpreadBetExist": true,
             "overBetStr": "o 224.5",
             "underBetStr": "u 224.5"
         ],
@@ -77,6 +89,7 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
             "isHomeTeamFavorite": true,
             "spreadFavoriteBetStr": "PHI -5",
             "spreadUnderdogBetStr": "GS +5",
+            "doesSpreadBetExist": true,
             "overBetStr": "o 225",
             "underBetStr": "u 225"
         ],
@@ -90,6 +103,7 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
             "isHomeTeamFavorite": false,
             "spreadFavoriteBetStr": "POR -3.5",
             "spreadUnderdogBetStr": "CHI +3.5",
+            "doesSpreadBetExist": true,
             "overBetStr": "o 221",
             "underBetStr": "u 221"
         ]
@@ -107,6 +121,7 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
         "isHomeTeamFavorite": true,
         "spreadFavoriteBetStr": "NO -8",
         "spreadUnderdogBetStr": "SAC +8",
+        "doesSpreadBetExist": true,
         "overBetStr": "o 223",
         "underBetStr": "u 223"
     ]
@@ -121,9 +136,28 @@ class MockCreateContestInvitationService: ObservableObject, CreateContestInvitat
     
     func getAvailableGames(){
        
-        self.availableGames = self.mockData.map { game in
-            AvailableGame(data: game)!
+        var numBetsAvailable: Int = 0
+        var availableGames: [AvailableGame] = []
+        
+        for game in self.mockData {
+            
+            availableGames.append(AvailableGame(data: game)!)
+            
+            guard let doesSpreadBetExist = game["doesSpreadBetExist"] as? Bool else{
+                print("Error getting doesSpreadBetExist")
+                return
+            }
+            
+            if doesSpreadBetExist {
+                numBetsAvailable += 1
+            }
+            
+            numBetsAvailable += 1
+            
         }
+        
+        self.maxAvailableDraftRounds = Int(numBetsAvailable / 2)
+        self.availableGames = availableGames
     }
     
     func createContestInvitation(selectedOpponent: User, numDraftRounds: Int, completion: @escaping (ContestCreationResult) -> Void){
@@ -149,6 +183,14 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
     var availableGamesPublisher: Published<[AvailableGame]>.Publisher { $availableGames }
     var availableGamesPublished: Published<[AvailableGame]> { _availableGames }
     
+    
+    @Published var maxAvailableDraftRounds: Int = 0
+    var maxAvailableDraftRoundsPublisher: Published<Int>.Publisher { $maxAvailableDraftRounds }
+    var maxAvailableDraftRoundsPublished: Published<Int> { _maxAvailableDraftRounds }
+    
+    
+    
+    
     private var user: User
     private var db = Firestore.firestore()
     private var availableGamesListenerHandle: ListenerRegistration? = nil
@@ -173,13 +215,32 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
                 
                 var availableGames: [AvailableGame] = []
                 
+                var numBetsAvailable: Int = 0
+                
                 for document in documents {
                     
                     var data = document.data()
                     
+                    guard let doesSpreadBetExist = data["doesSpreadBetExist"] as? Bool else {
+                        print("Error getting doesSpreadBetExist")
+                        return
+                    }
+                    
+                    if doesSpreadBetExist {
+                        // inject default data
+                        data["isSpreadBetStillAvailable"] = true
+                        numBetsAvailable += 1
+                    }
+                    else{
+                        // inject default data
+                        data["isSpreadBetStillAvailable"] = false
+                    }
+                    
+                    
                     // inject default data
-                    data["isSpreadBetStillAvailable"] = true
                     data["isOverUnderBetStillAvailable"] = true
+                    data["doesSpreadBetExist"] = doesSpreadBetExist
+                    numBetsAvailable += 1
                     
                     guard let game = AvailableGame(data: data) else {
                         print("Issue getting available game")
@@ -190,6 +251,8 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
                     
                 }
                 
+                
+                self.maxAvailableDraftRounds = Int(numBetsAvailable / 2)
                 self.availableGames = availableGames
                 
             }
@@ -203,14 +266,14 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
         let recipient_uid = selectedOpponent.uid
         let recipient_uname = selectedOpponent.username
         
-        let numAvailableGames = self.availableGames.count
+        let numAvailableRounds = self.maxAvailableDraftRounds
                 
-        guard numAvailableGames != 0 else {
+        guard numAvailableRounds != 0 else {
             completion(.no_games_left)
             return
         }
         
-        guard numDraftRounds <= numAvailableGames else {
+        guard numDraftRounds <= numAvailableRounds else {
             completion(.not_enough_games_failure)
             return
         }
@@ -218,9 +281,12 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
         
         let sortedGames = self.availableGames.sorted { $0.gameStartDateTime < $1.gameStartDateTime }
         
-        let latestAcceptableGameStart = sortedGames[numAvailableGames - numDraftRounds].gameStartDateTime
+//        let latestAcceptableGameStart = sortedGames[numAvailableRounds - numDraftRounds].gameStartDateTime
         
-        let invitationExpirationDateTime = Calendar.current.date(byAdding: .minute, value: -30, to: latestAcceptableGameStart)!
+//        let invitationExpirationDateTime = Calendar.current.date(byAdding: .minute, value: -30, to: latestAcceptableGameStart)!
+        let earliestAvailableGameStart = sortedGames[0].gameStartDateTime
+        let invitationExpirationDateTime = Calendar.current.date(byAdding: .minute, value: -30, to: earliestAvailableGameStart)!
+        
         let id = invitationExpirationDateTime.customUTCDateString()
 
         let expirationSubDocRef = db.collection("invitation_expiration_subscriptions").document(id)

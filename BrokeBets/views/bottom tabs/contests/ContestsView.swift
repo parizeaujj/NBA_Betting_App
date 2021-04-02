@@ -77,9 +77,10 @@ struct ContestsView<T: AppStateProtocol>: View {
                 
             }
             .background(Color.gray.opacity(0.05))
-            .navigationBarTitle("Contests", displayMode: .inline)
+            .navigationTitle("Contests")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
-                                    
+
                                     HStack{
                                         Button(action: {
                                             print("pressed")
@@ -89,13 +90,13 @@ struct ContestsView<T: AppStateProtocol>: View {
                                                 .font(Font.system(.title).bold())
                                         })
                                         .padding(.trailing, 10)
-                                        
+
                                         Button(action: {
-                                        
+
                                             withAnimation{
                                                 isShowingProfileModal = true
                                             }
-                                          
+
                                         }, label: {
                                             Image(systemName: "person.circle")
                                                 .font(Font.system(.title).bold())

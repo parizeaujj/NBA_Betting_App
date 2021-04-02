@@ -102,11 +102,11 @@ class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, Obse
              "gameCompletionDateTime": Timestamp(date: Date()),
              "overUnderBetResults": [
                 "player1": [
-                    "bet": "UNDER 225.5",
+                    "bet": "u 225.5",
                     "result": "LOST"
                 ],
                 "player2": [
-                    "bet": "OVER 225.5",
+                    "bet": "o 225.5",
                     "result": "WON"
                 ]
              ],
@@ -125,19 +125,19 @@ class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, Obse
             // game 2
             
             ["awayTeam": "GS Warriors",
-             "homeTeam": "NY Knicks",
+             "homeTeam": "MIN Timberwolves",
              "awayTeamScore": 115,
              "homeTeamScore": 108,
              "gameWinner" : "HOME", // can be 'HOME', 'AWAY', or 'TIE'
              "gameCompletionDateTime": Timestamp(date: Date()),
              "spreadBetResults": [
                 "player1": [
-                    "bet": "GS -3.5",
-                    "result": "WON"
+                    "bet": "MIN -13.5",
+                    "result": "LOST"
                 ],
                 "player2": [
-                    "bet": "NY +3.5",
-                    "result": "LOST"
+                    "bet": "GS +13.5",
+                    "result": "WON"
                 ]
              ]
             ],
@@ -152,11 +152,11 @@ class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, Obse
              "gameCompletionDateTime": Timestamp(date: Date()),
              "overUnderBetResults": [
                 "player1": [
-                    "bet": "OVER 220",
+                    "bet": "o 220",
                     "result": "WON"
                 ],
                 "player2": [
-                    "bet": "UNDER 220",
+                    "bet": "u 220",
                     "result": "LOST"
                 ]
              ]

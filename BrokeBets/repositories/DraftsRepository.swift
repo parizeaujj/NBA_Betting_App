@@ -127,8 +127,8 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         
         // update the appropriate field that tracks whether a bet type for a given game is still available to be betted on for the given draft and updates the bets strings for each player for the respective game
         switch(betTypeOfPick){
+        
             case .overUnder:
-                
                 
                 games_pool[affectedGameIndex].updateOverUnderBetAvailablity(to: false)
                 
@@ -147,7 +147,6 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         
         
         // if the draft will be completed with this pick then we will also create a new upcoming contest with the draft info
-        
         if isDraftCompleted {
             
             
@@ -201,7 +200,7 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
             }
             
             
-            
+            // creates new contest from draft
             batch.setData([
             
                 "contestId": newContestDocRef.documentID,
@@ -218,12 +217,23 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
             ], forDocument: newContestDocRef)
             
             
+            
+            // get draft_expiration_subscription doc ref
+            let draftExpirationDocId = draft.draftExpirationDateTime.customUTCDateString()
+            let draftExpirationSubDocRef = db.collection("draft_expiration_subscriptions").document(draftExpirationDocId)
+            
+            // removes the draft id from the array of ids for its corresponding expiration time so that it is not marked as expired when that time comes
+            batch.updateData([
+                "draftIds": FieldValue.arrayRemove([draft.draftId])
+            ], forDocument: draftExpirationSubDocRef)
+            
+            
+            // find all the gameIds for the games that are associated with the bets that were drafted
             associatedGameIds.forEach({ gameId in
                 
                 let associatedContestsDocRef = db.collection("associated_contests").document("\(gameId)")
                 
                 batch.updateData([
-                
                     "contestIds": FieldValue.arrayUnion([newContestDocRef.documentID])
                 ], forDocument: associatedContestsDocRef)
                 
@@ -245,7 +255,7 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         ], forDocument: draftDocRef)
         
         
-        
+        // commits the batch
         batch.commit { err in
             if let err = err {
                 
@@ -365,8 +375,9 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "isSpreadBetStillAvailable": false,
                                 "isOverUnderBetStillAvailable": true,
                                 "isHomeTeamFavorite": true,
-                                "spreadFavoriteBetStr": "HOU -4",
-                                "spreadUnderdogBetStr": "CLE +4",
+                                "spreadFavoriteBetStr": "EVEN", // "HOU -4"
+                                "spreadUnderdogBetStr": "EVEN", // "CLE +4"
+                                "doesSpreadBetExist": false,
                                 "overBetStr": "o 218.5",
                                 "underBetStr": "u 218.5",
                                 "player1_spreadBetStr": "HOU -4",
@@ -384,6 +395,7 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "isHomeTeamFavorite": false,
                                 "spreadFavoriteBetStr": "SA -3",
                                 "spreadUnderdogBetStr": "LA +3",
+                                "doesSpreadBetExist": true,
                                 "overBetStr": "o 224.5",
                                 "underBetStr": "u 224.5",
                                 "player1_ouBetStr": "u 224.5",
@@ -400,6 +412,7 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "isHomeTeamFavorite": true,
                                 "spreadFavoriteBetStr": "PHI -5",
                                 "spreadUnderdogBetStr": "GS +5",
+                                "doesSpreadBetExist": true,
                                 "overBetStr": "o 225",
                                 "underBetStr": "u 225",
                                 "player1_ouBetStr": "o 225",
@@ -416,6 +429,7 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
                                 "isHomeTeamFavorite": false,
                                 "spreadFavoriteBetStr": "POR -3.5",
                                 "spreadUnderdogBetStr": "CHI +3.5",
+                                "doesSpreadBetExist": true,
                                 "overBetStr": "o 221",
                                 "underBetStr": "u 221",
                                 "player1_spreadBetStr": "CHI +3.5",

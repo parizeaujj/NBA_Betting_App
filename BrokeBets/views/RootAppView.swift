@@ -27,9 +27,6 @@ struct RootAppView<T: AppStateProtocol>: View {
                         }
                     }
                     
-//                    withAnimation(Animation.linear(duration: 2.0)){
-//                        shouldShowSplash = false
-//                    }
             })
         }
         else{
@@ -49,7 +46,7 @@ struct RootAppView<T: AppStateProtocol>: View {
                     
                     if rootAppVM.appState.userService.user!.username != nil {
                         
-                        MainAppView<T>()
+                        MainAppView<T>(mainAppVM: MainAppVM(appState: rootAppVM.appState))
                      
                     }
                     else{

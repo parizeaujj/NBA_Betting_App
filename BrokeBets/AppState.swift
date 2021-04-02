@@ -19,13 +19,15 @@ protocol AppStateProtocol: ObservableObject {
     var upcomingContestsRepo: UpcomingContestsRepositoryProtocol? { get }
     var completedContestsRepo: CompletedContestsRepositoryProtocol? { get }
     var inProgressContestsRepo: InProgressContestsRepositoryProtocol? { get }
-    
+    var doesHavePermissionForAppIconBadge: Bool { get }
     func deinitializeAllRepos()
+    func askPermissionToShowBadgeValueOnAppIcon()
 }
 
 
 class MockAppState: AppStateProtocol {
     
+    private(set) var doesHavePermissionForAppIconBadge: Bool = false
     private(set) var userService: UserServiceProtocol
     private(set) var createContestInvitationService: CreateContestInvitationServiceProtocol?
     private(set) var draftsRepo: DraftsRepositoryProtocol?
@@ -49,6 +51,8 @@ class MockAppState: AppStateProtocol {
         upcomingContestsRepo = MockUpcomingContestsRepository(uid: uid)
         completedContestsRepo = MockCompletedContestsRepository(uid: uid)
         inProgressContestsRepo = MockInProgressContestsRepository(uid: uid)
+        
+        askPermissionToShowBadgeValueOnAppIcon()
     }
     
     func deinitializeAllRepos(){
@@ -59,10 +63,25 @@ class MockAppState: AppStateProtocol {
         self.inProgressContestsRepo = nil
         self.completedContestsRepo = nil
     }
+    
+    func askPermissionToShowBadgeValueOnAppIcon() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge]){ success, error in
+            
+            if success {
+                print("Successfully got permission")
+                self.doesHavePermissionForAppIconBadge = true
+            }
+            else if let error = error {
+                print(error.localizedDescription)
+                self.doesHavePermissionForAppIconBadge = false
+            }
+        }
+    }
 }
 
 class AppState: AppStateProtocol {
     
+    private(set) var doesHavePermissionForAppIconBadge: Bool = false
     private(set) var userService: UserServiceProtocol
     private(set) var createContestInvitationService: CreateContestInvitationServiceProtocol?
     private(set) var draftsRepo: DraftsRepositoryProtocol?
@@ -72,13 +91,12 @@ class AppState: AppStateProtocol {
     private(set) var completedContestsRepo: CompletedContestsRepositoryProtocol?
     private(set) var inProgressContestsRepo: InProgressContestsRepositoryProtocol?
     
-    
+
     private var cancellables: [AnyCancellable] = []
     
 
     init(shouldByPassLogin: Bool = false){
         
-       
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
@@ -112,6 +130,8 @@ class AppState: AppStateProtocol {
             .store(in: &cancellables)
             
         }
+        
+        askPermissionToShowBadgeValueOnAppIcon()
     }
     
     private func initializeAllRepos(user: User){
@@ -133,6 +153,23 @@ class AppState: AppStateProtocol {
         upcomingContestsRepo = nil
         completedContestsRepo = nil
         inProgressContestsRepo = nil
+    }
+    
+    func askPermissionToShowBadgeValueOnAppIcon() {
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge]){ success, error in
+            
+            if success {
+                print("Successfully got permission")
+                self.doesHavePermissionForAppIconBadge = true
+            }
+            else if let error = error {
+                print(error.localizedDescription)
+                self.doesHavePermissionForAppIconBadge = false
+            }
+        }
+        
+        
     }
 }
 

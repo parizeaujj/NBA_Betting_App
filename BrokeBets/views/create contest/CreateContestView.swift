@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct CreateContestView: View {
-    
+
     @Environment(\.presentationMode) var presentationMode
     @StateObject var createContestVM: CreateContestVM
     @State var isDraftRoundsOpen = false
     @State var showingSuccessNotice = false
-    
+
     @State var showErrorMessage = false
     @State var errorMessage: String = ""
     @State var shouldDismissAfter = false
-    
+
     var body: some View {
-        
+
         ZStack{
             NavigationView{
                 ZStack{
                     Color.gray.opacity(0.2)
                         .edgesIgnoringSafeArea(.bottom)
-                    
+
                     VStack{
                         VStack{
                             HStack{
@@ -38,7 +38,7 @@ struct CreateContestView: View {
                                                                                             createContestVM.selectedOpponent,
                                                                                          setOpponentSelection: { user in
                                                                                             self.createContestVM.setSelectedUser(user: user)
-                                                                                            
+
                                                                                          },
                                                                                          userService: createContestVM.userService)),
                                     isActive: $createContestVM.isSearchScreenActive,
@@ -53,9 +53,9 @@ struct CreateContestView: View {
                                     })
                             }
                             .padding(.vertical, 5)
-                            
+
                             Divider()
-                            
+
                             HStack{
                                 Button(action: {
                                     withAnimation(Animation.default.delay(0.2)){
@@ -72,7 +72,7 @@ struct CreateContestView: View {
                                 })
                             }
                             .padding(.vertical, 5)
-                            
+
                             if(isDraftRoundsOpen){
                                 Picker("", selection: $createContestVM.selectedNumRounds) {
                                     ForEach(createContestVM.numRoundsOptions, id: \.self) {
@@ -80,20 +80,25 @@ struct CreateContestView: View {
                                     }
                                 }
                                 .pickerStyle(WheelPickerStyle())
+                                .frame(maxWidth: UIScreen.main.bounds.width - 70)
+
                             }
                         }
-                        .padding()
+                        //
+
+                        .padding(16)
                         .background(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .padding()
+                        .padding(16)
                         .padding(.top, 25)
-                        
+
+
                         Spacer()
-                        
+
                         Button(action: {
-                            
+
                             createContestVM.sendContestInvitation()
-                            
+
                         }, label: {
                             Text("Send Contest Invitation")
                                 .foregroundColor(Color.white)
@@ -107,16 +112,16 @@ struct CreateContestView: View {
                         .disabled(createContestVM.selectedOpponent == nil || createContestVM.isLoading)
                         .padding(.bottom, 50)
                         .padding(.horizontal, 45)
-                        
+
                     }
-                    
+
                     if(showingSuccessNotice){
-                        
+
                         AnimatedSuccessHUD(showingSuccessNotice: $showingSuccessNotice, onAnimationCompletion: {
                             presentationMode.wrappedValue.dismiss()
                         })
                         .zIndex(2)
-                        
+
                     }
                 }
                 .navigationBarTitle("New Contest", displayMode: .inline)
@@ -126,19 +131,19 @@ struct CreateContestView: View {
                     Text("Cancel")
                         .foregroundColor(.white)
                 }))
-                
+
             }
             .accentColor(.white)
             .environment(\.colorScheme, .light)
-            
-            
+
+
             .alert(isPresented: $showErrorMessage, content: {
-                
-                
+
+
                 if let result = createContestVM.invitationCreationAttemptFinished.value {
-                    
+
                     return Alert(title: Text("Error Creating Invitation"), message: Text("\(result.rawValue)"), dismissButton: .default(Text("Ok"), action: {
-                        
+
                         // if there are no games left then pop them back to the main screen since they cant create a contest if there arent any games
                         if result == .no_games_left {
                             presentationMode.wrappedValue.dismiss()
@@ -154,30 +159,30 @@ struct CreateContestView: View {
                 }
             })
             .onReceive(createContestVM.invitationCreationAttemptFinished, perform: { result in
-                
+
                 if result == nil {
                     return
                 }
-                
+
                 switch(result){
                 case .success:
                     self.showingSuccessNotice = true
                 default:
                     self.showErrorMessage = true
                 }
-                
+
             })
-            
-            
+
+
             if(createContestVM.isLoading){
-                
+
                 Color.gray.opacity(0.2)
                     .edgesIgnoringSafeArea(.all)
                 
                 ProgressView()
                     .scaleEffect(1.4, anchor: .center)
                     .progressViewStyle(CircularProgressViewStyle(tint: .black))
-                
+
             }
         }
     }
@@ -187,7 +192,7 @@ struct CreateContestView: View {
 struct CreateContestView_Previews: PreviewProvider {
     static var previews: some View {
         
-        let appState = AppState(shouldByPassLogin: true)
+        let appState = MockAppState()
         
         CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: appState.createContestInvitationService!, userService: appState.userService))
 //            .preferredColorScheme(.light)

@@ -4,29 +4,68 @@
 
 import SwiftUI
 
+import Combine
+//
+class TabVM: ObservableObject {
+    
+    @Published var badgeValues: [String?] = [nil, nil, nil]
+    
+    func updateBadgeValueOfTabItem(at tabIndex: Int){
+        
+    }
+}
+//
+
+
+
+
 // An iOS style TabView that doesn't reset it's childrens navigation stacks when tabs are switched.
 public struct UIKitTabView: View {
     private var viewControllers: [UIHostingController<AnyView>]
     private var selectedIndex: Binding<Int>?
     @State private var fallbackSelectedIndex: Int = 0
     
-    public init(selectedIndex: Binding<Int>? = nil, @TabBuilder _ views: () -> [Tab]) {
-        self.viewControllers = views().map {
+    private var badgeValues: Binding<[String?]>?
+    @State private var fallbackBadgeValues: [String?] = Array(repeating: nil, count: 5)
+
+    
+    public init(selectedIndex: Binding<Int>? = nil, badgeValues: Binding<[String?]>? = nil, @TabBuilder _ views: () -> [Tab]) {
+        
+        let views = views()
+     
+        self.viewControllers = views.map {
             let host = UIHostingController(rootView: $0.view)
             host.tabBarItem = $0.barItem
             return host
         }
         self.selectedIndex = selectedIndex
+        let numTabs = views.count
+        self.fallbackBadgeValues = Array(repeating: nil, count: numTabs)
+        self.badgeValues = badgeValues
     }
     
     public var body: some View {
-        TabBarController(controllers: viewControllers, selectedIndex: selectedIndex ?? $fallbackSelectedIndex)
+        TabBarController(controllers: viewControllers, selectedIndex: selectedIndex ?? $fallbackSelectedIndex, badgeValues: badgeValues ?? $fallbackBadgeValues)
             .edgesIgnoringSafeArea(.all)
+
     }
     
     public struct Tab {
+        
+        //
+//        private var badgeValue: Binding<String?>
         var view: AnyView
         var barItem: UITabBarItem
+        
+//
+//        init(view: AnyView, barItem: UITabBarItem, badgeValue: Binding<String?>? = nil){
+//
+//            self.view = view
+//            self.barItem = barItem
+//            self.badgeValue = badgeValue ?? .constant(nil)
+//
+//        }
+        
     }
 }
 
@@ -36,6 +75,9 @@ public struct TabBuilder {
         items
     }
 }
+
+
+
 
 extension View {
     public func tab(title: String, image: String? = nil, selectedImage: String? = nil, badgeValue: String? = nil) -> UIKitTabView.Tab {
@@ -57,6 +99,7 @@ extension View {
 fileprivate struct TabBarController: UIViewControllerRepresentable {
     var controllers: [UIViewController]
     @Binding var selectedIndex: Int
+    @Binding var badgeValues: [String?]
 
     func makeUIViewController(context: Context) -> UITabBarController {
         let tabBarController = UITabBarController()
@@ -68,6 +111,11 @@ fileprivate struct TabBarController: UIViewControllerRepresentable {
 
     func updateUIViewController(_ tabBarController: UITabBarController, context: Context) {
         tabBarController.selectedIndex = selectedIndex
+        
+        let items = tabBarController.tabBar.items!
+        for i  in  0..<items.count {
+            items[i].badgeValue = badgeValues[i]
+        }
     }
     
     func makeCoordinator() -> Coordinator {

@@ -37,23 +37,38 @@ class CreateContestVM: ObservableObject {
         self.createContestInvitationService = createContestInvitationService
         self.userService = userService
         
-        
         self.createContestInvitationService
-            .availableGamesPublisher
-            .sink { [weak self] games in
+            .maxAvailableDraftRoundsPublisher
+            .sink { [weak self] maxRounds in
                 
-                let numAvailableGames = games.count
-                
-                if numAvailableGames == 0 {
+        
+                if maxRounds == 0 {
                     return
                 }
                 
-                if numAvailableGames != self?.curMaxRounds {
-                    self?.numRoundsOptions = [Int](1...numAvailableGames)
-                    self?.curMaxRounds = numAvailableGames
+                if maxRounds != self?.curMaxRounds {
+                    self?.numRoundsOptions = [Int](1...maxRounds)
+                    self?.curMaxRounds = maxRounds
                 }
             }
             .store(in: &cancellables)
+        
+//        self.createContestInvitationService
+//            .availableGamesPublisher
+//            .sink { [weak self] games in
+//
+//                let numAvailableGames = games.count
+//
+//                if numAvailableGames == 0 {
+//                    return
+//                }
+//
+//                if numAvailableGames != self?.curMaxRounds {
+//                    self?.numRoundsOptions = [Int](1...numAvailableGames)
+//                    self?.curMaxRounds = numAvailableGames
+//                }
+//            }
+//            .store(in: &cancellables)
         
     }
     

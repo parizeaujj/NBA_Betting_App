@@ -18,6 +18,9 @@ struct DraftGame: Identifiable {
     private(set) var awayTeam: String
     private(set) var isSpreadBetStillAvailable: Bool
     private(set) var isOverUnderBetStillAvailable: Bool
+    
+    private(set) var doesSpreadBetExist: Bool //
+    
     private(set) var homeSpreadBetStr: String
     private(set) var awaySpreadBetStr: String
     private(set) var overBetStr: String
@@ -41,6 +44,7 @@ struct DraftGame: Identifiable {
               let awayTeam = data["awayTeam"] as? String,
               let isSpreadBetStillAvailable = data["isSpreadBetStillAvailable"] as? Bool,
               let isOverUnderBetStillAvailable = data["isOverUnderBetStillAvailable"] as? Bool,
+              let doesSpreadBetExist = data["doesSpreadBetExist"] as? Bool, //
               let isHomeTeamFavorite = data["isHomeTeamFavorite"] as? Bool,
               let spreadFavoriteBetStr = data["spreadFavoriteBetStr"] as? String,
               let spreadUnderdogBetStr = data["spreadUnderdogBetStr"] as? String,
@@ -57,12 +61,12 @@ struct DraftGame: Identifiable {
         self.awayTeam = awayTeam
         self.isSpreadBetStillAvailable = isSpreadBetStillAvailable
         self.isOverUnderBetStillAvailable = isOverUnderBetStillAvailable
-        
+        self.doesSpreadBetExist = doesSpreadBetExist
         
         //
         
         
-        if !isSpreadBetStillAvailable {
+        if doesSpreadBetExist && !isSpreadBetStillAvailable {
             
             guard let player1_spreadBetStr = data["player1_spreadBetStr"] as? String else {
                 print("error getting player1_spreadBet")

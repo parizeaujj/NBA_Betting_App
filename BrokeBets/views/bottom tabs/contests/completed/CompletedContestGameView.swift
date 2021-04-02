@@ -13,19 +13,22 @@ struct CompletedContestGameViewStyleBag{
     let mainFontType: Font
     let secondaryFontType: Font
     let betsColFrameWidth: CGFloat
+    let resultsColFrameWidth: CGFloat
     
     init(){
         self.paddings = (10, 20) // 10 20 30 20
         self.mainFontType = .body
         self.secondaryFontType = .caption
-        self.betsColFrameWidth = 87
+        self.betsColFrameWidth = 75 // was 87
+        self.resultsColFrameWidth = 65
     }
     
-    init(mainFontType: Font, secondaryFontType: Font, paddings: (leadingTeamsBox: CGFloat, trailingScoresBox: CGFloat), betsColFrameWidth: CGFloat){
+    init(mainFontType: Font, secondaryFontType: Font, paddings: (leadingTeamsBox: CGFloat, trailingScoresBox: CGFloat), betsColFrameWidth: CGFloat, resultsColFrameWidth: CGFloat){
         self.paddings = paddings
         self.mainFontType = mainFontType
         self.secondaryFontType = secondaryFontType
         self.betsColFrameWidth = betsColFrameWidth
+        self.resultsColFrameWidth = resultsColFrameWidth
     }
 }
 
@@ -207,6 +210,7 @@ struct CompletedContestGameView: View {
                             .padding(.vertical, 5)
                             
                         }
+                        .frame(minWidth: userScreenInfo.completedContestGameViewStyleBag.resultsColFrameWidth)
                         .fixedSize()
 
                     }
@@ -227,10 +231,12 @@ struct CompletedContestGameView: View {
 struct CompletedContestGameView_Previews: PreviewProvider {
     static var previews: some View {
         
-        if let games = MockCompletedContestsRepository(uid: "testToddUid").mockData[0]["games"] as? [[String: Any]]{
+        if let games = MockCompletedContestsRepository(uid: "testToddUid").mockData[0]["completed_games"] as? [[String: Any]]{
             CompletedContestGameView(game:
                                         CompletedContestGame(game: games[1], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
-            ).environmentObject(UserScreenInfo(.xsmall))
+            )
+            .environmentObject(UserScreenInfo(.regular))
+//            .environmentObject(UserScreenInfo(.xsmall))
         }
     }
 }

@@ -13,7 +13,7 @@ import Firebase
 @main
 struct BrokeBetsApp: App {
         
-    let appState = AppState(shouldByPassLogin: true)
+    let appState = MockAppState()
     
     var body: some Scene {
         WindowGroup {

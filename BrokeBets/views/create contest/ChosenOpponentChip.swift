@@ -26,16 +26,16 @@ struct ChosenOpponentChip: View {
                 .font(Font.body.weight(.semibold))
                 .foregroundColor(.white)
         }
-        .padding(.horizontal, 8)
+        .padding(.horizontal, 10) // was 8
         .padding(.vertical, 4)
         .background(Color.blue)
-        .clipShape(RoundedRectangle(cornerRadius: 15))
-        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 0))
+        .clipShape(RoundedRectangle(cornerRadius: 14)) // was 15
+        .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.black, lineWidth: 0))
     }
 }
 
 struct ChosenOpponentChip_Previews: PreviewProvider {
     static var previews: some View {
-        ChosenOpponentChip(username: "CodyShowstoppa")
+        ChosenOpponentChip(username: "codyshowstoppa")
     }
 }

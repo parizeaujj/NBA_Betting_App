@@ -12,6 +12,7 @@ struct InProgressContestGamesListView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var inProgressContestGamesListVM: InProgressContestGamesListVM
         
+    @EnvironmentObject var userScreenInfo: UserScreenInfo
     
     var body: some View {
         
@@ -21,23 +22,23 @@ struct InProgressContestGamesListView: View {
                     
                     HStack{
                         Text("Opponent:")
-                            .font(.title3)
+                            .font(userScreenInfo.gamesListViewFonts.oppTitleFont)
                         Text(inProgressContestGamesListVM.inProgressContest!.opponent)
-                            .font(.title3)
+                            .font(userScreenInfo.gamesListViewFonts.oppNameFont)
                             .foregroundColor(.blue)
                             .fontWeight(.bold)
                     }
                     
                     HStack{
                         Text("Total bets:")
-                            .font(.title3)
+                            .font(userScreenInfo.gamesListViewFonts.numBetsTitleFont)
                         Text("\(inProgressContestGamesListVM.inProgressContest!.numBets)")
-                            .font(.title3)
+                            .font(userScreenInfo.gamesListViewFonts.numBetsValueFont)
                             .fontWeight(.bold)
                     }.padding(.top, 4)
                 }
                 .padding(.vertical)
-                .padding(.leading, 30)
+                .padding(.leading, 20)
                 .frame(width: UIScreen.main.bounds.width, alignment: .leading)
                 
                 Divider()
@@ -46,7 +47,7 @@ struct InProgressContestGamesListView: View {
                 ScrollView {
                     LazyVStack {
                         
-                        if let inProgressGames = inProgressContestGamesListVM.inProgressContest?.inProgressGames {
+                        if let inProgressGames = inProgressContestGamesListVM.inProgressContest?.inProgressGames, inProgressGames.count > 0 {
                             
                             Text("In Progress")
                                 .font(.caption)
@@ -112,7 +113,7 @@ struct InProgressContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
         
         InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository(uid: "testToddUid")))
-                        .environmentObject(UserScreenInfo(.small))
+                        .environmentObject(UserScreenInfo(.xsmall))
             .environmentObject(MockUpcomingContestsRepository(uid: "testToddUid"))
     }
 }

@@ -10,6 +10,9 @@ import SwiftUI
 
 struct CompletedContestGamesListView: View {
     
+    
+    @EnvironmentObject var userScreenInfo: UserScreenInfo
+    
     var contest: CompletedContest
     
     var body: some View {
@@ -20,24 +23,24 @@ struct CompletedContestGamesListView: View {
                 
                 HStack{
                     Text("Opponent:")
-                        .font(.title3)
+                        .font(userScreenInfo.gamesListViewFonts.oppTitleFont) // was title 3
                     Text(contest.opponent)
-                        .font(.title3)
+                        .font(userScreenInfo.gamesListViewFonts.oppNameFont)
                         .foregroundColor(.blue)
                         .fontWeight(.bold)
                 }
                 
                 HStack{
                     Text("Total bets:")
-                        .font(.title3)
+                        .font(userScreenInfo.gamesListViewFonts.numBetsTitleFont)
                     Text("\(contest.numBets)")
-                        .font(.title3)
+                        .font(userScreenInfo.gamesListViewFonts.numBetsValueFont)
                         .fontWeight(.bold)
                 }.padding(.top, 4)
                 
              }
             .padding(.vertical)
-            .padding(.leading, 30)
+            .padding(.leading, 20) // was 30
             .frame(width: UIScreen.main.bounds.width, alignment: .leading)
            
             Divider()
@@ -66,7 +69,8 @@ struct CompletedContestGamesListView: View {
 struct CompletedContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
         CompletedContestGamesListView(contest: CompletedContest(data: MockCompletedContestsRepository(uid: "testToddUid").mockData[0], playerUid: "testToddUid")!
-        ).environmentObject(UserScreenInfo(.regular))
+        )
+        .environmentObject(UserScreenInfo(.xsmall))
     }
 }
  

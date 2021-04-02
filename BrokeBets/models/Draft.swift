@@ -24,7 +24,7 @@ struct Draft: Identifiable {
 
     var userDraftRoundsResults: [DraftRound]?
     var gamesPool: [DraftGame]
-
+    var stillAvailableDraftGames: [DraftGame]
     
     init?(data: [String: Any], playerUid: String){
         
@@ -193,7 +193,9 @@ struct Draft: Identifiable {
             gamesPool.append(draftGame)
         }
         
-        self.gamesPool = gamesPool.filter({$0.isSpreadBetStillAvailable || $0.isOverUnderBetStillAvailable}).sorted {
+        self.gamesPool = gamesPool
+        
+        self.stillAvailableDraftGames = gamesPool.filter({$0.isSpreadBetStillAvailable || $0.isOverUnderBetStillAvailable}).sorted {
             
             if($0.gameStartDateTime != $1.gameStartDateTime){
                return $0.gameStartDateTime < $1.gameStartDateTime

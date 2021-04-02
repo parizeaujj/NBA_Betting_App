@@ -192,8 +192,8 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                         "homeTeam": "MIA Heat",
                         "gameStartDateTime": Timestamp(date: Date()),
                         "overUnderBet": [
-                               "player1": "OVER 225.5",
-                               "player2": "UNDER 225.5"
+                               "player1": "o 225.5",
+                               "player2": "u 225.5"
                         ],
                         "spreadBet": [
                                "player1": "MIA -7",
@@ -226,11 +226,11 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                      "gameCompletionDateTime": Timestamp(date: Date()),
                      "overUnderBetResults": [
                         "player1": [
-                            "bet": "UNDER 225.5",
+                            "bet": "u 225.5",
                             "result": "LOST"
                         ],
                         "player2": [
-                            "bet": "OVER 225.5",
+                            "bet": "o 225.5",
                             "result": "WON"
                         ]
                      ],
@@ -276,11 +276,11 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                      "gameCompletionDateTime": Timestamp(date: Date()),
                      "overUnderBetResults": [
                         "player1": [
-                            "bet": "OVER 220",
+                            "bet": "o 220",
                             "result": "WON"
                         ],
                         "player2": [
-                            "bet": "UNDER 220",
+                            "bet": "u 220",
                             "result": "LOST"
                         ]
                      ]
@@ -296,8 +296,8 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                 "homeTeam": "MIA Heat",
                 "timeGameStarted": Timestamp(date: Date()),
                 "overUnderBet": [
-                       "player1": "OVER 225.5",
-                       "player2": "UNDER 225.5"
+                       "player1": "o 225.5",
+                       "player2": "u 225.5"
                 ],
                 "spreadBet": [
                        "player1": "MIA -7",
@@ -326,8 +326,8 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                 "homeTeam": "UT Jazz",
                 "timeGameStarted": Timestamp(date: Date()),
                 "overUnderBet": [
-                       "player1": "OVER 220",
-                       "player2": "UNDER 220"
+                       "player1": "o 220",
+                       "player2": "u 220"
                 ],
                ]
             ]
@@ -349,6 +349,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "isOverTime": false,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false,
             "currentQuarter": 2,
@@ -364,6 +365,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "numOverTime": 2,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false
         ],
@@ -378,6 +380,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "currentQuarter": 4,
             "isEndOfFirst": true,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false,
         ]],
@@ -394,6 +397,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "currentQuarter": 2,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false
         ],
@@ -408,6 +412,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "numOverTime": 2,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false,
         ],
@@ -422,6 +427,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "currentQuarter": 4,
             "isEndOfFirst": false,
             "isEndOfThird": true,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false,
         ]],
@@ -438,6 +444,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "currentQuarter": 2,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false,
         ],
@@ -452,6 +459,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "numOverTime": 2,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false,
         ],
@@ -466,6 +474,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "currentQuarter": 4,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": true,
         ]],
@@ -482,6 +491,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "currentQuarter": 2,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false,
         ],
@@ -496,6 +506,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "numOverTime": 2,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": false,
             "isHalftime": false,
         ],
@@ -510,6 +521,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
             "currentQuarter": 4,
             "isEndOfFirst": false,
             "isEndOfThird": false,
+            "isEndOfFourth": false,
             "isEndOfOverTime": true,
             "isHalftime": false,
         ]],

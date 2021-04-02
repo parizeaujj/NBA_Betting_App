@@ -44,8 +44,8 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
                          "homeTeam": "MIA Heat",
                          "gameStartDateTime": Timestamp(date: Date()),
                          "overUnderBet": [
-                                "player1": "OVER 225.5",
-                                "player2": "UNDER 225.5"
+                                "player1": "o 225.5",
+                                "player2": "u 225.5"
                          ],
                          "spreadBet": [
                                 "player1": "MIA -7",
