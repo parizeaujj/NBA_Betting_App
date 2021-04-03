@@ -203,21 +203,21 @@ Devontay Eluett - Created UI tests for Drafting, and Invitations.
 - [Source Code](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBets)
 - [Automated Tests](https://github.com/parizeaujj/NBA_Betting_App/tree/main/BrokeBetsTests/ModelTests)
 - [Manual Tests](https://github.com/parizeaujj/NBA_Betting_App/blob/main/artifacts/ManualTests.md)
-- Product Demonstration
+- [Product Demonstration](https://vimeo.com/530603262)
 - [Shared Google Drive](https://drive.google.com/drive/folders/1gYFik-nxfsuJPQ-2xIo4uRZ2wcKz3Hjy?usp=sharing)
 - [Second repo- score scraping server](https://github.com/todd-weidler/score_scraper)
 
 ## Task Allocation
 
-JJ Parizeau - 
+JJ Parizeau - Worked on webscraper
 
-Fabrizio Herrera - 
+Fabrizio Herrera - Worked on webscraper
 
-Todd Weidler - 
+Todd Weidler - Created expire drafts and invitations functions and crons jobs
 
-Aland Nguyen -  
+Aland Nguyen - Worked on cloud functions 
 
-Devontay Eluett - 
+Devontay Eluett - Created upcoming games scraper and cron
 
 
 
