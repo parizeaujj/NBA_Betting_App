@@ -35,6 +35,9 @@ class DraftBoardVM: ObservableObject {
                 guard let draft = drafts[self!.draftId] else {
                     print("draft is no longer in dataset")
                     
+//                    print("draftId: \(self?.draftId ?? "none")")
+                    print("num drafts: \(drafts.count)")
+                    
                     // pop them back to DraftsListView
                     self?.draftDoesNotExistAnymore.send()
                     return

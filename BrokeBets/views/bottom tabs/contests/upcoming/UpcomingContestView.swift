@@ -30,15 +30,15 @@ struct UpcomingContestView: View {
                         
                         
                         // if the screen size is small, then make text smaller so that it does not need to wrap to new line
-                        if userScreenInfo.screenSizeType == .small {
+                        if UserScreenInfoV2.current.screenSizeType == .small {
                             
                             Text("Opponent:")
                                 .font(.subheadline)
 
                             Text("\(upcomingContest.opponent)")
                                 .font(.subheadline)
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                .fontWeight(.bold)
+                                .foregroundColor(.blue)
                                 .lineLimit(1)
                         }
                         else{
@@ -47,8 +47,8 @@ struct UpcomingContestView: View {
                                
                             Text("\(upcomingContest.opponent)")
                                
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                .fontWeight(.bold)
+                                .foregroundColor(.blue)
                         }
                         
                         Spacer()
@@ -59,7 +59,7 @@ struct UpcomingContestView: View {
                         Text("\(upcomingContest.numBets)")
                             .font(.subheadline)
                             
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
                             .padding(.trailing, 8)
                         
                     }

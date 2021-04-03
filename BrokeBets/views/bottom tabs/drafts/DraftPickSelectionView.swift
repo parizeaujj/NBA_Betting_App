@@ -74,6 +74,7 @@ struct DraftPickSelectionView: View {
                             })
                             
                         }
+                        .padding(.top, 1)
                     }
                     .padding(.horizontal, 8)
                 }

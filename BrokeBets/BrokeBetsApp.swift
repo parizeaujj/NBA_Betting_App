@@ -10,10 +10,12 @@ import Firebase
 
 
 
+
 @main
 struct BrokeBetsApp: App {
         
-    let appState = MockAppState()
+    let appState = AppState()
+//    let userScreenInfo = UserScreenInfo(getScreenSizeType())
     
     var body: some Scene {
         WindowGroup {

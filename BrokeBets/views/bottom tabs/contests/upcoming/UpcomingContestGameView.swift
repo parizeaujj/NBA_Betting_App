@@ -67,15 +67,15 @@ struct UpcomingContestGameView: View {
                             VStack(alignment: .leading) {
                                 Text("\(game.homeTeam)")
                                     .lineLimit(1)
-                                    .font(userScreenInfo.upcomingContestGameViewStyleBag.mainFontType)
+                                    .font(UserScreenInfoV2.current.upcomingContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
                                 
                                 Text("\(game.awayTeam)")
                                     .lineLimit(1)
-                                    .font(userScreenInfo.upcomingContestGameViewStyleBag.mainFontType)
+                                    .font(UserScreenInfoV2.current.upcomingContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
                             }
-                            .padding(.leading, userScreenInfo.upcomingContestGameViewStyleBag.leadingTeamsBoxPadding) // 15, 10)
+                            .padding(.leading, UserScreenInfoV2.current.upcomingContestGameViewStyleBag.leadingTeamsBoxPadding) // 15, 10)
                             
                             Spacer()
                             
@@ -92,7 +92,7 @@ struct UpcomingContestGameView: View {
                                 
                                 
                                 Text("Bets")
-                                    .font(userScreenInfo.upcomingContestGameViewStyleBag.secondaryFontType)
+                                    .font(UserScreenInfoV2.current.upcomingContestGameViewStyleBag.secondaryFontType)
                                     
                                     .padding(.vertical, 4)
                                 
@@ -103,18 +103,18 @@ struct UpcomingContestGameView: View {
                                     
                                     if let spreadBet = game.spreadBet {
                                         Text("\(spreadBet)")
-                                            .font(userScreenInfo.upcomingContestGameViewStyleBag.secondaryFontType)                                }
+                                            .font(UserScreenInfoV2.current.upcomingContestGameViewStyleBag.secondaryFontType)                                }
                                     
                                     if let ouBet = game.overUnderBet {
                                         Text("\(ouBet)")
-                                            .font(userScreenInfo.upcomingContestGameViewStyleBag.secondaryFontType)
+                                            .font(UserScreenInfoV2.current.upcomingContestGameViewStyleBag.secondaryFontType)
                                         
                                     }
                                 }
                                 .padding(.horizontal, 5)
                                 .padding(.vertical, 5)
                             }
-                            .frame(minWidth: userScreenInfo.upcomingContestGameViewStyleBag.betsColFrameWidth)
+                            .frame(minWidth: UserScreenInfoV2.current.upcomingContestGameViewStyleBag.betsColFrameWidth)
                             .fixedSize()
                             
                         }

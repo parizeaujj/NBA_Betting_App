@@ -285,16 +285,16 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
     
     private var user: User
     
-    let mockData: [ String: [String: Any] ] = [
+    var mockData: [ String: [String: Any] ] = [
         
         
         "draftid1":
                     [
                         "draftId": "draftid1",
-                        "player1_uid": "testToddUid",
-                        "player1_uname": "todd123",
-                        "player2_uid": "testOppUid",
-                        "player2_uname": "testopp",
+                        "player1_uid": "testOppUid",
+                        "player1_uname": "testopp",
+                        "player2_uid": "testToddUid",
+                        "player2_uname": "todd123",
                         "currentPlayerTurn": "player1",
                         "currentRound": 3,
                         "totalRounds": 5,
@@ -441,11 +441,186 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
     ]
     
     
+    var mockData2: [ String: [String: Any] ] = [
+        
+        
+        "draftid1":
+                    [
+                        "draftId": "draftid1",
+                        "player1_uid": "testToddUid",
+                        "player1_uname": "todd123",
+                        "player2_uid": "testOppUid",
+                        "player2_uname": "testopp",
+                        "currentPlayerTurn": "player1",
+                        "currentRound": 3,
+                        "totalRounds": 5,
+                        "draftExpirationDateTime": Timestamp(date: Date()),
+                        "player1_drafted_picks": [
+                            [
+                                "round": 2,
+                                "gameId": "gameid1",
+                                "betType": "spread",
+                                "betInfo": "HOU -4",
+                                "betDisplayStr": "HOU -4 (vs CLE)"
+                            ],
+                            [
+                                "round": 1,
+                                "gameId": "gameid2",
+                                "betType": "overUnder",
+                                "betInfo": "u 224.5",
+                                "betDisplayStr": "u 224.5 (LAC vs SA)"
+                            ],
+                            [
+                                "round": 3,
+                                "gameId": "gameid3",
+                                "betType": "spread",
+                                "betInfo": "PHI -5",
+                                "betDisplayStr": "PHI -5 (vs GS)",
+                            ]
+                        ],
+                        "player1_forced_picks": [
+                            [
+                                "round": 2,
+                                "gameId": "gameid3",
+                                "betType": "overUnder",
+                                "betInfo": "o 225",
+                                "betDisplayStr": "o 225 (PHI vs GS)"
+                            ],
+                            [
+                                "round": 1,
+                                "gameId": "gameid4",
+                                "betType": "spread",
+                                "betInfo": "CHI +3.5",
+                                "betDisplayStr": "CHI +3.5 (vs POR)"
+                            ]
+                        ],
+                        "player2_drafted_picks": [
+                            [
+                                "round": 2,
+                                "gameId": "gameid3",
+                                "betType": "overUnder",
+                                "betInfo": "u 225",
+                                "betDisplayStr": "u 225 (PHI vs GS)"
+                            ],
+                            [
+                                "round": 1,
+                                "gameId": "gameid4",
+                                "betType": "spread",
+                                "betInfo": "POR -3.5",
+                                "betDisplayStr": "POR -3.5 (vs CHI)"
+                            ]
+                        ],
+                        "player2_forced_picks": [
+                        
+                            [
+                                "round": 2,
+                                "gameId": "gameid1",
+                                "betType": "spread",
+                                "betInfo": "CLE +4",
+                                "betDisplayStr": "CLE +4 (vs HOU)"
+                            ],
+                            [
+                                "round": 1,
+                                "gameId": "gameid2",
+                                "betType": "overUnder",
+                                "betInfo": "o 224.5",
+                                "betDisplayStr": "o 224.5 (LAC vs SA)"
+                            ],
+                            [
+                                "round": 3,
+                                "gameId": "gameid3",
+                                "betType": "spread",
+                                "betInfo": "GS +5",
+                                "betDisplayStr": "GS +5 (vs PHI)",
+                            ]
+                        
+                        ],
+                        "games_pool": [
+                        
+                            [
+                                "gameId": "gameid1",
+                                "homeTeam": "HOU Rockets",
+                                "awayTeam": "CLE Cavaliers",
+                                "gameStartDateTime": Timestamp(date: Date()),
+                                "isSpreadBetStillAvailable": false,
+                                "isOverUnderBetStillAvailable": true,
+                                "isHomeTeamFavorite": true,
+                                "spreadFavoriteBetStr": "EVEN", // "HOU -4"
+                                "spreadUnderdogBetStr": "EVEN", // "CLE +4"
+                                "doesSpreadBetExist": false,
+                                "overBetStr": "o 218.5",
+                                "underBetStr": "u 218.5",
+                                "player1_spreadBetStr": "HOU -4",
+                                "player2_spreadBetStr": "CLE +4",
+                                "spreadBetDrafter": "player1"
+                            ],
+                            
+                            [
+                                "gameId": "gameid2",
+                                "homeTeam": "LA Clippers",
+                                "awayTeam": "SA Spurs",
+                                "gameStartDateTime": Timestamp(date: Date()),
+                                "isSpreadBetStillAvailable": true,
+                                "isOverUnderBetStillAvailable": false,
+                                "isHomeTeamFavorite": false,
+                                "spreadFavoriteBetStr": "SA -3",
+                                "spreadUnderdogBetStr": "LA +3",
+                                "doesSpreadBetExist": true,
+                                "overBetStr": "o 224.5",
+                                "underBetStr": "u 224.5",
+                                "player1_ouBetStr": "u 224.5",
+                                "player2_ouBetStr": "o 224.5",
+                                "ouBetDrafter": "player1"
+                            ],
+                            [
+                                "gameId": "gameid3",
+                                "homeTeam": "PHI 76ers",
+                                "awayTeam": "GS Warriors",
+                                "gameStartDateTime": Timestamp(date: Date()),
+                                "isSpreadBetStillAvailable": false, // true
+                                "isOverUnderBetStillAvailable": false,
+                                "isHomeTeamFavorite": true,
+                                "spreadFavoriteBetStr": "PHI -5",
+                                "spreadUnderdogBetStr": "GS +5",
+                                "doesSpreadBetExist": true,
+                                "overBetStr": "o 225",
+                                "underBetStr": "u 225",
+                                "player1_ouBetStr": "o 225",
+                                "player2_ouBetStr": "u 225",
+                                "player1_spreadBetStr": "PHI -5",
+                                "player2_spreadBetStr": "GS +5",
+                                "spreadBetDrafter": "player1",
+                                "ouBetDrafter": "player2"
+                            ],
+                            [
+                                "gameId": "gameid4",
+                                "homeTeam": "CHI Bulls",
+                                "awayTeam": "POR Trail Blazers",
+                                "gameStartDateTime": Timestamp(date: Date()),
+                                "isSpreadBetStillAvailable": false,
+                                "isOverUnderBetStillAvailable": true,
+                                "isHomeTeamFavorite": false,
+                                "spreadFavoriteBetStr": "POR -3.5",
+                                "spreadUnderdogBetStr": "CHI +3.5",
+                                "doesSpreadBetExist": true,
+                                "overBetStr": "o 221",
+                                "underBetStr": "u 221",
+                                "player1_spreadBetStr": "CHI +3.5",
+                                "player2_spreadBetStr": "POR -3.5",
+                                "spreadBetDrafter": "player2"
+                            ],
+                        ]
+                ]
+    ]
+    
+    
     
     init(user: User){
         
         self.user = user
         getDrafts(uid: user.uid)
+//        simulateOtherPlayerMakingPick()
+        simulateDraftNoLongerExists()
     }
     
     func getDrafts(uid: String) {
@@ -461,6 +636,23 @@ final class MockDraftsRepository: DraftsRepositoryProtocol, ObservableObject {
         }
        
         self.drafts = drafts
+    }
+    
+    func simulateOtherPlayerMakingPick(){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10){
+            self.mockData = self.mockData2
+            self.getDrafts(uid: self.user.uid)
+        }
+    }
+    
+    func simulateDraftNoLongerExists(){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10){
+            self.mockData = [:]
+            self.getDrafts(uid: self.user.uid)
+        }
+        
     }
     
     func makeDraftPickSelection(draftPickSelection: DraftPickSelection, draft: Draft, completion: @escaping (Result<Void, Error>) -> Void){

@@ -71,28 +71,28 @@ struct InProgressContestGameView: View {
                             VStack(alignment: .leading) {
                                 Text("\(viewModel.game.homeTeam)")
                                     .lineLimit(1)
-                                    .font(userScreenInfo.inProgressContestGameViewStyleBag.mainFontType)
+                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
                                 
                                 Text("\(viewModel.game.awayTeam)")
                                     .lineLimit(1)
-                                    .font(userScreenInfo.inProgressContestGameViewStyleBag.mainFontType)
+                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
                             }
-                            .padding(.leading, userScreenInfo.inProgressContestGameViewStyleBag.paddings.leadingTeamsBox) // 15, 10)
+                            .padding(.leading, UserScreenInfoV2.current.inProgressContestGameViewStyleBag.paddings.leadingTeamsBox) // 15, 10)
                             
                             Spacer()
                             
                             VStack(alignment: HorizontalAlignment.trailing) {
                                 Text("\(viewModel.gameScoreboard.homeScore)")
-                                    .font(userScreenInfo.inProgressContestGameViewStyleBag.mainFontType)
+                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
                                 
                                 
                                 Text("\(viewModel.gameScoreboard.awayScore)")
-                                    .font(userScreenInfo.inProgressContestGameViewStyleBag.mainFontType)
+                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
-                            }.padding(.trailing, userScreenInfo.inProgressContestGameViewStyleBag.paddings.trailingScoresBox) // 20, 10, 15
+                            }.padding(.trailing, UserScreenInfoV2.current.inProgressContestGameViewStyleBag.paddings.trailingScoresBox) // 20, 10, 15
                             
                         }
                         .padding(.leading, 5)
@@ -106,7 +106,7 @@ struct InProgressContestGameView: View {
                                 
                                 
                                 Text("Bets")
-                                    .font(userScreenInfo.inProgressContestGameViewStyleBag.secondaryFontType)
+                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.secondaryFontType)
                                     
                                     .padding(.vertical, 4)
                                 
@@ -117,11 +117,11 @@ struct InProgressContestGameView: View {
                                     
                                     if let spreadBet = viewModel.game.spreadBet {
                                         Text("\(spreadBet)")
-                                            .font(userScreenInfo.inProgressContestGameViewStyleBag.secondaryFontType)                                }
+                                            .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.secondaryFontType)                                }
                                     
                                     if let ouBet = viewModel.game.overUnderBet {
                                         Text("\(ouBet)")
-                                            .font(userScreenInfo.inProgressContestGameViewStyleBag.secondaryFontType)
+                                            .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.secondaryFontType)
                                         
                                     }
 //                                    Spacer()
@@ -129,7 +129,7 @@ struct InProgressContestGameView: View {
                                 .padding(.horizontal, 5)
                                 .padding(.vertical, 5)
                             }
-                            .frame(minWidth: userScreenInfo.inProgressContestGameViewStyleBag.betsColFrameWidth)
+                            .frame(minWidth: UserScreenInfoV2.current.inProgressContestGameViewStyleBag.betsColFrameWidth)
                             .fixedSize()
                             
                         }

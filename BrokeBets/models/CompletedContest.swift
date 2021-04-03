@@ -15,8 +15,8 @@ enum ContestResult: String, Codable {
 }
 
 struct CompletedContest : Codable, Identifiable {
-//    @DocumentID var id: String?
-    var id = UUID()
+    
+    var id: String
     var opponent: String
     var result: ContestResult
     var userTotalWins: Int
@@ -30,8 +30,9 @@ struct CompletedContest : Codable, Identifiable {
     var games : [CompletedContestGame]
     
     
-    init(opponent: String, numBets: Int, result: ContestResult, userScores: (total: Int, drafted: Int, forced: Int), oppScores: (total: Int, drafted: Int, forced: Int), completionDT: Date, games: [CompletedContestGame]){
+    init(contestId: String, opponent: String, numBets: Int, result: ContestResult, userScores: (total: Int, drafted: Int, forced: Int), oppScores: (total: Int, drafted: Int, forced: Int), completionDT: Date, games: [CompletedContestGame]){
         
+        self.id = contestId
         self.opponent = opponent
         self.numBets = numBets
         self.games = games
@@ -54,7 +55,8 @@ struct CompletedContest : Codable, Identifiable {
 
     init?(data: [String:Any], playerUid: String){
         
-        guard let player1_uid = data["player1_uid"] as? String,
+        guard let contestId = data["contestId"] as? String,
+              let player1_uid = data["player1_uid"] as? String,
               let player2_uid = data["player2_uid"] as? String,
               let player1_uname = data["player1_uname"] as? String,
               let player2_uname = data["player2_uname"] as? String,
@@ -76,6 +78,7 @@ struct CompletedContest : Codable, Identifiable {
         
         let dateTime = contestCompletionDateTime.dateValue()
         
+        self.id = contestId
         self.numBets = numBets
         self.games = []
         

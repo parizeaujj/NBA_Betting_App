@@ -22,18 +22,18 @@ struct UpcomingContestGamesListView : View {
                 
                 HStack{
                     Text("Opponent:")
-                        .font(userScreenInfo.gamesListViewFonts.oppTitleFont)
+                        .font(UserScreenInfoV2.current.gamesListViewFonts.oppTitleFont)
                     Text(contest.opponent)
-                        .font(userScreenInfo.gamesListViewFonts.oppNameFont)
+                        .font(UserScreenInfoV2.current.gamesListViewFonts.oppNameFont)
                         .foregroundColor(.blue)
                         .fontWeight(.bold)
                 }
                 
                 HStack{
                     Text("Total bets:")
-                        .font(userScreenInfo.gamesListViewFonts.numBetsTitleFont)
+                        .font(UserScreenInfoV2.current.gamesListViewFonts.numBetsTitleFont)
                     Text("\(contest.numBets)")
-                        .font(userScreenInfo.gamesListViewFonts.numBetsValueFont)
+                        .font(UserScreenInfoV2.current.gamesListViewFonts.numBetsValueFont)
                         .fontWeight(.bold)
                 }.padding(.top, 4)
                 
@@ -49,7 +49,7 @@ struct UpcomingContestGamesListView : View {
             ScrollView {
                 LazyVStack {
 
-                    ForEach(contest.games) { game in
+                    ForEach(contest.games.sorted{ $0.gameStartDateTime < $1.gameStartDateTime }) { game in
 
                         UpcomingContestGameView(game: game)
                         

@@ -170,25 +170,27 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
     let mockData: [ String: [String: Any] ] = [
         
         "contest1": [
-                 "player1_uid": "testToddUid",
-                 "player1_uname": "todd123",
-                 "player2_uid": "testOppUid",
-                 "player2_uname": "testOpp",
-                 "player1_total": 3,
-                 "player2_total": 1,
-                 "player1_forced": 1,
-                 "player2_forced": 0,
-                 "player1_drafted": 2,
-                 "player2_drafted": 1,
-                 "numBets": 8,
-                 "numBetsCompleted": 4,
-                 "numBetsRemaining": 4,
-            
+                "player1_uid": "testToddUid",
+                "player1_uname": "todd123",
+                "player2_uid": "testOppUid",
+                "player2_uname": "testOpp",
+                "player1_total": 3,
+                "player2_total": 1,
+                "player1_forced": 1,
+                "player2_forced": 0,
+                "player1_drafted": 2,
+                "player2_drafted": 1,
+                "numBets": 8,
+                "numBetsCompleted": 4,
+                "numBetsRemaining": 4,
+                "firstGameStartDateTime": Timestamp(date: Date()),
                 "inProgressGameIds": ["game1id", "game2id", "game3id"],
                 "upcoming_games": [
                
                        // upcoming game 1
-                       ["awayTeam": "HOU Rockets",
+                       [
+                        "gameId": "gameId1",
+                        "awayTeam": "HOU Rockets",
                         "homeTeam": "MIA Heat",
                         "gameStartDateTime": Timestamp(date: Date()),
                         "overUnderBet": [
@@ -202,7 +204,9 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                       ],
                        
                        // upcoming game 2
-                       ["awayTeam": "GS Warriors",
+                       [
+                        "gameId": "gameId2",
+                        "awayTeam": "GS Warriors",
                         "homeTeam": "NY Knicks",
                         "gameStartDateTime": Timestamp(date: Date()),
                         "spreadBet": [
@@ -537,7 +541,7 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
         self.mockCurrentGameScores = mockGameScoresOverTime[0]
         getInProgressContests(uid: uid)
         
-       updateGamesAfterSomeTime()
+//       updateGamesAfterSomeTime()
         
     }
     
@@ -582,8 +586,8 @@ class MockInProgressContestsRepository: InProgressContestsRepositoryProtocol, Ob
                 
         self.cancellable = Timer.publish(every: 10, on: .main, in: .common)
             .autoconnect()
-            .sink() {
-                print ("timer fired: \($0)")
+            .sink() { _ in
+//                print ("timer fired: \($0)")
                 self.numUpdates += 1
                 
                 if self.numUpdates > self.maxUpdates {

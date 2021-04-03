@@ -10,7 +10,8 @@ import FirebaseFirestore
 
 struct Draft: Identifiable {
     
-    var id = UUID()
+//    var id = UUID()
+    var id: String
     var draftId: String
     var opponent: String
     var opponent_uid: String
@@ -44,9 +45,11 @@ struct Draft: Identifiable {
             return nil
         }
         
-        print("draftId: \(draftId)")
+//        print("draftId: \(draftId)")
         
         self.draftId = draftId
+        self.id = draftId //
+        
         self.currentRound = currentRound
         self.totalRounds = totalRounds
         self.gamesPool = []

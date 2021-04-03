@@ -27,7 +27,6 @@ struct InProgressContestViewStyleBag{
 struct InProgressContestView: View {
     
     @EnvironmentObject var userScreenInfo: UserScreenInfo
-//    @EnvironmentObject var appState: T
     
     private var inProgressContest: InProgressContest
     private var accentColor: Color = .blue
@@ -55,14 +54,17 @@ struct InProgressContestView: View {
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
                         Text("You")
-                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
+//                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
                             .padding(.leading, 5)
                         
                         Text("\(inProgressContest.opponent)")
-                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
+//                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
+
                             .fontWeight(.bold)
                             .foregroundColor(.blue)
                             .lineLimit(1)
@@ -78,17 +80,17 @@ struct InProgressContestView: View {
                             .foregroundColor(.black)
                             .font(.caption)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.inProgressContestViewStyleBag.boxScoreColHPaddings.drafted)
+                            .padding(.horizontal, UserScreenInfoV2.current.inProgressContestViewStyleBag.boxScoreColHPaddings.drafted)
                         
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
                         Text("\(inProgressContest.userDraftedWins)")
-                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
                         Text("\(inProgressContest.opponentDraftedWins)")
-                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -100,7 +102,7 @@ struct InProgressContestView: View {
                             .foregroundColor(.black)
                             .font(.caption)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.inProgressContestViewStyleBag.boxScoreColHPaddings.forced)
+                            .padding(.horizontal, UserScreenInfoV2.current.inProgressContestViewStyleBag.boxScoreColHPaddings.forced)
                             
                     
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
@@ -108,12 +110,12 @@ struct InProgressContestView: View {
                     
                         
                         Text("\(inProgressContest.userForcedWins)")
-                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
                         Text("\(inProgressContest.opponentForcedWins)")
-                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -127,17 +129,17 @@ struct InProgressContestView: View {
                             .font(.caption)
                             .foregroundColor(.black)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.inProgressContestViewStyleBag.boxScoreColHPaddings.total)
+                            .padding(.horizontal, UserScreenInfoV2.current.inProgressContestViewStyleBag.boxScoreColHPaddings.total)
 
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
                         Text("\(inProgressContest.userTotalWins)")
-                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
                         Text("\(inProgressContest.opponentTotalWins)")
-                            .font(userScreenInfo.inProgressContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.inProgressContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -190,13 +192,6 @@ struct InProgressContestView: View {
 }
 
 
-//struct InProgressContestView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InProgressContestView(inProgressContest: InProgressContest(data: MockInProgressContestsRepository().mockData[0], playerUid: "testToddUid")!
-//        )
-//        .environmentObject(UserScreenInfo(.regular))
-//    }
-//}
 
 struct InProgressContestView_Previews: PreviewProvider {
     static var previews: some View {

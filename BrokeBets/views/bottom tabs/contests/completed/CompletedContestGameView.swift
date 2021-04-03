@@ -110,31 +110,31 @@ struct CompletedContestGameView: View {
                         VStack(alignment: .leading) {
                             Text("\(game.homeTeam)")
                                 .lineLimit(1)
-                                .font(userScreenInfo.completedContestGameViewStyleBag.mainFontType)
+                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
                                 
                                 .padding(.vertical, 5)
 
                             Text("\(game.awayTeam)")
                                 .lineLimit(1)
-                                .font(userScreenInfo.completedContestGameViewStyleBag.mainFontType)
+                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
                                 .padding(.vertical, 5)
                         }
-                        .padding(.leading, userScreenInfo.completedContestGameViewStyleBag.paddings.leadingTeamsBox) // 15, 10)
+                        .padding(.leading, UserScreenInfoV2.current.completedContestGameViewStyleBag.paddings.leadingTeamsBox) // 15, 10)
                         
                         Spacer()
                         
                         VStack(alignment: HorizontalAlignment.trailing) {
                             Text("\(game.homeTeamScore)")
-                                .font(userScreenInfo.completedContestGameViewStyleBag.mainFontType)
+                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
                                 .fontWeight(homeTotalBoldStyle)
                                 .padding(.vertical, 5)
                                 
                             
                             Text("\(game.awayTeamScore)")
-                                .font(userScreenInfo.completedContestGameViewStyleBag.mainFontType)
+                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
                                 .fontWeight(awayTotalBoldStyle)
                                 .padding(.vertical, 5)
-                        }.padding(.trailing, userScreenInfo.completedContestGameViewStyleBag.paddings.trailingScoresBox) // 20, 10, 15
+                        }.padding(.trailing, UserScreenInfoV2.current.completedContestGameViewStyleBag.paddings.trailingScoresBox) // 20, 10, 15
 
 //                        Spacer()
                 
@@ -153,7 +153,7 @@ struct CompletedContestGameView: View {
                             
                          
                             Text("Bets")
-                                .font(userScreenInfo.completedContestGameViewStyleBag.secondaryFontType)
+                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.secondaryFontType)
 
                                 .padding(.vertical, 4)
                             
@@ -164,11 +164,11 @@ struct CompletedContestGameView: View {
                                 
                                 if let spreadBet = game.spreadBet {
                                     Text("\(spreadBet)")
-                                        .font(userScreenInfo.completedContestGameViewStyleBag.secondaryFontType)                                }
+                                        .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.secondaryFontType)                                }
                                 
                                 if let ouBet = game.overUnderBet {
                                     Text("\(ouBet)")
-                                        .font(userScreenInfo.completedContestGameViewStyleBag.secondaryFontType)
+                                        .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.secondaryFontType)
 
                                 }
                             }
@@ -176,7 +176,7 @@ struct CompletedContestGameView: View {
                             .padding(.vertical, 5)
                             
                         }
-                        .frame(minWidth: userScreenInfo.completedContestGameViewStyleBag.betsColFrameWidth)
+                        .frame(minWidth: UserScreenInfoV2.current.completedContestGameViewStyleBag.betsColFrameWidth)
                         .fixedSize()
 
                         Divider()
@@ -185,7 +185,7 @@ struct CompletedContestGameView: View {
                         VStack(spacing: 0){
                             
                             Text("Results")
-                                .font(userScreenInfo.completedContestGameViewStyleBag.secondaryFontType)
+                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.secondaryFontType)
 
                                 .padding(.vertical, 4)
        
@@ -196,13 +196,13 @@ struct CompletedContestGameView: View {
                                 
                                 if let spreadResult = game.spreadBetResult {
                                     Text("\(spreadResult.rawValue)")
-                                        .font(userScreenInfo.completedContestGameViewStyleBag.secondaryFontType)
+                                        .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.secondaryFontType)
                                         .foregroundColor(spreadResultColor!)
                                 }
                             
                                 if let ouResult = game.overUnderBetResult {
                                     Text("\(ouResult.rawValue)")
-                                        .font(userScreenInfo.completedContestGameViewStyleBag.secondaryFontType)
+                                        .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.secondaryFontType)
                                         .foregroundColor(ouResultColor!)
                                 }
                             }
@@ -210,7 +210,7 @@ struct CompletedContestGameView: View {
                             .padding(.vertical, 5)
                             
                         }
-                        .frame(minWidth: userScreenInfo.completedContestGameViewStyleBag.resultsColFrameWidth)
+                        .frame(minWidth: UserScreenInfoV2.current.completedContestGameViewStyleBag.resultsColFrameWidth)
                         .fixedSize()
 
                     }

@@ -22,14 +22,15 @@ enum CompletionStatus {
 
 struct UpcomingContest : Codable, Identifiable {
     
-//    @DocumentID var id: String?
-    var id = UUID()
+    var id: String //
     var opponent: String
     var firstGameStartDateTimeStr: String
+    var firstGameStartDateTime: Date
     var numBets: Int
     var games : [UpcomingContestGame]
     
-    init(opponent: String, firstGameStartDateTime: Date, numBets: Int, games: [UpcomingContestGame]){
+    init(contestId: String, opponent: String, firstGameStartDateTime: Date, numBets: Int, games: [UpcomingContestGame]){
+        self.id = contestId
         self.opponent = opponent
         self.numBets = numBets
         self.games = games
@@ -38,11 +39,13 @@ struct UpcomingContest : Codable, Identifiable {
         let todaysSimpleDate = SimpleDate(date: Date())
         let specialDayType = firstGameStartDateTime.getSpecialDayType(todaysSimpleDate: todaysSimpleDate)
         self.firstGameStartDateTimeStr = firstGameStartDateTime.createDateTimeString(with: specialDayType, completionStatus: .Upcoming)
+        self.firstGameStartDateTime = firstGameStartDateTime
     }
     
     init?(data: [String: Any], playerUid: String){
         
-        guard let player1_uid = data["player1_uid"] as? String,
+        guard let contestId = data["contestId"] as? String,
+              let player1_uid = data["player1_uid"] as? String,
               let player2_uid = data["player2_uid"] as? String,
               let player1_uname = data["player1_uname"] as? String,
               let player2_uname = data["player2_uname"] as? String,
@@ -56,6 +59,7 @@ struct UpcomingContest : Codable, Identifiable {
         }
         
         
+        self.id = contestId
         self.numBets = numBets
         self.firstGameStartDateTimeStr = ""
         self.games = []
@@ -80,6 +84,7 @@ struct UpcomingContest : Codable, Identifiable {
         
         // get date time string of the earliest game that is in the contest
         let dateTime = ts.dateValue()
+        self.firstGameStartDateTime = dateTime
         let todaysSimpleDate = SimpleDate(date: Date())
         let specialDayType = dateTime.getSpecialDayType(todaysSimpleDate: todaysSimpleDate)
         self.firstGameStartDateTimeStr = dateTime.createDateTimeString(with: specialDayType, completionStatus: .Upcoming)
@@ -99,8 +104,13 @@ struct UpcomingContest : Codable, Identifiable {
         }
         
         
-        self.games = upcomingGames
-        
+        self.games = upcomingGames.sorted {
+            
+            if $0.gameStartDateTime == $1.gameStartDateTime {
+                return $0.gameId < $1.gameId
+            }
+            return $0.gameStartDateTime < $1.gameStartDateTime
+        }
     }
 }
 

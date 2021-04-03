@@ -87,14 +87,14 @@ struct CompletedContestView: View {
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
                         Text("You")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.completedContestViewStyleBag.mainFontType)
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
                             .padding(.leading, 5)
                         
                         Text("\(completedContest.opponent)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.completedContestViewStyleBag.mainFontType)
                             .fontWeight(.bold)
                             .foregroundColor(.blue)
                             .lineLimit(1)
@@ -110,17 +110,17 @@ struct CompletedContestView: View {
                             .foregroundColor(.black)
                             .font(.caption)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.completedContestViewStyleBag.boxScoreColHPaddings.drafted)
+                            .padding(.horizontal, UserScreenInfoV2.current.completedContestViewStyleBag.boxScoreColHPaddings.drafted)
                         
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
                         Text("\(completedContest.userDraftedWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.completedContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
                         Text("\(completedContest.opponentDraftedWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.completedContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -132,7 +132,7 @@ struct CompletedContestView: View {
                             .foregroundColor(.black)
                             .font(.caption)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.completedContestViewStyleBag.boxScoreColHPaddings.forced)
+                            .padding(.horizontal, UserScreenInfoV2.current.completedContestViewStyleBag.boxScoreColHPaddings.forced)
                             
                     
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
@@ -140,12 +140,12 @@ struct CompletedContestView: View {
                     
                         
                         Text("\(completedContest.userForcedWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.completedContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
                         Text("\(completedContest.opponentForcedWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.completedContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .padding(.vertical, 6)
 
@@ -159,18 +159,18 @@ struct CompletedContestView: View {
                             .font(.caption)
                             .foregroundColor(.black)
                             .padding(.bottom, 2)
-                            .padding(.horizontal, userScreenInfo.completedContestViewStyleBag.boxScoreColHPaddings.total)
+                            .padding(.horizontal, UserScreenInfoV2.current.completedContestViewStyleBag.boxScoreColHPaddings.total)
 
                         Rectangle().frame(width: nil, height: 1.5, alignment: .bottom).foregroundColor(Color.gray)
                         
                         Text("\(completedContest.userTotalWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.completedContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .fontWeight(userTotalBoldStyle)
                             .padding(.vertical, 6)
 
                         Text("\(completedContest.opponentTotalWins)")
-                            .font(userScreenInfo.completedContestViewStyleBag.mainFontType)
+                            .font(UserScreenInfoV2.current.completedContestViewStyleBag.mainFontType)
                             .foregroundColor(.black)
                             .fontWeight(oppTotalBoldStyle)
                             .padding(.vertical, 6)

@@ -22,18 +22,18 @@ struct InProgressContestGamesListView: View {
                     
                     HStack{
                         Text("Opponent:")
-                            .font(userScreenInfo.gamesListViewFonts.oppTitleFont)
+                            .font(UserScreenInfoV2.current.gamesListViewFonts.oppTitleFont)
                         Text(inProgressContestGamesListVM.inProgressContest!.opponent)
-                            .font(userScreenInfo.gamesListViewFonts.oppNameFont)
+                            .font(UserScreenInfoV2.current.gamesListViewFonts.oppNameFont)
                             .foregroundColor(.blue)
                             .fontWeight(.bold)
                     }
                     
                     HStack{
                         Text("Total bets:")
-                            .font(userScreenInfo.gamesListViewFonts.numBetsTitleFont)
+                            .font(UserScreenInfoV2.current.gamesListViewFonts.numBetsTitleFont)
                         Text("\(inProgressContestGamesListVM.inProgressContest!.numBets)")
-                            .font(userScreenInfo.gamesListViewFonts.numBetsValueFont)
+                            .font(UserScreenInfoV2.current.gamesListViewFonts.numBetsValueFont)
                             .fontWeight(.bold)
                     }.padding(.top, 4)
                 }

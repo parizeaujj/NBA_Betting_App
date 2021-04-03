@@ -33,7 +33,6 @@ struct DraftsListView<T: AppStateProtocol>: View {
                     
                     ScrollView {
                         LazyVStack {
-                            
                             ForEach(draftsListVM.drafts) { draft in
                                 DraftView(draft: draft, draftsRepo: draftsListVM.draftsRepo)
                                 

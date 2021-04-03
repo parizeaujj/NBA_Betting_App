@@ -75,7 +75,9 @@ class MockCompletedContestsRepository: CompletedContestsRepositoryProtocol, Obse
     var completedContestsPublisher: Published<[CompletedContest]>.Publisher { $completedContests }
     
     let mockData: [[String: Any]] = [
-        ["completionDateTime": Timestamp(date: Date()),
+        [
+         "contestId": "contestId2",
+         "completionDateTime": Timestamp(date: Date()),
          "player1_uid": "testToddUid",
          "player1_uname": "todd123",
          "player2_uid": "testOppUid",

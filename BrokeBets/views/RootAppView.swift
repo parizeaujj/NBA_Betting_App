@@ -11,7 +11,7 @@ import FirebaseFirestore
 struct RootAppView<T: AppStateProtocol>: View {
     
     @StateObject var rootAppVM: RootAppVM<T>
-    
+//    @StateObject var userScreenInfo: UserScreenInfo
     @State private var shouldShowSplash: Bool = true
     
     var body: some View {

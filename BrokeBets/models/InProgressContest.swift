@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import Firebase
 
 struct InProgressContest: Codable, Identifiable {
 
-    var id = UUID()
+    var id: String
     var contestId: String // used for referencing the particular contest in the inProgressContests dictionary in InProgressContestsRepository
     var opponent: String
+    
+    var firstGameStartDateTime: Date
     
     var numBets: Int
     var numBetsRemaining: Int
@@ -44,17 +47,19 @@ struct InProgressContest: Codable, Identifiable {
               let player2_drafted = data["player2_drafted"] as? Int,
               let numBets = data["numBets"] as? Int,
               let numBetsRemaining = data["numBetsRemaining"] as? Int,
-              let numBetsCompleted = data["numBetsCompleted"] as? Int
-             
+              let numBetsCompleted = data["numBetsCompleted"] as? Int,
+              let ts = data["firstGameStartDateTime"] as? Timestamp
         else {
             return nil
         }
         
         
+        self.id = contestId
         self.contestId = contestId
         self.numBets = numBets
         self.numBetsRemaining = numBetsRemaining
         self.numBetsCompleted = numBetsCompleted
+        self.firstGameStartDateTime = ts.dateValue()
         
         
         let playerLookupType: PlayerLookupType
@@ -107,7 +112,13 @@ struct InProgressContest: Codable, Identifiable {
                 upGames.append(g)
             }
             
-            self.upcomingGames = upGames
+            self.upcomingGames = upGames.sorted {
+                
+                if $0.gameStartDateTime == $1.gameStartDateTime {
+                    return $0.gameId < $1.gameId
+                }
+                return $0.gameStartDateTime < $1.gameStartDateTime
+            }
         }
         
         
@@ -124,7 +135,7 @@ struct InProgressContest: Codable, Identifiable {
                 compGames.append(g)
             }
 
-            self.completedGames = compGames
+            self.completedGames = compGames.sorted { $0.gameCompletionDateTime < $1.gameCompletionDateTime }
         }
         
         if let inProgressGames = data["inprogress_games"] as? [[String: Any]] {
@@ -141,7 +152,14 @@ struct InProgressContest: Codable, Identifiable {
                 ipGames.append(g)
             }
 
-            self.inProgressGames = ipGames
+            self.inProgressGames = ipGames.sorted {
+                 
+                if $0.timeGameStarted == $1.timeGameStarted {
+                    return $0.gameId < $1.gameId
+                }
+                
+                return $0.timeGameStarted < $1.timeGameStarted
+            }
             
         }
     }
