@@ -39,18 +39,20 @@ struct AvailableDraftGameView: View {
                         
                         VStack(alignment: .leading, spacing: 0){
                             
-                            Text("\(game.homeTeam)")
-                                .font(.subheadline)
-                                .padding(.leading)
-                                .padding(.top, 14)
-                                .padding(.bottom, 11)
-                            
                             Text("\(game.awayTeam)")
                                 .lineLimit(1)
                                 .font(.subheadline)
                                 .padding(.leading)
                                 .padding(.top, 11)
                                 .padding(.bottom, 14)
+                            
+                            
+                            Text("\(game.homeTeam)")
+                                .font(.subheadline)
+                                .padding(.leading)
+                                .padding(.top, 14)
+                                .padding(.bottom, 11)
+                            
                         }
                     
                         Spacer()
@@ -80,6 +82,22 @@ struct AvailableDraftGameView: View {
                             
                             Button(action: {
                                 
+                                let pick = DraftPickSelection(gameId: game.gameId, round: draftRound, pick: game.awaySpreadBetStr, inversePick: game.homeSpreadBetStr, homeTeam: game.homeTeam, awayTeam: game.awayTeam, betType: .spread)
+                                
+                                self.onDraftPickSelection(pick)
+                                
+                            }, label: {
+                                
+                                DraftBetCapsule(label: game.awaySpreadBetStr, isDisabled: !game.isSpreadBetStillAvailable)
+                                    .padding(.top, 7)
+                                    .padding(.bottom, 10)
+                                
+                            })
+                            .disabled(!game.isSpreadBetStillAvailable)
+                            
+                            
+                            Button(action: {
+                                
                                 let pick = DraftPickSelection(gameId: game.gameId, round: draftRound, pick: game.homeSpreadBetStr, inversePick: game.awaySpreadBetStr, homeTeam: game.homeTeam, awayTeam: game.awayTeam, betType: .spread)
                                 
                                 self.onDraftPickSelection(pick)
@@ -93,21 +111,7 @@ struct AvailableDraftGameView: View {
                             })
                             .disabled(!game.isSpreadBetStillAvailable)
                         
-                            Button(action: {
-                                
-                                let pick = DraftPickSelection(gameId: game.gameId, round: draftRound, pick: game.awaySpreadBetStr, inversePick: game.homeSpreadBetStr, homeTeam: game.homeTeam, awayTeam: game.awayTeam, betType: .spread)
-                                
-                                self.onDraftPickSelection(pick)
-                                
-                            }, label: {
-                                
-                                DraftBetCapsule(label: game.awaySpreadBetStr, isDisabled: !game.isSpreadBetStillAvailable)
-                                    .padding(.top, 7)
-                                    .padding(.bottom, 10)
-                                
-                            })
-                            .disabled(!game.isSpreadBetStillAvailable)
-        
+                            
                         }
                         
                         Rectangle().frame(width: 1.5, height: nil, alignment: .leading).foregroundColor(Color.gray)
@@ -181,7 +185,7 @@ struct AvailableDraftGameView_Previews: PreviewProvider {
         
         if let games  = MockDraftsRepository(user: User(uid: "testToddUid", username: "testTodd123")).mockData["draftid1"]!["games_pool"] as? [[String: Any]]{
             
-            AvailableDraftGameView(game: DraftGame(data: games[0])!, round: 1, onDraftPickSelection: {_ in })
+            AvailableDraftGameView(game: DraftGame(data: games[1])!, round: 1, onDraftPickSelection: {_ in })
         }
     }
 }

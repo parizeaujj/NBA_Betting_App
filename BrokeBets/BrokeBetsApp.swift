@@ -15,14 +15,13 @@ import Firebase
 struct BrokeBetsApp: App {
         
     let appState = AppState()
-//    let userScreenInfo = UserScreenInfo(getScreenSizeType())
     
     var body: some Scene {
         WindowGroup {
             
 //            CreateUsernameView(viewModel: CreateUsernameVM(userService: appState.userService))
 //                .environment(\.colorScheme, .light)
-            
+//
             RootAppView(rootAppVM: RootAppVM(appState: appState))
                     .environmentObject(appState)
                     .environmentObject(UserScreenInfo(getScreenSizeType()))

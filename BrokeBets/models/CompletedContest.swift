@@ -25,6 +25,7 @@ struct CompletedContest : Codable, Identifiable {
     var opponentDraftedWins: Int
     var userForcedWins: Int
     var opponentForcedWins: Int
+    var contestCompletionDate: Date
     var contestCompletionDateStr: String
     var numBets: Int
     var games : [CompletedContestGame]
@@ -45,7 +46,7 @@ struct CompletedContest : Codable, Identifiable {
         self.opponentTotalWins = oppScores.total
         self.opponentDraftedWins = oppScores.drafted
         self.opponentForcedWins = oppScores.forced
-        
+        self.contestCompletionDate = completionDT
         let todaysSimpleDate = SimpleDate(date: Date())
         let specialDayType = completionDT.getSpecialDayType(todaysSimpleDate: todaysSimpleDate)
         self.contestCompletionDateStr = completionDT.createDateTimeString(with: specialDayType, completionStatus: .Completed)
@@ -76,7 +77,9 @@ struct CompletedContest : Codable, Identifiable {
         }
         
         
+        
         let dateTime = contestCompletionDateTime.dateValue()
+        self.contestCompletionDate = dateTime
         
         self.id = contestId
         self.numBets = numBets

@@ -108,32 +108,37 @@ struct CompletedContestGameView: View {
                 HStack(spacing: 0){
                     HStack{
                         VStack(alignment: .leading) {
+                            
+                            
+                            Text("\(game.awayTeam)")
+                                .lineLimit(1)
+                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
+                                .padding(.vertical, 5)
+                            
+                            
                             Text("\(game.homeTeam)")
                                 .lineLimit(1)
                                 .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
                                 
                                 .padding(.vertical, 5)
 
-                            Text("\(game.awayTeam)")
-                                .lineLimit(1)
-                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
-                                .padding(.vertical, 5)
                         }
                         .padding(.leading, UserScreenInfoV2.current.completedContestGameViewStyleBag.paddings.leadingTeamsBox) // 15, 10)
                         
                         Spacer()
                         
                         VStack(alignment: HorizontalAlignment.trailing) {
-                            Text("\(game.homeTeamScore)")
-                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
-                                .fontWeight(homeTotalBoldStyle)
-                                .padding(.vertical, 5)
-                                
                             
                             Text("\(game.awayTeamScore)")
                                 .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
                                 .fontWeight(awayTotalBoldStyle)
                                 .padding(.vertical, 5)
+                            
+                            Text("\(game.homeTeamScore)")
+                                .font(UserScreenInfoV2.current.completedContestGameViewStyleBag.mainFontType)
+                                .fontWeight(homeTotalBoldStyle)
+                                .padding(.vertical, 5)
+                            
                         }.padding(.trailing, UserScreenInfoV2.current.completedContestGameViewStyleBag.paddings.trailingScoresBox) // 20, 10, 15
 
 //                        Spacer()

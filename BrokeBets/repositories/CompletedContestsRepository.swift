@@ -57,7 +57,13 @@ class CompletedContestsRepository: CompletedContestsRepositoryProtocol, Observab
             }
             
             // Updates the publisher to the new values
-            self.completedContests = contests
+            self.completedContests = contests.sorted {
+                
+                if $0.contestCompletionDate == $1.contestCompletionDate {
+                    return $0.id > $1.id
+                }
+                return $0.contestCompletionDate > $1.contestCompletionDate
+            }
         }
     }
     

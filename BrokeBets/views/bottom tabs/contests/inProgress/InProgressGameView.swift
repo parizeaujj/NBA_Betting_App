@@ -69,29 +69,32 @@ struct InProgressContestGameView: View {
                     HStack(alignment: .top, spacing: 0){
                         HStack{
                             VStack(alignment: .leading) {
-                                Text("\(viewModel.game.homeTeam)")
-                                    .lineLimit(1)
-                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
-                                    .padding(.vertical, 5)
                                 
                                 Text("\(viewModel.game.awayTeam)")
                                     .lineLimit(1)
                                     .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
+                                
+                                Text("\(viewModel.game.homeTeam)")
+                                    .lineLimit(1)
+                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
+                                    .padding(.vertical, 5)
+                                
                             }
                             .padding(.leading, UserScreenInfoV2.current.inProgressContestGameViewStyleBag.paddings.leadingTeamsBox) // 15, 10)
                             
                             Spacer()
                             
                             VStack(alignment: HorizontalAlignment.trailing) {
-                                Text("\(viewModel.gameScoreboard.homeScore)")
-                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
-                                    .padding(.vertical, 5)
-                                
                                 
                                 Text("\(viewModel.gameScoreboard.awayScore)")
                                     .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
+                                
+                                Text("\(viewModel.gameScoreboard.homeScore)")
+                                    .font(UserScreenInfoV2.current.inProgressContestGameViewStyleBag.mainFontType)
+                                    .padding(.vertical, 5)
+                                
                             }.padding(.trailing, UserScreenInfoV2.current.inProgressContestGameViewStyleBag.paddings.trailingScoresBox) // 20, 10, 15
                             
                         }

@@ -65,15 +65,17 @@ struct UpcomingContestGameView: View {
                     HStack(alignment: .top, spacing: 0){
                         HStack{
                             VStack(alignment: .leading) {
-                                Text("\(game.homeTeam)")
-                                    .lineLimit(1)
-                                    .font(UserScreenInfoV2.current.upcomingContestGameViewStyleBag.mainFontType)
-                                    .padding(.vertical, 5)
                                 
                                 Text("\(game.awayTeam)")
                                     .lineLimit(1)
                                     .font(UserScreenInfoV2.current.upcomingContestGameViewStyleBag.mainFontType)
                                     .padding(.vertical, 5)
+                                
+                                Text("\(game.homeTeam)")
+                                    .lineLimit(1)
+                                    .font(UserScreenInfoV2.current.upcomingContestGameViewStyleBag.mainFontType)
+                                    .padding(.vertical, 5)
+                                
                             }
                             .padding(.leading, UserScreenInfoV2.current.upcomingContestGameViewStyleBag.leadingTeamsBoxPadding) // 15, 10)
                             
