@@ -35,7 +35,7 @@ struct InProgressContestGameViewStyleBag {
 
 struct InProgressContestGameView: View {
     
-    @EnvironmentObject var userScreenInfo: UserScreenInfo
+//    @EnvironmentObject var userScreenInfo: UserScreenInfo
     
     @ObservedObject var viewModel: InProgressContestGameVM
     
@@ -157,7 +157,8 @@ struct InProgressContestGameView_Previews: PreviewProvider {
             
             InProgressContestGameView(viewModel: InProgressContestGameVM(game: InProgressContestGame(game: games[0], playerLookupPrefix: "player1")!, inProgressContestsRepo: MockInProgressContestsRepository(uid: "testToddUid"))
                                         
-            ).environmentObject(UserScreenInfo(.small))
+            )
+//            .environmentObject(UserScreenInfo(.small))
         }
     }
 }

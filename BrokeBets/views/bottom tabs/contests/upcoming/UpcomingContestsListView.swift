@@ -51,6 +51,7 @@ struct UpcomingContestsListView_Previews: PreviewProvider {
     static var previews: some View {
         UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: MockUpcomingContestsRepository(uid: "testToddUid")
         )
-        ).environmentObject(UserScreenInfo(.regular))
+        )
+//        .environmentObject(UserScreenInfo(.regular))
     }
 }

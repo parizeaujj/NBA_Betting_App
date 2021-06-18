@@ -5,7 +5,6 @@
 //  Created by Todd Weidler on 2/23/21.
 //
 
-import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 enum ContestResult: String, Codable {

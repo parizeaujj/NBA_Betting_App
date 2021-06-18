@@ -36,7 +36,7 @@ struct CompletedContestGameViewStyleBag{
 struct CompletedContestGameView: View {
     
     
-    @EnvironmentObject var userScreenInfo: UserScreenInfo
+//    @EnvironmentObject var userScreenInfo: UserScreenInfo
     
     
     var game: CompletedContestGame
@@ -240,7 +240,7 @@ struct CompletedContestGameView_Previews: PreviewProvider {
             CompletedContestGameView(game:
                                         CompletedContestGame(game: games[1], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
             )
-            .environmentObject(UserScreenInfo(.regular))
+//            .environmentObject(UserScreenInfo(.regular))
 //            .environmentObject(UserScreenInfo(.xsmall))
         }
     }

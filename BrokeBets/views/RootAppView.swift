@@ -31,11 +31,11 @@ struct RootAppView<T: AppStateProtocol>: View {
         }
         else{
             
-            if rootAppVM.appState.userService.user != nil {
+            if rootAppVM.appState.userService!.user != nil {
                 
-                if rootAppVM.appState.userService.stillCheckingForUsername {
+                if rootAppVM.appState.userService!.stillCheckingForUsername {
                     
-                    if rootAppVM.appState.userService.justLoggedIn {
+                    if rootAppVM.appState.userService!.justLoggedIn {
                         LoadingView()
                     }
                     else {
@@ -44,13 +44,13 @@ struct RootAppView<T: AppStateProtocol>: View {
                 }
                 else{
                     
-                    if rootAppVM.appState.userService.user!.username != nil {
+                    if rootAppVM.appState.userService!.user!.username != nil {
                         
                         MainAppView<T>(mainAppVM: MainAppVM(appState: rootAppVM.appState))
                      
                     }
                     else{
-                        CreateUsernameView(viewModel: CreateUsernameVM(userService: rootAppVM.appState.userService))
+                        CreateUsernameView(viewModel: CreateUsernameVM(userService: rootAppVM.appState.userService!))
                     }
                 }
             }
@@ -68,7 +68,7 @@ struct ContentView_Previews: PreviewProvider {
         let appState = AppState(shouldByPassLogin: true)
         
         RootAppView(rootAppVM: RootAppVM(appState: appState))
-            .environmentObject(UserScreenInfo(.regular))
+//            .environmentObject(UserScreenInfo(.regular))
             .environmentObject(appState)
     }
 }

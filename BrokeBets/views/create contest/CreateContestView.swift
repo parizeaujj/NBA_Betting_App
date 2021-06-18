@@ -194,7 +194,7 @@ struct CreateContestView_Previews: PreviewProvider {
         
         let appState = MockAppState()
         
-        CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: appState.createContestInvitationService!, userService: appState.userService))
+        CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: appState.createContestInvitationService!, userService: appState.userService!))
 //            .preferredColorScheme(.light)
     }
 }

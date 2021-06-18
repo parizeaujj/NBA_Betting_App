@@ -43,7 +43,7 @@ struct ProfileModalView<T: AppStateProtocol>: View {
                     
                     HStack{
                         
-                        Text("\(appState.userService.user!.username!)")
+                        Text("\(appState.userService!.user!.username!)")
                             
                             .font(.title2)
                             .fontWeight(.bold)
@@ -58,7 +58,7 @@ struct ProfileModalView<T: AppStateProtocol>: View {
                     
                     Button(action: {
                         print("user logged out")
-                        appState.userService.logout()
+                        appState.userService!.logout()
                         
                     }, label: {
                         Text("Sign out")

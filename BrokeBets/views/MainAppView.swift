@@ -13,7 +13,11 @@ class MainAppVM<T: AppStateProtocol>: ObservableObject {
 
     @Published var badgeValues: [String?] = [nil, nil, nil]
 
-    let appState: T
+    @Published var selectedTab: Int = 0
+    
+    @Published var tab: Int = 0
+    
+    var appState: T
     
     private var cancellables: [AnyCancellable] = []
     
@@ -21,18 +25,26 @@ class MainAppVM<T: AppStateProtocol>: ObservableObject {
         self.appState = appState
         
         listenForBadgeValueChanges()
+        
+        
+        self.appState.selectedMainTabPublisher.sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }
+        .store(in: &cancellables)
+        
     }
+    
     
     func listenForBadgeValueChanges(){
         
         self.getBadgeValuesPublisher()?.sink { [weak self] badgeValues in
             
-            if ((self?.appState.doesHavePermissionForAppIconBadge) != nil) {
-                
+//            if ((self?.appState.doesHavePermissionForAppIconBadge) != nil) {
+//
                 let total = badgeValues.reduce(0, { $0 + $1})
                 UIApplication.shared.applicationIconBadgeNumber = total
-                
-            }
+
+//            }
             
             self?.badgeValues = badgeValues.map { $0.toStringReplacingZeroWithNil() }
         }
@@ -83,20 +95,22 @@ struct MainAppView<T: AppStateProtocol>: View {
     @StateObject var mainAppVM: MainAppVM<T>
     
 //    @EnvironmentObject var appState: T
-    @State var selectedTab = 0
+    
+    
+//    @State var selectedTab = 0
     @State var isShowingProfileModal = false
-        
+        // selectedIndex: $selectedTab,
     var body: some View {
-        
+        // self.$mainAppVM.appState.selectedMainTab
         ZStack {
-            UIKitTabView(badgeValues: self.$mainAppVM.badgeValues) {
+            UIKitTabView(selectedIndex: self.$mainAppVM.appState.selectedMainTab, badgeValues: self.$mainAppVM.badgeValues) {
        
-                ContestsView<T>(contestsVM: ContestsVM(appState: mainAppVM.appState),isShowingProfileModal: $isShowingProfileModal)
+                ContestsView<T>(appState: mainAppVM.appState, contestsVM: ContestsVM(appState: mainAppVM.appState),isShowingProfileModal: $isShowingProfileModal)
                     .tab(title: "Contests", image: "outline-emoji_events-black-24dp", selectedImage: "emoji_events-black-24dp")
                 
 //                Text("Betslip Screen").tab(title: "Betslip", image: "outline-receipt_long-black-24dp", selectedImage: "receipt_long-black-24dp")
                 
-                InvitationsView<T>(invitationsVM: InvitationsVM(appState: mainAppVM.appState), isShowingProfileModal: $isShowingProfileModal)
+                InvitationsView<T>(appState: mainAppVM.appState, invitationsVM: InvitationsVM(appState: mainAppVM.appState), isShowingProfileModal: $isShowingProfileModal)
                     .tab(title: "Invitations", image: "tray", selectedImage: "tray.fill")
                 
                 DraftsListView<T>(draftsListVM: DraftsListVM(draftsRepo: mainAppVM.appState.draftsRepo!), isShowingProfileModal: $isShowingProfileModal)
@@ -121,8 +135,8 @@ struct MainAppView_Previews: PreviewProvider {
         let appState = MockAppState()
         
         MainAppView<MockAppState>(mainAppVM: MainAppVM(appState: appState))
-            .environmentObject(UserScreenInfo(.regular))
-//            .environmentObject(appState)
+//            .environmentObject(UserScreenInfo(.regular))
+            .environmentObject(appState)
     }
 }
 

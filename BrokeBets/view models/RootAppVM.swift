@@ -39,7 +39,7 @@ class RootAppVM<T: AppStateProtocol>: ObservableObject {
     
     private func listenForAuthChanges(){
         
-        self.appState.userService.userPublisher
+        self.appState.userService?.userPublisher
             .sink { [weak self] user in
                 
                 if user != nil {

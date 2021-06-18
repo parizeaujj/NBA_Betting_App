@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
-
+import Combine
 
 class ContestsVM<T: AppStateProtocol>: ObservableObject {
     
-    let appState: T
+//    @Published var selectedTab: Int = 0
+    
+    var cancellables: [AnyCancellable] = []
+    var appState: T
     
     init(appState: T){
         self.appState = appState
+        
     }
 }
 
@@ -24,10 +28,11 @@ struct ContestsView<T: AppStateProtocol>: View {
     
 //    @EnvironmentObject var appState: T
     
-    @StateObject var contestsVM: ContestsVM<T>
+    @StateObject var appState: T
+    @ObservedObject var contestsVM: ContestsVM<T>
     
     
-    @State private var selectedTab = 0
+//    @State private var selectedTab = 0
     @State private var isCreateContestSheetPresented = false
     @Binding var isShowingProfileModal: Bool
     
@@ -37,7 +42,7 @@ struct ContestsView<T: AppStateProtocol>: View {
             VStack{
                 
                 Tabs(tabs: .constant(["Upcoming", "In Progress", "Completed"]),
-                           selection: $selectedTab,
+                     selection: self.$appState.selectedSubTabs[0],
                            underlineColor: .white) { title, isSelected in
                              Text(title)
                                .font(.headline)
@@ -51,21 +56,20 @@ struct ContestsView<T: AppStateProtocol>: View {
                 
                 
                 // controls which tab is shown for the contests screen
-                if(selectedTab == 0){
+                if(self.appState.selectedSubTabs[0] == 0){
                     
                     if let repo = contestsVM.appState.upcomingContestsRepo {
                         UpcomingContestsListView(viewModel: UpcomingContestsListVM(upcomingContestsRepo: repo))
                     }
-                   
                 }
-                else if(selectedTab == 1){
+                else if(self.appState.selectedSubTabs[0] == 1){
                                         
                     if let repo = contestsVM.appState.inProgressContestsRepo {
                         InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: repo)
                         )
                     }
                 }
-                else if(selectedTab == 2){
+                else if(self.appState.selectedSubTabs[0] == 2){
                     
                     if let repo = contestsVM.appState.completedContestsRepo {
                         
@@ -106,7 +110,7 @@ struct ContestsView<T: AppStateProtocol>: View {
             
         }
         .accentColor(.white)
-        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: {CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: contestsVM.appState.createContestInvitationService!, userService: contestsVM.appState.userService)) })
+        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: {CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: contestsVM.appState.createContestInvitationService!, userService: contestsVM.appState.userService!)) })
         .preferredColorScheme(.light)
     }
 }
@@ -115,10 +119,11 @@ struct ContestsView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        let appState = AppState(shouldByPassLogin: true)
+        let appState = MockAppState()
+        appState.configure()
         
-        ContestsView<AppState>(contestsVM: ContestsVM(appState: appState), isShowingProfileModal: .constant(false))
-            .environmentObject(UserScreenInfo(.regular))
+        return ContestsView<MockAppState>(appState: appState, contestsVM: ContestsVM(appState: appState), isShowingProfileModal: .constant(false))
+//            .environmentObject(UserScreenInfo(.regular))
 //            .environmentObject(appState)
     }
 }

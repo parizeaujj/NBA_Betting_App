@@ -240,6 +240,30 @@ final class DraftsRepository: DraftsRepositoryProtocol, ObservableObject {
             })
             
         }
+        // if the draft is not completed then we should add 1 to the opponents counter for the number of active drafts where it is their turn so that they are properly notified
+        else{
+            
+            let oppRecNotifTrackerDocRef = db.collection("user_notifications_tracker").document(draft.opponent_uid)
+            
+            batch.setData([
+                "numActiveUserTurnDrafts": FieldValue.increment(1.0)
+            ], forDocument: oppRecNotifTrackerDocRef, merge: true)
+            
+        }
+        
+        
+        let userRecNotifTrackerDocRef = db.collection("user_notifications_tracker").document(user.uid)
+        
+        // decrements the counter for active drafts where it is the user's turn that it is accurate since they just selected a pick for the draft
+        batch.setData([
+            "numActiveUserTurnDrafts": FieldValue.increment(-1.0)
+        ], forDocument: userRecNotifTrackerDocRef, merge: true)
+        
+        
+        
+        
+        
+        
         
         
         let draftDocRef = db.collection("drafts").document(draft.draftId)

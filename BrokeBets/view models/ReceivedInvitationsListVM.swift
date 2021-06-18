@@ -24,7 +24,7 @@ class ReceivedInvitationsListVM: ObservableObject {
     
     init(receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol){
         
-        print("recieved invitations repo initialized")
+        print("received invitations vm initialized")
         
         self.receivedInvitationsRepo = receivedInvitationsRepo
         
@@ -78,5 +78,9 @@ class ReceivedInvitationsListVM: ObservableObject {
                 self.didHaveError.send("Error declining invitation, please try again.")
             }
         }
+    }
+    
+    deinit {
+        print("received invitations vm deinitialized")
     }
 }

@@ -11,7 +11,19 @@ import Firebase
 
 protocol AppStateProtocol: ObservableObject {
     
-    var userService: UserServiceProtocol { get }
+    var selectedMainTab: Int { get set }
+    var selectedMainTabPublisher: Published<Int>.Publisher { get }
+    var selectedMainTabPublished: Published<Int> { get }
+    
+    var selectedSubTab: Int { get set }
+    var selectedSubTabPublisher: Published<Int>.Publisher { get }
+    var selectedSubTabPublished: Published<Int> { get }
+    
+    var selectedSubTabs: [Int] { get set }
+    var selectedSubTabsPublisher: Published<[Int]>.Publisher { get }
+    var selectedSubTabsPublished: Published<[Int]> { get }
+    
+    var userService: UserServiceProtocol? { get }
     var createContestInvitationService: CreateContestInvitationServiceProtocol? { get }
     var draftsRepo: DraftsRepositoryProtocol? { get }
     var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol? { get }
@@ -20,15 +32,31 @@ protocol AppStateProtocol: ObservableObject {
     var completedContestsRepo: CompletedContestsRepositoryProtocol? { get }
     var inProgressContestsRepo: InProgressContestsRepositoryProtocol? { get }
     var doesHavePermissionForAppIconBadge: Bool { get }
+    func deepLink(to appLocation: (mainTabInd: Int, subTabInd: Int))
+    func currentAppLocation() -> (mainTabInd: Int, subTabInd: Int)
+    
     func deinitializeAllRepos()
-    func askPermissionToShowBadgeValueOnAppIcon()
 }
 
 
 class MockAppState: AppStateProtocol {
     
+    @Published var selectedMainTab: Int = 0
+    var selectedMainTabPublisher: Published<Int>.Publisher { $selectedMainTab }
+    var selectedMainTabPublished: Published<Int> { _selectedMainTab }
+    
+    
+    @Published var selectedSubTab: Int = 0
+    var selectedSubTabPublisher: Published<Int>.Publisher { $selectedSubTab }
+    var selectedSubTabPublished: Published<Int> { _selectedSubTab }
+    
+    @Published var selectedSubTabs: [Int] = [0, 0, 0]
+    var selectedSubTabsPublisher: Published<[Int]>.Publisher { $selectedSubTabs }
+    var selectedSubTabsPublished: Published<[Int]> { _selectedSubTabs }
+    
+    
     private(set) var doesHavePermissionForAppIconBadge: Bool = false
-    private(set) var userService: UserServiceProtocol
+    private(set) var userService: UserServiceProtocol?
     private(set) var createContestInvitationService: CreateContestInvitationServiceProtocol?
     private(set) var draftsRepo: DraftsRepositoryProtocol?
     private(set) var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol?
@@ -37,23 +65,37 @@ class MockAppState: AppStateProtocol {
     private(set) var completedContestsRepo: CompletedContestsRepositoryProtocol?
     private(set) var inProgressContestsRepo: InProgressContestsRepositoryProtocol?
     
-    
     init(){
+//        self.configure()
+    }
+    
+    func configure(){
         
         let uid = "testToddUid"
-        self.userService = MockUserService()
-        self.userService.user = User(uid: uid, username: "todd123")
         
-        createContestInvitationService = MockCreateContestInvitationService(user: self.userService.user!)
-        draftsRepo = MockDraftsRepository(user: self.userService.user!)
-        receivedInvitationsRepo = MockReceivedInvitationsRepository(user: self.userService.user!)
+        let userService = MockUserService()
+        userService.user = User(uid: uid, username: "todd123")
+        self.userService = userService
+        
+        createContestInvitationService = MockCreateContestInvitationService(user: self.userService!.user!)
+        draftsRepo = MockDraftsRepository(user: self.userService!.user!)
+        receivedInvitationsRepo = MockReceivedInvitationsRepository(user: self.userService!.user!)
         sentInvitationsRepo = MockSentInvitationsRepository(uid: uid)
         upcomingContestsRepo = MockUpcomingContestsRepository(uid: uid)
         completedContestsRepo = MockCompletedContestsRepository(uid: uid)
         inProgressContestsRepo = MockInProgressContestsRepository(uid: uid)
-        
-        askPermissionToShowBadgeValueOnAppIcon()
+                
     }
+    
+    func deepLink(to appLocation: (mainTabInd: Int, subTabInd: Int)) {
+        self.selectedMainTab = appLocation.mainTabInd
+        self.selectedSubTabs[appLocation.mainTabInd] = appLocation.subTabInd
+    }
+    
+    func currentAppLocation() -> (mainTabInd: Int, subTabInd: Int) {
+        return (self.selectedMainTab, self.selectedSubTabs[self.selectedMainTab])
+    }
+    
     
     func deinitializeAllRepos(){
         self.draftsRepo = nil
@@ -63,26 +105,36 @@ class MockAppState: AppStateProtocol {
         self.inProgressContestsRepo = nil
         self.completedContestsRepo = nil
     }
-    
-    func askPermissionToShowBadgeValueOnAppIcon() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge]){ success, error in
-            
-            if success {
-                print("Successfully got permission")
-                self.doesHavePermissionForAppIconBadge = true
-            }
-            else if let error = error {
-                print(error.localizedDescription)
-                self.doesHavePermissionForAppIconBadge = false
-            }
-        }
-    }
 }
+
+
+
+
+
 
 class AppState: AppStateProtocol {
     
+    
+    @Published var selectedMainTab: Int = 0
+    var selectedMainTabPublisher: Published<Int>.Publisher { $selectedMainTab }
+    var selectedMainTabPublished: Published<Int> { _selectedMainTab }
+    
+    @Published var selectedSubTab: Int = 0
+    var selectedSubTabPublisher: Published<Int>.Publisher { $selectedSubTab }
+    var selectedSubTabPublished: Published<Int> { _selectedSubTab }
+//
+//    @Published var selectedInvitationsSubTab: Int = 0
+//    var selectedSubTabPublisher: Published<Int>.Publisher { $selectedInvitationsSubTab }
+//    var selectedSubTabPublished: Published<Int> { _selectedInvitationsSubTab }
+//
+    @Published var selectedSubTabs: [Int] = [0, 0, 0]
+    var selectedSubTabsPublisher: Published<[Int]>.Publisher { $selectedSubTabs }
+    var selectedSubTabsPublished: Published<[Int]> { _selectedSubTabs }
+    
+    
+    
     private(set) var doesHavePermissionForAppIconBadge: Bool = false
-    private(set) var userService: UserServiceProtocol
+    private(set) var userService: UserServiceProtocol?
     private(set) var createContestInvitationService: CreateContestInvitationServiceProtocol?
     private(set) var draftsRepo: DraftsRepositoryProtocol?
     private(set) var receivedInvitationsRepo: ReceivedInvitationsRepositoryProtocol?
@@ -92,21 +144,35 @@ class AppState: AppStateProtocol {
     private(set) var inProgressContestsRepo: InProgressContestsRepositoryProtocol?
     
 
+    private var shouldByPassLogin: Bool
     private var cancellables: [AnyCancellable] = []
     
-
+    
     init(shouldByPassLogin: Bool = false){
         
-        if FirebaseApp.app() == nil {
-            FirebaseApp.configure()
-        }
+        self.shouldByPassLogin = shouldByPassLogin
+        
+    }
+    
+    func deepLink(to appLocation: (mainTabInd: Int, subTabInd: Int)){
+        
+        self.selectedMainTab = appLocation.mainTabInd
+        self.selectedSubTabs[appLocation.mainTabInd] = appLocation.subTabInd
+    }
+    
+    func currentAppLocation() -> (mainTabInd: Int, subTabInd: Int){
+        return (self.selectedMainTab, self.selectedSubTabs[self.selectedMainTab])
+    }
+    
+    func configure(){
         
         if(shouldByPassLogin){
             
             let uid = "hyW3nBBstdbQhsRcpoMHWyOActg1"
-            self.userService = UserService(shouldByPassLogin: shouldByPassLogin)
+            let userService = UserService(shouldByPassLogin: self.shouldByPassLogin)
             let user = User(uid: uid, username: "testTodd123")
-            self.userService.user = user
+            userService.user = user
+            self.userService = userService
             self.createContestInvitationService = CreateContestInvitationService(user: user)
             self.initializeAllRepos(user: user)
         }
@@ -114,7 +180,7 @@ class AppState: AppStateProtocol {
             
             self.userService = UserService()
            
-            userService.userPublisher.sink { user in
+            userService!.userPublisher.sink { user in
                 
                 guard let user = user, user.username != nil else {
                     print("deinitializing repos")
@@ -130,8 +196,6 @@ class AppState: AppStateProtocol {
             .store(in: &cancellables)
             
         }
-        
-        askPermissionToShowBadgeValueOnAppIcon()
     }
     
     private func initializeAllRepos(user: User){
@@ -154,22 +218,4 @@ class AppState: AppStateProtocol {
         completedContestsRepo = nil
         inProgressContestsRepo = nil
     }
-    
-    func askPermissionToShowBadgeValueOnAppIcon() {
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge]){ success, error in
-            
-            if success {
-                print("Successfully got permission")
-                self.doesHavePermissionForAppIconBadge = true
-            }
-            else if let error = error {
-                print(error.localizedDescription)
-                self.doesHavePermissionForAppIconBadge = false
-            }
-        }
-        
-        
-    }
 }
-

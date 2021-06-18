@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+import Combine
+
 class InvitationsVM<T: AppStateProtocol>: ObservableObject {
+    
+    @Published var selectedTab: Int = 0
     
     let receivedInvitationsListVM: ReceivedInvitationsListVM
     let sentInvitationsListVM: SentInvitationsListVM
     
-    let appState: T
+    var appState: T
+    
+    var cancellables: [AnyCancellable] = []
     
     init(appState: T){
         
@@ -22,17 +28,24 @@ class InvitationsVM<T: AppStateProtocol>: ObservableObject {
         
         self.sentInvitationsListVM = SentInvitationsListVM(sentInvitationsRepo: appState.sentInvitationsRepo!)
         
+        self.appState.selectedSubTabPublisher.sink { ind in
+//            guard ind >= 0 && ind <= 1 else {
+//                return
+//            }
+//
+//            self.selectedTab = ind
+            print("invitation sub tab changed")
+        }
+        .store(in: &cancellables)
+        
     }
 }
 
 struct InvitationsView<T: AppStateProtocol>: View {
     
-    
+    @StateObject var appState: T
     @StateObject var invitationsVM: InvitationsVM<T>
     
-    
-//    @EnvironmentObject var appState: T
-    @State private var selectedTab = 0
     @State private var isCreateContestSheetPresented = false
     @Binding var isShowingProfileModal: Bool
     
@@ -42,7 +55,7 @@ struct InvitationsView<T: AppStateProtocol>: View {
             VStack(spacing: 0){
             
             Tabs(tabs: .constant(["Received", "Sent"]),
-                       selection: $selectedTab,
+                 selection: self.$appState.selectedSubTabs[1],
                        underlineColor: .white) { title, isSelected in
                          Text(title)
                            .font(.headline)
@@ -55,17 +68,20 @@ struct InvitationsView<T: AppStateProtocol>: View {
             .frame(maxWidth: .infinity).padding(.top, 15).background(Color(UIColor.systemBlue))
             
             
-            if(selectedTab == 0){
+            if(self.appState.selectedSubTabs[1] == 0){
             
-                ReceivedInvitationsListView(receivedInvitationsListVM: invitationsVM.receivedInvitationsListVM)
-//                ReceivedInvitationsListView(receivedInvitationsListVM: ReceivedInvitationsListVM(receivedInvitationsRepo: appState.receivedInvitationsRepo!))
-                
+                if let repo = self.appState.receivedInvitationsRepo {
+                    ReceivedInvitationsListView(receivedInvitationsListVM: ReceivedInvitationsListVM(receivedInvitationsRepo: repo))
+                }
             }
-            else{
+            else if(self.appState.selectedSubTabs[1] == 1){
                 
-                SentInvitationsListView(sentInvitationsListVM: invitationsVM.sentInvitationsListVM)
-//                SentInvitationsListView(sentInvitationsListVM: SentInvitationsListVM(sentInvitationsRepo: appState.sentInvitationsRepo!))
-//
+                if let repo = self.appState.sentInvitationsRepo {
+                    SentInvitationsListView(sentInvitationsListVM: SentInvitationsListVM(sentInvitationsRepo: repo))
+                }
+                
+//                SentInvitationsListView(sentInvitationsListVM: invitationsVM.sentInvitationsListVM)
+
             }
         
             Spacer()
@@ -97,7 +113,7 @@ struct InvitationsView<T: AppStateProtocol>: View {
         )
         }
         .accentColor(.white)
-        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: { CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: invitationsVM.appState.createContestInvitationService!, userService: invitationsVM.appState.userService)) })
+        .fullScreenCover(isPresented: $isCreateContestSheetPresented, content: { CreateContestView(createContestVM: CreateContestVM(createContestInvitationService: invitationsVM.appState.createContestInvitationService!, userService: invitationsVM.appState.userService!)) })
         .preferredColorScheme(.light)
     }
 }
@@ -107,7 +123,7 @@ struct InvitationsView_Previews: PreviewProvider {
         
         let appState = MockAppState()
         
-        InvitationsView(invitationsVM: InvitationsVM(appState: appState), isShowingProfileModal: .constant(false))
+        InvitationsView(appState: appState, invitationsVM: InvitationsVM(appState: appState), isShowingProfileModal: .constant(false))
 //            .environmentObject(appState)
     }
 }

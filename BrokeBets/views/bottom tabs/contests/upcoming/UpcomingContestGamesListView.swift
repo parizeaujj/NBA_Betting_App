@@ -12,7 +12,7 @@ struct UpcomingContestGamesListView : View {
 
     var contest: UpcomingContest
     
-    @EnvironmentObject var userScreenInfo: UserScreenInfo
+//    @EnvironmentObject var userScreenInfo: UserScreenInfo
     
     var body: some View {
         
@@ -71,7 +71,7 @@ struct UpcomingContestGamesListView_Previews: PreviewProvider {
         UpcomingContestGamesListView(
             contest: UpcomingContest(data: MockUpcomingContestsRepository(uid: "testToddUid").mockData[0], playerUid: "testToddUid")!
         )
-        .environmentObject(UserScreenInfo(.regular))
+//        .environmentObject(UserScreenInfo(.regular))
     }
 }
 

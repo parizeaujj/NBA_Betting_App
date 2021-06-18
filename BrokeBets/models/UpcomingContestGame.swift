@@ -34,7 +34,7 @@ enum SpecialDayType: String {
 
 struct UpcomingContestGame: Codable, Identifiable {
     
-    var id = UUID()
+    var id: String
     var gameId: String
     var homeTeam: String
     var awayTeam: String
@@ -46,6 +46,7 @@ struct UpcomingContestGame: Codable, Identifiable {
     
     init(gameId: String, homeTeam: String, awayTeam: String, gameStartDateTime: Date, specialDayType: SpecialDayType, overUnderBet: String, spreadBet: String){
         
+        self.id = gameId
         self.gameId = gameId
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
@@ -68,7 +69,7 @@ struct UpcomingContestGame: Codable, Identifiable {
             return nil
         }
         
-        
+        self.id = gameId
         self.gameId = gameId
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam

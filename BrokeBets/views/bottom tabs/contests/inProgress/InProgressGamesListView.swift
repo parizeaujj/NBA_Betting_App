@@ -12,7 +12,7 @@ struct InProgressContestGamesListView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var inProgressContestGamesListVM: InProgressContestGamesListVM
         
-    @EnvironmentObject var userScreenInfo: UserScreenInfo
+//    @EnvironmentObject var userScreenInfo: UserScreenInfo
     
     var body: some View {
         
@@ -113,7 +113,7 @@ struct InProgressContestGamesListView_Previews: PreviewProvider {
     static var previews: some View {
         
         InProgressContestGamesListView(inProgressContestGamesListVM: InProgressContestGamesListVM(contestId: "contest1", inProgressContestRepo: MockInProgressContestsRepository(uid: "testToddUid")))
-                        .environmentObject(UserScreenInfo(.xsmall))
+//                        .environmentObject(UserScreenInfo(.xsmall))
             .environmentObject(MockUpcomingContestsRepository(uid: "testToddUid"))
     }
 }

@@ -51,21 +51,10 @@ public struct UIKitTabView: View {
     }
     
     public struct Tab {
-        
-        //
-//        private var badgeValue: Binding<String?>
+
         var view: AnyView
         var barItem: UITabBarItem
-        
-//
-//        init(view: AnyView, barItem: UITabBarItem, badgeValue: Binding<String?>? = nil){
-//
-//            self.view = view
-//            self.barItem = barItem
-//            self.badgeValue = badgeValue ?? .constant(nil)
-//
-//        }
-        
+
     }
 }
 

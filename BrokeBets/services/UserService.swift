@@ -7,6 +7,7 @@
 
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseMessaging
 import AuthenticationServices
 
 
@@ -43,6 +44,7 @@ protocol UserServiceProtocol {
     func currentUserUid() -> String?
     func startSignInWithAppleFlow(_ request: ASAuthorizationAppleIDRequest)
     func finishSignInWithAppleFlow(_ result: Result<ASAuthorization, Error>)
+    func authenticateWithFirebase(with credential: AuthCredential)
     func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void)
     func getUsers(startingWith partialStr: String, completion: @escaping ([User]?, String) -> Void)
     func logout()
@@ -79,6 +81,7 @@ class MockUserService: ObservableObject, UserServiceProtocol {
     
     func startSignInWithAppleFlow(_ request: ASAuthorizationAppleIDRequest){}
     func finishSignInWithAppleFlow(_ result: Result<ASAuthorization, Error>){}
+    func authenticateWithFirebase(with credential: AuthCredential){}
     func setUsernameIfNotTaken(username: String, completion: @escaping (UsernameCreationResult) -> Void){}
     
     
@@ -146,13 +149,19 @@ class UserService: ObservableObject, UserServiceProtocol {
                     self.user = User(uid: user!.uid, username: username)
                     self.stillCheckingForUsername = false
                     print("here after: \(self.user?.username ?? "none")")
+                    
+                    
+                    self.addFCMTokenToDatabase()
                 }
-                
             }
             else {
                 
                 print("user is not logged in...")
                 self.user = nil
+                
+                DispatchQueue.main.async {
+                    UIApplication.shared.applicationIconBadgeNumber = 0
+                }
             }
         }
     }
@@ -163,7 +172,21 @@ class UserService: ObservableObject, UserServiceProtocol {
     
 
     func logout(){
-        try? Auth.auth().signOut()
+        
+        removeFCMTokenFromDatabase(){ result in
+            
+            // only sign the user out if we were able to successfully remove the token
+            switch(result){
+            case .success(()):
+  
+                try? Auth.auth().signOut()
+                
+                return
+            case .failure(_):
+                // TODO: show error popup or something
+                return
+            }
+        }
     }
     
     func startSignInWithAppleFlow(_ request: ASAuthorizationAppleIDRequest){
@@ -274,16 +297,18 @@ class UserService: ObservableObject, UserServiceProtocol {
         
         let uidDocRef = db.collection("users").document(uid)
         let unameDocRef = db.collection("usernames").document(username)
+//        let userNotifTrackerRef = db.collection("user_notifications_tracker").document(uid)
         
         db.runTransaction { (transaction, errorPointer) -> Any? in
             
             let uidDocument: DocumentSnapshot
-                do {
-                    try uidDocument = transaction.getDocument(uidDocRef)
-                } catch let fetchError as NSError {
-                    errorPointer?.pointee = fetchError
-                    return nil
-                }
+            
+            do {
+                try uidDocument = transaction.getDocument(uidDocRef)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
             
             // if the user already has a username for their account, then we need to not allow them to create a new one, and instead notify them that they
             // already have a username and then take them to the contests screen
@@ -292,12 +317,13 @@ class UserService: ObservableObject, UserServiceProtocol {
             }
 
             let unameDocument: DocumentSnapshot
-                do {
-                    try unameDocument = transaction.getDocument(unameDocRef)
-                } catch let fetchError as NSError {
-                    errorPointer?.pointee = fetchError
-                    return nil
-                }
+            
+            do {
+                try unameDocument = transaction.getDocument(unameDocRef)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
    
             
             // if the username already has a document in the database and the uid for that document is not nil, then the username is already taken and
@@ -310,6 +336,9 @@ class UserService: ObservableObject, UserServiceProtocol {
             // if at this point in the transaction, then that means the username has not been taken and the user does not already have a username
             transaction.setData(["username": username], forDocument: uidDocRef)
             transaction.setData(["uid": uid], forDocument: unameDocRef)
+            
+            // creates document that keeps track of a user's count of active drafts in which it is their turn and pending invitations that they have received
+//            transaction.setData(["numActiveUserTurnDrafts": 0, "numPendingRecInvitations": 0], forDocument: userNotifTrackerRef)
             
             return UsernameCreationResult.Success
             
@@ -375,6 +404,76 @@ class UserService: ObservableObject, UserServiceProtocol {
             }
             print("Num users found: \(users.count)")
             completion(users, partialStr)
+        }
+    }
+    
+    
+    func addFCMTokenToDatabase(){
+        
+        self.getCurrentFCMToken(){ fcmToken in
+            
+            if let token = fcmToken {
+                
+                let userFcmDocRef = Firestore.firestore().collection("user_fcm_tokens").document(self.user!.uid)
+                    
+                userFcmDocRef.setData([
+                
+                    "tokens": FieldValue.arrayUnion([token])
+                ], merge: true){ error in
+                    
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    else{
+                        print("FCM token was successfully added to the user's token array")
+                    }
+                }
+            }
+        }
+    }
+    
+    func removeFCMTokenFromDatabase(completion: @escaping (Result<Void, Error>) -> Void){
+        
+        self.getCurrentFCMToken(){ fcmToken in
+            
+            if let token = fcmToken {
+                
+                let userFcmDocRef = Firestore.firestore().collection("user_fcm_tokens").document(self.user!.uid)
+                    
+                // add the token to the user's array of fcm tokens
+                userFcmDocRef.updateData( ["tokens": FieldValue.arrayRemove([token])] ) { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        completion(.failure(error))
+                        return
+                    }
+                    else{
+                        print("FCM token was successfully removed from the user's token array")
+                        completion(.success(()))
+                        return
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func getCurrentFCMToken(completion: @escaping (String?) -> Void){
+        
+        
+        Messaging.messaging().token { token, error in
+            
+              if let error = error {
+                
+                print("Error fetching FCM registration token: \(error.localizedDescription)")
+                completion(nil)
+                return
+                
+              }
+              else{
+                completion(token)
+                return
+              }
         }
     }
 }

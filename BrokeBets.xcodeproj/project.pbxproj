@@ -92,7 +92,6 @@
 		E3BB843525F3C5A6008121C8 /* InProgressContestGamesListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */; };
 		E3BBF30B25FD757900EEAF90 /* DraftBoardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */; };
 		E3C9685E25DD7D100097963E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9685D25DD7D100097963E /* LoginView.swift */; };
-		E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */; };
 		E3C9688525DD90680097963E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688425DD90680097963E /* String+Extensions.swift */; };
 		E3C9689025DDA68C0097963E /* UpcomingContestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */; };
 		E3C9E1B125F5788F00B719B9 /* CreateContestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9E1B025F5788F00B719B9 /* CreateContestVM.swift */; };
@@ -230,8 +229,8 @@
 		E3BB7AAF2612623D00097DCC /* launchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launchScreen.storyboard; sourceTree = "<group>"; };
 		E3BB843425F3C5A6008121C8 /* InProgressContestGamesListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressContestGamesListVM.swift; sourceTree = "<group>"; };
 		E3BBF30A25FD757900EEAF90 /* DraftBoardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBoardVM.swift; sourceTree = "<group>"; };
+		E3C2C9872620FEEF002D4DF9 /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
 		E3C9685D25DD7D100097963E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleButton.swift; sourceTree = "<group>"; };
 		E3C9688425DD90680097963E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E3C9688F25DDA68C0097963E /* UpcomingContestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingContestView.swift; sourceTree = "<group>"; };
 		E3C9E1B025F5788F00B719B9 /* CreateContestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContestVM.swift; sourceTree = "<group>"; };
@@ -300,6 +299,7 @@
 		CD9B5BC35067111ED0933459 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E3C2C9872620FEEF002D4DF9 /* FirebaseAnalytics.xcframework */,
 				DA770B23555B11C24054428D /* Pods_BrokeBets.framework */,
 				097BB6BE178A92D74989CC75 /* Pods_BrokeBets_BrokeBetsUITests.framework */,
 				BFE799F47475663F47858987 /* Pods_BrokeBetsTests.framework */,
@@ -355,7 +355,6 @@
 				E38B7FCD25D82AA8008D8399 /* TopTabs.swift */,
 				E3C9685D25DD7D100097963E /* LoginView.swift */,
 				E3292ED225E6E0C7007189EC /* CreateUsernameView.swift */,
-				E3C9687F25DD7FF90097963E /* SignInWithGoogleButton.swift */,
 				E30C2A7225ED99A0000A04CA /* ProfileModalView.swift */,
 				E394BDFA25CDD434002C89B9 /* RootAppView.swift */,
 				E39884DC2603E44100E8EA5A /* LoadingView.swift */,
@@ -638,7 +637,7 @@
 				E394BDF225CDD434002C89B9 /* Frameworks */,
 				E394BDF325CDD434002C89B9 /* Resources */,
 				F7074C608E30F4134CB61AF1 /* [CP] Embed Pods Frameworks */,
-				6F472714786234B58E8E1042 /* [CP] Copy Pods Resources */,
+				6E5747AAA61352CA9179927E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -677,7 +676,7 @@
 				E394BE0E25CDD435002C89B9 /* Frameworks */,
 				E394BE0F25CDD435002C89B9 /* Resources */,
 				E54BBE220734DB5043F758FE /* [CP] Embed Pods Frameworks */,
-				0CD284861CFCC8AB3F8D4487 /* [CP] Copy Pods Resources */,
+				13F779137946F5AB94E494F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -804,7 +803,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0CD284861CFCC8AB3F8D4487 /* [CP] Copy Pods Resources */ = {
+		13F779137946F5AB94E494F7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -843,7 +842,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6F472714786234B58E8E1042 /* [CP] Copy Pods Resources */ = {
+		6E5747AAA61352CA9179927E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -928,7 +927,6 @@
 				E39EE88D25F6CF800027968E /* DraftBoardView.swift in Sources */,
 				E3BA0F0425E1537900D9C041 /* UpcomingContestsListVM.swift in Sources */,
 				E39EE8A625F926CB0027968E /* DraftRound.swift in Sources */,
-				E3C9688025DD7FF90097963E /* SignInWithGoogleButton.swift in Sources */,
 				E3F52D6425F02C3F009B10CE /* InProgressContestsRepository.swift in Sources */,
 				E3292EC425E5BBDF007189EC /* CompletedContestsRepository.swift in Sources */,
 				E3292EC925E5BC74007189EC /* CompletedContest.swift in Sources */,
@@ -1156,12 +1154,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71EED93567F6274CBA95B207 /* Pods-BrokeBets.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BrokeBets/BrokeBets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"BrokeBets/Preview Content\"";
 				DEVELOPMENT_TEAM = 634WNQRUXY;
 				ENABLE_PREVIEWS = YES;
@@ -1183,12 +1180,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40C596F50F10E2D82C5EE325 /* Pods-BrokeBets.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BrokeBets/BrokeBets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"BrokeBets/Preview Content\"";
 				DEVELOPMENT_TEAM = 634WNQRUXY;
 				ENABLE_PREVIEWS = YES;

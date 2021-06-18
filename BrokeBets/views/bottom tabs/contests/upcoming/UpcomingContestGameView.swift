@@ -32,7 +32,7 @@ struct UpcomingContestGameViewStyleBag {
 
 struct UpcomingContestGameView: View {
     
-    @EnvironmentObject var userScreenInfo: UserScreenInfo
+//    @EnvironmentObject var userScreenInfo: UserScreenInfo
     
     var game: UpcomingContestGame
     
@@ -141,7 +141,8 @@ struct UpcomingContestGameView_Previews: PreviewProvider {
         if let games = MockUpcomingContestsRepository(uid: "testToddUid").mockData[0]["games"] as? [[String: Any]]{
             UpcomingContestGameView(game:
                                         UpcomingContestGame(game: games[0], playerLookupPrefix: "player1", todaysSimpleDate: SimpleDate(date: Date()))!
-            ).environmentObject(UserScreenInfo(.regular))
+            )
+//            .environmentObject(UserScreenInfo(.regular))
         }
     }
 }

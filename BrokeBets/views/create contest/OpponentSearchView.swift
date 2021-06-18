@@ -143,8 +143,8 @@ struct SearchBarView_Previews: PreviewProvider {
         
         let appState = AppState(shouldByPassLogin: true)
    
-        OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUser: nil, setOpponentSelection: { _ in }, userService: appState.userService))
-            .environmentObject(UserScreenInfo(.regular))
+        OpponentSearchView(opponentSearchVM: OpponentSearchVM(currentSelectedUser: nil, setOpponentSelection: { _ in }, userService: appState.userService!))
+//            .environmentObject(UserScreenInfo(.regular))
             .environment(\.colorScheme, .light)
             .preferredColorScheme(.light)
     }

@@ -18,6 +18,8 @@ class SentInvitationsListVM: ObservableObject {
     
     init(sentInvitationsRepo: SentInvitationsRepositoryProtocol){
         
+        print("sent invitations vm initialized")
+        
         self.sentInvitationsRepo = sentInvitationsRepo
         
         // setups up subscriber that listens for changes to the upcoming contests that are stored in 'sentInvitationsRepo'
@@ -64,6 +66,10 @@ class SentInvitationsListVM: ObservableObject {
             })
             .store(in: &cancellables)
         
+    }
+    
+    deinit {
+        print("sent invitations vm deinitialized")
     }
 }
 

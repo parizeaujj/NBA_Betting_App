@@ -318,6 +318,16 @@ class CreateContestInvitationService: ObservableObject, CreateContestInvitationS
         ], forDocument: expirationSubDocRef)
         
         
+        
+        let recNotifTrackerDocRef = db.collection("user_notifications_tracker").document(recipient_uid)
+        
+        // increments the counter for pending recieved invitations for the recipient of the invitation so that they can be properly notified of it
+        batch.setData([
+            "numPendingRecInvitations": FieldValue.increment(1.0)
+        ], forDocument: recNotifTrackerDocRef, merge: true)
+        
+        
+        
         batch.commit { error in
             
             if let error = error {

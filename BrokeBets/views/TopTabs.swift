@@ -30,13 +30,12 @@ struct Tabs<Label: View>: View {
     private func tab(title: String) -> some View {
         
         let index = self.tabs.firstIndex(of: title)!
-        let isSelected = index == selection
+        let isSelected = index == self.selection
         
         return Button(action: {
-//            withAnimation {
-//                self.selection = index
-//            }
+
             self.selection = index
+            
         }) {
             label(title, isSelected)
                 .overlay(Rectangle()

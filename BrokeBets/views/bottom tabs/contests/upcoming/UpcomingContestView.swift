@@ -10,7 +10,7 @@ import FirebaseFirestore
 
 struct UpcomingContestView: View {
     
-    @EnvironmentObject var userScreenInfo : UserScreenInfo
+//    @EnvironmentObject var userScreenInfo : UserScreenInfo
     
     var upcomingContest: UpcomingContest
     
@@ -104,7 +104,7 @@ struct UpcomingContestView_Previews: PreviewProvider {
     static var previews: some View {
         UpcomingContestView(upcomingContest: UpcomingContest(data:  MockUpcomingContestsRepository(uid: "testToddUid").mockData[0], playerUid: "testToddUid")!
         )
-        .environmentObject(UserScreenInfo(.regular))
+//        .environmentObject(UserScreenInfo(.regular))
 
     }
 }

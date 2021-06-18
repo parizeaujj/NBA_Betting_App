@@ -62,10 +62,10 @@
             filePath = "BrokeBets/repositories/DraftsRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "mockData"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,25 +94,9 @@
             filePath = "BrokeBets/repositories/UpcomingContestsRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "getUpcomingContests(uid:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "80E1F0B5-733A-4D70-8265-51B19B0D3E6D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrokeBets/AppState.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "init(shouldByPassLogin:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,8 +110,8 @@
             filePath = "BrokeBets/AppState.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "init(shouldByPassLogin:)"
             landmarkType = "7">
             <Locations>
@@ -191,8 +175,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "makeDraftPickSelection(draftPickSelection:draft:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -207,8 +191,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
             endingLineNumber = "161"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "makeDraftPickSelection(draftPickSelection:draft:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -223,8 +207,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
             endingLineNumber = "204"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "makeDraftPickSelection(draftPickSelection:draft:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -239,8 +223,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
             endingLineNumber = "232"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "makeDraftPickSelection(draftPickSelection:draft:completion:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "1BFE85AA-0622-4E06-B5A8-AE1E9129C46B - 8397ebf136849a7d"
@@ -289,6 +273,360 @@
             endingLineNumber = "29"
             landmarkName = "username"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrokeBets/AppState.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "AppState"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - 3580909c385f2f76"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of BrokeBets.AppState.selectedSubTab : Swift.Int"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - 3cda86f65a7bf20c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.selectedSubTab.getter : Swift.Int"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - edb81b62a318be38"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.selectedSubTab.setter : Swift.Int"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - 71908dfea9c6a29e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.selectedSubTab.modify : Swift.Int"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - 41540505418bd138"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.selectedSubTab.modify : Swift.Int with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - 27346a05040c8823"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.$selectedSubTab.getter : Combine.Published&lt;Swift.Int&gt;.Publisher"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - 4dcac0ada4b6d0df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.$selectedSubTab.setter : Combine.Published&lt;Swift.Int&gt;.Publisher"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - b4fa88da482d52f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.$selectedSubTab.modify : Combine.Published&lt;Swift.Int&gt;.Publisher"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "743682B4-C46C-4F5B-96F3-262B9A0D0A0C - f3b7a1c5f784adad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.$selectedSubTab.modify : Combine.Published&lt;Swift.Int&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrokeBets/AppState.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "AppState"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - 3580909c385f2f76"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of BrokeBets.AppState.selectedSubTab : Swift.Int"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - 3cda86f65a7bf20c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.selectedSubTab.getter : Swift.Int"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - edb81b62a318be38"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.selectedSubTab.setter : Swift.Int"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - 71908dfea9c6a29e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.selectedSubTab.modify : Swift.Int"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - 41540505418bd138"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.selectedSubTab.modify : Swift.Int with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - 27346a05040c8823"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.$selectedSubTab.getter : Combine.Published&lt;Swift.Int&gt;.Publisher"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - 4dcac0ada4b6d0df"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.$selectedSubTab.setter : Combine.Published&lt;Swift.Int&gt;.Publisher"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - b4fa88da482d52f5"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.$selectedSubTab.modify : Combine.Published&lt;Swift.Int&gt;.Publisher"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "7AEF2A3B-92CD-4E08-817B-A8954F3DD596 - f3b7a1c5f784adad"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BrokeBets.AppState.$selectedSubTab.modify : Combine.Published&lt;Swift.Int&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "BrokeBets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toddweidler/BrokeBets/BrokeBets/AppState.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "44A13762-E2DB-42E5-969E-23BCBC4E8D19"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrokeBets/views/bottom tabs/contests/ContestsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83F6F0A0-D340-4385-B158-83C9ACEB1FFF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrokeBets/views/bottom tabs/contests/ContestsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA3C94F4-B976-4D6A-ACF7-BAD76F20A0DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrokeBets/view models/DraftPickSelectionVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "listenForDraftChanges()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

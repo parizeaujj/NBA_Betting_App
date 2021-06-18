@@ -43,7 +43,9 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
              "upcoming_games": [
                 
                         // game 1
-                        ["awayTeam": "HOU Rockets",
+                        [
+                        "gameId": "gameId1",
+                        "awayTeam": "HOU Rockets",
                          "homeTeam": "MIA Heat",
                          "gameStartDateTime": Timestamp(date: Date()),
                          "overUnderBet": [
@@ -57,7 +59,9 @@ class MockUpcomingContestsRepository: UpcomingContestsRepositoryProtocol, Observ
                        ],
                         
                         // game 2
-                        ["awayTeam": "GS Warriors",
+                        [
+                         "gameId": "gameId2",
+                         "awayTeam": "GS Warriors",
                          "homeTeam": "NY Knicks",
                          "gameStartDateTime": Timestamp(date: Date()),
                          "spreadBet": [

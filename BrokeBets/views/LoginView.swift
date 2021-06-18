@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import GoogleSignIn
 import AuthenticationServices
 
 
@@ -38,30 +39,73 @@ struct LoginView<T: AppStateProtocol >: View {
                     
                 Spacer()
                
-                SignInWithAppleButton(
+                SignInWithAppleButton(.continue,
                     onRequest: { request in
-                        appState.userService.startSignInWithAppleFlow(request)
+                        appState.userService!.startSignInWithAppleFlow(request)
                     },
                     onCompletion: { result in
-                        appState.userService.finishSignInWithAppleFlow(result)
+                        appState.userService!.finishSignInWithAppleFlow(result)
                     }
                 )
                 .signInWithAppleButtonStyle(.white)
-                .frame(width: 280, height: 45)
-                .padding(.bottom, 210)
+                .frame(width: UserScreenInfoV2.current.continueWithButtonWidth, height: 45)
+                
+               
+                
+//                .padding(.bottom, 210)
+//                    .padding(.top, 65)
                 
                 
                 // not implemented yet
-//                SignInWithGoogleButton()
-//                    .frame(width: 280, height: 45)
-//                    .padding(.top, 15)
+                SignInWithGoogleButton()
+                    .padding(.top, 15)
+                    .padding(.bottom, UIScreen.main.bounds.height / 6.0)
 //
 //                Spacer()
                 
             }
+            .onAppear(perform: {
+    
+                print("width: \(UserScreenInfoV2.current.continueWithButtonWidth!)")
+                print("type: \(UserScreenInfoV2.current.screenSizeType)")
+                print("device: \(UIDevice.current.name.trimmingCharacters(in: .whitespacesAndNewlines))")
+            })
         }.edgesIgnoringSafeArea(.all)
     }
 }
+
+struct SignInWithGoogleButton: View {
+    
+    var body: some View {
+        
+        Button(action: {
+            
+            GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.first?.rootViewController
+            GIDSignIn.sharedInstance().signIn()
+            
+            
+        }, label: {
+            
+            HStack{
+                Image("googleLogo")
+                    .resizable()
+                    .foregroundColor(.white)
+                    .frame(width: 25, height: 25)
+                
+                
+                Text("Continue with Google")
+                    .fontWeight(.medium)
+                    .foregroundColor(.black)
+            }
+            .frame(width: UserScreenInfoV2.current.continueWithButtonWidth, height: 45)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+            
+        })
+        
+    }
+}
+
 
 
 struct LoginView_Previews: PreviewProvider {

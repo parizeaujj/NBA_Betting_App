@@ -45,7 +45,7 @@ struct InProgressContestsListView: View {
      static var previews: some View {
          InProgressContestsListView(viewModel: InProgressContestsListVM(inProgressContestsRepo: MockInProgressContestsRepository(uid: "testToddUid"))
          )
-         .environmentObject(UserScreenInfo(.regular))
+//         .environmentObject(UserScreenInfo(.regular))
          .environmentObject(MockAppState())
      }
  }

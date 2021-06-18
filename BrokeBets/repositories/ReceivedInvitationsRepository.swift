@@ -334,6 +334,25 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
         ], forDocument: invitationExpirationSubDocRef)
         
         
+        
+        let userRecNotifTrackerDocRef = db.collection("user_notifications_tracker").document(user.uid)
+        
+        // decrements the counter for pending recieved invitations for the recipient of the user so that it is accurate since they just accepted one
+        batch.setData([
+            "numPendingRecInvitations": FieldValue.increment(-1.0)
+        ], forDocument: userRecNotifTrackerDocRef, merge: true)
+        
+        
+        
+        let oppRecNotifTrackerDocRef = db.collection("user_notifications_tracker").document(invitation.invitor_uid)
+        
+        // increments the counter for counter of active drafts for the invitor because the recipient just accepted their invitation, and the invitor always goes first
+        batch.setData([
+            "numActiveUserTurnDrafts": FieldValue.increment(1.0)
+        ], forDocument: oppRecNotifTrackerDocRef, merge: true)
+        
+        
+        
         batch.commit { error in
             
             if let error = error {
@@ -368,6 +387,17 @@ class ReceivedInvitationsRepository: ReceivedInvitationsRepositoryProtocol, Obse
             "invitationStatus": "rejected",
             "rejectedDateTime": Timestamp(date: Date())
         ], forDocument: invitationDocRef)
+        
+        
+        
+        let userRecNotifTrackerDocRef = db.collection("user_notifications_tracker").document(user.uid)
+        
+        // decrements the counter for pending received invitations for the recipient of the user so that it is accurate since they just rejected one
+        batch.setData([
+            "numPendingRecInvitations": FieldValue.increment(-1.0)
+        ], forDocument: userRecNotifTrackerDocRef, merge: true)
+        
+        
         
         batch.commit { err in
             if let err = err {
